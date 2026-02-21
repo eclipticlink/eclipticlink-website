@@ -1,0 +1,22 @@
+---
+description: Read and apply project skills from .agents when working in this repo
+alwaysApply: true
+---
+
+# Project agents and skills
+
+## Reference site
+
+**Always use [https://acubetechnologies.com/](https://acubetechnologies.com/) as the primary reference** for this project. When designing layouts, UI/UX, content structure, or making design and UX decisions, consult this site for direction, tone, and patterns unless the user specifies otherwise.
+
+---
+
+When working in this project, read and follow any skills defined under the **`.agents/`** folder.
+
+- **Location**: `.agents/<skill-name>/SKILL.md`
+- **Current skills**:
+  - `.agents/nextjs-optimized-website/SKILL.md` — when building or optimizing Next.js pages, performance, or server/client component choices.
+  - `.agents/seo-expert/SKILL.md` — when optimizing for search engines, metadata, structured data, crawlability, or content/keyword strategy.
+  - `.agents/ui-ux-designer/SKILL.md` — when designing or building UI/UX, using Tailwind CSS or Headless UI, or improving usability and visual appeal.
+
+If you add or change skills under `.agents/`, read the relevant `SKILL.md` and apply its guidance for the current task.

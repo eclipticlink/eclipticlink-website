@@ -1,0 +1,66 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { services } from "./data";
+
+export const metadata: Metadata = {
+  title: "Services | EclipticLink",
+  description:
+    "Artificial Intelligence, Custom Software Development, Mobile App Development, Cloud & DevOps, Big Data, and UI/UX Design. End-to-end software solutions from EclipticLink.",
+};
+
+export default function ServicesPage() {
+  return (
+    <>
+      <section className="bg-zinc-900 px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
+        <div className="mx-auto max-w-7xl text-center">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+            Services
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-300">
+            End-to-end software solutions to accelerate your business. AI,
+            custom software, mobile apps, cloud, big data, and UI/UX design—we have you covered.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8" aria-labelledby="services-list-heading">
+        <div className="mx-auto max-w-7xl">
+          <h2 id="services-list-heading" className="sr-only">
+            Our services
+          </h2>
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((service) => (
+              <article
+                key={service.id}
+                className="flex flex-col rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm transition hover:shadow-md"
+              >
+                <h3 className="text-xl font-semibold text-zinc-900">
+                  {service.title}
+                </h3>
+                <p className="mt-2 text-zinc-600">{service.summary}</p>
+                <p className="mt-4 text-sm text-zinc-500">{service.details}</p>
+                <Link
+                  href={`/services/${service.id}`}
+                  className="mt-4 inline-flex items-center text-sm font-medium text-zinc-900 transition hover:text-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2"
+                >
+                  Learn more
+                  <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </article>
+            ))}
+          </div>
+          <div className="mt-16 text-center">
+            <Link
+              href="/contact"
+              className="inline-flex h-12 min-h-11 items-center justify-center rounded-lg bg-zinc-900 px-6 text-base font-semibold text-white shadow-sm transition hover:bg-zinc-800 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-zinc-900"
+            >
+              Get in touch
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
