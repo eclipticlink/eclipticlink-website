@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
-/* EclipticLink brand colors: teal (#50d8af) + blue (#0c2e8a) */
+/* EclipticLink brand colors: teal (#74D2B0) + blue (#0c2e8a) */
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --brand-teal: #50d8af;
-  --brand-teal-hover: #3ec49a;
-  --brand-teal-light: #e8fbf6;
-  --brand-teal-muted: #9ee9d4;
+  --brand-teal: #74D2B0;
+  --brand-teal-hover: #5bc19e;
+  --brand-teal-light: #eaf9f5;
+  --brand-teal-muted: #a8e4d4;
   --brand-blue: #0c2e8a;
   --brand-blue-hover: #143a9e;
   --brand-blue-dark: #0a2669;

@@ -105,6 +105,24 @@ export function Header() {
     };
   }, [mobileMenuOpen]);
 
+  useEffect(() => {
+    if (!servicesOpen) return;
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setServicesOpen(false);
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [servicesOpen]);
+
+  useEffect(() => {
+    if (!hireTeamOpen) return;
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setHireTeamOpen(false);
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [hireTeamOpen]);
+
   const openServices = () => {
     if (servicesTimeoutRef.current) {
       clearTimeout(servicesTimeoutRef.current);
@@ -207,45 +225,62 @@ export function Header() {
               aria-labelledby="services-trigger"
               className={`absolute right-0 top-full pt-2 ${servicesOpen ? "block" : "hidden"}`}
             >
-              <div className="w-max min-w-[560px] rounded-lg border border-zinc-200 bg-white py-5 pl-6 pr-8 shadow-lg">
-                <div className="mb-5">
-                  <h3 className="text-lg font-bold tracking-tight text-zinc-900">
+              <div className="w-max min-w-lg max-w-xl rounded-xl border border-zinc-200/80 bg-white shadow-xl ring-1 ring-zinc-900/5">
+                <div className="px-6 pt-6 pb-3">
+                  <h3 className="text-base font-bold tracking-tight text-brand-blue">
                     Build your software product
                   </h3>
                   <p className="mt-2 max-w-xl text-sm leading-relaxed text-zinc-600">
                     From AI and automation to custom software, mobile apps, and cloud—we deliver
-                    end-to-end solutions with transparency and scalability. Our teams bring
-                    technical depth and product focus so you get a complete product that fits
-                    your business.
+                    end-to-end solutions with transparency and scalability.
                   </p>
                 </div>
-                <div className="grid min-w-0 grid-cols-2 gap-x-12 border-t border-zinc-100 pt-4">
-                  <div className="min-w-0">
+                <div className="grid min-w-0 grid-cols-2 gap-px bg-zinc-100 px-4 pt-2 pb-4">
+                  <div className="min-w-0 rounded-lg bg-white p-2">
                     {serviceLinksLeft.map(({ label, href }) => (
                       <Link
                         key={label}
                         href={href}
                         role="menuitem"
-                        className="block py-2.5 text-sm font-medium uppercase leading-snug text-zinc-700 transition hover:bg-brand-teal-light hover:text-brand-blue"
+                        className="group flex min-h-11 items-center justify-between gap-2 rounded-md px-3 py-2.5 text-sm font-medium text-zinc-700 transition hover:bg-brand-teal-light hover:text-brand-blue focus-visible:bg-brand-teal-light focus-visible:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-inset"
                         onClick={() => setServicesOpen(false)}
                       >
-                        {label}
+                        <span className="truncate">{label}</span>
+                        <svg className="h-4 w-4 shrink-0 text-brand-blue opacity-0 transition group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
                       </Link>
                     ))}
                   </div>
-                  <div className="min-w-0">
+                  <div className="min-w-0 rounded-lg bg-white p-2">
                     {serviceLinksRight.map(({ label, href }) => (
                       <Link
                         key={label}
                         href={href}
                         role="menuitem"
-                        className="block py-2.5 text-sm font-medium uppercase leading-snug text-zinc-700 transition hover:bg-brand-teal-light hover:text-brand-blue"
+                        className="group flex min-h-11 items-center justify-between gap-2 rounded-md px-3 py-2.5 text-sm font-medium text-zinc-700 transition hover:bg-brand-teal-light hover:text-brand-blue focus-visible:bg-brand-teal-light focus-visible:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-inset"
                         onClick={() => setServicesOpen(false)}
                       >
-                        {label}
+                        <span className="truncate">{label}</span>
+                        <svg className="h-4 w-4 shrink-0 text-brand-blue opacity-0 transition group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
                       </Link>
                     ))}
                   </div>
+                </div>
+                <div className="border-t border-zinc-100 px-4 py-3">
+                  <Link
+                    href="/services"
+                    role="menuitem"
+                    className="flex min-h-10 items-center justify-center gap-2 rounded-lg bg-brand-blue/5 px-3 py-2 text-sm font-semibold text-brand-blue transition hover:bg-brand-blue/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-inset"
+                    onClick={() => setServicesOpen(false)}
+                  >
+                    View all services
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -294,20 +329,19 @@ export function Header() {
               onMouseLeave={closeHireTeam}
               className={`absolute right-0 top-full pt-2 ${hireTeamOpen ? "block" : "hidden"}`}
             >
-              <div className="min-w-[920px] rounded-lg border border-zinc-200 bg-white shadow-lg pr-6">
+              <div className="min-w-208 max-w-232 rounded-xl border border-zinc-200/80 bg-white shadow-xl ring-1 ring-zinc-900/5">
                 <div className="border-b border-zinc-100 px-6 pt-5 pb-4">
-                  <h3 className="text-lg font-bold tracking-tight text-zinc-900">
+                  <h3 className="text-base font-bold tracking-tight text-brand-blue">
                     Hire dedicated developers
                   </h3>
                   <p className="mt-2 max-w-xl text-sm leading-relaxed text-zinc-600">
-                    Scale your team with vetted experts—AI, backend, frontend, mobile, DevOps, and
-                    more. Pick a role below or schedule a free consultation and we’ll match you with
-                    the right talent.
+                    Scale your team with vetted experts—AI, backend, frontend, mobile, DevOps, and more.
+                    Pick a role or schedule a free consultation.
                   </p>
                 </div>
-                <div className="grid grid-cols-[1fr_1.2fr_1.5fr] gap-0">
-                  {/* Left: Category tabs (select one to show positions) */}
-                  <div className="border-r border-zinc-200 py-4 pl-4 pr-3" role="tablist" aria-label="Hire by category">
+                <div className="grid grid-cols-[1fr_1.15fr_1.5fr] gap-px bg-zinc-100">
+                  {/* Left: Category tabs */}
+                  <div className="bg-white p-3" role="tablist" aria-label="Hire by category">
                     {HIRE_TEAM_CATEGORIES.map((category) => (
                       <button
                         key={category}
@@ -316,47 +350,55 @@ export function Header() {
                         aria-selected={hireTeamSelectedCategory === category}
                         aria-controls="hire-team-positions-panel"
                         id={`hire-tab-${category.replace(/\s+/g, "-")}`}
-                        className="mb-1 block w-full rounded px-3 py-2.5 text-left text-sm font-bold uppercase leading-snug text-zinc-900 transition hover:bg-brand-blue hover:text-white last:mb-0 aria-selected:bg-brand-blue aria-selected:text-white"
+                        className="mb-0.5 block w-full rounded-md px-3 py-2.5 text-left text-sm font-medium text-zinc-700 transition last:mb-0 hover:bg-brand-teal-light hover:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-inset aria-selected:bg-brand-blue aria-selected:text-white"
                         onClick={() => setHireTeamSelectedCategory(category)}
                       >
-                        {category}
+                        <span className="truncate block">{category}</span>
                       </button>
                     ))}
                   </div>
-                  {/* Middle: Positions for selected category (underlined links) */}
+                  {/* Middle: Positions for selected category */}
                   <div
                     id="hire-team-positions-panel"
                     role="tabpanel"
                     aria-labelledby={`hire-tab-${hireTeamSelectedCategory.replace(/\s+/g, "-")}`}
-                    className="border-r border-zinc-200 py-4 pl-6 pr-4"
+                    className="min-w-0 bg-white p-3"
                   >
-                    <ul className="flex flex-col gap-0.5 list-none p-0 m-0">
+                    <ul className="flex flex-col list-none gap-0.5 p-0 m-0" role="list">
                       {HIRE_TEAM_POSITIONS[hireTeamSelectedCategory].map((position) => (
                         <li key={position}>
                           <Link
                             href={`/contact?role=${encodeURIComponent(position)}`}
-                            className="block py-2.5 text-sm font-normal uppercase text-zinc-800 underline decoration-zinc-400 underline-offset-2 transition hover:text-brand-blue hover:decoration-brand-blue"
+                            role="menuitem"
+                            className="group flex min-h-10 items-center justify-between gap-2 rounded-md px-3 py-2.5 text-sm font-medium text-zinc-700 transition hover:bg-brand-teal-light hover:text-brand-blue focus-visible:bg-brand-teal-light focus-visible:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-inset"
                             onClick={() => setHireTeamOpen(false)}
                           >
-                            {position}
+                            <span className="truncate">{position}</span>
+                            <svg className="h-4 w-4 shrink-0 text-brand-blue opacity-0 transition group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
                           </Link>
                         </li>
                       ))}
-                      <li>
-                        <Link
-                          href="/contact"
-                          className="mt-1 block py-2.5 text-sm font-normal italic uppercase text-zinc-600 underline decoration-zinc-400 underline-offset-2 hover:text-brand-blue"
-                          onClick={() => setHireTeamOpen(false)}
-                        >
-                          Not Sure? Let Us Help!
-                        </Link>
-                      </li>
                     </ul>
                   </div>
-                  {/* Right: Schedule a Free Consultation form */}
-                  <div className="p-5 pr-0">
+                  {/* Right: Consultation form */}
+                  <div className="bg-white p-4 pl-4">
                     <HireTeamConsultationForm />
                   </div>
+                </div>
+                <div className="border-t border-zinc-100 px-4 py-3">
+                  <Link
+                    href="/hire"
+                    role="menuitem"
+                    className="flex min-h-10 items-center justify-center gap-2 rounded-lg bg-brand-blue/5 px-3 py-2 text-sm font-semibold text-brand-blue transition hover:bg-brand-blue/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-inset"
+                    onClick={() => setHireTeamOpen(false)}
+                  >
+                    View all roles on Hire Team page
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
                 </div>
               </div>
             </div>

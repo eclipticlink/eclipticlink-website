@@ -49,11 +49,11 @@ export function Footer() {
             </ul>
             <Link href="/" className="mt-6 inline-block rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
               <Image
-                src="/EclipticLink-logo.png"
+                src="/Eclipticlink artwork zoomed.png"
                 alt="EclipticLink"
-                width={200}
-                height={80}
-                className="h-16 w-auto object-contain object-left sm:h-20"
+                width={180}
+                height={48}
+                className="h-12 w-auto object-contain object-left sm:h-14"
               />
             </Link>
             <p className="mt-4 text-sm text-zinc-400" suppressHydrationWarning>
@@ -66,12 +66,12 @@ export function Footer() {
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
               Quick Links
             </h3>
-            <ul className="mt-4 space-y-3" role="list">
+            <ul className="mt-3 flex flex-col gap-1" role="list">
               {quickLinks.map(({ label, href }) => (
                 <li key={href}>
                   <Link
                     href={href}
-                    className="inline-flex min-h-11 items-center text-sm text-zinc-300 transition hover:text-brand-teal focus-visible:rounded focus-visible:text-brand-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+                    className="inline-flex min-h-0 items-center py-1.5 text-sm text-zinc-300 transition hover:text-brand-teal focus-visible:rounded focus-visible:text-brand-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
                   >
                     {label}
                   </Link>
@@ -85,14 +85,14 @@ export function Footer() {
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
               Social Media
             </h3>
-            <ul className="mt-4 space-y-3" role="list">
+            <ul className="mt-3 flex flex-col gap-1" role="list">
               {socialLinks.map(({ label, href }) => (
                 <li key={label}>
                   <a
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-11 items-center text-sm text-zinc-300 transition hover:text-brand-teal focus-visible:rounded focus-visible:text-brand-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+                    className="inline-flex min-h-0 items-center py-1.5 text-sm text-zinc-300 transition hover:text-brand-teal focus-visible:rounded focus-visible:text-brand-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
                   >
                     {label}
                   </a>
