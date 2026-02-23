@@ -1,19 +1,29 @@
 "use client";
 
 import { useState } from "react";
+import { sendHireConsultationEmail } from "@/app/lib/emailjs";
 
 export function HireTeamConsultationForm() {
-  const [status, setStatus] = useState<"idle" | "sending" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("sending");
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     try {
-      await new Promise((r) => setTimeout(r, 600));
+      await sendHireConsultationEmail({
+        from_name: (formData.get("name") as string) ?? "",
+        company: (formData.get("company") as string) || undefined,
+        from_email: (formData.get("email") as string) ?? "",
+        help: (formData.get("help") as string) || undefined,
+        phone: (formData.get("phone") as string) || undefined,
+        message: (formData.get("message") as string) || undefined,
+      });
       setStatus("success");
-      (e.target as HTMLFormElement).reset();
+      form.reset();
     } catch {
-      setStatus("idle");
+      setStatus("error");
     }
   }
 
@@ -38,6 +48,7 @@ export function HireTeamConsultationForm() {
             placeholder="Name"
             required
             autoComplete="name"
+            disabled={status === "sending"}
             className={inputClass}
           />
         </div>
@@ -49,6 +60,7 @@ export function HireTeamConsultationForm() {
             name="company"
             placeholder="Company / Organization"
             autoComplete="organization"
+            disabled={status === "sending"}
             className={inputClass}
           />
         </div>
@@ -61,6 +73,7 @@ export function HireTeamConsultationForm() {
             placeholder="Company Email ID"
             required
             autoComplete="email"
+            disabled={status === "sending"}
             className={inputClass}
           />
         </div>
@@ -71,6 +84,7 @@ export function HireTeamConsultationForm() {
             type="text"
             name="help"
             placeholder="How Can We Help You?"
+            disabled={status === "sending"}
             className={inputClass}
           />
         </div>
@@ -86,6 +100,7 @@ export function HireTeamConsultationForm() {
               name="phone"
               placeholder="Phone"
               autoComplete="tel"
+              disabled={status === "sending"}
               className={inputClass}
             />
           </div>
@@ -97,12 +112,18 @@ export function HireTeamConsultationForm() {
             name="message"
             placeholder="Share Your Message"
             rows={3}
+            disabled={status === "sending"}
             className={`${inputClass} min-h-[80px] resize-y`}
           />
         </div>
         {status === "success" && (
           <p className="rounded-lg bg-green-50 p-3 text-sm font-medium text-green-800" role="status" aria-live="polite">
             Thank you. We&apos;ll reach out soon.
+          </p>
+        )}
+        {status === "error" && (
+          <p className="rounded-lg bg-red-50 p-3 text-sm font-medium text-red-800" role="alert" aria-live="assertive">
+            Something went wrong. Please try again or email us directly.
           </p>
         )}
         <button

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { sendContactEmail } from "@/app/lib/emailjs";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -10,9 +11,11 @@ export function ContactForm() {
     setStatus("sending");
     const form = e.currentTarget;
     const formData = new FormData(form);
+    const name = (formData.get("name") as string) ?? "";
+    const email = (formData.get("email") as string) ?? "";
+    const message = (formData.get("message") as string) ?? "";
     try {
-      // Replace with your API route or form service when ready
-      await new Promise((resolve) => setTimeout(resolve, 800));
+      await sendContactEmail({ from_name: name, from_email: email, message });
       setStatus("success");
       form.reset();
     } catch {

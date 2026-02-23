@@ -25,64 +25,7 @@ const serviceLinksRight = [
   { label: "UI/UX Design", href: "/services/ui-ux-design" },
 ];
 
-const HIRE_TEAM_CATEGORIES = [
-  "Artificial Intelligence",
-  "Backend",
-  "Frontend",
-  "Mobile App",
-  "Automation",
-  "Machine Learning",
-  "DevOps",
-  "Data Science",
-  "Cloud",
-] as const;
-
-const HIRE_TEAM_POSITIONS: Record<(typeof HIRE_TEAM_CATEGORIES)[number], readonly string[]> = {
-  "Artificial Intelligence": [
-    "AI Developer",
-    "ChatGPT Developer",
-    "OpenAI Developer",
-    "Prompt Engineer",
-    "AIOps Engineers",
-  ],
-  Backend: [
-    "Node Developer",
-    "Golang Developer",
-    "Laravel Developer",
-    ".NET Developer",
-    ".NET Core Developer",
-    "Java Developer",
-    "Python Developer",
-    "PHP Developer",
-    "Django Developer",
-    "C# Developer",
-    "Fortran Developer",
-    "Dibol Developer",
-  ],
-  Frontend: [
-    "Angular Developer",
-    "React Developer",
-    "VueJS Developer",
-    "UI/UX Developer",
-    "HTML/CSS Developer",
-    "Moodle Developer",
-    "Hubspot Developer",
-    "Wix Developer",
-  ],
-  "Mobile App": [
-    "React Native Developer",
-    "Flutter Developer",
-    "Ionic Developer",
-    "IOS Developer",
-    "Android Developer",
-    "Unity Developer",
-  ],
-  Automation: ["RPA Developer"],
-  "Machine Learning": ["ML Developer"],
-  DevOps: ["DevOps Developer"],
-  "Data Science": ["Data Scientist", "PowerBI Consultant", "Data Engineer"],
-  Cloud: ["AWS Developer", "Azure Developer", "CyberSecurity Developer"],
-};
+import { HIRE_TEAM_CATEGORIES, HIRE_TEAM_POSITIONS, toSlug } from "../data/hire-team";
 
 export function Header() {
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -361,14 +304,14 @@ export function Header() {
                   <div
                     id="hire-team-positions-panel"
                     role="tabpanel"
-                    aria-labelledby={`hire-tab-${hireTeamSelectedCategory.replace(/\s+/g, "-")}`}
+                    aria-labelledby={`hire-tab-${hireTeamSelectedCategory.replace(/\s+/g, "-").toLowerCase()}`}
                     className="min-w-0 bg-white p-3"
                   >
                     <ul className="flex flex-col list-none gap-0.5 p-0 m-0" role="list">
                       {HIRE_TEAM_POSITIONS[hireTeamSelectedCategory].map((position) => (
                         <li key={position}>
                           <Link
-                            href={`/contact?role=${encodeURIComponent(position)}`}
+                            href={`/hire/role/${toSlug(position)}`}
                             role="menuitem"
                             className="group flex min-h-10 items-center justify-between gap-2 rounded-md px-3 py-2.5 text-sm font-medium text-zinc-700 transition hover:bg-brand-teal-light hover:text-brand-blue focus-visible:bg-brand-teal-light focus-visible:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-inset"
                             onClick={() => setHireTeamOpen(false)}

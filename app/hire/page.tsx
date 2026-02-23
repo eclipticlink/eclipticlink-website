@@ -1,71 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "../components/breadcrumbs";
+import {
+  HIRE_TEAM_CATEGORIES,
+  getRolesByCategory,
+} from "../data/hire-team";
 
 export const metadata: Metadata = {
   title: "Hire Team | EclipticLink",
   description:
-    "Hire dedicated AI, backend, frontend, full stack, DevOps, mobile, QA, and UI/UX talent. Scale your team with EclipticLink.",
+    "Hire dedicated AI, ML, mobile, automation, backend, frontend, DevOps, and cloud talent. Scale your team with EclipticLink.",
 };
-
-const hireOptions = [
-  {
-    id: "ai",
-    title: "AI",
-    summary: "Hire AI/ML engineers to build intelligent products and automation.",
-    details:
-      "Dedicated AI and machine learning engineers for model development, NLP, computer vision, and ML pipelines. Flexible engagement models.",
-  },
-  {
-    id: "backend",
-    title: "Backend",
-    summary: "Hire backend developers for APIs, services, and data layer.",
-    details:
-      "Experienced backend engineers in Node, Python, Java, Go, and more. Build scalable APIs, microservices, and databases.",
-  },
-  {
-    id: "frontend",
-    title: "Frontend",
-    summary: "Hire frontend developers for web and responsive UIs.",
-    details:
-      "Frontend specialists in React, Next.js, Vue, and modern tooling. Accessible, performant, and user-focused interfaces.",
-  },
-  {
-    id: "full-stack",
-    title: "Full Stack",
-    summary: "Hire full stack developers for end-to-end product development.",
-    details:
-      "Full stack engineers who own the full cycle from UI to API to database. Ideal for startups and product teams.",
-  },
-  {
-    id: "cloud-devops",
-    title: "Cloud & DevOps",
-    summary: "Hire DevOps and cloud engineers for CI/CD and infrastructure.",
-    details:
-      "DevOps and cloud specialists for AWS, GCP, Azure, Kubernetes, and CI/CD. Reliable deployment and observability.",
-  },
-  {
-    id: "mobile",
-    title: "Mobile",
-    summary: "Hire mobile developers for iOS and Android apps.",
-    details:
-      "Native and cross-platform mobile developers. iOS (Swift), Android (Kotlin), and React Native or Flutter.",
-  },
-  {
-    id: "quality-assurance",
-    title: "Quality Assurance",
-    summary: "Hire QA engineers for manual and automated testing.",
-    details:
-      "QA engineers for test strategy, automation (e.g. Selenium, Cypress), performance and security testing.",
-  },
-  {
-    id: "design-ui-ux",
-    title: "Design (UI/UX)",
-    summary: "Hire UI/UX designers for research, wireframes, and high-fidelity design.",
-    details:
-      "Product and UI/UX designers for user research, wireframes, prototypes, and design systems. User-first outcomes.",
-  },
-];
 
 export default function HirePage() {
   return (
@@ -77,8 +22,7 @@ export default function HirePage() {
             Hire Team
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200">
-            Scale your product with dedicated engineers and designers. AI,
-            backend, frontend, full stack, DevOps, mobile, QA, and UI/UX.
+            Scale your product with dedicated engineers and specialists. From AI and machine learning to mobile, automation, backend, frontend, DevOps, and cloud—hire the right talent without the overhead.
           </p>
         </div>
       </section>
@@ -88,20 +32,38 @@ export default function HirePage() {
           <h2 id="hire-list-heading" className="sr-only">
             Hire by role
           </h2>
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-            {hireOptions.map((option) => (
-              <article
-                key={option.id}
-                id={option.id}
-                className="flex flex-col rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm transition hover:shadow-md scroll-mt-24"
-              >
-                <h3 className="text-xl font-semibold text-zinc-900">
-                  {option.title}
-                </h3>
-                <p className="mt-2 text-zinc-600">{option.summary}</p>
-                <p className="mt-4 text-sm text-zinc-500">{option.details}</p>
-              </article>
-            ))}
+          <div className="space-y-16">
+            {HIRE_TEAM_CATEGORIES.map((category) => {
+              const roles = getRolesByCategory(category);
+              const categoryId = category.toLowerCase().replace(/\s+/g, "-");
+              return (
+                <div key={category} id={categoryId} className="scroll-mt-24">
+                  <h3 className="text-2xl font-bold text-zinc-900 border-b border-zinc-200 pb-3 mb-6">
+                    {category}
+                  </h3>
+                  <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 list-none p-0 m-0">
+                    {roles.map((role) => (
+                      <li key={role.slug} className="flex min-h-[180px]">
+                        <Link
+                          href={`/hire/role/${role.slug}`}
+                          className="flex w-full min-h-full flex-col rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 shadow-sm transition hover:shadow-md hover:border-brand-teal-light hover:bg-brand-teal-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
+                        >
+                          <span className="text-lg font-semibold text-zinc-900">
+                            {role.title}
+                          </span>
+                          <p className="mt-2 flex-1 text-sm text-zinc-600 line-clamp-2 min-h-0">
+                            {role.shortDescription}
+                          </p>
+                          <span className="mt-3 shrink-0 text-sm font-medium text-brand-blue">
+                            View role details →
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
           </div>
           <div className="mt-16 text-center">
             <Link
