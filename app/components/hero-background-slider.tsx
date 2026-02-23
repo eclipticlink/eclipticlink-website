@@ -10,7 +10,7 @@ const HERO_IMAGES = [
   "/hero/hero-4.jpg",
 ];
 
-const SLIDE_DURATION_MS = 5000;
+const SLIDE_DURATION_MS = 5500;
 
 export function HeroBackgroundSlider() {
   const [index, setIndex] = useState(0);
@@ -27,16 +27,14 @@ export function HeroBackgroundSlider() {
       {HERO_IMAGES.map((src, i) => (
         <div
           key={src}
-          className="absolute inset-0 transition-opacity duration-1000 ease-out motion-reduce:duration-0"
-          style={{
-            opacity: i === index ? 1 : 0,
-          }}
+          className="absolute inset-0 transition-opacity duration-1200 ease-out motion-reduce:duration-0"
+          style={{ opacity: i === index ? 1 : 0 }}
         >
           <Image
             src={src}
             alt=""
             fill
-            className="object-cover"
+            className="object-cover object-center"
             sizes="100vw"
             priority={i === 0}
           />

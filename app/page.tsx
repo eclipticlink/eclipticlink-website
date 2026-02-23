@@ -6,14 +6,24 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-112 overflow-hidden px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8" aria-labelledby="hero-heading">
+      <section
+        className="relative min-h-128 overflow-hidden px-4 py-24 text-white sm:min-h-144 sm:px-6 sm:py-32 lg:min-h-160 lg:px-8"
+        aria-labelledby="hero-heading"
+      >
         <HeroBackgroundSlider />
-        <div className="absolute inset-0 z-1 bg-brand-dark/80" aria-hidden />
-        <div className="relative z-10 mx-auto max-w-7xl text-center">
-          <h1 id="hero-heading" className="mx-auto max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+        {/* Gradient overlay: image visible at top/sides, readable text in center */}
+        <div
+          className="absolute inset-0 z-1 bg-linear-to-b from-brand-dark/35 via-brand-dark/55 to-brand-dark/85"
+          aria-hidden
+        />
+        <div className="relative z-10 mx-auto flex min-h-112 max-w-7xl flex-col items-center justify-center text-center sm:min-h-128 lg:min-h-144">
+          <h1
+            id="hero-heading"
+            className="mx-auto max-w-4xl text-4xl font-bold tracking-tight drop-shadow-sm sm:text-5xl lg:text-6xl"
+          >
             Making your ideas happen!
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-200">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-200 drop-shadow-sm">
             Join forces with EclipticLink, experts in customized software
             solutions and consulting. We catalyze business growth with
             intelligent strategies, innovative problem-solving, and
@@ -22,13 +32,13 @@ export default function Home() {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex h-12 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-teal px-6 text-base font-semibold text-brand-dark shadow-sm transition hover:bg-brand-teal-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
+              className="inline-flex h-12 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-teal px-6 text-base font-semibold text-brand-dark shadow-lg shadow-brand-dark/30 transition hover:bg-brand-teal-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
             >
               Get Started
             </Link>
             <Link
               href="/services"
-              className="inline-flex h-12 min-h-11 cursor-pointer items-center justify-center rounded-lg border-2 border-brand-teal bg-transparent px-6 text-base font-semibold text-white transition hover:bg-brand-teal/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
+              className="inline-flex h-12 min-h-11 cursor-pointer items-center justify-center rounded-lg border-2 border-white/80 bg-white/5 px-6 text-base font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 hover:border-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
             >
               Our Services
             </Link>
