@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "../components/breadcrumbs";
 
 export const metadata: Metadata = {
   title: "About Us | EclipticLink",
@@ -59,12 +60,13 @@ const historyMilestones = [
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-zinc-900 px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
+      <section className="bg-brand-dark px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About Us" }]} className="mb-6" />
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
             About Us
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-300">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-200">
             We work with startups and enterprises to solve distributed problems
             and help them achieve scalability. Our team brings almost nine
             years of combined experience and transparent delivery—milestone-based
@@ -80,11 +82,11 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl">
           <h2
             id="company-history-heading"
-            className="text-center text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl"
+            className="text-center text-3xl font-bold tracking-tight text-brand-blue sm:text-4xl"
           >
             Company history
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-center text-lg text-zinc-600">
+          <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-zinc-600">
             Our journey from founding to today—focused on helping businesses
             scale through expert teams and transparent delivery.
           </p>
@@ -98,16 +100,16 @@ export default function AboutPage() {
                 className="relative pb-12 last:pb-0"
               >
                 <span
-                  className="absolute -left-10 top-0 h-4 w-4 rounded-full border-2 border-zinc-900 bg-white"
+                  className="absolute -left-10 top-0 h-4 w-4 rounded-full border-2 border-brand-teal bg-white"
                   aria-hidden
                 />
                 <span className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
                   {year}
                 </span>
-                <h3 className="mt-1 text-lg font-semibold tracking-tight text-zinc-900">
+                <h3 className="mt-1 text-lg font-semibold tracking-tight text-brand-blue">
                   {title}
                 </h3>
-                <p className="mt-3 text-zinc-600 leading-relaxed">
+                <p className="mt-3 max-w-prose text-zinc-600 leading-relaxed">
                   {description}
                 </p>
               </li>
@@ -123,7 +125,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl">
           <h2
             id="how-we-deliver-heading"
-            className="text-center text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl"
+            className="text-center text-3xl font-bold tracking-tight text-brand-blue sm:text-4xl"
           >
             How we deliver
           </h2>
@@ -136,7 +138,7 @@ export default function AboutPage() {
                 key={title}
                 className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm"
               >
-                <h3 className="text-base font-semibold tracking-tight text-zinc-900">
+                <h3 className="text-base font-semibold tracking-tight text-brand-blue">
                   {title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-zinc-600">
@@ -152,7 +154,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl text-center">
           <Link
             href="/contact"
-            className="inline-flex h-12 min-h-11 items-center justify-center rounded-lg bg-zinc-900 px-6 text-base font-semibold text-white shadow-sm transition hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2"
+            className="inline-flex h-12 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-blue px-6 text-base font-semibold text-white shadow-sm transition hover:bg-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 active:scale-[0.98] motion-reduce:active:scale-100"
           >
             Get in touch
           </Link>

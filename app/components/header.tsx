@@ -2,8 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { HireTeamConsultationForm } from "./hire-team-consultation-form";
+
+const mainNavLinks = [
+  { label: "Services", href: "/services" },
+  { label: "Hire Team", href: "/hire" },
+  { label: "About Us", href: "/about" },
+  { label: "Blogs", href: "/blogs" },
+  { label: "Contact Us", href: "/contact" },
+];
 
 const serviceLinksLeft = [
   { label: "Artificial Intelligence", href: "/services/ai" },
@@ -80,8 +88,22 @@ export function Header() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [hireTeamOpen, setHireTeamOpen] = useState(false);
   const [hireTeamSelectedCategory, setHireTeamSelectedCategory] = useState<(typeof HIRE_TEAM_CATEGORIES)[number]>(HIRE_TEAM_CATEGORIES[0]);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const servicesTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hireTeamTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    };
+    document.addEventListener("keydown", handleEscape);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
 
   const openServices = () => {
     if (servicesTimeoutRef.current) {
@@ -111,19 +133,45 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-200 bg-white/95 backdrop-blur supports-backdrop-filter:bg-white/80">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2">
+    <header className="sticky top-0 z-50 border-b border-brand-blue-dark/20 bg-white/95 backdrop-blur supports-backdrop-filter:bg-white/80">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex shrink-0 items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 rounded">
           <Image
             src="/Eclipticlink artwork zoomed.png"
-            alt="EclipticLink"
+            alt=""
             width={180}
             height={48}
             className="h-10 w-auto object-contain object-left"
             priority
           />
+          <span className="text-lg font-bold tracking-tight sm:text-xl">
+            <span className="text-brand-teal">Ecliptic</span>
+            <span className="text-brand-blue">link</span>
+          </span>
         </Link>
-        <nav className="flex items-center gap-6 sm:gap-8" aria-label="Main">
+
+        {/* Mobile menu button — visible below lg */}
+        <button
+          type="button"
+          className="flex min-h-11 min-w-11 items-center justify-center rounded-lg text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 lg:hidden"
+          onClick={() => setMobileMenuOpen((open) => !open)}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-nav"
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+        >
+          {mobileMenuOpen ? (
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
+
+        {/* Desktop nav — hidden on mobile */}
+        <nav className="hidden lg:flex lg:items-center lg:gap-6 xl:gap-8" aria-label="Main">
           {/* Services dropdown */}
           <div
             className="relative"
@@ -136,7 +184,7 @@ export function Header() {
                 setHireTeamOpen(false);
                 setServicesOpen((prev) => !prev);
               }}
-              className="flex items-center gap-1 text-sm font-medium text-zinc-600 transition hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2"
+              className="flex min-h-11 items-center gap-1 rounded-lg px-2 py-2 text-sm font-medium text-zinc-600 transition hover:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
               aria-expanded={servicesOpen}
               aria-haspopup="true"
               aria-controls="services-menu"
@@ -178,7 +226,7 @@ export function Header() {
                         key={label}
                         href={href}
                         role="menuitem"
-                        className="block py-2.5 text-sm font-medium uppercase leading-snug text-zinc-700 transition hover:bg-zinc-50 hover:text-zinc-900"
+                        className="block py-2.5 text-sm font-medium uppercase leading-snug text-zinc-700 transition hover:bg-brand-teal-light hover:text-brand-blue"
                         onClick={() => setServicesOpen(false)}
                       >
                         {label}
@@ -191,7 +239,7 @@ export function Header() {
                         key={label}
                         href={href}
                         role="menuitem"
-                        className="block py-2.5 text-sm font-medium uppercase leading-snug text-zinc-700 transition hover:bg-zinc-50 hover:text-zinc-900"
+                        className="block py-2.5 text-sm font-medium uppercase leading-snug text-zinc-700 transition hover:bg-brand-teal-light hover:text-brand-blue"
                         onClick={() => setServicesOpen(false)}
                       >
                         {label}
@@ -216,7 +264,7 @@ export function Header() {
               }}
               onFocus={openHireTeam}
               onBlur={closeHireTeam}
-              className="flex items-center gap-1 text-sm font-medium text-zinc-600 transition hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2"
+              className="flex min-h-11 items-center gap-1 rounded-lg px-2 py-2 text-sm font-medium text-zinc-600 transition hover:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
               aria-expanded={hireTeamOpen}
               aria-haspopup="true"
               aria-controls="hire-team-menu"
@@ -268,7 +316,7 @@ export function Header() {
                         aria-selected={hireTeamSelectedCategory === category}
                         aria-controls="hire-team-positions-panel"
                         id={`hire-tab-${category.replace(/\s+/g, "-")}`}
-                        className="mb-1 block w-full rounded px-3 py-2.5 text-left text-sm font-bold uppercase leading-snug text-zinc-900 transition hover:bg-zinc-900 hover:text-white last:mb-0 aria-selected:bg-zinc-900 aria-selected:text-white"
+                        className="mb-1 block w-full rounded px-3 py-2.5 text-left text-sm font-bold uppercase leading-snug text-zinc-900 transition hover:bg-brand-blue hover:text-white last:mb-0 aria-selected:bg-brand-blue aria-selected:text-white"
                         onClick={() => setHireTeamSelectedCategory(category)}
                       >
                         {category}
@@ -287,7 +335,7 @@ export function Header() {
                         <li key={position}>
                           <Link
                             href={`/contact?role=${encodeURIComponent(position)}`}
-                            className="block py-2.5 text-sm font-normal uppercase text-zinc-800 underline decoration-zinc-400 underline-offset-2 transition hover:text-zinc-900 hover:decoration-zinc-900"
+                            className="block py-2.5 text-sm font-normal uppercase text-zinc-800 underline decoration-zinc-400 underline-offset-2 transition hover:text-brand-blue hover:decoration-brand-blue"
                             onClick={() => setHireTeamOpen(false)}
                           >
                             {position}
@@ -297,7 +345,7 @@ export function Header() {
                       <li>
                         <Link
                           href="/contact"
-                          className="mt-1 block py-2.5 text-sm font-normal italic uppercase text-zinc-600 underline decoration-zinc-400 underline-offset-2 hover:text-zinc-900"
+                          className="mt-1 block py-2.5 text-sm font-normal italic uppercase text-zinc-600 underline decoration-zinc-400 underline-offset-2 hover:text-brand-blue"
                           onClick={() => setHireTeamOpen(false)}
                         >
                           Not Sure? Let Us Help!
@@ -315,22 +363,51 @@ export function Header() {
           </div>
           <Link
             href="/about"
-            className="text-sm font-medium text-zinc-600 transition hover:text-zinc-900"
+            className="flex min-h-11 items-center rounded-lg px-2 py-2 text-sm font-medium text-zinc-600 transition hover:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
           >
             About Us
           </Link>
           <Link
             href="/blogs"
-            className="text-sm font-medium text-zinc-600 transition hover:text-zinc-900"
+            className="flex min-h-11 items-center rounded-lg px-2 py-2 text-sm font-medium text-zinc-600 transition hover:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
           >
             Blogs
           </Link>
           <Link
             href="/contact"
-            className="text-sm font-medium text-zinc-600 transition hover:text-zinc-900"
+            className="flex min-h-11 items-center rounded-lg px-2 py-2 text-sm font-medium text-zinc-600 transition hover:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
           >
             Contact Us
           </Link>
+        </nav>
+      </div>
+
+      {/* Mobile menu panel */}
+      <div
+        id="mobile-nav"
+        className={`fixed inset-0 top-16 z-40 lg:hidden ${mobileMenuOpen ? "visible" : "invisible pointer-events-none"}`}
+        aria-hidden={!mobileMenuOpen}
+      >
+        <div
+          className="absolute inset-0 bg-zinc-900/20 backdrop-blur-sm transition-opacity duration-200"
+          aria-hidden
+          onClick={() => setMobileMenuOpen(false)}
+        />
+        <nav
+          className="absolute right-0 top-0 flex h-full w-full max-w-sm flex-col gap-1 border-l border-zinc-200 bg-white p-4 shadow-xl transition-transform duration-200 ease-out sm:max-w-xs"
+          style={{ transform: mobileMenuOpen ? "translateX(0)" : "translateX(100%)" }}
+          aria-label="Mobile navigation"
+        >
+          {mainNavLinks.map(({ label, href }) => (
+            <Link
+              key={href}
+              href={href}
+              className="flex min-h-11 items-center rounded-lg px-4 py-3 text-base font-medium text-zinc-700 hover:bg-brand-teal-light hover:text-brand-blue focus-visible:bg-brand-teal-light focus-visible:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-inset"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {label}
+            </Link>
+          ))}
         </nav>
       </div>
     </header>

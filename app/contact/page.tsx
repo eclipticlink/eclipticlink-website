@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Breadcrumbs } from "../components/breadcrumbs";
 import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
@@ -10,12 +11,13 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <section className="bg-zinc-900 px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
+      <section className="bg-brand-dark px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact Us" }]} className="mb-6" />
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
             Contact Us
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-300">
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200">
             Create powerful IT solutions that transform your business and drive
             value. We would love to hear from you.
           </p>

@@ -18,7 +18,7 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-zinc-900 text-white" role="contentinfo">
+    <footer className="bg-brand-dark text-white" role="contentinfo">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {/* Contact Us */}
@@ -32,7 +32,7 @@ export function Footer() {
                   href="https://maps.google.com/?q=Plaza+57+Square+Commercial+Bahria+Town+Phase+7+Rawalpindi"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-zinc-400 transition hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900"
+                  className="inline-block min-h-[44px] py-2 text-sm leading-relaxed text-zinc-300 transition hover:text-brand-teal focus-visible:rounded focus-visible:text-brand-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
                 >
                   Flat 1A, Second Floor, Plaza 57, Lane 2, Square Commercial,
                   Bahria Town Phase 7, Rawalpindi
@@ -41,22 +41,22 @@ export function Footer() {
               <li>
                 <a
                   href="tel:+923335934448"
-                  className="text-sm text-zinc-400 transition hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900"
+                  className="inline-flex min-h-11 items-center text-sm text-zinc-300 transition hover:text-brand-teal focus-visible:rounded focus-visible:text-brand-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
                 >
                   +92 333 5934448
                 </a>
               </li>
             </ul>
-            <Link href="/" className="mt-6 inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900">
+            <Link href="/" className="mt-6 inline-block rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
               <Image
                 src="/EclipticLink-logo.png"
                 alt="EclipticLink"
-                width={375}
-                height={200}
-                className="h-[200px] w-auto object-contain object-left"
+                width={200}
+                height={80}
+                className="h-16 w-auto object-contain object-left sm:h-20"
               />
             </Link>
-            <p className="mt-4 text-sm text-zinc-500" suppressHydrationWarning>
+            <p className="mt-4 text-sm text-zinc-400" suppressHydrationWarning>
               © {new Date().getFullYear()} EclipticLink. All rights reserved.
             </p>
           </div>
@@ -71,7 +71,7 @@ export function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-sm text-zinc-400 transition hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900"
+                    className="inline-flex min-h-11 items-center text-sm text-zinc-300 transition hover:text-brand-teal focus-visible:rounded focus-visible:text-brand-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
                   >
                     {label}
                   </Link>
@@ -92,7 +92,7 @@ export function Footer() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-zinc-400 transition hover:text-white focus-visible:text-white focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900"
+                    className="inline-flex min-h-11 items-center text-sm text-zinc-300 transition hover:text-brand-teal focus-visible:rounded focus-visible:text-brand-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
                   >
                     {label}
                   </a>
@@ -106,13 +106,13 @@ export function Footer() {
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
               Ready to get started?
             </h3>
-            <p className="mt-4 text-sm text-zinc-400">
+            <p className="mt-4 text-sm text-zinc-300 leading-relaxed">
               Build your software product with expert teams and transparent
               delivery.
             </p>
             <Link
               href="/contact"
-              className="mt-4 inline-flex h-11 items-center justify-center rounded-lg bg-white px-5 text-sm font-semibold text-zinc-900 shadow-sm transition hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900"
+              className="mt-4 inline-flex min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-teal px-5 text-sm font-semibold text-brand-dark shadow-sm transition hover:bg-brand-teal-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark active:scale-[0.98] motion-reduce:active:scale-100"
             >
               Get in touch
             </Link>

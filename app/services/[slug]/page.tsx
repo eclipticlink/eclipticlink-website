@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Breadcrumbs } from "../../components/breadcrumbs";
 import { getAllServiceSlugs, getServiceBySlug } from "../data";
 
 type Props = {
@@ -30,31 +31,20 @@ export default async function ServicePage({ params }: Props) {
 
   return (
     <>
-      <section className="bg-zinc-900 px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
+      <section className="bg-brand-dark px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
-          <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex flex-wrap items-center justify-center gap-2 text-sm text-zinc-400">
-              <li>
-                <Link href="/" className="transition hover:text-white">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden>/</li>
-              <li>
-                <Link href="/services" className="transition hover:text-white">
-                  Services
-                </Link>
-              </li>
-              <li aria-hidden>/</li>
-              <li className="text-white" aria-current="page">
-                {service.title}
-              </li>
-            </ol>
-          </nav>
+          <Breadcrumbs
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Services", href: "/services" },
+              { label: service.title },
+            ]}
+            className="mb-6"
+          />
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
             {service.title}
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-300">
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200 leading-relaxed">
             {service.summary}
           </p>
         </div>
@@ -107,7 +97,7 @@ export default async function ServicePage({ params }: Props) {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex h-12 min-h-11 items-center justify-center rounded-lg bg-zinc-900 px-6 text-base font-semibold text-white shadow-sm transition hover:bg-zinc-800 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-zinc-900"
+              className="inline-flex h-12 min-h-11 items-center justify-center rounded-lg bg-brand-blue px-6 text-base font-semibold text-white shadow-sm transition hover:bg-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-blue"
             >
               Get in touch
             </Link>

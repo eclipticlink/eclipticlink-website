@@ -21,12 +21,13 @@ export function ContactForm() {
   }
 
   return (
-    <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 sm:p-8">
-      <h3 className="text-lg font-semibold text-zinc-900">Send a message</h3>
+    <div className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-8">
+      <h2 className="text-xl font-bold tracking-tight text-brand-blue sm:text-2xl">Send a message</h2>
+      <p className="mt-1 text-sm text-zinc-600">We typically respond within one business day.</p>
       <form onSubmit={handleSubmit} className="mt-6 space-y-6">
         <div>
           <label htmlFor="contact-name" className="block text-sm font-medium text-zinc-700">
-            Name
+            Name <span className="text-red-600" aria-hidden>*</span>
           </label>
           <input
             id="contact-name"
@@ -34,13 +35,14 @@ export function ContactForm() {
             name="name"
             required
             autoComplete="name"
-            className="mt-2 block w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-zinc-900 shadow-sm transition focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900 focus:ring-opacity-50 focus-visible:outline-none"
+            className="mt-2 block w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-zinc-900 placeholder:text-zinc-400 shadow-sm transition focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/30 focus-visible:outline-none disabled:opacity-70"
             disabled={status === "sending"}
+            placeholder="Your name"
           />
         </div>
         <div>
           <label htmlFor="contact-email" className="block text-sm font-medium text-zinc-700">
-            Email
+            Email <span className="text-red-600" aria-hidden>*</span>
           </label>
           <input
             id="contact-email"
@@ -48,37 +50,39 @@ export function ContactForm() {
             name="email"
             required
             autoComplete="email"
-            className="mt-2 block w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-zinc-900 shadow-sm transition focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900 focus:ring-opacity-50 focus-visible:outline-none"
+            className="mt-2 block w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-zinc-900 placeholder:text-zinc-400 shadow-sm transition focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/30 focus-visible:outline-none disabled:opacity-70"
             disabled={status === "sending"}
+            placeholder="you@company.com"
           />
         </div>
         <div>
           <label htmlFor="contact-message" className="block text-sm font-medium text-zinc-700">
-            Message
+            Message <span className="text-red-600" aria-hidden>*</span>
           </label>
           <textarea
             id="contact-message"
             name="message"
             required
             rows={5}
-            className="mt-2 block w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-zinc-900 shadow-sm transition focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900 focus:ring-opacity-50 focus-visible:outline-none disabled:opacity-70"
+            className="mt-2 block w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-zinc-900 placeholder:text-zinc-400 shadow-sm transition focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/30 focus-visible:outline-none disabled:opacity-70 resize-y min-h-[120px]"
             disabled={status === "sending"}
+            placeholder="Tell us about your project or question..."
           />
         </div>
         {status === "success" && (
-          <p className="text-sm font-medium text-green-700" role="status">
+          <p className="rounded-lg bg-green-50 p-3 text-sm font-medium text-green-800" role="status" aria-live="polite">
             Thanks for contacting us. We will get back to you shortly.
           </p>
         )}
         {status === "error" && (
-          <p className="text-sm font-medium text-red-700" role="alert">
+          <p className="rounded-lg bg-red-50 p-3 text-sm font-medium text-red-800" role="alert" aria-live="assertive">
             Something went wrong. Please try again or email us directly.
           </p>
         )}
         <button
           type="submit"
           disabled={status === "sending"}
-          className="inline-flex h-12 min-h-11 w-full items-center justify-center rounded-lg bg-zinc-900 px-6 text-base font-semibold text-white shadow-sm transition hover:bg-zinc-800 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-zinc-900 disabled:opacity-70 sm:w-auto"
+          className="inline-flex h-12 min-h-11 w-full min-w-[140px] items-center justify-center rounded-lg bg-brand-blue px-6 text-base font-semibold text-white shadow-sm transition hover:bg-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 disabled:opacity-70 sm:w-auto"
         >
           {status === "sending" ? "Sending…" : "Send message"}
         </button>
