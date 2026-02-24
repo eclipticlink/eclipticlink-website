@@ -89,7 +89,7 @@ export function HireTeamConsultationForm() {
           />
         </div>
         <div className="flex gap-2">
-          <div className="flex min-h-11 w-20 shrink-0 items-center justify-center rounded-lg border border-zinc-300 bg-zinc-50 text-sm text-zinc-600" aria-hidden>
+          <div className="flex min-h-11 w-20 shrink-0 items-center justify-center rounded-lg border border-zinc-300 bg-zinc-50 text-sm text-zinc-600" aria-hidden="true">
             +92
           </div>
           <div className="min-w-0 flex-1">

@@ -35,7 +35,7 @@ export function Breadcrumbs({ items, variant = "dark", className = "" }: Breadcr
           const isLast = i === items.length - 1;
           return (
             <li key={i} className="flex items-center gap-2">
-              {i > 0 && <span className={styles.separator} aria-hidden>/</span>}
+              {i > 0 && <span className={styles.separator} aria-hidden="true">/</span>}
               {item.href != null && !isLast ? (
                 <Link
                   href={item.href}

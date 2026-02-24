@@ -23,7 +23,7 @@ export function HeroBackgroundSlider() {
   }, []);
 
   return (
-    <div className="absolute inset-0 z-0" aria-hidden>
+    <div className="absolute inset-0 z-0" aria-hidden="true">
       {HERO_IMAGES.map((src, i) => (
         <div
           key={src}
