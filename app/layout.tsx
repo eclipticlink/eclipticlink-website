@@ -41,7 +41,17 @@ export const metadata: Metadata = {
   authors: [{ name: "EclipticLink", url: SITE_URL }],
   creator: "EclipticLink",
   publisher: "EclipticLink",
-  alternates: { canonical: SITE_URL },
+  alternates: {
+    canonical: SITE_URL,
+    languages: {
+      "en-US": SITE_URL,
+      "en-GB": SITE_URL,
+      "en-PK": SITE_URL,
+      "en-SA": SITE_URL,
+      "en-AE": SITE_URL,
+      "x-default": SITE_URL,
+    },
+  },
   openGraph: {
     type: "website",
     siteName: "EclipticLink",
@@ -69,16 +79,26 @@ export const metadata: Metadata = {
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "ProfessionalService"],
   name: "EclipticLink",
   url: SITE_URL,
   logo: `${SITE_URL}/Eclipticlink artwork zoomed.png`,
   description:
-    "EclipticLink designs, develops, and executes tailored software solutions by assembling the right combination of expertise.",
+    "EclipticLink builds custom software, AI solutions, mobile apps, and cloud infrastructure for startups and enterprises in the US, UK, Pakistan, Saudi Arabia, and the UAE.",
+  knowsLanguage: ["en"],
+  areaServed: [
+    { "@type": "Country", name: "United States" },
+    { "@type": "Country", name: "United Kingdom" },
+    { "@type": "Country", name: "Pakistan" },
+    { "@type": "Country", name: "Saudi Arabia" },
+    { "@type": "Country", name: "United Arab Emirates" },
+  ],
   address: {
     "@type": "PostalAddress",
     streetAddress: "Flat 1A, Second Floor, Plaza 57, Lane 2, Square Commercial, Bahria Town Phase 7",
     addressLocality: "Rawalpindi",
+    addressRegion: "Punjab",
+    postalCode: "46000",
     addressCountry: "PK",
   },
   telephone: "+923335934448",

@@ -25,8 +25,9 @@ export default function ContactPage() {
             Contact Us
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200">
-            Create powerful IT solutions that transform your business and drive
-            value. We would love to hear from you.
+            Whether you&apos;re based in the US, UK, Pakistan, Saudi Arabia, or the
+            UAE—we&apos;d love to hear about your project. Get a free consultation
+            and let&apos;s build something great together.
           </p>
         </div>
       </section>

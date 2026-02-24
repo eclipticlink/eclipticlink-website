@@ -80,20 +80,20 @@ export default function Home() {
         {/* Gradient overlay: image visible at top/sides, readable text in center */}
         <div
           className="absolute inset-0 z-1 bg-linear-to-b from-brand-dark/35 via-brand-dark/55 to-brand-dark/85"
-          aria-hidden
+          aria-hidden="true"
         />
         <div className="relative z-10 mx-auto flex min-h-112 max-w-7xl flex-col items-center justify-center text-center sm:min-h-128 lg:min-h-144">
           <h1
             id="hero-heading"
             className="mx-auto max-w-4xl text-4xl font-bold tracking-tight drop-shadow-sm sm:text-5xl lg:text-6xl"
           >
-            Making your ideas happen!
+            Custom Software Development &amp; IT Consulting
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-200 drop-shadow-sm">
-            Join forces with EclipticLink, experts in customized software
-            solutions and consulting. We catalyze business growth with
-            intelligent strategies, innovative problem-solving, and
-            sustainable delivery.
+            EclipticLink builds custom software, AI solutions, mobile apps,
+            and cloud infrastructure for startups and enterprises in the US,
+            UK, Pakistan, Saudi Arabia, and the UAE. Hire dedicated developers
+            and scale your product with transparent, milestone-based delivery.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
@@ -133,7 +133,7 @@ export default function Home() {
                 <h3 className="text-lg font-semibold text-brand-blue group-hover:text-brand-blue-hover">{service.title}</h3>
                 <p className="mt-2 flex-1 text-zinc-600 leading-relaxed">{service.summary}</p>
                 <span className="mt-4 inline-flex cursor-pointer items-center text-sm font-medium text-brand-teal transition group-hover:text-brand-teal-hover">
-                  Learn more
+                  Explore {service.title.toLowerCase()} services
                   <svg className="ml-1 h-4 w-4 transition group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -146,7 +146,7 @@ export default function Home() {
               href="/services"
               className="inline-flex h-11 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-blue px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-blue active:scale-[0.98] motion-reduce:active:scale-100"
             >
-              View all services
+              View all software development services
             </Link>
           </div>
         </div>
@@ -174,7 +174,7 @@ export default function Home() {
                   href="/about"
                   className="inline-flex h-11 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-blue px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-blue active:scale-[0.98] motion-reduce:active:scale-100"
                 >
-                  Learn more about us
+                  Learn more about EclipticLink
                 </Link>
               </div>
             </div>
@@ -255,7 +255,7 @@ export default function Home() {
               href="/hire"
               className="inline-flex h-12 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-teal px-6 text-base font-semibold text-brand-dark shadow-sm transition hover:bg-brand-teal-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
             >
-              Hire your team
+              Hire dedicated developers
             </Link>
             <Link
               href="/contact"
@@ -297,7 +297,7 @@ export default function Home() {
               href="/services"
               className="inline-flex h-11 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-blue px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-blue active:scale-[0.98] motion-reduce:active:scale-100"
             >
-              Explore our services
+              Explore all services we offer
             </Link>
           </div>
         </div>
@@ -403,6 +403,51 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Markets we serve */}
+      <section className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8" aria-labelledby="markets-heading">
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 id="markets-heading" className="text-3xl font-bold tracking-tight text-brand-blue sm:text-4xl">
+              Serving clients worldwide
+            </h2>
+            <p className="mt-4 text-lg text-zinc-600 leading-relaxed">
+              We partner with startups and enterprises across five key markets, delivering custom software
+              development and dedicated engineering teams with timezone-friendly collaboration.
+            </p>
+          </div>
+          <ul className="mx-auto mt-16 grid max-w-4xl gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
+            <li className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm">
+              <h3 className="text-base font-semibold text-brand-blue">United States</h3>
+              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">Custom software development and staff augmentation for US startups and enterprises. Hire remote developers with US-aligned working hours.</p>
+            </li>
+            <li className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm">
+              <h3 className="text-base font-semibold text-brand-blue">United Kingdom</h3>
+              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">Software outsourcing and dedicated development teams for UK businesses. Scalable solutions with transparent, milestone-based delivery.</p>
+            </li>
+            <li className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm">
+              <h3 className="text-base font-semibold text-brand-blue">Pakistan</h3>
+              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">Full-stack software house in Rawalpindi. AI development, mobile apps, cloud DevOps, and IT consulting for local and international clients.</p>
+            </li>
+            <li className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm">
+              <h3 className="text-base font-semibold text-brand-blue">Saudi Arabia</h3>
+              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">Custom software and AI solutions for Saudi Arabian businesses. Digital transformation, enterprise applications, and dedicated engineering teams.</p>
+            </li>
+            <li className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm">
+              <h3 className="text-base font-semibold text-brand-blue">United Arab Emirates</h3>
+              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">Software development and IT consulting for Dubai and UAE enterprises. Mobile apps, SaaS products, and cloud infrastructure built to scale.</p>
+            </li>
+            <li className="flex items-center justify-center rounded-xl border border-dashed border-zinc-300 bg-zinc-50/30 p-6">
+              <Link
+                href="/contact"
+                className="text-sm font-semibold text-brand-teal transition hover:text-brand-teal-hover"
+              >
+                Working from another region? Let&apos;s talk &rarr;
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       {/* CTA - Get in touch */}
       <section className="bg-brand-dark px-4 py-20 text-white sm:px-6 sm:py-28 lg:px-8" aria-labelledby="cta-heading">
         <div className="mx-auto max-w-3xl text-center">
@@ -423,7 +468,7 @@ export default function Home() {
               href="/hire"
               className="inline-flex h-12 min-h-11 cursor-pointer items-center justify-center rounded-lg border-2 border-brand-teal px-6 text-base font-semibold text-white transition hover:bg-brand-teal/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
             >
-              Hire a team
+              Hire a dedicated team
             </Link>
           </div>
         </div>

@@ -60,7 +60,7 @@ const historyMilestones = [
     year: "Today",
     title: "Where we are now",
     description:
-      "Today we continue to partner with startups and enterprises worldwide, delivering milestone-based and hourly-based engagements with real-time visibility and business-ready solutions. We combine a consultancy approach with hands-on execution to keep you in the loop from the very first line of code.",
+      "Today we partner with startups and enterprises across the US, UK, Pakistan, Saudi Arabia, and the UAE—delivering milestone-based and hourly-based engagements with real-time visibility and business-ready solutions. We combine a consultancy approach with hands-on execution to keep you in the loop from the very first line of code.",
   },
 ] as const;
 
@@ -74,10 +74,11 @@ export default function AboutPage() {
             About Us
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-200">
-            We work with startups and enterprises to solve distributed problems
-            and help them achieve scalability. Our team brings almost nine
-            years of combined experience and transparent delivery—milestone-based
-            or hourly-based, as you prefer.
+            We work with startups and enterprises in the United States, United
+            Kingdom, Pakistan, Saudi Arabia, and the UAE to solve distributed
+            problems and achieve scalability. Our team brings almost nine years
+            of combined experience and transparent delivery—milestone-based or
+            hourly-based, as you prefer.
           </p>
         </div>
       </section>
@@ -108,7 +109,7 @@ export default function AboutPage() {
               >
                 <span
                   className="absolute -left-10 top-0 h-4 w-4 rounded-full border-2 border-brand-teal bg-white"
-                  aria-hidden
+                  aria-hidden="true"
                 />
                 <span className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
                   {year}

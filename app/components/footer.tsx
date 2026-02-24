@@ -61,6 +61,9 @@ export function Footer() {
             <p className="mt-4 text-sm text-zinc-400" suppressHydrationWarning>
               © {new Date().getFullYear()} EclipticLink. All rights reserved.
             </p>
+            <p className="mt-2 text-xs text-zinc-500">
+              Serving clients in the US, UK, Pakistan, Saudi Arabia &amp; UAE.
+            </p>
           </div>
 
           {/* Quick Links */}

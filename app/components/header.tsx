@@ -254,7 +254,7 @@ export function Header() {
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                aria-hidden
+                aria-hidden="true"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
@@ -375,7 +375,7 @@ export function Header() {
       >
         <div
           className="absolute inset-0 bg-zinc-900/20 backdrop-blur-sm transition-opacity duration-200"
-          aria-hidden
+          aria-hidden="true"
           onClick={() => setMobileMenuOpen(false)}
         />
         <nav
