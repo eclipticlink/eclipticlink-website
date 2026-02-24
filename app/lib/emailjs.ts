@@ -1,9 +1,9 @@
 import emailjs from "@emailjs/browser";
 
-const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "XVtXQiGCa0KNZDRZ-";
-const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "service_akfr8ll";
-const CONTACT_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_CONTACT_TEMPLATE_ID ?? "template_v1yj75d";
-const HIRE_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_HIRE_TEMPLATE_ID ?? "template_v1yj75d";
+const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "";
+const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "";
+const CONTACT_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_CONTACT_TEMPLATE_ID ?? "";
+const HIRE_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_HIRE_TEMPLATE_ID ?? "";
 
 let initialized = false;
 

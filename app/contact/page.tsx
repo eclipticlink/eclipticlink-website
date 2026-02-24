@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "../components/breadcrumbs";
+import { SITE_URL } from "../lib/config";
 import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact Us | EclipticLink",
+  title: "Contact EclipticLink — Get a Free Consultation",
   description:
-    "Get in touch with EclipticLink. Create powerful IT solutions that transform your business. Reach us by address, phone, or email.",
+    "Contact EclipticLink for custom software, AI, mobile app, cloud, and DevOps projects. Get a free consultation and quote for your next product.",
+  alternates: { canonical: `${SITE_URL}/contact` },
+  openGraph: {
+    title: "Contact EclipticLink — Get a Free Consultation",
+    description: "Reach out to EclipticLink for custom software development, AI solutions, and dedicated team hiring.",
+    url: `${SITE_URL}/contact`,
+  },
 };
 
 export default function ContactPage() {

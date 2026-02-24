@@ -6,6 +6,7 @@ import {
   getAllRoleSlugs,
   getRoleBySlug,
 } from "../../../data/hire-team";
+import { SITE_URL } from "../../../lib/config";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -17,12 +18,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const role = getRoleBySlug(slug);
   if (!role) return { title: "Role | EclipticLink" };
+  const title = `Hire ${role.title} — Dedicated ${role.category} Talent`;
   return {
-    title: `Hire ${role.title} | EclipticLink`,
-    description: role.shortDescription,
+    title,
+    description: `${role.shortDescription} Hire a dedicated ${role.title} from EclipticLink for your next project.`,
+    alternates: { canonical: `${SITE_URL}/hire/role/${role.slug}` },
     openGraph: {
-      title: `Hire ${role.title} | EclipticLink`,
+      title: `${title} | EclipticLink`,
       description: role.shortDescription,
+      url: `${SITE_URL}/hire/role/${role.slug}`,
     },
   };
 }
@@ -34,8 +38,22 @@ export default async function HireRolePage({ params }: Props) {
 
   const contactHref = `/contact?role=${encodeURIComponent(role.title)}`;
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Hire Team", item: `${SITE_URL}/hire` },
+      { "@type": "ListItem", position: 3, name: role.title, item: `${SITE_URL}/hire/role/${role.slug}` },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <section className="bg-brand-dark px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <Breadcrumbs

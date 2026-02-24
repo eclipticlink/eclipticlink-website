@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "../components/breadcrumbs";
+import { SITE_URL } from "../lib/config";
 
 export const metadata: Metadata = {
-  title: "Blogs | EclipticLink",
+  title: "Blog — Software Development, AI & Tech Insights",
   description:
-    "Insights on software development, consulting, and technology from the EclipticLink team.",
+    "Insights on custom software development, AI, machine learning, cloud, DevOps, and technology trends from the EclipticLink engineering team.",
+  alternates: { canonical: `${SITE_URL}/blogs` },
+  openGraph: {
+    title: "EclipticLink Blog — Software, AI & Tech Insights",
+    description: "Read about custom software, AI, cloud, DevOps, and tech trends from EclipticLink.",
+    url: `${SITE_URL}/blogs`,
+  },
 };
 
 export default function BlogsPage() {

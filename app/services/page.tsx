@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "../components/breadcrumbs";
+import { SITE_URL } from "../lib/config";
 import { services } from "./data";
 
 export const metadata: Metadata = {
-  title: "Services | EclipticLink",
+  title: "Software Development Services — AI, Mobile, Cloud & DevOps",
   description:
-    "Artificial Intelligence, Custom Software Development, Mobile App Development, Cloud & DevOps, Big Data, and UI/UX Design. End-to-end software solutions from EclipticLink.",
+    "AI development, custom software, mobile app development, cloud & DevOps, big data, and UI/UX design. End-to-end software solutions from EclipticLink.",
+  alternates: { canonical: `${SITE_URL}/services` },
+  openGraph: {
+    title: "Software Development Services — AI, Mobile, Cloud & DevOps | EclipticLink",
+    description: "End-to-end software services: AI, custom software, mobile apps, cloud, big data, and UI/UX design.",
+    url: `${SITE_URL}/services`,
+  },
 };
 
 export default function ServicesPage() {

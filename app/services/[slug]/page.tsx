@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "../../components/breadcrumbs";
+import { SITE_URL } from "../../lib/config";
 import { getAllServiceSlugs, getServiceBySlug } from "../data";
 
 type Props = {
@@ -19,8 +20,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description =
     service.metaDescription ?? `${service.summary} | EclipticLink.`;
   return {
-    title: `${service.title} | EclipticLink`,
+    title: `${service.title} — Software Development Services`,
     description,
+    alternates: { canonical: `${SITE_URL}/services/${service.id}` },
+    openGraph: {
+      title: `${service.title} Services | EclipticLink`,
+      description,
+      url: `${SITE_URL}/services/${service.id}`,
+    },
   };
 }
 
@@ -29,8 +36,22 @@ export default async function ServicePage({ params }: Props) {
   const service = getServiceBySlug(slug);
   if (!service) notFound();
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
+      { "@type": "ListItem", position: 3, name: service.title, item: `${SITE_URL}/services/${service.id}` },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <section className="bg-brand-dark px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
           <Breadcrumbs

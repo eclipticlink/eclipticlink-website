@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "../components/breadcrumbs";
+import { SITE_URL } from "../lib/config";
 
 export const metadata: Metadata = {
-  title: "About Us | EclipticLink",
+  title: "About EclipticLink — Custom Software Company & IT Partner",
   description:
-    "EclipticLink was founded in 2023. We work with startups and enterprises to solve distributed problems and achieve scalability. Almost nine years of combined experience; milestone-based and hourly-based engagement, dedicated project managers, and an experienced technical team.",
+    "EclipticLink helps startups and enterprises build scalable software. Nine years of combined experience, dedicated project managers, milestone-based delivery, and a full-stack technical team.",
+  alternates: { canonical: `${SITE_URL}/about` },
+  openGraph: {
+    title: "About EclipticLink — Custom Software Company & IT Partner",
+    description: "Meet EclipticLink: milestone-based delivery, dedicated teams, and scalable software solutions for startups and enterprises.",
+    url: `${SITE_URL}/about`,
+  },
 };
 
 const strengths = [

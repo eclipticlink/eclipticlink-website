@@ -1,10 +1,76 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { HeroBackgroundSlider } from "./components/hero-background-slider";
+import { SITE_URL } from "./lib/config";
 import { services } from "./services/data";
+
+export const metadata: Metadata = {
+  title: "EclipticLink — Custom Software Development & IT Consulting",
+  description:
+    "Build custom software, AI solutions, mobile apps, and cloud infrastructure with EclipticLink. Hire dedicated developers, ML engineers, DevOps, and automation specialists.",
+  alternates: { canonical: SITE_URL },
+  openGraph: {
+    title: "EclipticLink — Custom Software Development & IT Consulting",
+    description:
+      "Custom software, AI, mobile apps, cloud, and automation. Hire dedicated engineers and scale your product with EclipticLink.",
+    url: SITE_URL,
+  },
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Will you be able to increase the number of people in your team if necessary?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "If you wish to partly reduce the project work intensity or, on the contrary, to increase it at times, we are always ready to adapt. When necessary, we will easily involve more team members in your project to meet your expectations.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What control do you have over project development?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We review project requirements, analyze them, and inform you of estimation results. Once you are fine with the cost and time, we create a project report and proposal for review. Once finalized, we move to the development stage.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How long does it take to start my product development?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "After we review your requirements and you approve the estimation and proposal, we move quickly to the development stage. Timeline depends on scope—we will give you a clear timeline in the proposal.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do we assure privacy and confidentiality?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We sign NDAs and Confidentiality Agreements as required. All our employees are full-time and bound by company Confidentiality and Non-Disclosure clauses.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Should I be familiar with technical details to work with you?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "No. You do not need to be an expert in software development—we are. We explain unclear moments and the essence of all stages. You need a clear vision of what you want to achieve; we help make it a reality.",
+      },
+    },
+  ],
+};
 
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Hero */}
       <section
         className="relative min-h-128 overflow-hidden px-4 py-24 text-white sm:min-h-144 sm:px-6 sm:py-32 lg:min-h-160 lg:px-8"

@@ -5,11 +5,18 @@ import {
   HIRE_TEAM_CATEGORIES,
   getRolesByCategory,
 } from "../data/hire-team";
+import { SITE_URL } from "../lib/config";
 
 export const metadata: Metadata = {
-  title: "Hire Team | EclipticLink",
+  title: "Hire Dedicated Developers — AI, Backend, Frontend, DevOps & More",
   description:
-    "Hire dedicated AI, ML, mobile, automation, backend, frontend, DevOps, and cloud talent. Scale your team with EclipticLink.",
+    "Hire dedicated AI engineers, ML specialists, mobile developers, automation experts, backend & frontend developers, DevOps, and cloud engineers. Scale your team with EclipticLink.",
+  alternates: { canonical: `${SITE_URL}/hire` },
+  openGraph: {
+    title: "Hire Dedicated Developers & Engineers | EclipticLink",
+    description: "Staff augmentation for AI, ML, mobile, automation, backend, frontend, DevOps, and cloud. Hire dedicated talent with EclipticLink.",
+    url: `${SITE_URL}/hire`,
+  },
 };
 
 export default function HirePage() {
