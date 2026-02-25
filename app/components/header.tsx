@@ -98,7 +98,7 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex shrink-0 items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 rounded">
           <Image
-            src="/Eclipticlink artwork zoomed.png"
+            src="/EclipticLink-logo.png"
             alt=""
             width={180}
             height={48}

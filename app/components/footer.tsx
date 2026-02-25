@@ -51,7 +51,7 @@ export function Footer() {
             </ul>
             <Link href="/" className="mt-6 inline-block rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
               <Image
-                src="/Eclipticlink artwork zoomed.png"
+                src="/EclipticLink-logo.png"
                 alt="EclipticLink"
                 width={180}
                 height={48}
