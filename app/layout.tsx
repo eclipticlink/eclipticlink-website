@@ -82,7 +82,7 @@ const organizationJsonLd = {
   "@type": ["Organization", "ProfessionalService"],
   name: "EclipticLink",
   url: SITE_URL,
-  logo: `${SITE_URL}/EclipticLink-logo.png`,
+  logo: `${SITE_URL}/ecliptic-link-logo.png`,
   description:
     "EclipticLink builds custom software, AI solutions, mobile apps, and cloud infrastructure for startups and enterprises in the US, UK, Pakistan, Saudi Arabia, and the UAE.",
   knowsLanguage: ["en"],
