@@ -54,3 +54,65 @@ body {
   }
 }
 
+/* Hire form: react-international-phone — one border around country + input, full width, padding in country section */
+.hire-phone-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  min-height: 2.75rem;
+  border: 1px solid #d4d4d8;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: #ffffff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  --react-international-phone-height: 2.75rem;
+  --react-international-phone-border-radius: 0;
+  --react-international-phone-border-color: transparent;
+  --react-international-phone-background-color: transparent;
+  --react-international-phone-text-color: #18181b;
+  --react-international-phone-font-size: 0.875rem;
+}
+.hire-phone-wrapper:focus-within {
+  border-color: var(--brand-teal);
+  box-shadow: 0 0 0 2px rgb(116 210 176 / 0.3);
+}
+.hire-phone-wrapper--error {
+  border-color: #ef4444;
+}
+.hire-phone-wrapper--error:focus-within {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 2px rgb(239 68 68 / 0.3);
+}
+/* Remove inner borders so only wrapper border shows */
+.hire-phone-wrapper .react-international-phone-country-selector-button,
+.hire-phone-wrapper .react-international-phone-dial-code-preview,
+.hire-phone-wrapper .react-international-phone-input-container .react-international-phone-input {
+  border: none !important;
+  box-shadow: none !important;
+}
+/* Padding in country selection section */
+.hire-phone-wrapper .react-international-phone-country-selector-button {
+  padding-left: 0.75rem;
+  padding-right: 0.5rem;
+  margin-right: 0;
+}
+.hire-phone-wrapper .react-international-phone-dial-code-preview {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-right: 0;
+}
+.hire-phone-wrapper .react-international-phone-input-container {
+  flex: 1;
+  min-width: 0;
+}
+.hire-phone-wrapper .react-international-phone-input-container .react-international-phone-input {
+  width: 100%;
+  padding-left: 0.75rem;
+}
+.hire-phone-wrapper .react-international-phone-input-container .react-international-phone-input:focus {
+  outline: none;
+}
+.hire-phone-wrapper .react-international-phone-country-selector-button:focus {
+  outline: none;
+}
+

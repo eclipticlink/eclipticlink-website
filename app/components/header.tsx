@@ -34,6 +34,7 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const servicesTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hireTeamTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hireTeamDropdownRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!mobileMenuOpen) return;
@@ -90,6 +91,7 @@ export function Header() {
   };
 
   const closeHireTeam = () => {
+    if (hireTeamDropdownRef.current?.contains(document.activeElement)) return;
     hireTeamTimeoutRef.current = setTimeout(() => setHireTeamOpen(false), 100);
   };
 
@@ -230,6 +232,7 @@ export function Header() {
           </div>
           {/* Hire Team dropdown */}
           <div
+            ref={hireTeamDropdownRef}
             className="relative"
             onMouseEnter={openHireTeam}
             onMouseLeave={closeHireTeam}
@@ -241,7 +244,12 @@ export function Header() {
                 setHireTeamOpen((prev) => !prev);
               }}
               onFocus={openHireTeam}
-              onBlur={closeHireTeam}
+              onBlur={(e) => {
+                const next = e.relatedTarget as Node | null;
+                if (next && hireTeamDropdownRef.current?.contains(next)) return;
+                if (!next) return;
+                closeHireTeam();
+              }}
               className="flex min-h-11 items-center gap-1 rounded-lg px-2 py-2 text-sm font-medium text-zinc-600 transition hover:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
               aria-expanded={hireTeamOpen}
               aria-haspopup="true"
