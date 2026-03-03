@@ -35,6 +35,8 @@ Contact and hire forms use [EmailJS](https://www.emailjs.com/). Build-time vars 
 
 If you deploy via the dashboard instead, you can still set the same `NEXT_PUBLIC_*` vars in **Settings → Environment variables** there.
 
+**Receiving emails:** In each [EmailJS template](https://dashboard.emailjs.com/) (Contact and Hire Team), set **To Email** to your inbox (e.g. `info@eclipticlink.com`) in the template settings—same as you did for the working Contact form.
+
 If EmailJS has domain restrictions, allow your production domain (e.g. `eclipticlink.com`).
 
 ## Deploy on Vercel

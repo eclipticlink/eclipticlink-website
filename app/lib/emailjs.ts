@@ -21,10 +21,9 @@ export type ContactTemplateParams = {
 };
 
 export type HireConsultationTemplateParams = {
-  from_name: string;
+  name: string;
   company?: string;
-  from_email: string;
-  help?: string;
+  email: string;
   phone?: string;
   message?: string;
 };
@@ -43,7 +42,7 @@ export async function sendContactEmail(params: ContactTemplateParams): Promise<v
 
 /**
  * Send the hire-team consultation form via EmailJS.
- * Template should use variables: {{from_name}}, {{company}}, {{from_email}}, {{help}}, {{phone}}, {{message}}
+ * Template variables: {{name}}, {{company}}, {{email}}, {{phone}}, {{message}}
  */
 export async function sendHireConsultationEmail(params: HireConsultationTemplateParams): Promise<void> {
   ensureInit();
@@ -52,10 +51,9 @@ export async function sendHireConsultationEmail(params: HireConsultationTemplate
     throw new Error("EmailJS: set NEXT_PUBLIC_EMAILJS_SERVICE_ID and NEXT_PUBLIC_EMAILJS_HIRE_TEMPLATE_ID (or CONTACT_TEMPLATE_ID)");
   }
   await emailjs.send(SERVICE_ID, templateId, {
-    from_name: params.from_name,
+    name: params.name,
     company: params.company ?? "",
-    from_email: params.from_email,
-    help: params.help ?? "",
+    email: params.email,
     phone: params.phone ?? "",
     message: params.message ?? "",
   });

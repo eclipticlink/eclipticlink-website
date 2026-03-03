@@ -3,21 +3,46 @@
 import { useState } from "react";
 import { sendHireConsultationEmail } from "@/app/lib/emailjs";
 
+const COUNTRY_CODES = [
+  { value: "+1", label: "+1" },
+  { value: "+44", label: "+44" },
+  { value: "+92", label: "+92" },
+  { value: "+966", label: "+966" },
+  { value: "+971", label: "+971" },
+  { value: "+61", label: "+61" },
+  { value: "+91", label: "+91" },
+  { value: "+49", label: "+49" },
+  { value: "+33", label: "+33" },
+  { value: "+81", label: "+81" },
+  { value: "+86", label: "+86" },
+  { value: "+55", label: "+55" },
+  { value: "+7", label: "+7" },
+  { value: "+39", label: "+39" },
+  { value: "+34", label: "+34" },
+  { value: "+31", label: "+31" },
+  { value: "+82", label: "+82" },
+  { value: "+65", label: "+65" },
+  { value: "+27", label: "+27" },
+  { value: "+234", label: "+234" },
+];
+
 export function HireTeamConsultationForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [countryCode, setCountryCode] = useState("+1");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("sending");
     const form = e.currentTarget;
     const formData = new FormData(form);
+    const phoneRaw = (formData.get("phone") as string)?.trim() ?? "";
+    const phone = phoneRaw ? `${countryCode} ${phoneRaw}` : "";
     try {
       await sendHireConsultationEmail({
-        from_name: (formData.get("name") as string) ?? "",
+        name: (formData.get("name") as string) ?? "",
         company: (formData.get("company") as string) || undefined,
-        from_email: (formData.get("email") as string) ?? "",
-        help: (formData.get("help") as string) || undefined,
-        phone: (formData.get("phone") as string) || undefined,
+        email: (formData.get("email") as string) ?? "",
+        phone: phone || undefined,
         message: (formData.get("message") as string) || undefined,
       });
       setStatus("success");
@@ -77,21 +102,22 @@ export function HireTeamConsultationForm() {
             className={inputClass}
           />
         </div>
-        <div>
-          <label htmlFor="consult-help" className="sr-only">How can we help</label>
-          <input
-            id="consult-help"
-            type="text"
-            name="help"
-            placeholder="How Can We Help You?"
-            disabled={status === "sending"}
-            className={inputClass}
-          />
-        </div>
         <div className="flex gap-2">
-          <div className="flex min-h-11 w-20 shrink-0 items-center justify-center rounded-lg border border-zinc-300 bg-zinc-50 text-sm text-zinc-600" aria-hidden="true">
-            +92
-          </div>
+          <label htmlFor="consult-country" className="sr-only">Country code</label>
+          <select
+            id="consult-country"
+            value={countryCode}
+            onChange={(e) => setCountryCode(e.target.value)}
+            disabled={status === "sending"}
+            className="min-h-11 w-24 shrink-0 rounded-lg border border-zinc-300 bg-white px-3 py-3 text-sm text-zinc-900 transition focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/30 focus-visible:outline-none disabled:opacity-70"
+            aria-label="Country code"
+          >
+            {COUNTRY_CODES.map(({ value, label }) => (
+              <option key={value} value={value}>
+                {label}
+              </option>
+            ))}
+          </select>
           <div className="min-w-0 flex-1">
             <label htmlFor="consult-phone" className="sr-only">Phone</label>
             <input
