@@ -23,11 +23,10 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl text-center">
           <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services" }]} className="mb-6" />
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            Services
+            Software Development Services
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200 leading-relaxed">
-            End-to-end software solutions to accelerate your business. AI,
-            custom software, mobile apps, cloud, big data, and UI/UX design—we have you covered.
+            End-to-end solutions from custom software development and AI integration &amp; automation to mobile apps, cloud &amp; DevOps, big data, and UI/UX design.
           </p>
         </div>
       </section>

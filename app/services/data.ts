@@ -17,13 +17,13 @@ export type Service = {
 export const services: Service[] = [
   {
     id: "ai",
-    title: "Artificial Intelligence",
+    title: "AI Integration & Automation",
     summary:
-      "Intelligent solutions powered by machine learning and AI to automate processes, integrate smart systems, and unlock insights.",
+      "Custom AI integration and automation services — connect your existing systems with AI, automate workflows, and deploy intelligent chatbots and assistants.",
     details:
-      "We build AI-powered applications, integrations, and intelligent automation to help you make data-driven decisions and scale operations. From chatbots and virtual assistants to full AI SaaS products, we deliver end-to-end AI solutions tailored to your business.",
+      "We build AI-powered integrations, intelligent workflow automations, chatbots, and full AI SaaS products. Whether you need to connect an AI model to your CRM, automate document processing, or launch an AI-first product, we deliver end-to-end AI solutions tailored to your stack and business goals.",
     metaDescription:
-      "EclipticLink AI services: integrations, automation, chatbots, virtual assistants, and AI SaaS development. Unlock insights and scale operations.",
+      "AI integration and automation services — connect systems with AI, automate workflows, and build chatbots. EclipticLink delivers end-to-end AI solutions.",
     subServices: [
       {
         id: "ai-integrations",
@@ -63,7 +63,7 @@ export const services: Service[] = [
     details:
       "We design and build custom software that solves your specific problems: enterprise applications, SaaS products, workflow tools, and integrations. Our solutions are scalable, maintainable, and aligned with your goals from day one.",
     metaDescription:
-      "Custom software development: enterprise apps, SaaS, workflow tools. Scalable, maintainable solutions from EclipticLink.",
+      "Custom software development for enterprise apps, SaaS products, APIs, and integrations. Scalable and maintainable solutions from EclipticLink's expert development team.",
     subServices: [
       {
         id: "enterprise-applications",

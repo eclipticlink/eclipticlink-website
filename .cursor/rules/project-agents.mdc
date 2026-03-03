@@ -18,5 +18,6 @@ When working in this project, read and follow any skills defined under the **`.a
   - `.agents/nextjs-optimized-website/SKILL.md` — when building or optimizing Next.js pages, performance, or server/client component choices.
   - `.agents/seo-expert/SKILL.md` — when optimizing for search engines, metadata, structured data, crawlability, or content/keyword strategy.
   - `.agents/ui-ux-designer/SKILL.md` — when designing or building UI/UX, using Tailwind CSS or Headless UI, or improving usability and visual appeal.
+  - `.agents/seo-blogger/SKILL.md` — when writing, drafting, or reviewing blog posts; planning blog content; or writing titles, meta descriptions, and headings for articles.
 
 If you add or change skills under `.agents/`, read the relevant `SKILL.md` and apply its guidance for the current task.

@@ -5,14 +5,14 @@ import { SITE_URL } from "./lib/config";
 import { services } from "./services/data";
 
 export const metadata: Metadata = {
-  title: "EclipticLink — Custom Software Development & IT Consulting",
+  title: "EclipticLink — AI & Custom Software Development",
   description:
-    "Build custom software, AI solutions, mobile apps, and cloud infrastructure with EclipticLink. Hire dedicated developers, ML engineers, DevOps, and automation specialists.",
+    "Custom software development, AI integration & automation, mobile apps, and cloud infrastructure. Hire dedicated developers and scale your product with EclipticLink.",
   alternates: { canonical: SITE_URL },
   openGraph: {
-    title: "EclipticLink — Custom Software Development & IT Consulting",
+    title: "EclipticLink — AI & Custom Software Development",
     description:
-      "Custom software, AI, mobile apps, cloud, and automation. Hire dedicated engineers and scale your product with EclipticLink.",
+      "Custom software, AI integration & automation, mobile apps, cloud, and DevOps. Hire dedicated engineers and scale your product with EclipticLink.",
     url: SITE_URL,
   },
 };
@@ -59,6 +59,22 @@ const faqJsonLd = {
       acceptedAnswer: {
         "@type": "Answer",
         text: "No. You do not need to be an expert in software development—we are. We explain unclear moments and the essence of all stages. You need a clear vision of what you want to achieve; we help make it a reality.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What AI integration and automation services does EclipticLink offer?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We offer end-to-end AI integration and automation services: connecting AI models and APIs to your existing systems (CRMs, ERPs, internal tools), automating repetitive workflows with intelligent document processing and decision automation, building AI chatbots and virtual assistants, and developing custom AI SaaS products from MVP to scale.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What does custom software development at EclipticLink include?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Our custom software development covers the full lifecycle: requirements analysis, architecture design, frontend and backend development, API and system integrations, QA, and deployment. We build enterprise applications, SaaS products, workflow tools, and internal platforms—all delivered with milestone-based transparency and dedicated project management.",
       },
     },
   ],
@@ -397,6 +413,22 @@ export default function Home() {
               </dt>
               <dd className="mt-2 text-zinc-600 leading-relaxed">
                 No. You do not need to be an expert in software development—we are. We explain unclear moments and the essence of all stages. You need a clear vision of what you want to achieve; we help make it a reality.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-base font-semibold text-brand-blue">
+                What AI integration and automation services does EclipticLink offer?
+              </dt>
+              <dd className="mt-2 text-zinc-600 leading-relaxed">
+                We offer end-to-end AI integration and automation services: connecting AI models and APIs to your existing systems (CRMs, ERPs, internal tools), automating repetitive workflows with intelligent document processing and decision automation, building AI chatbots and virtual assistants, and developing custom AI SaaS products from MVP to scale.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-base font-semibold text-brand-blue">
+                What does custom software development at EclipticLink include?
+              </dt>
+              <dd className="mt-2 text-zinc-600 leading-relaxed">
+                Our custom software development covers the full lifecycle: requirements analysis, architecture design, frontend and backend development, API and system integrations, QA, and deployment. We build enterprise applications, SaaS products, workflow tools, and internal platforms—all delivered with milestone-based transparency and dedicated project management.
               </dd>
             </div>
           </dl>

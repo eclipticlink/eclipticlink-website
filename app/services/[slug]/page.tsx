@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description =
     service.metaDescription ?? `${service.summary} | EclipticLink.`;
   return {
-    title: `${service.title} — Software Development Services`,
+    title: `${service.title} Services`,
     description,
     alternates: { canonical: `${SITE_URL}/services/${service.id}` },
     openGraph: {
@@ -36,13 +36,36 @@ export default async function ServicePage({ params }: Props) {
   const service = getServiceBySlug(slug);
   if (!service) notFound();
 
+  const pageUrl = `${SITE_URL}/services/${service.id}`;
+  const description = service.metaDescription ?? service.summary;
+
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
       { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
-      { "@type": "ListItem", position: 3, name: service.title, item: `${SITE_URL}/services/${service.id}` },
+      { "@type": "ListItem", position: 3, name: service.title, item: pageUrl },
+    ],
+  };
+
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description,
+    url: pageUrl,
+    provider: {
+      "@type": "Organization",
+      name: "EclipticLink",
+      url: SITE_URL,
+    },
+    areaServed: [
+      { "@type": "Country", name: "United States" },
+      { "@type": "Country", name: "United Kingdom" },
+      { "@type": "Country", name: "Pakistan" },
+      { "@type": "Country", name: "Saudi Arabia" },
+      { "@type": "Country", name: "United Arab Emirates" },
     ],
   };
 
@@ -51,6 +74,10 @@ export default async function ServicePage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
       <section className="bg-brand-dark px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
