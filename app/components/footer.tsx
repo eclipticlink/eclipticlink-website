@@ -10,12 +10,11 @@ const quickLinks = [
   { label: "Contact Us", href: "/contact" },
 ];
 
-// Social links from https://eclipticlink.com/ (Twitter, Facebook, Instagram, LinkedIn)
+// Social links (Facebook, Instagram, LinkedIn)
 const socialLinks = [
-  { label: "X (Twitter)", href: "https://twitter.com/eclipticlink" },
-  { label: "Facebook", href: "https://www.facebook.com/eclipticlink" },
-  { label: "Instagram", href: "https://www.instagram.com/eclipticlink" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/eclipticlink" },
+  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61584739395956" },
+  { label: "Instagram", href: "https://www.instagram.com/eclipticlink/" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/eclipticlink/" },
 ];
 
 export function Footer() {

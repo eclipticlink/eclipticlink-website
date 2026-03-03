@@ -104,10 +104,9 @@ const organizationJsonLd = {
   telephone: "+923335934448",
   email: "info@eclipticlink.com",
   sameAs: [
-    "https://twitter.com/eclipticlink",
-    "https://www.facebook.com/eclipticlink",
-    "https://www.instagram.com/eclipticlink",
-    "https://www.linkedin.com/company/eclipticlink",
+    "https://www.facebook.com/profile.php?id=61584739395956",
+    "https://www.instagram.com/eclipticlink/",
+    "https://www.linkedin.com/company/eclipticlink/",
   ],
 };
 
