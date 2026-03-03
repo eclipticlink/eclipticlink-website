@@ -180,7 +180,7 @@ export function Header() {
                     end-to-end solutions with transparency and scalability.
                   </p>
                 </div>
-                <div className="grid min-w-0 grid-cols-2 gap-px bg-zinc-100 px-4 pt-2 pb-4">
+                <div className="grid min-w-0 grid-cols-2 gap-x-2 gap-y-px bg-zinc-100 px-4 pt-2 pb-4">
                   <div className="min-w-0 rounded-lg bg-white p-2">
                     {serviceLinksLeft.map(({ label, href }) => (
                       <Link

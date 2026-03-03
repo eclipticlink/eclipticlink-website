@@ -45,10 +45,10 @@ const strengths = [
 
 const historyMilestones = [
   {
-    year: "2023",
+    year: "2024",
     title: "Our beginnings",
     description:
-      "EclipticLink was founded in 2023 with a mission to help startups and growing businesses solve complex technical challenges and scale with confidence. Our team brings almost nine years of combined experience. From day one, we focused on transparent delivery, dedicated project management, and building long-term partnerships.",
+      "EclipticLink was founded in 2024 with a mission to help startups and growing businesses solve complex technical challenges and scale with confidence. Our team brings almost nine years of combined experience. From day one, we focused on transparent delivery, dedicated project management, and building long-term partnerships.",
   },
   {
     year: "Growth",
@@ -108,7 +108,7 @@ export default function AboutPage() {
                 className="relative pb-12 last:pb-0"
               >
                 <span
-                  className="absolute -left-10 top-0 h-4 w-4 rounded-full border-2 border-brand-teal bg-white"
+                  className="absolute left-0 top-0 h-4 w-4 -translate-x-[calc(2.5rem+0.5rem-1px)] rounded-full border-2 border-brand-teal bg-white"
                   aria-hidden="true"
                 />
                 <span className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
