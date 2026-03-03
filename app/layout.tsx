@@ -101,14 +101,6 @@ const organizationJsonLd = {
     { "@type": "Country", name: "Saudi Arabia" },
     { "@type": "Country", name: "United Arab Emirates" },
   ],
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Flat 1A, Second Floor, Plaza 57, Lane 2, Square Commercial, Bahria Town Phase 7",
-    addressLocality: "Rawalpindi",
-    addressRegion: "Punjab",
-    postalCode: "46000",
-    addressCountry: "PK",
-  },
   telephone: "+923335934448",
   email: "info@eclipticlink.com",
   sameAs: [

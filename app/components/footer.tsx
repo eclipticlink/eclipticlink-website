@@ -29,15 +29,21 @@ export function Footer() {
             </h3>
             <ul className="mt-4 space-y-3" role="list">
               <li>
-                <a
-                  href="https://maps.google.com/?q=Plaza+57+Square+Commercial+Bahria+Town+Phase+7+Rawalpindi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block min-h-[44px] py-2 text-sm leading-relaxed text-zinc-300 transition hover:text-brand-teal focus-visible:rounded focus-visible:text-brand-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
-                >
-                  Flat 1A, Second Floor, Plaza 57, Lane 2, Square Commercial,
-                  Bahria Town Phase 7, Rawalpindi
-                </a>
+                <span className="text-sm font-medium text-zinc-300">Office locations</span>
+                <ul className="mt-2 flex flex-wrap items-center gap-3" role="list" aria-label="Office locations">
+                  <li className="inline-flex items-center gap-1.5 text-sm text-zinc-300">
+                    <span className="text-lg leading-none" aria-hidden="true">🇵🇰</span>
+                    <span>Pakistan</span>
+                  </li>
+                  <li className="inline-flex items-center gap-1.5 text-sm text-zinc-300">
+                    <span className="text-lg leading-none" aria-hidden="true">🇬🇧</span>
+                    <span>UK</span>
+                  </li>
+                  <li className="inline-flex items-center gap-1.5 text-sm text-zinc-300">
+                    <span className="text-lg leading-none" aria-hidden="true">🇦🇪</span>
+                    <span>UAE</span>
+                  </li>
+                </ul>
               </li>
               <li>
                 <a

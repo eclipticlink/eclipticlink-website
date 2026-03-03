@@ -43,15 +43,6 @@ export default function ContactPage() {
               <div className="mt-6 space-y-8">
                 <div>
                   <span className="text-sm font-semibold uppercase tracking-wider text-zinc-500">
-                    Address
-                  </span>
-                  <p className="mt-2 text-zinc-700">
-                    Flat 1A, Second Floor, Plaza 57, Lane 2, Square Commercial,
-                    Bahria Town Phase 7, Rawalpindi
-                  </p>
-                </div>
-                <div>
-                  <span className="text-sm font-semibold uppercase tracking-wider text-zinc-500">
                     Call us
                   </span>
                   <a
