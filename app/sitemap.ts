@@ -3,8 +3,6 @@ import { HIRE_TEAM_ROLES } from "./data/hire-team";
 import { SITE_URL } from "./lib/config";
 import { services } from "./services/data";
 
-export const dynamic = "force-static";
-
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString();
 
