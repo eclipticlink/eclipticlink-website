@@ -29,6 +29,14 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Environment variables (production)
+
+Contact and hire forms use [EmailJS](https://www.emailjs.com/). Build-time vars are in **`.env.production`** (committed) so every deploy—including Wrangler—has them without re‑entering in the Cloudflare dashboard. Next.js loads `.env.production` automatically when running `next build`.
+
+If you deploy via the dashboard instead, you can still set the same `NEXT_PUBLIC_*` vars in **Settings → Environment variables** there.
+
+If EmailJS has domain restrictions, allow your production domain (e.g. `eclipticlink.com`).
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
