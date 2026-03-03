@@ -78,6 +78,14 @@ export const metadata: Metadata = {
     images: [`${SITE_URL}/og-image.png`],
     site: "@eclipticlink",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/ecliptic-link-logo.png", type: "image/png" },
+    ],
+    apple: "/ecliptic-link-logo.png",
+    shortcut: "/favicon.ico",
+  },
   robots: {
     index: true,
     follow: true,
