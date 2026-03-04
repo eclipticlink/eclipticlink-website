@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "../components/breadcrumbs";
 import { blogPosts } from "../data/blogs";
-import { SITE_URL } from "../lib/config";
+import { BASE_OG, SITE_URL } from "../lib/config";
 
 export const metadata: Metadata = {
   title: "Blog — AI Integration, Custom Software & Tech Insights",
@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     "Practical articles on AI integration, workflow automation, custom software development, mobile apps, and technology strategy from the EclipticLink engineering team.",
   alternates: { canonical: `${SITE_URL}/blogs` },
   openGraph: {
+    ...BASE_OG,
     title: "EclipticLink Blog — AI, Custom Software & Tech Insights",
     description:
       "Read practical articles on AI integration, automation, custom software, and mobile development from EclipticLink.",

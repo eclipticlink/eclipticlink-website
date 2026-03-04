@@ -5,7 +5,7 @@ import {
   HIRE_TEAM_CATEGORIES,
   getRolesByCategory,
 } from "../data/hire-team";
-import { SITE_URL } from "../lib/config";
+import { BASE_OG, SITE_URL } from "../lib/config";
 
 export const metadata: Metadata = {
   title: "Hire Dedicated Developers — AI, Backend, Frontend, DevOps & More",
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     "Hire dedicated AI engineers, ML specialists, mobile developers, automation experts, backend & frontend developers, DevOps, and cloud engineers. Scale your team with EclipticLink.",
   alternates: { canonical: `${SITE_URL}/hire` },
   openGraph: {
+    ...BASE_OG,
     title: "Hire Dedicated Developers & Engineers | EclipticLink",
     description: "Staff augmentation for AI, ML, mobile, automation, backend, frontend, DevOps, and cloud. Hire dedicated talent with EclipticLink.",
     url: `${SITE_URL}/hire`,

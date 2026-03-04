@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "../../components/breadcrumbs";
-import { SITE_URL } from "../../lib/config";
+import { BASE_OG, SITE_URL } from "../../lib/config";
 import { getAllServiceSlugs, getServiceBySlug } from "../data";
 
 type Props = {
@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description,
     alternates: { canonical: `${SITE_URL}/services/${service.id}` },
     openGraph: {
+      ...BASE_OG,
       title: `${service.title} Services | EclipticLink`,
       description,
       url: `${SITE_URL}/services/${service.id}`,

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "../../components/breadcrumbs";
-import { SITE_URL } from "../../lib/config";
+import { BASE_OG, SITE_URL } from "../../lib/config";
 import { BlogContent } from "../blog-content";
 import { getAllBlogSlugs, getBlogBySlug } from "../../data/blogs";
 
@@ -24,19 +24,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: post.tags.join(", "),
     alternates: { canonical: `${SITE_URL}/blogs/${post.slug}` },
     openGraph: {
+      ...BASE_OG,
       title: post.title,
       description: post.metaDescription,
       url: `${SITE_URL}/blogs/${post.slug}`,
       type: "article",
       publishedTime: post.publishedAt,
       tags: post.tags,
-      images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: post.title }],
+      images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: post.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.metaDescription,
-      images: [`${SITE_URL}/og-image.png`],
+      images: [`${SITE_URL}/opengraph-image`],
       site: "@eclipticlink",
     },
   };

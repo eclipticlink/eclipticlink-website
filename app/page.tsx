@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { HeroBackgroundSlider } from "./components/hero-background-slider";
-import { SITE_URL } from "./lib/config";
+import { BASE_OG, SITE_URL } from "./lib/config";
 import { services } from "./services/data";
 
 export const metadata: Metadata = {
@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     "Custom software development, AI integration & automation, mobile apps, and cloud infrastructure. Hire dedicated developers and scale your product with EclipticLink.",
   alternates: { canonical: SITE_URL },
   openGraph: {
+    ...BASE_OG,
     title: "EclipticLink — AI & Custom Software Development",
     description:
       "Custom software, AI integration & automation, mobile apps, cloud, and DevOps. Hire dedicated engineers and scale your product with EclipticLink.",

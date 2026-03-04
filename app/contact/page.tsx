@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "../components/breadcrumbs";
-import { SITE_URL } from "../lib/config";
+import { BASE_OG, SITE_URL } from "../lib/config";
 import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     "Contact EclipticLink for custom software, AI, mobile app, cloud, and DevOps projects. Get a free consultation and quote for your next product.",
   alternates: { canonical: `${SITE_URL}/contact` },
   openGraph: {
+    ...BASE_OG,
     title: "Contact EclipticLink — Get a Free Consultation",
     description: "Reach out to EclipticLink for custom software development, AI solutions, and dedicated team hiring.",
     url: `${SITE_URL}/contact`,

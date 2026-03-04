@@ -6,7 +6,7 @@ import {
   getAllRoleSlugs,
   getRoleBySlug,
 } from "../../../data/hire-team";
-import { SITE_URL } from "../../../lib/config";
+import { BASE_OG, SITE_URL } from "../../../lib/config";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: `${role.shortDescription} Hire a dedicated ${role.title} from EclipticLink for your next project.`,
     alternates: { canonical: `${SITE_URL}/hire/role/${role.slug}` },
     openGraph: {
+      ...BASE_OG,
       title: `${title} | EclipticLink`,
       description: role.shortDescription,
       url: `${SITE_URL}/hire/role/${role.slug}`,
