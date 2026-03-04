@@ -68,14 +68,14 @@ export const metadata: Metadata = {
     description:
       "Custom software, AI integration & automation, web & mobile apps, cloud, and DevOps. Hire dedicated engineers and scale your product with EclipticLink.",
     url: SITE_URL,
-    images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: "EclipticLink — Custom Software & AI Solutions" }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: "EclipticLink — Custom Software & AI Solutions" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "EclipticLink — Custom Software Development & AI Integration",
     description:
       "Custom software, AI integration & automation, mobile apps, cloud, and DevOps. Hire dedicated engineers with EclipticLink.",
-    images: [`${SITE_URL}/opengraph-image`],
+    images: [`${SITE_URL}/og-image.png`],
     site: "@eclipticlink",
   },
   icons: {

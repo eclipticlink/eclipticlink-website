@@ -6,7 +6,7 @@ export const BASE_OG = {
   locale: "en_US",
   images: [
     {
-      url: `${SITE_URL}/opengraph-image`,
+      url: `${SITE_URL}/og-image.png`,
       width: 1200,
       height: 630,
       alt: "EclipticLink — Custom Software Development & AI Solutions",
