@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";
 import "./globals.css";
@@ -150,6 +151,11 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+        <Script
+          id="hs-script-loader"
+          src="https://js-na2.hs-scripts.com/245439892.js"
+          strategy="afterInteractive"
         />
         <Header />
         <main>{children}</main>
