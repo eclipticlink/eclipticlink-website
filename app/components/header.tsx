@@ -98,7 +98,12 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-brand-blue-dark/20 bg-white/95 backdrop-blur supports-backdrop-filter:bg-white/80">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex shrink-0 items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 rounded">
+        {/* Use plain <a> for logo so a full page load recovers when client router is stuck (e.g. 503 on RSC) */}
+        <a
+          href="/"
+          className="flex shrink-0 items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 rounded"
+          aria-label="EclipticLink home"
+        >
           <Image
             src="/ecliptic-link-logo.png"
             alt=""
@@ -111,7 +116,7 @@ export function Header() {
             <span className="text-brand-teal">Ecliptic</span>
             <span className="text-brand-blue">link</span>
           </span>
-        </Link>
+        </a>
 
         {/* Mobile menu button — visible below lg */}
         <button
@@ -391,6 +396,13 @@ export function Header() {
           style={{ transform: mobileMenuOpen ? "translateX(0)" : "translateX(100%)" }}
           aria-label="Mobile navigation"
         >
+          <a
+            href="/"
+            className="flex min-h-11 items-center rounded-lg px-4 py-3 text-base font-medium text-zinc-700 hover:bg-brand-teal-light hover:text-brand-blue focus-visible:bg-brand-teal-light focus-visible:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-inset"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Home
+          </a>
           {mainNavLinks.map(({ label, href }) => (
             <Link
               key={href}
