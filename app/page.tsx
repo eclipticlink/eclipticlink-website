@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { HeroBackgroundSlider } from "./components/hero-background-slider";
+import { TestimonialSlider } from "./components/testimonial-slider";
 import { BASE_OG, SITE_URL } from "./lib/config";
 import { services } from "./services/data";
 
@@ -341,40 +342,8 @@ export default function Home() {
               What our clients say about working with EclipticLink.
             </p>
           </div>
-          <div className="mx-auto mt-16 grid gap-8 md:grid-cols-3">
-            <blockquote className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <p className="text-zinc-700 leading-relaxed">
-                EclipticLink is truly the best. Always helpful and prompt—they are great at fixing things when stuff changes and get it done quickly at a fair price.
-              </p>
-              <footer className="mt-4">
-                <cite className="not-italic">
-                  <span className="font-semibold text-brand-blue">Steve V.</span>
-                  <span className="block text-sm text-zinc-600">CEO & Founder</span>
-                </cite>
-              </footer>
-            </blockquote>
-            <blockquote className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <p className="text-zinc-700 leading-relaxed">
-                Worked well with EclipticLink and communication was great throughout the whole project. Would work with them again in the future and I highly recommend them.
-              </p>
-              <footer className="mt-4">
-                <cite className="not-italic">
-                  <span className="font-semibold text-brand-blue">Artwell K.</span>
-                  <span className="block text-sm text-zinc-600">CEO & Founder</span>
-                </cite>
-              </footer>
-            </blockquote>
-            <blockquote className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <p className="text-zinc-700 leading-relaxed">
-                EclipticLink helped with very short notice and did exactly what we needed. Much appreciate the guidance and support—will definitely be in touch for future work!
-              </p>
-              <footer className="mt-4">
-                <cite className="not-italic">
-                  <span className="font-semibold text-brand-blue">Huzaifa Sarmad</span>
-                  <span className="block text-sm text-zinc-600">CEO & Founder</span>
-                </cite>
-              </footer>
-            </blockquote>
+          <div className="mt-16">
+            <TestimonialSlider />
           </div>
         </div>
       </section>
