@@ -39,6 +39,12 @@ If you deploy via the dashboard instead, you can still set the same `NEXT_PUBLIC
 
 If EmailJS has domain restrictions, allow your production domain (e.g. `eclipticlink.com`).
 
+## HubSpot chat widget
+
+The site loads the HubSpot tracking script and AI chatbot. Optional: set `NEXT_PUBLIC_HUBSPOT_PORTAL_ID` in `.env` if you use a different portal.
+
+**Chat not showing?** In HubSpot: (1) **Service → Chatflows** — turn the chatflow **ON** and **Publish**. (2) **Target** tab — ensure your site’s domain is included (e.g. `eclipticlink.com`); if you only target the production domain, the widget will not appear on `localhost`. (3) Try an **incognito** window and disable **ad/pop-up blockers**. (4) For live chat (not bot), check **Inbox → Chat channel → Availability** so the launcher isn’t hidden outside hours.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.

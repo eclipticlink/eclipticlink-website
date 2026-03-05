@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";
+import { HubSpotChatRefresh } from "./components/hubspot-chat-refresh";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -152,7 +153,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
-        {/* HubSpot AI chatbot: settings must be set before the tracking script loads */}
+        {/* HubSpot tracking + chat: settings must run before the script loads */}
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{
@@ -168,9 +169,10 @@ export default function RootLayout({
         />
         <Script
           id="hs-script-loader"
-          src={`https://js-na2.hs-scripts.com/${process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID || "245439892"}.js`}
+          src={`https://js-na2.hs-scripts.com/${String(process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID || "245439892")}.js`}
           strategy="afterInteractive"
         />
+        <HubSpotChatRefresh />
         <Header />
         <main>{children}</main>
         <Footer />
