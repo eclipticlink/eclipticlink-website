@@ -97,6 +97,7 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": ["Organization", "ProfessionalService"],
   name: "EclipticLink",
+  alternateName: "Eclipticlink",
   url: SITE_URL,
   logo: `${SITE_URL}/ecliptic-link-logo.png`,
   description:
@@ -122,7 +123,9 @@ const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "EclipticLink",
+  alternateName: "Eclipticlink",
   url: SITE_URL,
+  publisher: { "@type": "Organization", name: "EclipticLink", url: SITE_URL },
   potentialAction: {
     "@type": "SearchAction",
     target: `${SITE_URL}/hire?q={search_term_string}`,

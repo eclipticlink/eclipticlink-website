@@ -43,8 +43,8 @@ export default async function HireRolePage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Hire Team", item: `${SITE_URL}/hire` },
+      { "@type": "ListItem", position: 1, name: "EclipticLink", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Hire", item: `${SITE_URL}/hire` },
       { "@type": "ListItem", position: 3, name: role.title, item: `${SITE_URL}/hire/role/${role.slug}` },
     ],
   };

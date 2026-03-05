@@ -18,6 +18,15 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "EclipticLink", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blogs` },
+  ],
+};
+
 const CATEGORY_COLORS: Record<string, string> = {
   "AI & Automation": "bg-violet-50 text-violet-700 border-violet-200",
   "Mobile Development": "bg-sky-50 text-sky-700 border-sky-200",
@@ -38,6 +47,10 @@ export default function BlogsPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <section className="bg-brand-dark px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-7xl text-center">
           <Breadcrumbs
