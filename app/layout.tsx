@@ -152,9 +152,23 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
+        {/* HubSpot AI chatbot: settings must be set before the tracking script loads */}
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.hsConversationsSettings = {
+                loadImmediately: true,
+                inlineEmbedSelector: "",
+                enableWidgetCookieBanner: true,
+                disableAttachment: false
+              };
+            `,
+          }}
+        />
         <Script
           id="hs-script-loader"
-          src="https://js-na2.hs-scripts.com/245439892.js"
+          src={`https://js-na2.hs-scripts.com/${process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID || "245439892"}.js`}
           strategy="afterInteractive"
         />
         <Header />
