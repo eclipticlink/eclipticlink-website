@@ -53,14 +53,6 @@ export const metadata: Metadata = {
   publisher: "EclipticLink",
   alternates: {
     canonical: SITE_URL,
-    languages: {
-      "en-US": SITE_URL,
-      "en-GB": SITE_URL,
-      "en-PK": SITE_URL,
-      "en-SA": SITE_URL,
-      "en-AE": SITE_URL,
-      "x-default": SITE_URL,
-    },
   },
   openGraph: {
     type: "website",
