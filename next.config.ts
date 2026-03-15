@@ -2,7 +2,14 @@ import type { NextConfig } from "next";
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      { source: "/index.html", destination: "/", permanent: true },
+      { source: "/service-details.html", destination: "/services", permanent: true },
+      { source: "/hire/role/c", destination: "/hire/role/c-sharp-developer", permanent: true },
+      { source: "/hire/role/c%23-developer", destination: "/hire/role/c-sharp-developer", permanent: true },
+    ];
+  },
 };
 
 // Only run OpenNext Cloudflare dev layer when explicitly needed (e.g. getCloudflareContext in dev).

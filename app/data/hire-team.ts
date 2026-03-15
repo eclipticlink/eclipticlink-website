@@ -6,6 +6,7 @@
 export function toSlug(title: string): string {
   return title
     .toLowerCase()
+    .replace(/#/g, "sharp")
     .replace(/\s+/g, "-")
     .replace(/[()]/g, "")
     .replace(/\./g, "")
