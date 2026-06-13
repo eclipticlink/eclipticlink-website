@@ -82,13 +82,13 @@ export function HireTeamConsultationForm() {
 
   return (
     <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm">
-      <h3 className="text-base font-bold tracking-tight text-brand-blue">
+      <h3 id="consultation-heading" className="text-base font-bold tracking-tight text-brand-blue">
         Schedule a Free Consultation
       </h3>
       <p className="mt-1 text-sm text-zinc-600">
         So our team can reach out to you on time
       </p>
-      <form onSubmit={handleSubmit} className="mt-4 space-y-4">
+      <form onSubmit={handleSubmit} className="mt-4 space-y-4" aria-labelledby="consultation-heading">
         <div>
           <label htmlFor="consult-name" className="sr-only">Name</label>
           <input
@@ -102,7 +102,13 @@ export function HireTeamConsultationForm() {
             className={`${baseInputClass} ${inputBorderClass("name")}`}
             onBlur={(e) => setErrors((prev) => ({ ...prev, name: validateName(e.target.value) }))}
             aria-invalid={!!errors.name}
+            aria-describedby={errors.name ? "consult-name-error" : undefined}
           />
+          {errors.name && (
+            <p id="consult-name-error" className="mt-1 text-xs text-red-600" role="alert">
+              {errors.name}
+            </p>
+          )}
         </div>
         <div>
           <label htmlFor="consult-email" className="sr-only">Email</label>
@@ -117,7 +123,13 @@ export function HireTeamConsultationForm() {
             className={`${baseInputClass} ${inputBorderClass("email")}`}
             onBlur={(e) => setErrors((prev) => ({ ...prev, email: validateEmail(e.target.value) }))}
             aria-invalid={!!errors.email}
+            aria-describedby={errors.email ? "consult-email-error" : undefined}
           />
+          {errors.email && (
+            <p id="consult-email-error" className="mt-1 text-xs text-red-600" role="alert">
+              {errors.email}
+            </p>
+          )}
         </div>
         <div className={`hire-phone-wrapper w-full ${errors.phone ? "hire-phone-wrapper--error" : ""}`}>
           <label htmlFor="consult-phone" className="sr-only">Phone</label>
@@ -136,11 +148,17 @@ export function HireTeamConsultationForm() {
               required: false,
               "aria-required": false,
               "aria-invalid": !!errors.phone,
+              "aria-describedby": errors.phone ? "consult-phone-error" : undefined,
               onBlur: () => setErrors((prev) => ({ ...prev, phone: validatePhone(phoneValue) })),
             }}
             className="hire-phone-input w-full"
             inputClassName="hire-phone-input-field"
           />
+          {errors.phone && (
+            <p id="consult-phone-error" className="mt-1 text-xs text-red-600" role="alert">
+              {errors.phone}
+            </p>
+          )}
         </div>
         <div>
           <label htmlFor="consult-message" className="sr-only">Message</label>

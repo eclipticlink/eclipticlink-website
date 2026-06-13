@@ -32,7 +32,7 @@ export function HeroBackgroundSlider() {
         >
           <Image
             src={src}
-            alt=""
+            alt={`Decorative banner image ${i + 1}`}
             fill
             className="object-cover object-center"
             sizes="100vw"

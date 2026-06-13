@@ -106,7 +106,7 @@ export function Header() {
         >
           <Image
             src="/ecliptic-link-logo.png"
-            alt=""
+            alt="EclipticLink site logo"
             width={180}
             height={48}
             className="h-10 w-auto object-contain object-left"
@@ -274,7 +274,6 @@ export function Header() {
             </button>
             <div
               id="hire-team-menu"
-              role="menu"
               aria-labelledby="hire-team-trigger"
               onMouseEnter={() => {
                 if (hireTeamTimeoutRef.current) {
@@ -305,7 +304,7 @@ export function Header() {
                         role="tab"
                         aria-selected={hireTeamSelectedCategory === category}
                         aria-controls="hire-team-positions-panel"
-                        id={`hire-tab-${category.replace(/\s+/g, "-")}`}
+                        id={`hire-tab-${category.replace(/\s+/g, "-").toLowerCase()}`}
                         className="mb-0.5 block w-full rounded-md px-3 py-2.5 text-left text-sm font-medium text-zinc-700 transition last:mb-0 hover:bg-brand-teal-light hover:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-inset aria-selected:bg-brand-blue aria-selected:text-white"
                         onClick={() => setHireTeamSelectedCategory(category)}
                       >
@@ -325,7 +324,6 @@ export function Header() {
                         <li key={position}>
                           <Link
                             href={`/hire/role/${toSlug(position)}`}
-                            role="menuitem"
                             className="group flex min-h-10 items-center justify-between gap-2 rounded-md px-3 py-2.5 text-sm font-medium text-zinc-700 transition hover:bg-brand-teal-light hover:text-brand-blue focus-visible:bg-brand-teal-light focus-visible:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-inset"
                             onClick={() => setHireTeamOpen(false)}
                           >
@@ -346,7 +344,6 @@ export function Header() {
                 <div className="border-t border-zinc-100 px-4 py-3">
                   <Link
                     href="/hire"
-                    role="menuitem"
                     className="flex min-h-10 items-center justify-center gap-2 rounded-lg bg-brand-blue/5 px-3 py-2 text-sm font-semibold text-brand-blue transition hover:bg-brand-blue/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-inset"
                     onClick={() => setHireTeamOpen(false)}
                   >

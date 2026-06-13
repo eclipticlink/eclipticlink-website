@@ -54,10 +54,14 @@ export function Footer() {
                 </a>
               </li>
             </ul>
-            <Link href="/" className="mt-6 inline-block rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+            <Link
+              href="/"
+              aria-label="EclipticLink home"
+              className="mt-6 inline-block rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
+            >
               <Image
                 src="/ecliptic-link-logo.png"
-                alt="EclipticLink"
+                alt="EclipticLink footer logo"
                 width={180}
                 height={48}
                 className="h-12 w-auto object-contain object-left sm:h-14"
