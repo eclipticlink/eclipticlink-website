@@ -627,7 +627,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "If you need help identifying and implementing the right AI automation for your business, <a href='/services/ai'>our AI integration and automation services</a> are designed around exactly this process — finding the highest-ROI opportunities and building systems that connect cleanly to what you already have.",
+        text: "If you need help identifying and implementing the right AI automation for your business, <a href='/services/ai-automations'>our AI automation services</a> are designed around exactly this process — finding the highest-ROI opportunities and building systems that connect cleanly to what you already have.",
       },
     ],
   },

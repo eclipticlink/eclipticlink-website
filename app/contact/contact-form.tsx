@@ -69,7 +69,7 @@ export function ContactForm() {
             rows={5}
             className="mt-2 block w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-zinc-900 placeholder:text-zinc-400 shadow-sm transition focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/30 focus-visible:outline-none disabled:opacity-70 resize-y min-h-[120px]"
             disabled={status === "sending"}
-            placeholder="Tell us about your project or question..."
+            placeholder="Tell us about your automation goals, CRM tools, or project..."
           />
         </div>
         {status === "success" && (

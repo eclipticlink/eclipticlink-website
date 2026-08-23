@@ -4,14 +4,15 @@ import { BASE_OG, SITE_URL } from "../lib/config";
 import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact EclipticLink — Get a Free Consultation",
+  title: "Contact EclipticLink — Free AI Automation Consult",
   description:
-    "Contact EclipticLink for custom software, AI, mobile app, cloud, and DevOps projects. Get a free consultation and quote for your next product.",
+    "Contact EclipticLink for AI automations (GHL, n8n, Make, Zapier, HubSpot, Zoho), AI development, and software projects. Get a free consultation.",
   alternates: { canonical: `${SITE_URL}/contact` },
   openGraph: {
     ...BASE_OG,
-    title: "Contact EclipticLink — Get a Free Consultation",
-    description: "Reach out to EclipticLink for custom software development, AI solutions, and dedicated team hiring.",
+    title: "Contact EclipticLink — Free AI Automation Consult",
+    description:
+      "Reach out for AI automations, AI development, and dedicated team hiring. Free consultation for your next project.",
     url: `${SITE_URL}/contact`,
   },
 };
@@ -40,8 +41,8 @@ export default function ContactPage() {
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200">
             Whether you&apos;re based in the US, UK, Pakistan, Saudi Arabia, or the
-            UAE—we&apos;d love to hear about your project. Get a free consultation
-            and let&apos;s build something great together.
+            UAE—tell us about your leads, CRM, and tools. Get a free AI automation
+            consult and let&apos;s map your next steps.
           </p>
         </div>
       </section>

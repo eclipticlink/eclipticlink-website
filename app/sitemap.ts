@@ -20,7 +20,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${SITE_URL}/services/${service.id}`,
     lastModified: now,
     changeFrequency: "monthly",
-    priority: 0.8,
+    priority:
+      service.id === "ai-automations" ? 0.95 : service.id === "ai" ? 0.9 : 0.8,
   }));
 
   const hireRolePages: MetadataRoute.Sitemap = HIRE_TEAM_ROLES.map((role) => ({

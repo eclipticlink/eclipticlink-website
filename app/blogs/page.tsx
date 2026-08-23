@@ -5,15 +5,15 @@ import { blogPosts } from "../data/blogs";
 import { BASE_OG, SITE_URL } from "../lib/config";
 
 export const metadata: Metadata = {
-  title: "Blog — AI Integration, Custom Software & Tech Insights",
+  title: "Blog — AI Automations, AI Development & Tech Insights",
   description:
-    "Practical articles on AI integration, workflow automation, custom software development, mobile apps, and technology strategy from the EclipticLink engineering team.",
+    "Practical articles on AI automations, workflow tools, lead follow-ups, AI development, and technology strategy from the EclipticLink team.",
   alternates: { canonical: `${SITE_URL}/blogs` },
   openGraph: {
     ...BASE_OG,
-    title: "EclipticLink Blog — AI, Custom Software & Tech Insights",
+    title: "EclipticLink Blog — AI Automations & Tech Insights",
     description:
-      "Read practical articles on AI integration, automation, custom software, and mobile development from EclipticLink.",
+      "Read practical articles on AI automations, CRM workflows, AI development, and software from EclipticLink.",
     url: `${SITE_URL}/blogs`,
   },
 };
@@ -61,7 +61,8 @@ export default function BlogsPage() {
             Blog
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200 leading-relaxed">
-            Practical insights on AI integration &amp; automation, custom software development, mobile apps, and technology strategy — from the EclipticLink team.
+            Practical insights on AI automations, lead &amp; follow-up systems, AI development,
+            and full-stack strategy — from the EclipticLink team.
           </p>
         </div>
       </section>

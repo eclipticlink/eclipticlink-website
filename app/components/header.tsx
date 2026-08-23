@@ -14,7 +14,8 @@ const mainNavLinks = [
 ];
 
 const serviceLinksLeft = [
-  { label: "Artificial Intelligence", href: "/services/ai" },
+  { label: "AI Automations", href: "/services/ai-automations" },
+  { label: "AI Development", href: "/services/ai" },
   { label: "Custom Software Development", href: "/services/custom-software-development" },
   { label: "Mobile App Development", href: "/services/mobile-app-development" },
 ];
@@ -178,11 +179,11 @@ export function Header() {
               <div className="w-max min-w-lg max-w-xl rounded-xl border border-zinc-200/80 bg-white shadow-xl ring-1 ring-zinc-900/5">
                 <div className="px-6 pt-6 pb-3">
                   <h3 className="text-base font-bold tracking-tight text-brand-blue">
-                    Build your software product
+                    Automate leads, follow-ups &amp; workflows
                   </h3>
                   <p className="mt-2 max-w-xl text-sm leading-relaxed text-zinc-600">
-                    From AI and automation to custom software, mobile apps, and cloud—we deliver
-                    end-to-end solutions with transparency and scalability.
+                    AI automations on GHL, n8n, Make, Zapier, HubSpot &amp; Zoho—plus AI development
+                    and full-stack software when you need to build.
                   </p>
                 </div>
                 <div className="grid min-w-0 grid-cols-2 gap-x-2 gap-y-px bg-zinc-100 px-4 pt-2 pb-4">
@@ -287,10 +288,10 @@ export function Header() {
               <div className="min-w-208 max-w-232 rounded-xl border border-zinc-200/80 bg-white shadow-xl ring-1 ring-zinc-900/5">
                 <div className="border-b border-zinc-100 px-6 pt-5 pb-4">
                   <h3 className="text-base font-bold tracking-tight text-brand-blue">
-                    Hire dedicated developers
+                    Hire automation &amp; AI specialists
                   </h3>
                   <p className="mt-2 max-w-xl text-sm leading-relaxed text-zinc-600">
-                    Scale your team with vetted experts—AI, backend, frontend, mobile, DevOps, and more.
+                    Scale with vetted automation experts, AI engineers, and full-stack talent.
                     Pick a role or schedule a free consultation.
                   </p>
                 </div>

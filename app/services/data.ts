@@ -16,28 +16,68 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    id: "ai",
-    title: "AI Integration & Automation",
+    id: "ai-automations",
+    title: "AI Automations",
     summary:
-      "Custom AI integration and automation services — connect your existing systems with AI, automate workflows, and deploy intelligent chatbots and assistants.",
+      "Automate leads, follow-ups, pipelines, and CRM workflows with GoHighLevel, n8n, Make, Zapier, HubSpot, and Zoho.",
     details:
-      "We build AI-powered integrations, intelligent workflow automations, chatbots, and full AI SaaS products. Whether you need to connect an AI model to your CRM, automate document processing, or launch an AI-first product, we deliver end-to-end AI solutions tailored to your stack and business goals.",
+      "We design and implement AI-powered business automations that capture leads, nurture prospects, and keep your pipeline moving—without manual follow-up. From GoHighLevel and HubSpot to n8n, Make, Zapier, and Zoho, we connect the tools you already use and add intelligent automation so your team focuses on closing, not chasing.",
     metaDescription:
-      "AI integration and automation services — connect systems with AI, automate workflows, and build chatbots. EclipticLink delivers end-to-end AI solutions.",
+      "AI automation services for leads, follow-ups & CRM workflows. GoHighLevel, n8n, Make, Zapier, HubSpot & Zoho specialists at EclipticLink.",
+    subServices: [
+      {
+        id: "lead-follow-up-automation",
+        title: "Lead & Follow-Up Automation",
+        summary: "Instant response, multi-touch follow-ups, and no-lead-left-behind sequences.",
+        details:
+          "We build automated lead capture and follow-up systems that respond in seconds, run multi-channel nurture sequences, and escalate hot leads to your team. Missed calls, form fills, and chat inquiries trigger the right next step every time—so conversion does not depend on someone remembering to follow up.",
+      },
+      {
+        id: "crm-sales-pipeline-automation",
+        title: "CRM & Sales Pipeline Automation",
+        summary: "HubSpot, Zoho, and GoHighLevel pipelines that update and move deals automatically.",
+        details:
+          "We configure and automate CRM pipelines in HubSpot, Zoho CRM, and GoHighLevel (GHL): stage updates, task creation, deal scoring, and handoffs between marketing and sales. Your CRM stays accurate, and your team always knows what to do next.",
+      },
+      {
+        id: "workflow-automation-n8n-make-zapier",
+        title: "Workflow Automation (n8n, Make, Zapier)",
+        summary: "Connect apps and orchestrate complex workflows across your stack.",
+        details:
+          "We build reliable automations in n8n, Make (Integromat), and Zapier that sync data, trigger actions across tools, and reduce copy-paste work. From simple two-step zaps to multi-branch workflows with error handling and logging, we design automations that scale with your operations.",
+      },
+      {
+        id: "ai-outreach-nurture-sequences",
+        title: "AI-Powered Outreach & Nurture",
+        summary: "Personalized email, SMS, and messaging sequences powered by AI.",
+        details:
+          "We design outreach and nurture campaigns that use AI to personalize messaging, segment audiences, and time follow-ups. Combined with your CRM and marketing tools, these sequences keep prospects warm and re-engage cold leads without sounding robotic.",
+      },
+      {
+        id: "omnichannel-booking-automation",
+        title: "Omnichannel & Booking Automation",
+        summary: "Appointments, reminders, and multi-channel customer journeys on autopilot.",
+        details:
+          "We automate appointment booking, reminders, no-show recovery, and omnichannel journeys across email, SMS, chat, and voice—often inside GoHighLevel or connected via n8n/Make. Fewer no-shows, faster bookings, and a consistent customer experience.",
+      },
+    ],
+  },
+  {
+    id: "ai",
+    title: "AI Development",
+    summary:
+      "Custom AI applications, chatbots, LLM integrations, and intelligent products built for your business.",
+    details:
+      "We build AI-powered products and features: conversational assistants, RAG systems, model integrations, and AI-native SaaS. Whether you need to embed intelligence into an existing product or launch a new AI application, we deliver end-to-end AI development tailored to your stack and goals.",
+    metaDescription:
+      "AI development services — custom chatbots, LLM integrations, RAG, and AI SaaS. Build intelligent products with EclipticLink.",
     subServices: [
       {
         id: "ai-integrations",
         title: "AI Integrations",
-        summary: "Connect your systems and workflows with AI-powered integrations.",
+        summary: "Connect your systems and products with AI models and APIs.",
         details:
-          "We integrate AI models and APIs into your existing software—CRMs, ERPs, internal tools—so you can automate decisions, enrich data, and add intelligence without rebuilding from scratch. Secure, scalable, and tailored to your stack.",
-      },
-      {
-        id: "ai-automations",
-        title: "AI Automations",
-        summary: "Automate repetitive tasks and workflows with intelligent automation.",
-        details:
-          "From document processing and classification to workflow orchestration and decision automation, we design and implement AI-driven automations that reduce manual work, cut errors, and free your team for higher-value tasks.",
+          "We integrate AI models and APIs into your existing software—CRMs, ERPs, internal tools, and customer-facing apps—so you can automate decisions, enrich data, and add intelligence without rebuilding from scratch. Secure, scalable, and tailored to your stack.",
       },
       {
         id: "ai-chatbots-virtual-assistants",
@@ -53,17 +93,24 @@ export const services: Service[] = [
         details:
           "From MVP to scale, we design and develop AI-native SaaS applications—embedding, fine-tuning, or building on top of foundation models. We handle architecture, security, and scalability so you can focus on product and growth.",
       },
+      {
+        id: "custom-llm-rag-solutions",
+        title: "Custom LLM & RAG Solutions",
+        summary: "Retrieval-augmented generation and LLM apps grounded in your data.",
+        details:
+          "We design RAG pipelines, agent workflows, and custom LLM applications that answer from your documents, knowledge bases, and systems of record. Accurate, auditable, and production-ready—not generic chatbot demos.",
+      },
     ],
   },
   {
     id: "custom-software-development",
     title: "Custom Software Development",
     summary:
-      "Tailored software solutions—from enterprise applications to SaaS—built to fit your business and scale with you.",
+      "Full-stack web apps, SaaS, and enterprise software that support your automations and products.",
     details:
-      "We design and build custom software that solves your specific problems: enterprise applications, SaaS products, workflow tools, and integrations. Our solutions are scalable, maintainable, and aligned with your goals from day one.",
+      "When off-the-shelf tools are not enough, we design and build custom software—enterprise applications, SaaS products, workflow tools, and APIs—that integrate with your AI automations and scale with your business.",
     metaDescription:
-      "Custom software development for enterprise apps, SaaS products, APIs, and integrations. Scalable and maintainable solutions from EclipticLink's expert development team.",
+      "Custom software development for enterprise apps, SaaS products, APIs, and integrations. Scalable full-stack solutions from EclipticLink.",
     subServices: [
       {
         id: "enterprise-applications",
@@ -99,9 +146,9 @@ export const services: Service[] = [
     id: "mobile-app-development",
     title: "Mobile App Development",
     summary:
-      "Native and cross-platform mobile apps that deliver great experiences on iOS, Android, and beyond.",
+      "Native and cross-platform mobile apps that complement your AI and automation stack.",
     details:
-      "We build mobile applications that users love—native or cross-platform, from MVP to App Store launch. Whether you need a consumer app, B2B tool, or companion to an existing product, we deliver performant, maintainable solutions.",
+      "We build mobile applications—native or cross-platform—from MVP to App Store launch. Consumer apps, B2B tools, and companions to your automated workflows and web products.",
     metaDescription:
       "Mobile app development: native iOS/Android, cross-platform, PWA. End-to-end design and development from EclipticLink.",
     subServices: [
@@ -139,9 +186,9 @@ export const services: Service[] = [
     id: "cloud-devops",
     title: "Cloud & DevOps",
     summary:
-      "Seamless CI/CD, cloud-native infrastructure, and DevOps practices so you ship faster and more reliably.",
+      "CI/CD, cloud infrastructure, and DevOps so your automations and apps run reliably.",
     details:
-      "We design and implement CI/CD pipelines, infrastructure as code, and cloud strategies so your team can deploy frequently, recover quickly, and scale on demand. From migration to day-two operations, we help you build a robust DevOps culture.",
+      "We design CI/CD pipelines, infrastructure as code, and cloud strategies so your automations, AI services, and products deploy frequently, recover quickly, and scale on demand.",
     metaDescription:
       "Cloud & DevOps: CI/CD, infrastructure as code, cloud migration, monitoring. Ship faster and more reliably with EclipticLink.",
     subServices: [
@@ -179,9 +226,9 @@ export const services: Service[] = [
     id: "big-data",
     title: "Big Data",
     summary:
-      "Store, process, and derive value from large-scale data with pipelines, analytics, and AI-ready infrastructure.",
+      "Data pipelines, analytics, and AI-ready infrastructure that feed your automations.",
     details:
-      "We help you handle terabytes of data with efficient storage, fast retrieval, and clear analytics. From data pipelines and warehouses to BI and ML integration, we build the foundation for data-driven decisions and AI at scale.",
+      "We help you store, process, and derive value from large-scale data—pipelines, warehouses, BI, and ML-ready foundations that power smarter automations and AI products.",
     metaDescription:
       "Big Data solutions: data pipelines, analytics, warehousing, ML integration. Store, process, and derive value from large-scale data.",
     subServices: [
@@ -219,9 +266,9 @@ export const services: Service[] = [
     id: "ui-ux-design",
     title: "UI/UX Design",
     summary:
-      "User-first design that increases engagement, clarity, and conversion—from research and wireframes to high-fidelity UI and design systems.",
+      "User-first design for automation dashboards, AI products, and customer-facing apps.",
     details:
-      "We create interfaces and experiences that users love. Through user research, wireframing, prototyping, and polished UI design, we deliver consistent, accessible, and scalable design systems that align with your brand and business goals.",
+      "We create interfaces and experiences that users love—research, wireframes, prototypes, and polished UI for automation tools, AI products, and full-stack applications.",
     metaDescription:
       "UI/UX design: user research, wireframes, prototypes, visual design, design systems. User-first interfaces from EclipticLink.",
     subServices: [

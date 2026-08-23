@@ -118,17 +118,17 @@ export function Footer() {
           {/* CTA block */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
-              Ready to get started?
+              Ready to automate?
             </h3>
             <p className="mt-4 text-sm text-zinc-300 leading-relaxed">
-              Build your software product with expert teams and transparent
-              delivery.
+              Get an AI automation consult for leads, follow-ups, and CRM
+              workflows—or hire specialists to scale your team.
             </p>
             <Link
               href="/contact"
               className="mt-4 inline-flex min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-teal px-5 text-sm font-semibold text-brand-dark shadow-sm transition hover:bg-brand-teal-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark active:scale-[0.98] motion-reduce:active:scale-100"
             >
-              Get in touch
+              Get a free consult
             </Link>
           </div>
         </div>

@@ -5,14 +5,15 @@ import { BASE_OG, SITE_URL } from "../lib/config";
 import { services } from "./data";
 
 export const metadata: Metadata = {
-  title: "Software Development Services — AI, Mobile, Cloud & DevOps",
+  title: "AI Automations, AI Development & Software Services",
   description:
-    "AI development, custom software, mobile app development, cloud & DevOps, big data, and UI/UX design. End-to-end software solutions from EclipticLink.",
+    "AI automations for leads & follow-ups (GHL, n8n, Make, Zapier, HubSpot, Zoho), AI development, custom software, mobile, cloud & DevOps from EclipticLink.",
   alternates: { canonical: `${SITE_URL}/services` },
   openGraph: {
     ...BASE_OG,
-    title: "Software Development Services — AI, Mobile, Cloud & DevOps | EclipticLink",
-    description: "End-to-end software services: AI, custom software, mobile apps, cloud, big data, and UI/UX design.",
+    title: "AI Automations & AI Development Services | EclipticLink",
+    description:
+      "Primary: AI automations for leads, CRM & workflows. Then AI development, custom software, mobile, cloud, and UI/UX.",
     url: `${SITE_URL}/services`,
   },
 };
@@ -37,10 +38,11 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl text-center">
           <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services" }]} className="mb-6" />
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            Software Development Services
+            AI Automations &amp; Development Services
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200 leading-relaxed">
-            End-to-end solutions from custom software development and AI integration &amp; automation to mobile apps, cloud &amp; DevOps, big data, and UI/UX design.
+            Start with AI automations for leads, follow-ups, and CRM workflows—then AI development,
+            and full-stack web, mobile, cloud, and UI/UX when you need to build.
           </p>
         </div>
       </section>

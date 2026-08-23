@@ -8,14 +8,15 @@ import {
 import { BASE_OG, SITE_URL } from "../lib/config";
 
 export const metadata: Metadata = {
-  title: "Hire Dedicated Developers — AI, Backend, Frontend, DevOps & More",
+  title: "Hire Automation & AI Specialists — GHL, n8n, AI, Full-Stack",
   description:
-    "Hire dedicated AI engineers, ML specialists, mobile developers, automation experts, backend & frontend developers, DevOps, and cloud engineers. Scale your team with EclipticLink.",
+    "Hire dedicated automation experts (GHL, n8n, Make, Zapier), AI engineers, ML specialists, and full-stack developers. Scale your team with EclipticLink.",
   alternates: { canonical: `${SITE_URL}/hire` },
   openGraph: {
     ...BASE_OG,
-    title: "Hire Dedicated Developers & Engineers | EclipticLink",
-    description: "Staff augmentation for AI, ML, mobile, automation, backend, frontend, DevOps, and cloud. Hire dedicated talent with EclipticLink.",
+    title: "Hire Automation & AI Specialists | EclipticLink",
+    description:
+      "Staff augmentation for automation, AI, ML, mobile, backend, frontend, DevOps, and cloud. Hire dedicated talent with EclipticLink.",
     url: `${SITE_URL}/hire`,
   },
 };
@@ -43,7 +44,8 @@ export default function HirePage() {
             Hire Team
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200">
-            Scale your product with dedicated engineers and specialists. From AI and machine learning to mobile, automation, backend, frontend, DevOps, and cloud—hire the right talent without the overhead.
+            Scale with dedicated automation specialists, AI engineers, and full-stack talent.
+            From GHL, n8n, Make, and Zapier experts to AI, mobile, backend, frontend, DevOps, and cloud—hire without the overhead.
           </p>
         </div>
       </section>

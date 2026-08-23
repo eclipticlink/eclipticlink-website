@@ -4,14 +4,15 @@ import { Breadcrumbs } from "../components/breadcrumbs";
 import { BASE_OG, SITE_URL } from "../lib/config";
 
 export const metadata: Metadata = {
-  title: "About EclipticLink — Custom Software Company & IT Partner",
+  title: "About EclipticLink — AI Automations & AI Development Partner",
   description:
-    "EclipticLink helps startups and enterprises build scalable software. Nine years of combined experience, dedicated project managers, milestone-based delivery, and a full-stack technical team.",
+    "EclipticLink helps startups and enterprises automate leads, follow-ups, and CRM workflows—plus AI development and full-stack software. Transparent, milestone-based delivery.",
   alternates: { canonical: `${SITE_URL}/about` },
   openGraph: {
     ...BASE_OG,
-    title: "About EclipticLink — Custom Software Company & IT Partner",
-    description: "Meet EclipticLink: milestone-based delivery, dedicated teams, and scalable software solutions for startups and enterprises.",
+    title: "About EclipticLink — AI Automations & AI Development Partner",
+    description:
+      "Meet EclipticLink: AI automations, AI development, and software teams with milestone-based delivery for startups and enterprises.",
     url: `${SITE_URL}/about`,
   },
 };
@@ -27,19 +28,19 @@ const breadcrumbJsonLd = {
 
 const strengths = [
   {
-    title: "Expert team",
+    title: "Automation expertise",
     description:
-      "Highly experienced team of project managers, technical architects, and database developers allowing us to meet unique needs.",
+      "Hands-on specialists in GoHighLevel, n8n, Make, Zapier, HubSpot, and Zoho—building lead, follow-up, and pipeline systems that stick.",
+  },
+  {
+    title: "AI & full-stack depth",
+    description:
+      "When workflows are not enough, our AI engineers and full-stack teams build chatbots, custom products, web, and mobile apps.",
   },
   {
     title: "Milestone-based delivery",
     description:
-      "Our milestone-based development plans ensure optimal involvement of clients and real-time visibility on progress status.",
-  },
-  {
-    title: "Quality assurance",
-    description:
-      "Well-defined standards for application verification and validation enable us to deliver business-ready solutions successfully.",
+      "Our milestone-based plans ensure optimal involvement of clients and real-time visibility on progress status.",
   },
   {
     title: "Dedicated support",
@@ -58,19 +59,19 @@ const historyMilestones = [
     year: "2024",
     title: "Our beginnings",
     description:
-      "EclipticLink was founded in 2024 with a mission to help startups and growing businesses solve complex technical challenges and scale with confidence. Our team brings almost nine years of combined experience. From day one, we focused on transparent delivery, dedicated project management, and building long-term partnerships.",
+      "EclipticLink was founded in 2024 to help startups and growing businesses solve technical challenges and scale with confidence. From day one we focused on transparent delivery, dedicated project management, and long-term partnerships—with deep roots in software and AI.",
   },
   {
     year: "Growth",
-    title: "Expanding expertise",
+    title: "Expanding into AI automations",
     description:
-      "We expanded our capabilities across custom software, mobile development, cloud and DevOps, and data solutions. Our team grew to include technical architects, database specialists, and domain experts to meet the unique needs of each client.",
+      "We expanded into AI-powered business automations—leads, follow-ups, CRM pipelines, and workflow orchestration on platforms like GoHighLevel, n8n, Make, Zapier, HubSpot, and Zoho—while keeping AI development, custom software, mobile, cloud, and data capabilities for clients who need to build.",
   },
   {
     year: "Today",
     title: "Where we are now",
     description:
-      "Today we partner with startups and enterprises across the US, UK, Pakistan, Saudi Arabia, and the UAE—delivering milestone-based and hourly-based engagements with real-time visibility and business-ready solutions. We combine a consultancy approach with hands-on execution to keep you in the loop from the very first line of code.",
+      "Today we partner with startups and enterprises across the US, UK, Pakistan, Saudi Arabia, and the UAE—leading with AI automations, then AI development, then full-stack delivery. Milestone-based and hourly engagements keep you in the loop from the first workflow to production.",
   },
 ] as const;
 
@@ -88,11 +89,11 @@ export default function AboutPage() {
             About Us
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-200">
-            We work with startups and enterprises in the United States, United
-            Kingdom, Pakistan, Saudi Arabia, and the UAE to solve distributed
-            problems and achieve scalability. Our team brings almost nine years
-            of combined experience and transparent delivery—milestone-based or
-            hourly-based, as you prefer.
+            We help startups and enterprises in the United States, United
+            Kingdom, Pakistan, Saudi Arabia, and the UAE automate growth with AI—
+            leads, follow-ups, and CRM workflows—then AI development and full-stack
+            software when you need to build. Almost nine years of combined
+            experience and transparent delivery—milestone-based or hourly.
           </p>
         </div>
       </section>
@@ -110,7 +111,7 @@ export default function AboutPage() {
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-zinc-600">
             Our journey from founding to today—focused on helping businesses
-            scale through expert teams and transparent delivery.
+            scale through AI automations, expert teams, and transparent delivery.
           </p>
           <ul
             className="mx-auto mt-16 max-w-3xl border-l-2 border-zinc-200 pl-10"

@@ -17,10 +17,10 @@ export function toSlug(title: string): string {
 }
 
 export const HIRE_TEAM_CATEGORIES = [
+  "Automation",
   "Artificial Intelligence",
   "Machine Learning",
   "Mobile Application",
-  "Automation",
   "Backend",
   "Frontend",
   "DevOps",

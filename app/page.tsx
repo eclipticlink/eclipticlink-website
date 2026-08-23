@@ -6,15 +6,15 @@ import { BASE_OG, SITE_URL } from "./lib/config";
 import { services } from "./services/data";
 
 export const metadata: Metadata = {
-  title: "EclipticLink — AI & Custom Software Development",
+  title: "EclipticLink — AI Automations, AI Development & Software",
   description:
-    "Custom software development, AI integration & automation, mobile apps, and cloud infrastructure. Hire dedicated developers and scale your product with EclipticLink.",
+    "AI automations for leads, follow-ups & CRM workflows with GoHighLevel, n8n, Make, Zapier, HubSpot & Zoho. Plus AI development and full-stack software.",
   alternates: { canonical: SITE_URL },
   openGraph: {
     ...BASE_OG,
-    title: "EclipticLink — AI & Custom Software Development",
+    title: "EclipticLink — AI Automations & AI Development",
     description:
-      "Custom software, AI integration & automation, mobile apps, cloud, and DevOps. Hire dedicated engineers and scale your product with EclipticLink.",
+      "Automate leads, follow-ups, and pipelines with GHL, n8n, Make, Zapier, HubSpot & Zoho. Custom AI development and full-stack software when you need it.",
     url: SITE_URL,
   },
 };
@@ -23,6 +23,22 @@ const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
+    {
+      "@type": "Question",
+      name: "What AI automation platforms does EclipticLink work with?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We build and optimize automations on GoHighLevel (GHL), n8n, Make, Zapier, HubSpot, and Zoho—covering lead capture, follow-ups, CRM pipelines, nurture sequences, and booking workflows so your team spends less time on manual tasks.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What AI automation and development services does EclipticLink offer?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Our primary focus is AI automations: lead and follow-up systems, CRM and sales pipeline automation, workflow orchestration, AI-powered outreach, and omnichannel booking. We also offer AI development—chatbots, LLM/RAG solutions, and AI SaaS—plus full-stack web, mobile, cloud, and custom software when your product needs them.",
+      },
+    },
     {
       "@type": "Question",
       name: "Will you be able to increase the number of people in your team if necessary?",
@@ -41,10 +57,10 @@ const faqJsonLd = {
     },
     {
       "@type": "Question",
-      name: "How long does it take to start my product development?",
+      name: "How long does it take to start my automation or product work?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "After we review your requirements and you approve the estimation and proposal, we move quickly to the development stage. Timeline depends on scope—we will give you a clear timeline in the proposal.",
+        text: "After we review your requirements and you approve the estimation and proposal, we move quickly to implementation. Timeline depends on scope—we will give you a clear timeline in the proposal.",
       },
     },
     {
@@ -60,23 +76,7 @@ const faqJsonLd = {
       name: "Should I be familiar with technical details to work with you?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. You do not need to be an expert in software development—we are. We explain unclear moments and the essence of all stages. You need a clear vision of what you want to achieve; we help make it a reality.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What AI integration and automation services does EclipticLink offer?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "We offer end-to-end AI integration and automation services: connecting AI models and APIs to your existing systems (CRMs, ERPs, internal tools), automating repetitive workflows with intelligent document processing and decision automation, building AI chatbots and virtual assistants, and developing custom AI SaaS products from MVP to scale.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What does custom software development at EclipticLink include?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Our custom software development covers the full lifecycle: requirements analysis, architecture design, frontend and backend development, API and system integrations, QA, and deployment. We build enterprise applications, SaaS products, workflow tools, and internal platforms—all delivered with milestone-based transparency and dedicated project management.",
+        text: "No. You do not need to be an expert in automation tools or software development—we are. We explain unclear moments and the essence of all stages. You need a clear vision of what you want to achieve; we help make it a reality.",
       },
     },
   ],
@@ -105,7 +105,6 @@ export default function Home() {
         aria-labelledby="hero-heading"
       >
         <HeroBackgroundSlider />
-        {/* Gradient overlay: image visible at top/sides, readable text in center */}
         <div
           className="absolute inset-0 z-1 bg-linear-to-b from-brand-dark/35 via-brand-dark/55 to-brand-dark/85"
           aria-hidden="true"
@@ -115,26 +114,26 @@ export default function Home() {
             id="hero-heading"
             className="mx-auto max-w-4xl text-4xl font-bold tracking-tight drop-shadow-sm sm:text-5xl lg:text-6xl"
           >
-            Custom Software Development &amp; IT Consulting
+            AI Automations for Leads, Follow-Ups &amp; Growth
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-200 drop-shadow-sm">
-            EclipticLink builds custom software, AI solutions, mobile apps,
-            and cloud infrastructure for startups and enterprises in the US,
-            UK, Pakistan, Saudi Arabia, and the UAE. Hire dedicated developers
-            and scale your product with transparent, milestone-based delivery.
+            EclipticLink builds AI-powered automations on GoHighLevel, n8n, Make,
+            Zapier, HubSpot, and Zoho—so every lead gets followed up and your
+            pipeline never stalls. We also deliver custom AI development and
+            full-stack software when you need more than workflows.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/contact"
               className="inline-flex h-12 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-teal px-6 text-base font-semibold text-brand-dark shadow-lg shadow-brand-dark/30 transition hover:bg-brand-teal-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
             >
-              Get Started
+              Get a free automation consult
             </Link>
             <Link
-              href="/services"
+              href="/services/ai-automations"
               className="inline-flex h-12 min-h-11 cursor-pointer items-center justify-center rounded-lg border-2 border-white/80 bg-white/5 px-6 text-base font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 hover:border-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
             >
-              Our Services
+              Explore AI Automations
             </Link>
           </div>
         </div>
@@ -148,7 +147,7 @@ export default function Home() {
               Services
             </h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg leading-relaxed text-zinc-600">
-              End-to-end software solutions to accelerate your business.
+              AI automations first, AI development second, then full-stack web, mobile, and cloud when you need to build.
             </p>
           </div>
           <div className="mx-auto mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -174,7 +173,7 @@ export default function Home() {
               href="/services"
               className="inline-flex h-11 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-blue px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-blue active:scale-[0.98] motion-reduce:active:scale-100"
             >
-              View all software development services
+              View all services
             </Link>
           </div>
         </div>
@@ -189,13 +188,16 @@ export default function Home() {
                 About EclipticLink
               </h2>
               <p className="mt-4 max-w-prose text-lg leading-relaxed text-zinc-600">
-                We work with startups and enterprises to solve distributed problems and achieve scalability. 
-                With years of combined experience, we deliver through milestone-based and hourly-based engagement, 
-                dedicated project managers, and an experienced technical team.
+                We help startups and enterprises automate growth—leads, follow-ups,
+                CRM pipelines, and customer journeys—using AI and modern automation
+                platforms. With years of combined experience, we deliver through
+                milestone-based and hourly engagement, dedicated project managers,
+                and a hands-on technical team.
               </p>
               <p className="mt-4 max-w-prose text-zinc-600 leading-relaxed">
-                From custom software and mobile apps to AI, cloud, big data, and UI/UX design—we help you build, scale, 
-                and maintain solutions that fit your business.
+                From AI automations and custom AI development to full-stack web,
+                mobile, cloud, and UI/UX—we build what your business needs to scale
+                without drowning in manual work.
               </p>
               <div className="mt-8">
                 <Link
@@ -211,19 +213,19 @@ export default function Home() {
               <ul className="mt-4 space-y-3" role="list">
                 <li className="flex gap-3">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-teal text-brand-dark" aria-hidden="true">✓</span>
-                  <span className="text-zinc-600">Dedicated project managers and technical architects</span>
+                  <span className="text-zinc-600">Specialists in GHL, n8n, Make, Zapier, HubSpot &amp; Zoho</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-teal text-brand-dark" aria-hidden="true">✓</span>
-                  <span className="text-zinc-600">Milestone-based delivery with real-time visibility</span>
+                  <span className="text-zinc-600">Automations that capture leads and never miss a follow-up</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-teal text-brand-dark" aria-hidden="true">✓</span>
-                  <span className="text-zinc-600">Quality assurance and business-ready solutions</span>
+                  <span className="text-zinc-600">AI development and full-stack build when workflows are not enough</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-teal text-brand-dark" aria-hidden="true">✓</span>
-                  <span className="text-zinc-600">Flexible engagement: fixed-scope or hourly</span>
+                  <span className="text-zinc-600">Transparent delivery: milestone-based or hourly</span>
                 </li>
               </ul>
             </div>
@@ -236,33 +238,32 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-2xl text-center">
             <h2 id="why-heading" className="text-3xl font-bold tracking-tight text-brand-blue sm:text-4xl">
-              Supercharge and grow your startup
+              Automate growth. Scale with confidence.
             </h2>
             <p className="mt-4 text-lg leading-8 text-zinc-600">
-              We work with startups and assist them in solving distributed problems and help them achieve scalability.
+              We help businesses stop leaking leads and start running predictable, AI-assisted follow-up and operations.
             </p>
           </div>
           <ul className="mx-auto mt-16 grid max-w-4xl gap-6 sm:grid-cols-2" role="list">
             <li className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <h3 className="text-base font-semibold text-brand-blue">Dedicated support</h3>
-              <p className="mt-2 text-zinc-600 leading-relaxed">Consultancy approach, dedicated experienced project manager to resolve any type of issues.</p>
+              <h3 className="text-base font-semibold text-brand-blue">Platform expertise</h3>
+              <p className="mt-2 text-zinc-600 leading-relaxed">Deep experience with GoHighLevel, n8n, Make, Zapier, HubSpot, and Zoho—wired to how your sales and ops actually work.</p>
             </li>
             <li className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <h3 className="text-base font-semibold text-brand-blue">Quality assurance</h3>
-              <p className="mt-2 text-zinc-600 leading-relaxed">Well-defined standards for application verification and validation enable us to deliver business-ready solutions successfully.</p>
+              <h3 className="text-base font-semibold text-brand-blue">Outcome-focused automations</h3>
+              <p className="mt-2 text-zinc-600 leading-relaxed">Lead response, nurture sequences, pipeline hygiene, booking, and reminders designed for conversion—not busywork.</p>
             </li>
             <li className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
               <h3 className="text-base font-semibold text-brand-blue">Real-time visibility</h3>
-              <p className="mt-2 text-zinc-600 leading-relaxed">Our milestone-based development plans ensure optimal involvement of clients and real-time visibility on progress status.</p>
+              <p className="mt-2 text-zinc-600 leading-relaxed">Milestone-based plans keep you involved with clear progress on every automation and product engagement.</p>
             </li>
             <li className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <h3 className="text-base font-semibold text-brand-blue">Expert team</h3>
-              <p className="mt-2 text-zinc-600 leading-relaxed">Highly experienced team of project managers, technical architects, and database developers allowing us to meet unique needs.</p>
+              <h3 className="text-base font-semibold text-brand-blue">Full capability when needed</h3>
+              <p className="mt-2 text-zinc-600 leading-relaxed">Custom AI, web, mobile, and cloud teams ready when your automation layer needs a product or deeper integration.</p>
             </li>
           </ul>
           <p className="mx-auto mt-12 max-w-prose text-center text-zinc-600 leading-relaxed">
-            Stand in a class apart with software consulting services tailored to your business to help you achieve 
-            your enterprise objectives in rapid and iterative delivery cycles that keep you in the loop from the very first line of code.
+            Stand apart with AI automation and software services tailored to your business—rapid, iterative delivery that keeps you in the loop from the first workflow to production.
           </p>
         </div>
       </section>
@@ -272,10 +273,10 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-2xl text-center">
             <h2 id="hire-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Hire a dedicated team
+              Hire automation &amp; AI specialists
             </h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg leading-relaxed text-zinc-200">
-              Scale your capacity with vetted developers and specialists. From AI and backend to mobile and DevOps—hire the right talent without the overhead.
+              Scale your capacity with vetted automation experts, AI engineers, and full-stack talent. From GHL and n8n specialists to AI and mobile developers—hire without the overhead.
             </p>
           </div>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
@@ -283,7 +284,7 @@ export default function Home() {
               href="/hire"
               className="inline-flex h-12 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-teal px-6 text-base font-semibold text-brand-dark shadow-sm transition hover:bg-brand-teal-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
             >
-              Hire dedicated developers
+              Hire dedicated specialists
             </Link>
             <Link
               href="/contact"
@@ -303,21 +304,21 @@ export default function Home() {
               What we deliver
             </h2>
             <p className="mt-4 text-lg text-zinc-600">
-              From concept to production—custom software, mobile apps, AI solutions, cloud infrastructure, and data pipelines.
+              AI automations that grow your pipeline, AI products that differentiate your business, and full-stack software when you need to build.
             </p>
           </div>
           <div className="mx-auto mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-brand-blue">AI & data solutions</h3>
-              <p className="mt-2 text-zinc-600">AI integrations, chatbots, data pipelines, analytics, and ML-ready infrastructure.</p>
+              <h3 className="text-lg font-semibold text-brand-blue">AI Automations</h3>
+              <p className="mt-2 text-zinc-600">Lead follow-ups, CRM pipelines, and workflows on GHL, n8n, Make, Zapier, HubSpot, and Zoho.</p>
             </div>
             <div className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-brand-blue">Custom software & SaaS</h3>
-              <p className="mt-2 text-zinc-600">Enterprise applications, workflow tools, and scalable SaaS products built to your requirements.</p>
+              <h3 className="text-lg font-semibold text-brand-blue">AI Development</h3>
+              <p className="mt-2 text-zinc-600">Chatbots, LLM/RAG solutions, AI integrations, and AI-native SaaS products.</p>
             </div>
             <div className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-brand-blue">Mobile & web apps</h3>
-              <p className="mt-2 text-zinc-600">Native and cross-platform mobile apps, PWAs, and modern web applications.</p>
+              <h3 className="text-lg font-semibold text-brand-blue">Full-stack &amp; apps</h3>
+              <p className="mt-2 text-zinc-600">Custom software, web and mobile apps, cloud, and DevOps to support your stack.</p>
             </div>
           </div>
           <div className="mt-12 text-center">
@@ -357,6 +358,22 @@ export default function Home() {
           <dl className="mt-16 space-y-8">
             <div>
               <dt className="text-base font-semibold text-brand-blue">
+                What AI automation platforms does EclipticLink work with?
+              </dt>
+              <dd className="mt-2 text-zinc-600 leading-relaxed">
+                We build and optimize automations on GoHighLevel (GHL), n8n, Make, Zapier, HubSpot, and Zoho—covering lead capture, follow-ups, CRM pipelines, nurture sequences, and booking workflows so your team spends less time on manual tasks.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-base font-semibold text-brand-blue">
+                What AI automation and development services does EclipticLink offer?
+              </dt>
+              <dd className="mt-2 text-zinc-600 leading-relaxed">
+                Our primary focus is AI automations: lead and follow-up systems, CRM and sales pipeline automation, workflow orchestration, AI-powered outreach, and omnichannel booking. We also offer AI development—chatbots, LLM/RAG solutions, and AI SaaS—plus full-stack web, mobile, cloud, and custom software when your product needs them.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-base font-semibold text-brand-blue">
                 Will you be able to increase the number of people in your team if necessary?
               </dt>
               <dd className="mt-2 text-zinc-600 leading-relaxed">
@@ -373,10 +390,10 @@ export default function Home() {
             </div>
             <div>
               <dt className="text-base font-semibold text-brand-blue">
-                How long does it take to start my product development?
+                How long does it take to start my automation or product work?
               </dt>
               <dd className="mt-2 text-zinc-600 leading-relaxed">
-                After we review your requirements and you approve the estimation and proposal, we move quickly to the development stage. Timeline depends on scope—we will give you a clear timeline in the proposal.
+                After we review your requirements and you approve the estimation and proposal, we move quickly to implementation. Timeline depends on scope—we will give you a clear timeline in the proposal.
               </dd>
             </div>
             <div>
@@ -392,23 +409,7 @@ export default function Home() {
                 Should I be familiar with technical details to work with you?
               </dt>
               <dd className="mt-2 text-zinc-600 leading-relaxed">
-                No. You do not need to be an expert in software development—we are. We explain unclear moments and the essence of all stages. You need a clear vision of what you want to achieve; we help make it a reality.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-base font-semibold text-brand-blue">
-                What AI integration and automation services does EclipticLink offer?
-              </dt>
-              <dd className="mt-2 text-zinc-600 leading-relaxed">
-                We offer end-to-end AI integration and automation services: connecting AI models and APIs to your existing systems (CRMs, ERPs, internal tools), automating repetitive workflows with intelligent document processing and decision automation, building AI chatbots and virtual assistants, and developing custom AI SaaS products from MVP to scale.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-base font-semibold text-brand-blue">
-                What does custom software development at EclipticLink include?
-              </dt>
-              <dd className="mt-2 text-zinc-600 leading-relaxed">
-                Our custom software development covers the full lifecycle: requirements analysis, architecture design, frontend and backend development, API and system integrations, QA, and deployment. We build enterprise applications, SaaS products, workflow tools, and internal platforms—all delivered with milestone-based transparency and dedicated project management.
+                No. You do not need to be an expert in automation tools or software development—we are. We explain unclear moments and the essence of all stages. You need a clear vision of what you want to achieve; we help make it a reality.
               </dd>
             </div>
           </dl>
@@ -423,30 +424,30 @@ export default function Home() {
               Serving clients worldwide
             </h2>
             <p className="mt-4 text-lg text-zinc-600 leading-relaxed">
-              We partner with startups and enterprises across five key markets, delivering custom software
-              development and dedicated engineering teams with timezone-friendly collaboration.
+              We partner with startups and enterprises across five key markets, delivering AI automations,
+              AI development, and dedicated engineering teams with timezone-friendly collaboration.
             </p>
           </div>
           <ul className="mx-auto mt-16 grid max-w-4xl gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
             <li className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm">
               <h3 className="text-base font-semibold text-brand-blue">United States</h3>
-              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">Custom software development and staff augmentation for US startups and enterprises. Hire remote developers with US-aligned working hours.</p>
+              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">AI automations, CRM workflows, and staff augmentation for US startups and enterprises. Hire remote specialists with US-aligned working hours.</p>
             </li>
             <li className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm">
               <h3 className="text-base font-semibold text-brand-blue">United Kingdom</h3>
-              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">Software outsourcing and dedicated development teams for UK businesses. Scalable solutions with transparent, milestone-based delivery.</p>
+              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">Automation and AI development for UK businesses. Scalable solutions with transparent, milestone-based delivery.</p>
             </li>
             <li className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm">
               <h3 className="text-base font-semibold text-brand-blue">Pakistan</h3>
-              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">Full-stack software house in Rawalpindi. AI development, mobile apps, cloud DevOps, and IT consulting for local and international clients.</p>
+              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">AI automation hub in Rawalpindi. GHL, n8n, Make, Zapier, HubSpot, Zoho, AI development, and full-stack delivery for local and international clients.</p>
             </li>
             <li className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm">
               <h3 className="text-base font-semibold text-brand-blue">Saudi Arabia</h3>
-              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">Custom software and AI solutions for Saudi Arabian businesses. Digital transformation, enterprise applications, and dedicated engineering teams.</p>
+              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">AI automations and digital transformation for Saudi Arabian businesses. Lead systems, enterprise apps, and dedicated engineering teams.</p>
             </li>
             <li className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm">
               <h3 className="text-base font-semibold text-brand-blue">United Arab Emirates</h3>
-              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">Software development and IT consulting for Dubai and UAE enterprises. Mobile apps, SaaS products, and cloud infrastructure built to scale.</p>
+              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">Automation, AI, and IT consulting for Dubai and UAE enterprises. CRM workflows, SaaS products, and cloud infrastructure built to scale.</p>
             </li>
             <li className="flex items-center justify-center rounded-xl border border-dashed border-zinc-300 bg-zinc-50/30 p-6">
               <Link
@@ -464,10 +465,10 @@ export default function Home() {
       <section className="bg-brand-dark px-4 py-20 text-white sm:px-6 sm:py-28 lg:px-8" aria-labelledby="cta-heading">
         <div className="mx-auto max-w-3xl text-center">
           <h2 id="cta-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Ready to get started?
+            Ready to automate your growth?
           </h2>
           <p className="mt-4 text-lg text-zinc-200 leading-relaxed">
-            Build your software product with expert teams and transparent delivery. Tell us about your project and we&apos;ll get back to you.
+            Tell us about your leads, CRM, and tools—we&apos;ll map an AI automation plan and get back to you with next steps.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link

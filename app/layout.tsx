@@ -21,31 +21,34 @@ import { SITE_URL } from "./lib/config";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "EclipticLink — AI & Custom Software Development",
+    default: "EclipticLink — AI Automations, AI Development & Software",
     template: "%s | EclipticLink",
   },
   description:
-    "EclipticLink builds custom software, AI integration & automation, mobile apps, cloud infrastructure, and chatbots. Hire dedicated developers and engineers for your next project.",
+    "EclipticLink builds AI automations for leads, follow-ups & CRM (GHL, n8n, Make, Zapier, HubSpot, Zoho), custom AI development, and full-stack software.",
   keywords: [
-    "custom software development",
-    "custom software development company",
-    "AI integration services",
-    "AI automation services",
-    "AI integrations",
+    "AI automation",
     "AI automations",
+    "AI automation services",
+    "GoHighLevel automation",
+    "GHL automation",
+    "n8n automation",
+    "Make.com automation",
+    "Zapier automation",
+    "HubSpot automation",
+    "Zoho automation",
+    "lead follow-up automation",
+    "CRM automation",
     "workflow automation",
-    "software consulting",
-    "hire developers",
     "AI development",
-    "machine learning",
     "AI chatbot development",
+    "AI integrations",
+    "custom software development",
+    "hire automation specialists",
+    "hire AI engineers",
+    "staff augmentation",
     "mobile app development",
     "cloud DevOps",
-    "backend development",
-    "frontend development",
-    "staff augmentation",
-    "IT consulting",
-    "software outsourcing",
     "EclipticLink",
   ],
   authors: [{ name: "EclipticLink", url: SITE_URL }],
@@ -58,17 +61,24 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "EclipticLink",
     locale: "en_US",
-    title: "EclipticLink — AI & Custom Software Development",
+    title: "EclipticLink — AI Automations & AI Development",
     description:
-      "Custom software, AI integration & automation, web & mobile apps, cloud, and DevOps. Hire dedicated engineers and scale your product with EclipticLink.",
+      "Automate leads, follow-ups, and pipelines with GHL, n8n, Make, Zapier, HubSpot & Zoho. Custom AI development and full-stack software when you need it.",
     url: SITE_URL,
-    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: "EclipticLink — Custom Software & AI Solutions" }],
+    images: [
+      {
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "EclipticLink — AI Automations & AI Development",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "EclipticLink — Custom Software Development & AI Integration",
+    title: "EclipticLink — AI Automations & AI Development",
     description:
-      "Custom software, AI integration & automation, mobile apps, cloud, and DevOps. Hire dedicated engineers with EclipticLink.",
+      "AI automations for leads & CRM workflows, custom AI development, and full-stack software. Hire specialists with EclipticLink.",
     images: [`${SITE_URL}/og-image.png`],
     site: "@eclipticlink",
   },
@@ -95,7 +105,7 @@ const organizationJsonLd = {
   url: SITE_URL,
   logo: `${SITE_URL}/ecliptic-link-logo.png`,
   description:
-    "EclipticLink builds custom software, AI solutions, mobile apps, and cloud infrastructure for startups and enterprises in the US, UK, Pakistan, Saudi Arabia, and the UAE.",
+    "EclipticLink builds AI automations for leads, follow-ups, and CRM workflows (GoHighLevel, n8n, Make, Zapier, HubSpot, Zoho), custom AI development, and full-stack software for startups and enterprises in the US, UK, Pakistan, Saudi Arabia, and the UAE.",
   knowsLanguage: ["en"],
   areaServed: [
     { "@type": "Country", name: "United States" },
@@ -133,9 +143,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
+        suppressHydrationWarning
       >
         {/* Google tag (gtag.js) */}
         <Script
