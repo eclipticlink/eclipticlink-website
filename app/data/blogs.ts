@@ -20,7 +20,427 @@ export type BlogPost = {
 };
 
 export const blogPosts: BlogPost[] = [
-  // ─── AI INTEGRATION & AUTOMATION ─────────────────────────────────────────────
+  // ─── AI AUTOMATIONS ─────────────────────────────────────────────────────────
+
+  {
+    slug: "gohighlevel-lead-follow-up-automation",
+    title: "GoHighLevel Lead Follow-Up Automation That Converts",
+    excerpt:
+      "Missed calls and slow follow-ups kill deals. Here is how to build GoHighLevel (GHL) automations that respond instantly, nurture leads, and keep your pipeline moving.",
+    metaDescription:
+      "GoHighLevel lead follow-up automation guide — missed-call text-back, multi-channel nurture, pipelines, and AI-assisted sequences that convert more leads.",
+    publishedAt: "2026-03-18",
+    category: "AI Automations",
+    tags: [
+      "GoHighLevel automation",
+      "GHL lead follow-up",
+      "lead follow-up automation",
+      "GoHighLevel workflows",
+      "missed call text back",
+      "CRM automation",
+      "AI automations",
+      "sales pipeline automation",
+      "appointment booking automation",
+      "GHL for agencies",
+    ],
+    readingTime: 8,
+    body: [
+      {
+        type: "p",
+        text: "Most lead loss is not a traffic problem — it is a speed-to-lead problem. A form fill sits for hours. A missed call never gets a text. A booked appointment gets one reminder and then silence. GoHighLevel (GHL) was built to fix exactly that: capture, follow up, and nurture without relying on someone remembering to do it.",
+      },
+      {
+        type: "p",
+        text: "This guide covers practical GoHighLevel lead follow-up automation: the workflows that matter, how to wire AI into messaging without sounding robotic, and how to measure whether the system is actually converting.",
+      },
+      {
+        type: "h2",
+        text: "Why GoHighLevel Works for Lead Follow-Up",
+      },
+      {
+        type: "p",
+        text: "GHL combines CRM, messaging, calendars, pipelines, and automation in one place. That matters because follow-up fails when your lead lives in one tool, SMS in another, and booking in a third. With GoHighLevel you can trigger SMS, email, voice, and pipeline moves from a single workflow when a lead opts in, misses a call, or stalls in a stage.",
+      },
+      {
+        type: "ul",
+        items: [
+          "<strong>Missed-call text-back</strong> — respond in seconds when a sales call goes unanswered",
+          "<strong>Form and funnel capture</strong> — instant assignment, tags, and first-touch sequence",
+          "<strong>Multi-channel nurture</strong> — email + SMS + internal notifications on a timed cadence",
+          "<strong>Appointment reminders and no-show recovery</strong> — confirm, remind, and rebook automatically",
+          "<strong>Pipeline automation</strong> — move deals, create tasks, and alert owners when intent spikes",
+        ],
+      },
+      {
+        type: "h2",
+        text: "The Core Follow-Up Stack Inside GHL",
+      },
+      {
+        type: "h3",
+        text: "1. Instant first response",
+      },
+      {
+        type: "p",
+        text: "Every inbound lead should get a human-feeling reply within a minute. Use a workflow triggered on form submit or inbound call: send SMS + email, tag the source, assign an owner, and create a task if there is no reply within a set window. Speed beats perfect copy.",
+      },
+      {
+        type: "h3",
+        text: "2. Multi-touch nurture (not spam)",
+      },
+      {
+        type: "p",
+        text: "A good nurture sequence is short, value-led, and stoppable. Space touches over days, mix channels, and exit the sequence when the contact books, replies, or unsubscribes. Use tags and custom fields so messaging stays relevant to the offer they opted into.",
+      },
+      {
+        type: "h3",
+        text: "3. Pipeline hygiene",
+      },
+      {
+        type: "p",
+        text: "Automate stage entry actions: when a deal moves to \"Qualified,\" notify the closer and schedule a call task. When a deal sits idle for X days, trigger a re-engagement sequence or escalate to a manager. Stale pipelines are a process problem — GHL can enforce the process.",
+      },
+      {
+        type: "h2",
+        text: "Where AI Fits in GoHighLevel Automations",
+      },
+      {
+        type: "p",
+        text: "AI is most useful when it personalizes or classifies — not when it invents your offer. Practical patterns include drafting reply suggestions from conversation context, scoring lead intent from form answers, summarizing call transcripts for the next owner, and generating variation in nurture copy that still matches your brand voice.",
+      },
+      {
+        type: "p",
+        text: "Keep a human review loop on high-stakes messages until quality is proven. Automate the cadence first; add AI content second.",
+      },
+      {
+        type: "h2",
+        text: "Implementation Checklist",
+      },
+      {
+        type: "ol",
+        items: [
+          "Map every lead source into GHL with consistent tags and UTM fields",
+          "Build one instant-response workflow per primary offer",
+          "Add a 5–7 touch nurture with clear exit conditions",
+          "Wire calendars for booking + reminder + no-show recovery",
+          "Define pipeline stages and idle-time automations",
+          "Track reply rate, book rate, and time-to-first-response weekly",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Common Mistakes",
+      },
+      {
+        type: "ul",
+        items: [
+          "<strong>Too many workflows fighting each other</strong> — consolidate and use clear tags/exits",
+          "<strong>Generic copy</strong> — reference the offer and pain the lead opted in for",
+          "<strong>No ownership</strong> — every lead needs an assigned human even when automation runs",
+          "<strong>Ignoring compliance</strong> — respect consent, quiet hours, and unsubscribe paths",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Frequently Asked Questions",
+      },
+      {
+        type: "h3",
+        text: "Can GoHighLevel replace HubSpot or Zoho?",
+      },
+      {
+        type: "p",
+        text: "For many agencies and service businesses, yes — especially when SMS, funnels, and booking matter. For complex B2B enterprise CRM needs, HubSpot or Zoho may still be the system of record, with GHL or n8n handling specific outreach workflows.",
+      },
+      {
+        type: "h3",
+        text: "How fast should first follow-up be?",
+      },
+      {
+        type: "p",
+        text: "Aim for under five minutes for high-intent leads, ideally under one minute via automated SMS/email. Conversion drops sharply as response time stretches into hours.",
+      },
+      {
+        type: "p",
+        text: "If you want a GHL follow-up system that actually converts — not a spaghetti of half-built workflows — <a href='/services/ai-automations'>explore our AI automation services</a> or <a href='/contact'>book a free automation consult.</a>",
+      },
+    ],
+  },
+
+  {
+    slug: "n8n-make-zapier-which-automation-tool",
+    title: "n8n vs Make vs Zapier: Which Automation Tool Fits?",
+    excerpt:
+      "Choosing between n8n, Make, and Zapier is less about features and more about control, cost at scale, and how complex your workflows get. Here is a practical comparison.",
+    metaDescription:
+      "n8n vs Make vs Zapier compared for AI automations — pricing, complexity, self-hosting, and when to pick each for CRM and lead workflows.",
+    publishedAt: "2026-03-20",
+    category: "AI Automations",
+    tags: [
+      "n8n vs Make vs Zapier",
+      "n8n automation",
+      "Make.com automation",
+      "Zapier automation",
+      "workflow automation tools",
+      "AI automations",
+      "CRM automation",
+      "integration platforms",
+      "no-code automation",
+      "open source automation",
+    ],
+    readingTime: 8,
+    body: [
+      {
+        type: "p",
+        text: "Zapier, Make (formerly Integromat), and n8n all connect apps and move data automatically. They are not interchangeable. Pick wrong and you either overpay for simple zaps or hit a wall when you need branching logic, AI steps, or private hosting.",
+      },
+      {
+        type: "p",
+        text: "This comparison is written for teams building AI automations around leads, CRM, and operations — not for hobby single-step syncs.",
+      },
+      {
+        type: "h2",
+        text: "Quick Comparison",
+      },
+      {
+        type: "table",
+        headers: ["Factor", "Zapier", "Make", "n8n"],
+        rows: [
+          ["Best for", "Simple, reliable app-to-app syncs", "Visual multi-step scenarios", "Complex, self-hosted, or AI-heavy workflows"],
+          ["Learning curve", "Lowest", "Medium", "Medium–high"],
+          ["Self-hosting", "No", "No (cloud)", "Yes (self-host or cloud)"],
+          ["Cost at high volume", "Can get expensive", "Often more efficient", "Predictable if self-hosted"],
+          ["AI / custom code", "Available, limited control", "Strong modules + HTTP", "Excellent (nodes, code, agents)"],
+          ["Ops control", "Vendor-managed", "Vendor-managed", "Full control if self-hosted"],
+        ],
+      },
+      {
+        type: "h2",
+        text: "When Zapier Is the Right Choice",
+      },
+      {
+        type: "p",
+        text: "Choose Zapier when you need something live today with minimal engineering: new Typeform → HubSpot contact, Slack alert on Stripe payment, Google Sheet row on Shopify order. The connector library is huge and reliability is strong for straightforward paths.",
+      },
+      {
+        type: "p",
+        text: "Watch costs as task volume grows, and avoid packing complex branching into Zapier — you will pay more and debug harder than on Make or n8n.",
+      },
+      {
+        type: "h2",
+        text: "When Make Fits Better",
+      },
+      {
+        type: "p",
+        text: "Make shines when workflows have many modules, routers, iterators, and error handlers. The visual canvas makes multi-path lead routing easier to reason about than a long Zapier chain. Pricing is often friendlier for medium complexity at volume.",
+      },
+      {
+        type: "p",
+        text: "Use Make when marketing and ops teams own the automations and still want power — without running infrastructure.",
+      },
+      {
+        type: "h2",
+        text: "When n8n Is the Better Bet",
+      },
+      {
+        type: "p",
+        text: "n8n is ideal when you need self-hosting, sensitive data staying in your VPC, custom code nodes, or AI agent-style workflows that call LLMs, tools, and CRMs in one graph. Engineering teams prefer it when automations are part of the product stack, not a side Zap.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Lead enrichment + scoring + CRM update in one workflow",
+          "Document intake → AI extract → validate → push to ERP",
+          "Multi-system sync with retries, queues, and observability",
+          "Private deployments for regulated industries",
+        ],
+      },
+      {
+        type: "h2",
+        text: "How This Ties to AI Automations",
+      },
+      {
+        type: "p",
+        text: "AI does not replace these tools — it plugs into them. A typical pattern: trigger in Zapier/Make/n8n → call an LLM or classification API → write structured fields back to HubSpot, Zoho, or GoHighLevel → notify a human only on low confidence. The orchestration layer is what makes AI useful in production.",
+      },
+      {
+        type: "h2",
+        text: "A Simple Decision Rule",
+      },
+      {
+        type: "ol",
+        items: [
+          "One or two steps, public SaaS only → start with Zapier",
+          "Multi-branch marketing/ops scenarios, cloud OK → prefer Make",
+          "Complex logic, AI steps, self-host, or cost at scale → choose n8n",
+          "Already deep in GHL for sales messaging → keep GHL native workflows, use n8n/Make for the edges",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Frequently Asked Questions",
+      },
+      {
+        type: "h3",
+        text: "Can we mix tools?",
+      },
+      {
+        type: "p",
+        text: "Yes. Many teams keep Zapier for simple syncs and n8n for core revenue workflows. Just document ownership so you do not create duplicate automations that fight each other.",
+      },
+      {
+        type: "h3",
+        text: "Which is best for HubSpot or Zoho?",
+      },
+      {
+        type: "p",
+        text: "All three connect well. For advanced HubSpot/Zoho logic with AI enrichment, n8n or Make usually give more control than a pile of Zaps.",
+      },
+      {
+        type: "p",
+        text: "Not sure which stack fits your lead and CRM workflows? <a href='/services/ai-automations'>See how we build AI automations on n8n, Make, and Zapier</a> or <a href='/contact'>get a free consult.</a>",
+      },
+    ],
+  },
+
+  {
+    slug: "hubspot-zoho-crm-automation-for-sales-pipelines",
+    title: "HubSpot & Zoho CRM Automation for Sales Pipelines",
+    excerpt:
+      "A CRM only creates value when stages, tasks, and follow-ups run without manual chasing. Here is how to automate HubSpot and Zoho pipelines the right way.",
+    metaDescription:
+      "HubSpot and Zoho CRM automation for sales pipelines — stage workflows, lead scoring, follow-ups, and AI-assisted nurturing that keep deals moving.",
+    publishedAt: "2026-03-22",
+    category: "AI Automations",
+    tags: [
+      "HubSpot automation",
+      "Zoho CRM automation",
+      "sales pipeline automation",
+      "CRM workflows",
+      "lead scoring automation",
+      "AI automations",
+      "follow-up automation",
+      "HubSpot workflows",
+      "Zoho Flow",
+      "CRM for sales teams",
+    ],
+    readingTime: 8,
+    body: [
+      {
+        type: "p",
+        text: "If your CRM is a graveyard of stale deals and overdue tasks, automation is not a nice-to-have — it is how you make the system trustworthy again. HubSpot and Zoho both ship strong workflow engines. Used well, they enforce follow-up, keep stages honest, and free sellers to sell.",
+      },
+      {
+        type: "p",
+        text: "This guide focuses on pipeline automation patterns that work in both HubSpot and Zoho — plus where AI and tools like n8n, Make, or Zapier extend what native workflows can do.",
+      },
+      {
+        type: "h2",
+        text: "What Good CRM Automation Looks Like",
+      },
+      {
+        type: "ul",
+        items: [
+          "<strong>Stage-based actions</strong> — entering a stage creates tasks, emails, and owner alerts automatically",
+          "<strong>Idle deal recovery</strong> — no activity for X days triggers a sequence or manager ping",
+          "<strong>Lead routing</strong> — round-robin or territory rules assign owners instantly",
+          "<strong>Enrichment</strong> — firmographic or AI scoring updates fields before a human opens the record",
+          "<strong>Clean exit rules</strong> — closed-won/lost stops nurture and archives clutter",
+        ],
+      },
+      {
+        type: "h2",
+        text: "HubSpot Workflow Patterns That Pay Off",
+      },
+      {
+        type: "p",
+        text: "HubSpot workflows excel at lifecycle stage changes, deal-based sequences, and internal notifications. Start with: new MQL → assign owner + Slack/email alert; deal stage \"Demo Booked\" → create prep task + send confirmation; deal idle 7 days → enrollment in re-engagement sequence with exit on reply.",
+      },
+      {
+        type: "p",
+        text: "Keep enrollment criteria tight. Overlapping workflows that all send email are the fastest way to burn your domain and your brand.",
+      },
+      {
+        type: "h2",
+        text: "Zoho CRM & Zoho Flow Patterns",
+      },
+      {
+        type: "p",
+        text: "Zoho CRM workflows and Zoho Flow handle assignment rules, blueprint-style stage enforcement, and cross-app sync. Useful patterns include auto-creating follow-up activities on lead creation, escalating overdue tasks, and syncing closed deals to invoicing or project tools.",
+      },
+      {
+        type: "p",
+        text: "If you outgrow native connectors, Zoho Flow or an external orchestrator (n8n/Make/Zapier) can bridge Zoho to GoHighLevel, Stripe, or internal APIs without custom middleware for every edge case.",
+      },
+      {
+        type: "h2",
+        text: "Adding AI Without Breaking Trust",
+      },
+      {
+        type: "p",
+        text: "AI helps when it scores intent, summarizes the last five emails before a call, drafts a follow-up the seller can edit, or classifies inbound form spam. It hurts when it auto-sends long speculative emails with no guardrails.",
+      },
+      {
+        type: "p",
+        text: "A safe pattern: CRM event → automation tool → LLM returns structured fields (score, next-best-action, draft) → write back to HubSpot/Zoho → human sends or approves. Automate the process; keep judgment where revenue is sensitive.",
+      },
+      {
+        type: "h2",
+        text: "Implementation Steps",
+      },
+      {
+        type: "ol",
+        items: [
+          "Define pipeline stages with clear exit criteria (what must be true to move forward)",
+          "List the three follow-ups that fail most often today — automate those first",
+          "Standardize required fields so workflows have clean triggers",
+          "Build stage and idle automations; test with a sandbox pipeline",
+          "Add reporting: time-in-stage, overdue tasks, reply rate after auto-touch",
+          "Only then layer AI scoring or draft assists",
+        ],
+      },
+      {
+        type: "h2",
+        text: "HubSpot vs Zoho for Automation",
+      },
+      {
+        type: "table",
+        headers: ["Need", "Lean HubSpot", "Lean Zoho"],
+        rows: [
+          ["Marketing + CRM in one suite", "Strong fit", "Also strong with Zoho One"],
+          ["Complex assignment / blueprints", "Workflows + sequences", "Workflows + Blueprint"],
+          ["Cost-sensitive mid-market", "Can get pricey at scale", "Often more affordable"],
+          ["Deep SMS / funnel tooling", "Add-ons or GHL alongside", "Add-ons or GHL alongside"],
+          ["External AI orchestration", "Via webhooks + n8n/Make", "Via Zoho Flow + n8n/Make"],
+        ],
+      },
+      {
+        type: "h2",
+        text: "Frequently Asked Questions",
+      },
+      {
+        type: "h3",
+        text: "Should we automate every stage?",
+      },
+      {
+        type: "p",
+        text: "No. Automate the handoffs and follow-ups that humans forget. Keep discretionary judgment — pricing exceptions, strategic accounts — with people.",
+      },
+      {
+        type: "h3",
+        text: "Do we need GoHighLevel if we have HubSpot or Zoho?",
+      },
+      {
+        type: "p",
+        text: "Not always. Use GHL when SMS-heavy, appointment-heavy, or agency-style funnels matter more than enterprise CRM depth. Many teams run HubSpot/Zoho as system of record and automate outreach edges with GHL or n8n.",
+      },
+      {
+        type: "p",
+        text: "Want HubSpot or Zoho pipelines that actually follow up? <a href='/services/ai-automations'>Explore our AI automation services</a> or <a href='/contact'>get a free CRM automation consult.</a>",
+      },
+    ],
+  },
+
+  // ─── AI DEVELOPMENT ─────────────────────────────────────────────────────────
 
   {
     slug: "how-to-integrate-ai-into-existing-business-systems",
@@ -30,17 +450,17 @@ export const blogPosts: BlogPost[] = [
     metaDescription:
       "Step-by-step guide to integrating AI into existing business systems — APIs, middleware, pilot projects, and avoiding the most common AI integration mistakes.",
     publishedAt: "2026-02-10",
-    category: "AI & Automation",
+    category: "AI Development",
     tags: [
       "AI integration",
-      "AI integration services",
+      "AI development",
       "integrate AI into business systems",
       "enterprise AI integration",
       "AI API integration",
       "machine learning integration",
       "CRM AI integration",
       "AI implementation guide",
-      "business systems automation",
+      "LLM integration",
       "AI strategy",
     ],
     readingTime: 8,
@@ -51,7 +471,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Integrating AI into existing business systems is fundamentally a data and connectivity problem, not just a machine learning problem. If your CRM, ERP, or internal databases can't talk to the AI layer, you're not integrating anything — you're adding overhead.",
+        text: "Integrating AI into existing business systems is fundamentally a data and connectivity problem, not just a machine learning problem. If your CRM, ERP, or internal databases can't talk to the AI layer, you're not integrating anything — you're adding overhead. At EclipticLink we treat this as AI development work: connect models and APIs to real systems, then layer automations where the workflow is ready.",
       },
       {
         type: "p",
@@ -207,6 +627,10 @@ export const blogPosts: BlogPost[] = [
         type: "p",
         text: "This depends on which provider you use and your industry. Most enterprise-grade AI providers offer data processing agreements, opt-outs from training on your data, and regional data residency options. For highly sensitive industries — healthcare, legal, finance — self-hosted or private-deployment options (like running open-source models in your own cloud environment) are worth evaluating.",
       },
+      {
+        type: "p",
+        text: "If you need help connecting AI models to your CRM, ERP, or internal tools — or turning those integrations into lead and follow-up automations — <a href='/services/ai'>explore our AI development services</a>, <a href='/services/ai-automations'>see our AI automations</a>, or <a href='/contact'>get in touch.</a>",
+      },
     ],
   },
 
@@ -218,18 +642,18 @@ export const blogPosts: BlogPost[] = [
     metaDescription:
       "AI workflow automation for small businesses — which workflows to automate, what tools to use, and how to measure results without a data science team.",
     publishedAt: "2026-02-17",
-    category: "AI & Automation",
+    category: "AI Automations",
     tags: [
       "AI workflow automation",
       "small business AI automation",
       "workflow automation software",
-      "business process automation",
-      "AI automation tools",
-      "intelligent process automation",
+      "GoHighLevel automation",
+      "n8n automation",
+      "Make.com automation",
+      "Zapier automation",
+      "HubSpot automation",
       "AI for small business",
-      "no-code AI automation",
       "automate business workflows",
-      "process automation AI",
     ],
     readingTime: 7,
     body: [
@@ -370,7 +794,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "If you want help identifying and building your first AI workflow automation, our team at EclipticLink works with small and mid-sized businesses to design, build, and deploy AI automations that connect to your existing systems. <a href='/contact'>Get in touch to talk through your workflow.</a>",
+        text: "If you want help identifying and building your first AI workflow automation — on GoHighLevel, n8n, Make, Zapier, HubSpot, Zoho, or a mix — our team at EclipticLink designs and deploys automations that connect to your existing systems. <a href='/services/ai-automations'>Explore our AI automation services</a> or <a href='/contact'>get in touch to talk through your workflow.</a>",
       },
     ],
   },
@@ -383,7 +807,7 @@ export const blogPosts: BlogPost[] = [
     metaDescription:
       "Custom AI chatbot vs off-the-shelf: compare cost, flexibility, data privacy, and time-to-value. Practical guide to choosing the right chatbot for your business.",
     publishedAt: "2026-02-24",
-    category: "AI & Automation",
+    category: "AI Development",
     tags: [
       "custom AI chatbot",
       "AI chatbot development",
@@ -515,17 +939,17 @@ export const blogPosts: BlogPost[] = [
     metaDescription:
       "5 proven AI automation use cases with measurable ROI — document processing, support triage, lead scoring, internal knowledge retrieval, and developer productivity.",
     publishedAt: "2026-03-03",
-    category: "AI & Automation",
+    category: "AI Automations",
     tags: [
       "AI automation use cases",
       "AI ROI",
-      "intelligent automation",
+      "lead follow-up automation",
+      "CRM automation",
       "AI business automation",
-      "enterprise AI automation",
-      "AI integrations",
-      "automation ROI",
-      "AI productivity tools",
-      "AI for customer support",
+      "GoHighLevel",
+      "n8n",
+      "Zapier",
+      "HubSpot automation",
       "AI lead qualification",
       "AI document processing",
     ],
@@ -640,7 +1064,7 @@ export const blogPosts: BlogPost[] = [
     metaDescription:
       "AI document processing automation: how OCR, data extraction, and validation work together to cut costs and speed up operations — with real industry use cases.",
     publishedAt: "2026-03-03",
-    category: "AI & Automation",
+    category: "AI Automations",
     tags: [
       "AI document processing",
       "intelligent document processing",
@@ -650,7 +1074,7 @@ export const blogPosts: BlogPost[] = [
       "accounts payable automation",
       "invoice processing automation",
       "document AI",
-      "contract automation",
+      "n8n document automation",
       "AI document automation",
     ],
     readingTime: 7,
@@ -762,12 +1186,12 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "If document processing is a bottleneck in your operations, our team builds end-to-end AI document processing systems tailored to your specific document types and downstream systems. <a href='/contact'>Get in touch to discuss what automation could look like for your workflow.</a>",
+        text: "If document processing is a bottleneck in your operations, our team builds end-to-end AI document processing automations — often wired through n8n, Make, or Zapier into your CRM and accounting tools. <a href='/services/ai-automations'>Explore our AI automation services</a> or <a href='/contact'>get in touch to discuss your workflow.</a>",
       },
     ],
   },
 
-  // ─── WEB & MOBILE DEVELOPMENT ───────────────────────────────────────────────
+  // ─── FULL-STACK DEVELOPMENT ─────────────────────────────────────────────────
 
   {
     slug: "react-native-vs-flutter-2026",
@@ -777,7 +1201,7 @@ export const blogPosts: BlogPost[] = [
     metaDescription:
       "React Native vs Flutter 2026 — performance, developer experience, and ecosystem compared. Practical guidance on when to choose each for your mobile app.",
     publishedAt: "2026-02-12",
-    category: "Mobile Development",
+    category: "Full-Stack Development",
     tags: [
       "React Native vs Flutter",
       "Flutter vs React Native 2026",
@@ -909,7 +1333,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "If you are planning a mobile app and want a team with experience in both React Native and Flutter to help you evaluate the right approach, <a href='/services/mobile-app-development'>explore our mobile app development services</a> or <a href='/contact'>get in touch for a technical consultation.</a>",
+        text: "If you are planning a mobile app and want a team with experience in both React Native and Flutter to help you evaluate the right approach, <a href='/services/mobile-app-development'>explore our full-stack mobile development services</a> or <a href='/contact'>get in touch for a technical consultation.</a>",
       },
     ],
   },
@@ -922,7 +1346,7 @@ export const blogPosts: BlogPost[] = [
     metaDescription:
       "PWA vs native app — when to choose a progressive web app over native mobile development. Compare cost, performance, offline support, and UX trade-offs.",
     publishedAt: "2026-02-19",
-    category: "Web Development",
+    category: "Full-Stack Development",
     tags: [
       "progressive web app",
       "PWA vs native app",
@@ -1069,7 +1493,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Our team builds both PWAs and native mobile applications, and we help clients work through this decision based on their specific product requirements and constraints. <a href='/services/mobile-app-development'>Explore our mobile development services</a> or <a href='/contact'>get in touch to discuss your project.</a>",
+        text: "Our team builds both PWAs and native mobile applications as part of full-stack delivery, and we help clients work through this decision based on their specific product requirements and constraints. <a href='/services/mobile-app-development'>Explore our mobile development services</a> or <a href='/contact'>get in touch to discuss your project.</a>",
       },
     ],
   },
@@ -1084,7 +1508,7 @@ export const blogPosts: BlogPost[] = [
     metaDescription:
       "Custom software vs SaaS: compare upfront cost, total cost of ownership, flexibility, and scalability to decide what's right for your business and growth stage.",
     publishedAt: "2026-02-14",
-    category: "Custom Software",
+    category: "Full-Stack Development",
     tags: [
       "custom software vs SaaS",
       "build vs buy software",
@@ -1221,7 +1645,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "If you are working through this decision and want an objective perspective from a team that builds custom software, <a href='/services/custom-software-development'>explore our custom software development services</a> or <a href='/contact'>get in touch for a consultation.</a> We are happy to tell you honestly when SaaS is the better fit.",
+        text: "If you are working through this decision and want an objective perspective from a team that builds full-stack products and AI automations, <a href='/services/custom-software-development'>explore our custom software development services</a> or <a href='/contact'>get in touch for a consultation.</a> We are happy to tell you honestly when SaaS is the better fit.",
       },
     ],
   },
@@ -1234,7 +1658,7 @@ export const blogPosts: BlogPost[] = [
     metaDescription:
       "Software application design fundamentals: architecture patterns, modularity, API design, data modeling, scalability, and security — a practical guide for developers and product teams.",
     publishedAt: "2026-03-03",
-    category: "Custom Software",
+    category: "Full-Stack Development",
     tags: [
       "software application design",
       "software architecture patterns",
@@ -1245,7 +1669,7 @@ export const blogPosts: BlogPost[] = [
       "API design principles",
       "modular software design",
       "software scalability",
-      "software development fundamentals",
+      "full-stack development",
     ],
     readingTime: 10,
     body: [
@@ -1486,7 +1910,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "At EclipticLink, we apply these principles in every custom software project — from the initial architecture conversation to the final deployment. If you are starting a new application and want experienced technical input on your design choices, <a href='/services/custom-software-development'>explore our custom software development services</a> or <a href='/contact'>get in touch to talk through your project.</a>",
+        text: "At EclipticLink, we apply these principles in every full-stack and custom software project — from the initial architecture conversation to the final deployment. If you are starting a new application and want experienced technical input on your design choices, <a href='/services/custom-software-development'>explore our custom software development services</a> or <a href='/contact'>get in touch to talk through your project.</a>",
       },
     ],
   },
@@ -1498,7 +1922,7 @@ export const blogPosts: BlogPost[] = [
     metaDescription:
       "DDD, TDD, trunk-based development & Railway Oriented Programming — EclipticLink's engineering practices and why they consistently produce faster, more maintainable software.",
     publishedAt: "2026-03-03",
-    category: "Custom Software",
+    category: "Full-Stack Development",
     tags: [
       "Domain-Driven Design",
       "Test-Driven Development",
@@ -1507,6 +1931,9 @@ export const blogPosts: BlogPost[] = [
       "software engineering best practices",
       "DDD TDD",
       "agile engineering practices",
+      "full-stack development",
+      "custom software development",
+      "engineering culture",
       "clean code",
       "software delivery practices",
       "continuous integration",
@@ -1723,7 +2150,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "If you are building software and want a team that brings this level of engineering rigour to your project, <a href='/services/custom-software-development'>explore our custom software development services</a> or <a href='/contact'>get in touch to talk about how we work.</a>",
+        text: "If you are building software and want a team that brings this level of engineering rigour to your project — alongside AI automations when growth workflows need them — <a href='/services/custom-software-development'>explore our custom software development services</a> or <a href='/contact'>get in touch to talk about how we work.</a>",
       },
     ],
   },

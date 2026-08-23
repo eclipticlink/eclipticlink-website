@@ -164,20 +164,21 @@ export default async function BlogPostPage({ params }: Props) {
             Ready to put this into practice?
           </h2>
           <p className="mt-4 text-lg text-zinc-300 leading-relaxed">
-            EclipticLink builds custom software, AI integrations, and automation systems for startups and enterprises. Let&apos;s talk about your project.
+            EclipticLink builds AI automations for leads and CRM workflows, custom AI development,
+            and full-stack software. Let&apos;s talk about your project.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               href="/contact"
               className="inline-flex h-12 min-h-11 items-center justify-center rounded-lg bg-brand-teal px-6 text-base font-semibold text-brand-dark shadow-sm transition hover:bg-brand-teal-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
             >
-              Get in touch
+              Get a free consult
             </Link>
             <Link
-              href="/blogs"
+              href="/services/ai-automations"
               className="inline-flex h-12 min-h-11 items-center justify-center rounded-lg border-2 border-brand-teal px-6 text-base font-semibold text-white transition hover:bg-brand-teal/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
             >
-              More articles
+              Explore AI Automations
             </Link>
           </div>
         </div>

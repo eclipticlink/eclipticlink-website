@@ -28,11 +28,16 @@ const breadcrumbJsonLd = {
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
-  "AI & Automation": "bg-violet-50 text-violet-700 border-violet-200",
-  "Mobile Development": "bg-sky-50 text-sky-700 border-sky-200",
-  "Web Development": "bg-emerald-50 text-emerald-700 border-emerald-200",
-  "Custom Software": "bg-amber-50 text-amber-700 border-amber-200",
+  "AI Automations": "bg-teal-50 text-teal-800 border-teal-200",
+  "AI Development": "bg-sky-50 text-sky-800 border-sky-200",
+  "Full-Stack Development": "bg-amber-50 text-amber-800 border-amber-200",
 };
+
+const CATEGORY_ORDER = [
+  "AI Automations",
+  "AI Development",
+  "Full-Stack Development",
+] as const;
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-US", {
@@ -42,8 +47,22 @@ function formatDate(iso: string) {
   });
 }
 
+function sortBlogPosts(posts: typeof blogPosts) {
+  return [...posts].sort((a, b) => {
+    const ai = CATEGORY_ORDER.indexOf(a.category as (typeof CATEGORY_ORDER)[number]);
+    const bi = CATEGORY_ORDER.indexOf(b.category as (typeof CATEGORY_ORDER)[number]);
+    const ao = ai === -1 ? 99 : ai;
+    const bo = bi === -1 ? 99 : bi;
+    if (ao !== bo) return ao - bo;
+    return b.publishedAt.localeCompare(a.publishedAt);
+  });
+}
+
 export default function BlogsPage() {
-  const categories = Array.from(new Set(blogPosts.map((p) => p.category)));
+  const posts = sortBlogPosts(blogPosts);
+  const categories = CATEGORY_ORDER.filter((cat) =>
+    posts.some((p) => p.category === cat)
+  );
 
   return (
     <>
@@ -89,7 +108,7 @@ export default function BlogsPage() {
           </h2>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {blogPosts.map((post) => (
+            {posts.map((post) => (
               <article
                 key={post.slug}
                 className="group flex flex-col rounded-xl border border-zinc-200 bg-white shadow-sm transition hover:shadow-md hover:border-brand-teal-muted"
