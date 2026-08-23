@@ -6,16 +6,36 @@ import { BASE_OG, SITE_URL } from "./lib/config";
 import { services } from "./services/data";
 
 export const metadata: Metadata = {
-  title: "EclipticLink — AI Automations, AI Development & Software",
+  title: {
+    absolute: "AI Automation Agency | Lead Follow-Up & CRM | EclipticLink",
+  },
   description:
-    "AI automations for leads, follow-ups & CRM workflows with GoHighLevel, n8n, Make, Zapier, HubSpot & Zoho. Plus AI development and full-stack software.",
+    "Hire an AI automation agency for lead follow-up & CRM workflows. Experts in GoHighLevel (GHL), n8n, Make, Zapier, HubSpot & Zoho — plus AI development & full-stack.",
+  keywords: [
+    "AI automation agency",
+    "AI automation services",
+    "lead follow-up automation",
+    "GoHighLevel automation",
+    "GHL automation",
+    "n8n Make Zapier",
+    "HubSpot Zoho CRM automation",
+    "workflow automation company",
+    "AI development company",
+    "hire automation specialists",
+  ],
   alternates: { canonical: SITE_URL },
   openGraph: {
     ...BASE_OG,
-    title: "EclipticLink — AI Automations & AI Development",
+    title: "AI Automation Agency | Lead Follow-Up & CRM | EclipticLink",
     description:
-      "Automate leads, follow-ups, and pipelines with GHL, n8n, Make, Zapier, HubSpot & Zoho. Custom AI development and full-stack software when you need it.",
+      "Automate leads, follow-ups & pipelines with GHL, n8n, Make, Zapier, HubSpot & Zoho. AI development and full-stack software from EclipticLink.",
     url: SITE_URL,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Automation Agency | GHL, n8n, Make & Zapier",
+    description:
+      "Lead follow-up & CRM automation experts. GoHighLevel, n8n, Make, Zapier, HubSpot & Zoho — plus AI development.",
   },
 };
 
@@ -37,6 +57,14 @@ const faqJsonLd = {
       acceptedAnswer: {
         "@type": "Answer",
         text: "Our primary focus is AI automations: lead and follow-up systems, CRM and sales pipeline automation, workflow orchestration, AI-powered outreach, and omnichannel booking. We also offer AI development—chatbots, LLM/RAG solutions, and AI SaaS—plus full-stack web, mobile, cloud, and custom software when your product needs them.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is speed-to-lead and why does it matter for AI automations?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Speed-to-lead is how fast you respond after someone opts in, calls, or submits a form. AI automations on GoHighLevel, HubSpot, Zoho, n8n, Make, or Zapier can reply in seconds with SMS and email, assign an owner, and start a nurture sequence—so hot leads do not go cold.",
       },
     },
     {
@@ -114,13 +142,14 @@ export default function Home() {
             id="hero-heading"
             className="mx-auto max-w-4xl text-4xl font-bold tracking-tight drop-shadow-sm sm:text-5xl lg:text-6xl"
           >
-            AI Automations for Leads, Follow-Ups &amp; Growth
+            AI Automation Agency for Leads, Follow-Ups &amp; CRM
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-200 drop-shadow-sm">
-            EclipticLink builds AI-powered automations on GoHighLevel, n8n, Make,
-            Zapier, HubSpot, and Zoho—so every lead gets followed up and your
-            pipeline never stalls. We also deliver custom AI development and
-            full-stack software when you need more than workflows.
+            EclipticLink is an AI automation agency that builds lead follow-up and
+            CRM workflows on GoHighLevel (GHL), n8n, Make, Zapier, HubSpot, and
+            Zoho—so speed-to-lead stays high and your pipeline never stalls. Need
+            more than workflows? We also deliver custom AI development and
+            full-stack software.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
@@ -144,10 +173,11 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-2xl text-center">
             <h2 id="services-heading" className="text-3xl font-bold tracking-tight text-brand-blue sm:text-4xl">
-              Services
+              AI Automation, AI Development &amp; Full-Stack Services
             </h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg leading-relaxed text-zinc-600">
-              AI automations first, AI development second, then full-stack web, mobile, and cloud when you need to build.
+              Primary: AI automation services for GHL, n8n, Make, Zapier, HubSpot &amp; Zoho.
+              Next: AI development. Then custom software, mobile, and cloud when you need to build.
             </p>
           </div>
           <div className="mx-auto mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -173,7 +203,7 @@ export default function Home() {
               href="/services"
               className="inline-flex h-11 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-blue px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-blue active:scale-[0.98] motion-reduce:active:scale-100"
             >
-              View all services
+              View all AI automation &amp; software services
             </Link>
           </div>
         </div>
@@ -370,6 +400,14 @@ export default function Home() {
               </dt>
               <dd className="mt-2 text-zinc-600 leading-relaxed">
                 Our primary focus is AI automations: lead and follow-up systems, CRM and sales pipeline automation, workflow orchestration, AI-powered outreach, and omnichannel booking. We also offer AI development—chatbots, LLM/RAG solutions, and AI SaaS—plus full-stack web, mobile, cloud, and custom software when your product needs them.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-base font-semibold text-brand-blue">
+                What is speed-to-lead and why does it matter for AI automations?
+              </dt>
+              <dd className="mt-2 text-zinc-600 leading-relaxed">
+                Speed-to-lead is how fast you respond after someone opts in, calls, or submits a form. AI automations on GoHighLevel, HubSpot, Zoho, n8n, Make, or Zapier can reply in seconds with SMS and email, assign an owner, and start a nurture sequence—so hot leads do not go cold.
               </dd>
             </div>
             <div>

@@ -17,43 +17,21 @@ const geistMono = Geist_Mono({
 });
 
 import { SITE_URL } from "./lib/config";
+import { DEFAULT_KEYWORDS } from "./lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "EclipticLink — AI Automations, AI Development & Software",
+    default: "AI Automation Agency | GHL, n8n, Make & Zapier",
     template: "%s | EclipticLink",
   },
   description:
-    "EclipticLink builds AI automations for leads, follow-ups & CRM (GHL, n8n, Make, Zapier, HubSpot, Zoho), custom AI development, and full-stack software.",
-  keywords: [
-    "AI automation",
-    "AI automations",
-    "AI automation services",
-    "GoHighLevel automation",
-    "GHL automation",
-    "n8n automation",
-    "Make.com automation",
-    "Zapier automation",
-    "HubSpot automation",
-    "Zoho automation",
-    "lead follow-up automation",
-    "CRM automation",
-    "workflow automation",
-    "AI development",
-    "AI chatbot development",
-    "AI integrations",
-    "custom software development",
-    "hire automation specialists",
-    "hire AI engineers",
-    "staff augmentation",
-    "mobile app development",
-    "cloud DevOps",
-    "EclipticLink",
-  ],
+    "Top AI automation agency for lead follow-up & CRM workflows. GoHighLevel (GHL), n8n, Make, Zapier, HubSpot & Zoho experts. AI development & full-stack too.",
+  keywords: DEFAULT_KEYWORDS,
   authors: [{ name: "EclipticLink", url: SITE_URL }],
   creator: "EclipticLink",
   publisher: "EclipticLink",
+  category: "technology",
   alternates: {
     canonical: SITE_URL,
   },
@@ -61,24 +39,24 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "EclipticLink",
     locale: "en_US",
-    title: "EclipticLink — AI Automations & AI Development",
+    title: "AI Automation Agency | GHL, n8n, Make, Zapier | EclipticLink",
     description:
-      "Automate leads, follow-ups, and pipelines with GHL, n8n, Make, Zapier, HubSpot & Zoho. Custom AI development and full-stack software when you need it.",
+      "Automate leads, follow-ups & sales pipelines with GoHighLevel, n8n, Make, Zapier, HubSpot & Zoho. AI development and full-stack software when you need to build.",
     url: SITE_URL,
     images: [
       {
         url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "EclipticLink — AI Automations & AI Development",
+        alt: "EclipticLink AI automation agency — GHL, n8n, Make, Zapier, HubSpot, Zoho",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "EclipticLink — AI Automations & AI Development",
+    title: "AI Automation Agency | GHL, n8n, Make & Zapier",
     description:
-      "AI automations for leads & CRM workflows, custom AI development, and full-stack software. Hire specialists with EclipticLink.",
+      "Lead follow-up & CRM automation on GHL, n8n, Make, Zapier, HubSpot & Zoho. Hire AI & automation specialists at EclipticLink.",
     images: [`${SITE_URL}/og-image.png`],
     site: "@eclipticlink",
   },
@@ -93,7 +71,13 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true, "max-snippet": -1, "max-image-preview": "large", "max-video-preview": -1 },
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
   },
 };
 
@@ -101,11 +85,26 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": ["Organization", "ProfessionalService"],
   name: "EclipticLink",
-  alternateName: "Eclipticlink",
+  alternateName: ["Eclipticlink", "Ecliptic Link"],
   url: SITE_URL,
   logo: `${SITE_URL}/ecliptic-link-logo.png`,
+  image: `${SITE_URL}/og-image.png`,
   description:
-    "EclipticLink builds AI automations for leads, follow-ups, and CRM workflows (GoHighLevel, n8n, Make, Zapier, HubSpot, Zoho), custom AI development, and full-stack software for startups and enterprises in the US, UK, Pakistan, Saudi Arabia, and the UAE.",
+    "EclipticLink is an AI automation agency specializing in lead follow-up and CRM workflows on GoHighLevel (GHL), n8n, Make, Zapier, HubSpot, and Zoho — plus AI development and full-stack software for startups and enterprises in the US, UK, Pakistan, Saudi Arabia, and the UAE.",
+  slogan: "AI automations for leads, follow-ups, and growth",
+  knowsAbout: [
+    "AI automation",
+    "GoHighLevel",
+    "n8n",
+    "Make.com",
+    "Zapier",
+    "HubSpot",
+    "Zoho CRM",
+    "lead follow-up automation",
+    "CRM automation",
+    "AI chatbot development",
+    "custom software development",
+  ],
   knowsLanguage: ["en"],
   areaServed: [
     { "@type": "Country", name: "United States" },
@@ -121,6 +120,16 @@ const organizationJsonLd = {
     "https://www.instagram.com/eclipticlink/",
     "https://www.linkedin.com/company/eclipticlink/",
   ],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+923335934448",
+      contactType: "sales",
+      email: "info@eclipticlink.com",
+      availableLanguage: ["English"],
+      areaServed: ["US", "GB", "PK", "SA", "AE"],
+    },
+  ],
 };
 
 const websiteJsonLd = {
@@ -129,12 +138,10 @@ const websiteJsonLd = {
   name: "EclipticLink",
   alternateName: "Eclipticlink",
   url: SITE_URL,
+  description:
+    "AI automation agency for GoHighLevel, n8n, Make, Zapier, HubSpot, and Zoho — plus AI development and full-stack software.",
   publisher: { "@type": "Organization", name: "EclipticLink", url: SITE_URL },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${SITE_URL}/hire?q={search_term_string}`,
-    "query-input": "required name=search_term_string",
-  },
+  inLanguage: "en-US",
 };
 
 export default function RootLayout({

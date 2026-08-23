@@ -4,15 +4,22 @@ import { Breadcrumbs } from "../components/breadcrumbs";
 import { BASE_OG, SITE_URL } from "../lib/config";
 
 export const metadata: Metadata = {
-  title: "About EclipticLink — AI Automations & AI Development Partner",
+  title: "About EclipticLink | AI Automation Agency & Partner",
   description:
-    "EclipticLink helps startups and enterprises automate leads, follow-ups, and CRM workflows—plus AI development and full-stack software. Transparent, milestone-based delivery.",
+    "About EclipticLink — AI automation agency for GHL, n8n, Make, Zapier, HubSpot & Zoho. AI development & full-stack teams for US, UK, Pakistan, KSA & UAE.",
+  keywords: [
+    "AI automation agency",
+    "about EclipticLink",
+    "GoHighLevel automation partner",
+    "AI development company",
+    "software outsourcing US UK UAE",
+  ],
   alternates: { canonical: `${SITE_URL}/about` },
   openGraph: {
     ...BASE_OG,
-    title: "About EclipticLink — AI Automations & AI Development Partner",
+    title: "About EclipticLink | AI Automation Agency",
     description:
-      "Meet EclipticLink: AI automations, AI development, and software teams with milestone-based delivery for startups and enterprises.",
+      "Meet EclipticLink: AI automations for leads & CRM, AI development, and full-stack delivery with milestone-based transparency.",
     url: `${SITE_URL}/about`,
   },
 };
@@ -86,7 +93,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl text-center">
           <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About Us" }]} className="mb-6" />
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            About Us
+            About EclipticLink — AI Automation Agency
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-200">
             We help startups and enterprises in the United States, United

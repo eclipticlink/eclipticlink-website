@@ -18,16 +18,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const role = getRoleBySlug(slug);
   if (!role) return { title: "Role | EclipticLink" };
-  const title = `Hire ${role.title} — Dedicated ${role.category} Talent`;
+  const title = `Hire ${role.title} | Dedicated ${role.category}`;
+  const description = `${role.shortDescription} Hire a dedicated ${role.title} (${role.category}) from EclipticLink — staff augmentation for AI automation & product teams.`;
   return {
     title,
-    description: `${role.shortDescription} Hire a dedicated ${role.title} from EclipticLink for your next project.`,
+    description,
+    keywords: [
+      `hire ${role.title}`,
+      `dedicated ${role.title}`,
+      role.category,
+      "staff augmentation",
+      "hire automation specialists",
+      "EclipticLink",
+    ],
     alternates: { canonical: `${SITE_URL}/hire/role/${role.slug}` },
     openGraph: {
       ...BASE_OG,
       title: `${title} | EclipticLink`,
-      description: role.shortDescription,
+      description,
       url: `${SITE_URL}/hire/role/${role.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
     },
   };
 }

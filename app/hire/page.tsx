@@ -8,15 +8,24 @@ import {
 import { BASE_OG, SITE_URL } from "../lib/config";
 
 export const metadata: Metadata = {
-  title: "Hire Automation & AI Specialists — GHL, n8n, AI, Full-Stack",
+  title: "Hire Automation Experts | GHL, n8n, AI & Full-Stack",
   description:
-    "Hire dedicated automation experts (GHL, n8n, Make, Zapier), AI engineers, ML specialists, and full-stack developers. Scale your team with EclipticLink.",
+    "Hire dedicated automation specialists: GoHighLevel, n8n, Make, Zapier experts, AI engineers & full-stack developers. Staff augmentation with EclipticLink.",
+  keywords: [
+    "hire automation specialists",
+    "hire GHL specialist",
+    "hire n8n developer",
+    "hire Zapier expert",
+    "hire AI engineers",
+    "hire dedicated developers",
+    "staff augmentation AI",
+  ],
   alternates: { canonical: `${SITE_URL}/hire` },
   openGraph: {
     ...BASE_OG,
     title: "Hire Automation & AI Specialists | EclipticLink",
     description:
-      "Staff augmentation for automation, AI, ML, mobile, backend, frontend, DevOps, and cloud. Hire dedicated talent with EclipticLink.",
+      "Staff augmentation for GHL, n8n, Make, Zapier, AI, ML, and full-stack. Hire dedicated talent without the overhead.",
     url: `${SITE_URL}/hire`,
   },
 };
@@ -41,11 +50,12 @@ export default function HirePage() {
         <div className="mx-auto max-w-7xl text-center">
           <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Hire Team" }]} className="mb-6" />
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            Hire Team
+            Hire Automation, AI &amp; Full-Stack Specialists
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200">
-            Scale with dedicated automation specialists, AI engineers, and full-stack talent.
-            From GHL, n8n, Make, and Zapier experts to AI, mobile, backend, frontend, DevOps, and cloud—hire without the overhead.
+            Hire dedicated GoHighLevel, n8n, Make, and Zapier automation experts,
+            AI engineers, and full-stack developers. Scale capacity without hiring overhead—
+            staff augmentation built for speed-to-lead and product delivery.
           </p>
         </div>
       </section>

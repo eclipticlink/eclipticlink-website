@@ -5,15 +5,23 @@ import { blogPosts } from "../data/blogs";
 import { BASE_OG, SITE_URL } from "../lib/config";
 
 export const metadata: Metadata = {
-  title: "Blog — AI Automations, AI Development & Tech Insights",
+  title: "AI Automation Blog | GHL, n8n, CRM & AI Guides",
   description:
-    "Practical articles on AI automations, workflow tools, lead follow-ups, AI development, and technology strategy from the EclipticLink team.",
+    "AI automation blog: GoHighLevel lead follow-up, n8n vs Make vs Zapier, HubSpot & Zoho CRM pipelines, AI development & full-stack guides from EclipticLink.",
+  keywords: [
+    "AI automation blog",
+    "GoHighLevel tutorials",
+    "n8n vs Make vs Zapier",
+    "HubSpot CRM automation",
+    "lead follow-up guide",
+    "AI development articles",
+  ],
   alternates: { canonical: `${SITE_URL}/blogs` },
   openGraph: {
     ...BASE_OG,
-    title: "EclipticLink Blog — AI Automations & Tech Insights",
+    title: "AI Automation Blog | GHL, n8n & CRM Guides | EclipticLink",
     description:
-      "Read practical articles on AI automations, CRM workflows, AI development, and software from EclipticLink.",
+      "Practical guides on AI automations, lead follow-up, CRM workflows, AI development, and full-stack strategy.",
     url: `${SITE_URL}/blogs`,
   },
 };
@@ -77,11 +85,11 @@ export default function BlogsPage() {
             className="mb-6"
           />
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            Blog
+            AI Automation &amp; Development Blog
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200 leading-relaxed">
-            Practical insights on AI automations, lead &amp; follow-up systems, AI development,
-            and full-stack strategy — from the EclipticLink team.
+            Guides on AI automation services — GoHighLevel, n8n, Make, Zapier, HubSpot &amp; Zoho —
+            plus AI development and full-stack engineering from the EclipticLink team.
           </p>
         </div>
       </section>

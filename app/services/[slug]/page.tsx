@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "../../components/breadcrumbs";
 import { BASE_OG, SITE_URL } from "../../lib/config";
+import { SERVICE_SEO } from "../../lib/seo";
 import { getAllServiceSlugs, getServiceBySlug } from "../data";
 
 type Props = {
@@ -17,17 +18,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
   if (!service) return { title: "Service | EclipticLink" };
+  const seo = SERVICE_SEO[service.id];
   const description =
     service.metaDescription ?? `${service.summary} | EclipticLink.`;
+  const title = seo?.title ?? `${service.title} Services`;
   return {
-    title: `${service.title} Services`,
+    title,
     description,
+    keywords: seo?.keywords ?? [service.title, "EclipticLink"],
     alternates: { canonical: `${SITE_URL}/services/${service.id}` },
     openGraph: {
       ...BASE_OG,
-      title: `${service.title} Services | EclipticLink`,
+      title: `${title} | EclipticLink`,
       description,
       url: `${SITE_URL}/services/${service.id}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
     },
   };
 }
@@ -39,6 +48,8 @@ export default async function ServicePage({ params }: Props) {
 
   const pageUrl = `${SITE_URL}/services/${service.id}`;
   const description = service.metaDescription ?? service.summary;
+  const seo = SERVICE_SEO[service.id];
+  const h1 = seo?.h1 ?? service.title;
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -53,9 +64,11 @@ export default async function ServicePage({ params }: Props) {
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: service.title,
+    name: h1,
+    alternateName: service.title,
     description,
     url: pageUrl,
+    serviceType: service.title,
     provider: {
       "@type": "Organization",
       name: "EclipticLink",
@@ -68,6 +81,18 @@ export default async function ServicePage({ params }: Props) {
       { "@type": "Country", name: "Saudi Arabia" },
       { "@type": "Country", name: "United Arab Emirates" },
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: `${service.title} offerings`,
+      itemListElement: service.subServices.map((sub) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: sub.title,
+          description: sub.summary,
+        },
+      })),
+    },
   };
 
   return (
@@ -91,7 +116,7 @@ export default async function ServicePage({ params }: Props) {
             className="mb-6"
           />
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            {service.title}
+            {h1}
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200 leading-relaxed">
             {service.summary}

@@ -23,7 +23,7 @@ export const services: Service[] = [
     details:
       "We design and implement AI-powered business automations that capture leads, nurture prospects, and keep your pipeline moving—without manual follow-up. From GoHighLevel and HubSpot to n8n, Make, Zapier, and Zoho, we connect the tools you already use and add intelligent automation so your team focuses on closing, not chasing.",
     metaDescription:
-      "AI automation services for leads, follow-ups & CRM workflows. GoHighLevel, n8n, Make, Zapier, HubSpot & Zoho specialists at EclipticLink.",
+      "AI automation services for lead follow-up & CRM. GoHighLevel (GHL), n8n, Make, Zapier, HubSpot & Zoho experts. Automate pipelines that convert.",
     subServices: [
       {
         id: "lead-follow-up-automation",
@@ -70,7 +70,7 @@ export const services: Service[] = [
     details:
       "We build AI-powered products and features: conversational assistants, RAG systems, model integrations, and AI-native SaaS. Whether you need to embed intelligence into an existing product or launch a new AI application, we deliver end-to-end AI development tailored to your stack and goals.",
     metaDescription:
-      "AI development services — custom chatbots, LLM integrations, RAG, and AI SaaS. Build intelligent products with EclipticLink.",
+      "AI development company for custom chatbots, LLM integrations, RAG & AI SaaS. Build production AI products with EclipticLink engineers.",
     subServices: [
       {
         id: "ai-integrations",
@@ -110,7 +110,7 @@ export const services: Service[] = [
     details:
       "When off-the-shelf tools are not enough, we design and build custom software—enterprise applications, SaaS products, workflow tools, and APIs—that integrate with your AI automations and scale with your business.",
     metaDescription:
-      "Custom software development for enterprise apps, SaaS products, APIs, and integrations. Scalable full-stack solutions from EclipticLink.",
+      "Custom software development company for SaaS, enterprise apps & APIs. Full-stack engineering that pairs with your AI automations.",
     subServices: [
       {
         id: "enterprise-applications",
@@ -150,7 +150,7 @@ export const services: Service[] = [
     details:
       "We build mobile applications—native or cross-platform—from MVP to App Store launch. Consumer apps, B2B tools, and companions to your automated workflows and web products.",
     metaDescription:
-      "Mobile app development: native iOS/Android, cross-platform, PWA. End-to-end design and development from EclipticLink.",
+      "Mobile app development: native iOS & Android, React Native, Flutter & PWA. Full-stack mobile apps that connect to your CRM automations.",
     subServices: [
       {
         id: "native-ios-development",
@@ -190,7 +190,7 @@ export const services: Service[] = [
     details:
       "We design CI/CD pipelines, infrastructure as code, and cloud strategies so your automations, AI services, and products deploy frequently, recover quickly, and scale on demand.",
     metaDescription:
-      "Cloud & DevOps: CI/CD, infrastructure as code, cloud migration, monitoring. Ship faster and more reliably with EclipticLink.",
+      "Cloud & DevOps services: CI/CD pipelines, infrastructure as code, cloud migration & monitoring so AI automations and apps stay reliable.",
     subServices: [
       {
         id: "ci-cd-pipelines",
@@ -230,7 +230,7 @@ export const services: Service[] = [
     details:
       "We help you store, process, and derive value from large-scale data—pipelines, warehouses, BI, and ML-ready foundations that power smarter automations and AI products.",
     metaDescription:
-      "Big Data solutions: data pipelines, analytics, warehousing, ML integration. Store, process, and derive value from large-scale data.",
+      "Big data services: data pipelines, analytics, warehouses & ML-ready infrastructure that power smarter AI automations and products.",
     subServices: [
       {
         id: "data-pipelines",
@@ -270,7 +270,7 @@ export const services: Service[] = [
     details:
       "We create interfaces and experiences that users love—research, wireframes, prototypes, and polished UI for automation tools, AI products, and full-stack applications.",
     metaDescription:
-      "UI/UX design: user research, wireframes, prototypes, visual design, design systems. User-first interfaces from EclipticLink.",
+      "UI/UX design services for automation dashboards, AI products & apps. Research, wireframes, visual design and design systems.",
     subServices: [
       {
         id: "user-research-discovery",

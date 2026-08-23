@@ -5,15 +5,24 @@ import { BASE_OG, SITE_URL } from "../lib/config";
 import { services } from "./data";
 
 export const metadata: Metadata = {
-  title: "AI Automations, AI Development & Software Services",
+  title: "AI Automation Services | GHL, n8n, Make, Zapier, HubSpot",
   description:
-    "AI automations for leads & follow-ups (GHL, n8n, Make, Zapier, HubSpot, Zoho), AI development, custom software, mobile, cloud & DevOps from EclipticLink.",
+    "AI automation services for lead follow-up & CRM: GoHighLevel, n8n, Make, Zapier, HubSpot & Zoho. Plus AI development, custom software, mobile & cloud.",
+  keywords: [
+    "AI automation services",
+    "GoHighLevel automation services",
+    "n8n automation agency",
+    "Zapier Make automation",
+    "HubSpot Zoho CRM automation",
+    "AI development services",
+    "custom software development services",
+  ],
   alternates: { canonical: `${SITE_URL}/services` },
   openGraph: {
     ...BASE_OG,
-    title: "AI Automations & AI Development Services | EclipticLink",
+    title: "AI Automation Services | GHL, n8n, Make, Zapier | EclipticLink",
     description:
-      "Primary: AI automations for leads, CRM & workflows. Then AI development, custom software, mobile, cloud, and UI/UX.",
+      "Lead follow-up & CRM automation on GHL, n8n, Make, Zapier, HubSpot & Zoho — then AI development and full-stack software.",
     url: `${SITE_URL}/services`,
   },
 };
@@ -38,11 +47,12 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl text-center">
           <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services" }]} className="mb-6" />
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            AI Automations &amp; Development Services
+            AI Automation Services &amp; Software Development
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200 leading-relaxed">
-            Start with AI automations for leads, follow-ups, and CRM workflows—then AI development,
-            and full-stack web, mobile, cloud, and UI/UX when you need to build.
+            End-to-end AI automation services for lead follow-up and CRM workflows on
+            GoHighLevel, n8n, Make, Zapier, HubSpot, and Zoho—backed by AI development
+            and full-stack engineering when you need to build products.
           </p>
         </div>
       </section>

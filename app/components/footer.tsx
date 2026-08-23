@@ -121,8 +121,8 @@ export function Footer() {
               Ready to automate?
             </h3>
             <p className="mt-4 text-sm text-zinc-300 leading-relaxed">
-              Get an AI automation consult for leads, follow-ups, and CRM
-              workflows—or hire specialists to scale your team.
+              Get an AI automation consult for lead follow-up, CRM pipelines, and
+              tools like GHL, n8n, Make, Zapier, HubSpot &amp; Zoho.
             </p>
             <Link
               href="/contact"

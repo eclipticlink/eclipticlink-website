@@ -4,15 +4,22 @@ import { BASE_OG, SITE_URL } from "../lib/config";
 import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact EclipticLink — Free AI Automation Consult",
+  title: "Contact | Free AI Automation Consult",
   description:
-    "Contact EclipticLink for AI automations (GHL, n8n, Make, Zapier, HubSpot, Zoho), AI development, and software projects. Get a free consultation.",
+    "Contact EclipticLink for a free AI automation consult — GHL, n8n, Make, Zapier, HubSpot & Zoho. Also AI development & software projects. Fast response.",
+  keywords: [
+    "AI automation consult",
+    "contact EclipticLink",
+    "GoHighLevel consultant",
+    "n8n automation quote",
+    "hire automation agency",
+  ],
   alternates: { canonical: `${SITE_URL}/contact` },
   openGraph: {
     ...BASE_OG,
-    title: "Contact EclipticLink — Free AI Automation Consult",
+    title: "Contact EclipticLink | Free AI Automation Consult",
     description:
-      "Reach out for AI automations, AI development, and dedicated team hiring. Free consultation for your next project.",
+      "Talk to our AI automation team about lead follow-up, CRM workflows, and platforms like GHL, n8n, Make, Zapier, HubSpot & Zoho.",
     url: `${SITE_URL}/contact`,
   },
 };
@@ -37,12 +44,12 @@ export default function ContactPage() {
         <div className="mx-auto max-w-7xl text-center">
           <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact Us" }]} className="mb-6" />
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            Contact Us
+            Contact Us for AI Automation &amp; Development
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200">
-            Whether you&apos;re based in the US, UK, Pakistan, Saudi Arabia, or the
-            UAE—tell us about your leads, CRM, and tools. Get a free AI automation
-            consult and let&apos;s map your next steps.
+            Based in the US, UK, Pakistan, Saudi Arabia, or the UAE? Tell us about your
+            leads, CRM, and tools (GHL, n8n, Make, Zapier, HubSpot, Zoho). Get a free
+            AI automation consult and clear next steps.
           </p>
         </div>
       </section>
