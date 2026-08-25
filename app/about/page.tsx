@@ -4,22 +4,21 @@ import { Button } from "../components/ui/button";
 import { BASE_OG, SITE_URL } from "../lib/config";
 
 export const metadata: Metadata = {
-  title: "About EclipticLink | Our Story & How We Work",
+  title: "About EclipticLink | Problem-First Systems Partner",
   description:
-    "EclipticLink helps teams stop losing opportunity to slow follow-up and messy CRMs. Meet the people behind the systems, products, and software we deliver.",
+    "EclipticLink helps businesses identify bottlenecks, design better processes, and build automated systems - with AI and software when the problem requires it.",
   keywords: [
     "about EclipticLink",
-    "lead workflow agency",
-    "GoHighLevel partner",
-    "CRM automation company",
-    "software team US UK UAE",
+    "business automation company",
+    "process automation partner",
+    "AI and software systems",
   ],
   alternates: { canonical: `${SITE_URL}/about` },
   openGraph: {
     ...BASE_OG,
-    title: "About EclipticLink | Our Story & How We Work",
+    title: "About EclipticLink | Problem-First Systems Partner",
     description:
-      "How EclipticLink grew from a delivery-focused studio into a partner for lead systems, intelligent products, and custom software.",
+      "How EclipticLink grew into a partner for process design, automation, AI, and custom systems.",
     url: `${SITE_URL}/about`,
   },
 };
@@ -35,9 +34,9 @@ const breadcrumbJsonLd = {
 
 const strengths = [
   {
-    title: "Comfortable in the tools you already use",
+    title: "We start with the process, not the platform",
     description:
-      "GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier are where a lot of our work lives. We build around your process instead of forcing a new stack overnight.",
+      "We map how work actually moves, then choose automation, AI, integrations, or software based on what will stay reliable as you grow.",
   },
   {
     title: "Product and engineering when you need depth",
@@ -72,7 +71,7 @@ const historyMilestones = [
     year: "Growth",
     title: "Leaning into the revenue stack",
     description:
-      "Clients kept asking for help with leads that went cold, CRMs that lied, and tools that never quite talked to each other. We deepened that practice across GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier, while keeping the product and engineering craft that made us useful when a workflow alone was not enough.",
+      "Clients kept asking for help with leads that went cold, CRMs that lied, and tools that never quite talked to each other. We deepened that practice across sales and operations systems, while keeping the product and engineering craft that made us useful when a workflow alone was not enough.",
   },
   {
     year: "Today",
@@ -90,8 +89,8 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <PageHero
-        title="About EclipticLink"
-        description="We help teams protect every inbound opportunity, then build the products and software that take the business further."
+        title="Problem-first. Technology second."
+        description="We help businesses identify operational bottlenecks, design better processes, and build systems that remove manual work - applying AI and custom software only when they earn their place."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "About Us" }]}
       />
 
@@ -149,11 +148,26 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-surface-muted">
-        <div className="container-site text-center">
-          <Button href="/contact" variant="primaryBlue" size="lg">
-            Start a conversation
-          </Button>
+      <section className="section-pad bg-surface-muted" aria-labelledby="about-cta-heading">
+        <div className="container-site max-w-2xl text-center">
+          <h2
+            id="about-cta-heading"
+            className="font-display text-2xl font-semibold tracking-tight text-brand-blue sm:text-3xl"
+          >
+            Tell us where leads stall today
+          </h2>
+          <p className="mt-3 text-text-muted">
+            Share a short picture of your tools and process. We will come back with a
+            practical next step.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Button href="/contact" variant="primaryBlue" size="lg">
+              Book a discovery call
+            </Button>
+            <Button href="/hire" variant="secondaryOnLight" size="lg">
+              Browse dedicated roles
+            </Button>
+          </div>
         </div>
       </section>
     </>

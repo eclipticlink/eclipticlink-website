@@ -381,8 +381,8 @@ export function Header() {
             </Link>
           </nav>
 
-          <Button href="/hire" variant="primaryBlue" className="ml-3 xl:ml-4">
-            Hire specialists
+          <Button href="/contact" variant="primaryBlue" className="ml-3 xl:ml-4">
+            Book a discovery call
           </Button>
         </div>
       </div>
@@ -426,7 +426,7 @@ export function Header() {
               className="w-full"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Get a free consult
+              Book a discovery call
             </Button>
           </div>
         </nav>

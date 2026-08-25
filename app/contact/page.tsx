@@ -4,11 +4,12 @@ import { BASE_OG, SITE_URL } from "../lib/config";
 import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact | Talk With EclipticLink",
+  title: "Contact | Tell Us Where Leads Stall",
   description:
-    "Tell us where leads stall or what you want to build. We typically reply within one business day with a practical next step.",
+    "Tell us where leads stall today - tools, challenges, and what you want automated. We typically reply within one business day with a practical next step.",
   keywords: [
     "contact EclipticLink",
+    "book discovery call automation",
     "GoHighLevel consultant",
     "CRM workflow consult",
     "n8n automation quote",
@@ -17,9 +18,9 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/contact` },
   openGraph: {
     ...BASE_OG,
-    title: "Contact | Talk With EclipticLink",
+    title: "Contact | Tell Us Where Leads Stall",
     description:
-      "Share a short picture of your tools and process. We will follow up with clear next steps.",
+      "Share your tools and process. We identify where automation can help and come back with a practical next step.",
     url: `${SITE_URL}/contact`,
   },
 };
@@ -41,8 +42,8 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <PageHero
-        title="Let’s talk"
-        description="Whether you need a sharper lead system, cleaner CRM handoffs, or help building something new, start with a short note. We will take it from there."
+        title="Tell us where leads stall today"
+        description="Whether response time, CRM hygiene, follow-up, booking, or a custom build - start with a short picture of your process. We will take it from there."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact Us" }]}
       />
 
@@ -55,12 +56,22 @@ export default function ContactPage() {
             <div className="lg:col-span-2">
               <p className="eyebrow-on-light">Reach us</p>
               <h3 className="mt-3 font-display text-2xl font-semibold text-brand-blue">
-                We reply within a business day
+                What happens after you submit
               </h3>
-              <p className="mt-4 leading-relaxed text-text-muted">
-                Share what is broken or what you want to improve. A few sentences about your
-                tools and goals is enough for a useful first reply.
-              </p>
+              <ol className="mt-6 space-y-5" role="list">
+                {[
+                  "We review your current process and tools.",
+                  "We identify where automation can protect opportunity.",
+                  "We come back with a practical next step.",
+                ].map((step, i) => (
+                  <li key={step} className="flex gap-3 text-sm leading-relaxed text-text-muted">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-teal/15 font-display text-xs font-semibold text-brand-blue">
+                      {i + 1}
+                    </span>
+                    {step}
+                  </li>
+                ))}
+              </ol>
               <div className="mt-10 space-y-8">
                 <div className="border-t border-border-subtle pt-6">
                   <span className="text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">

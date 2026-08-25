@@ -87,7 +87,7 @@ const organizationJsonLd = {
   image: `${SITE_URL}/og-image.png`,
   description:
     "EclipticLink helps teams protect inbound opportunity with lead and CRM systems on GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier, and builds intelligent products and custom software when the work calls for it.",
-  slogan: "Protect every inbound opportunity",
+  slogan: "Problem-first systems that keep your business moving",
   knowsAbout: [
     "AI automation",
     "GoHighLevel",

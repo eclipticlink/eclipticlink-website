@@ -190,7 +190,7 @@ h4.font-display {
   transform-origin: center;
 }
 
-/* Hero image ken burns — subtle so cover crop stays readable */
+/* Hero image ken burns - subtle so cover crop stays readable */
 @keyframes ken-burns {
   from {
     transform: scale(1);
@@ -287,6 +287,85 @@ h4.font-display {
   animation: fade-up 0.7s ease-out 0.24s both;
 }
 
+/* Automation workflow motion language */
+@keyframes node-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(116 210 176 / 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgb(116 210 176 / 0);
+  }
+}
+@keyframes connector-flow {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes status-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+@keyframes packet-travel {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+@keyframes signal-sweep {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.workflow-node-active {
+  animation: node-pulse 2.4s ease-in-out infinite;
+}
+.workflow-status-live {
+  animation: status-blink 1.6s ease-in-out infinite;
+}
+.workflow-connector-flow {
+  stroke-dasharray: 6 6;
+  animation: connector-flow 1.2s linear infinite;
+}
+.workflow-signal {
+  position: relative;
+  overflow: hidden;
+}
+.workflow-signal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(116 210 176 / 0.35),
+    transparent
+  );
+  animation: signal-sweep 2.8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -308,6 +387,13 @@ h4.font-display {
 
   .card-lift:hover {
     transform: none;
+  }
+
+  .workflow-node-active,
+  .workflow-status-live,
+  .workflow-connector-flow,
+  .workflow-signal::after {
+    animation: none !important;
   }
 }
 

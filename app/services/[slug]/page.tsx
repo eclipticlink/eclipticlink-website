@@ -154,11 +154,24 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      <section className="section-pad bg-atmosphere">
-        <div className="container-site max-w-3xl">
-          <div className="flex flex-wrap justify-center gap-4">
+      <section className="section-pad bg-atmosphere" aria-labelledby="service-cta-heading">
+        <div className="container-site max-w-3xl text-center">
+          <h2
+            id="service-cta-heading"
+            className="font-display text-2xl font-semibold tracking-tight text-brand-blue sm:text-3xl"
+          >
+            Ready to talk through a fit?
+          </h2>
+          <p className="mt-3 text-text-muted">
+            Tell us where leads stall - or what you want to build next. We will come back
+            with a practical path.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Button href="/contact" variant="primaryBlue" size="lg">
-              Get in touch
+              Book a discovery call
+            </Button>
+            <Button href="/hire" variant="secondaryOnLight" size="lg">
+              Browse dedicated roles
             </Button>
             <Button href="/services" variant="secondaryOnLight" size="lg">
               View all services
