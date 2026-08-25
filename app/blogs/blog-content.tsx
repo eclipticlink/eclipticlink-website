@@ -9,7 +9,7 @@ export function BlogContent({ blocks }: { blocks: BlogBlock[] }) {
             return (
               <h2
                 key={i}
-                className="mt-12 mb-4 text-2xl font-bold tracking-tight text-brand-blue sm:text-3xl first:mt-0"
+                className="mt-12 mb-4 font-display text-2xl font-semibold tracking-tight text-brand-blue first:mt-0 sm:text-3xl"
               >
                 {block.text}
               </h2>
@@ -18,7 +18,7 @@ export function BlogContent({ blocks }: { blocks: BlogBlock[] }) {
             return (
               <h3
                 key={i}
-                className="mt-8 mb-3 text-xl font-semibold tracking-tight text-brand-blue"
+                className="mt-8 mb-3 font-display text-xl font-semibold tracking-tight text-brand-blue"
               >
                 {block.text}
               </h3>
@@ -27,7 +27,7 @@ export function BlogContent({ blocks }: { blocks: BlogBlock[] }) {
             return (
               <p
                 key={i}
-                className="mb-5 text-zinc-700 leading-8"
+                className="mb-5 leading-8 text-slate-700"
                 dangerouslySetInnerHTML={{ __html: block.text }}
               />
             );

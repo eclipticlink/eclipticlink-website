@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "../../components/breadcrumbs";
+import { Button } from "../../components/ui/button";
 import { BASE_OG, SITE_URL } from "../../lib/config";
 import { BlogContent } from "../blog-content";
 import { getAllBlogSlugs, getBlogBySlug } from "../../data/blogs";
@@ -39,6 +39,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.metaDescription,
       images: [`${SITE_URL}/og-image.png`],
       site: "@eclipticlink",
+    },
+    robots: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   };
 }
@@ -106,49 +112,51 @@ export default async function BlogPostPage({ params }: Props) {
       />
 
       {/* Hero */}
-      <section className="bg-brand-dark px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
-        <div className="mx-auto max-w-3xl">
+      <section className="relative overflow-hidden bg-brand-dark px-4 py-20 text-white sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+        <div className="bg-hero-mesh pointer-events-none absolute inset-0 opacity-90" aria-hidden="true" />
+        <div className="container-site relative z-10 max-w-3xl">
           <Breadcrumbs
             items={[
               { label: "Home", href: "/" },
               { label: "Blog", href: "/blogs" },
               { label: post.title },
             ]}
-            className="mb-6"
+            align="start"
+            className="mb-8"
           />
           <div className="mb-4 flex flex-wrap items-center gap-3">
-            <span className="rounded-full bg-brand-teal/20 px-3 py-1 text-xs font-semibold text-brand-teal">
+            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-teal">
               {post.category}
             </span>
-            <span className="text-sm text-zinc-400">{post.readingTime} min read</span>
+            <span className="text-sm text-white/55">{post.readingTime} min read</span>
           </div>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+          <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
             {post.title}
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-zinc-300">
+          <p className="mt-6 text-lg leading-relaxed text-white/75">
             {post.excerpt}
           </p>
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-zinc-400">
-            <span>By <strong className="text-zinc-200">EclipticLink Team</strong></span>
-            <span>·</span>
+          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/50">
+            <span>By <strong className="font-medium text-white/80">EclipticLink Team</strong></span>
+            <span aria-hidden="true">·</span>
             <time dateTime={post.publishedAt}>{formattedDate}</time>
           </div>
         </div>
       </section>
 
       {/* Article body */}
-      <section className="bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+      <section className="section-pad bg-atmosphere">
         <BlogContent blocks={post.body} />
       </section>
 
       {/* Tags */}
-      <section className="bg-zinc-50 px-4 py-10 sm:px-6 lg:px-8">
+      <section className="border-y border-border-subtle bg-surface-muted px-4 py-10 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <div className="flex flex-wrap gap-2">
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-medium text-zinc-600"
+                className="border border-border-subtle bg-surface px-3 py-1 text-xs font-medium text-text-muted"
               >
                 {tag}
               </span>
@@ -158,27 +166,23 @@ export default async function BlogPostPage({ params }: Props) {
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-dark px-4 py-16 text-white sm:px-6 sm:py-24 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+      <section className="relative overflow-hidden bg-brand-dark section-pad text-white">
+        <div className="bg-hero-mesh pointer-events-none absolute inset-0 opacity-90" aria-hidden="true" />
+        <div className="container-site relative z-10 max-w-3xl text-center">
+          <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
             Ready to put this into practice?
           </h2>
-          <p className="mt-4 text-lg text-zinc-300 leading-relaxed">
-            EclipticLink builds custom software, AI integrations, and automation systems for startups and enterprises. Let&apos;s talk about your project.
+          <p className="mt-4 text-lg leading-relaxed text-white/75">
+            EclipticLink builds AI automations for leads and CRM workflows, custom AI development,
+            and full-stack software. Let&apos;s talk about your project.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex h-12 min-h-11 items-center justify-center rounded-lg bg-brand-teal px-6 text-base font-semibold text-brand-dark shadow-sm transition hover:bg-brand-teal-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
-            >
-              Get in touch
-            </Link>
-            <Link
-              href="/blogs"
-              className="inline-flex h-12 min-h-11 items-center justify-center rounded-lg border-2 border-brand-teal px-6 text-base font-semibold text-white transition hover:bg-brand-teal/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
-            >
-              More articles
-            </Link>
+            <Button href="/contact" variant="primary" size="lg">
+              Get a free consult
+            </Button>
+            <Button href="/services/ai-automations" variant="secondary" size="lg">
+              Explore AI Automations
+            </Button>
           </div>
         </div>
       </section>

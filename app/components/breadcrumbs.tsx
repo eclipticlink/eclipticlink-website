@@ -9,6 +9,7 @@ type BreadcrumbsProps = {
   items: BreadcrumbItem[];
   /** Use "dark" for dark hero (light text), "light" for light background */
   variant?: "dark" | "light";
+  align?: "center" | "start";
   className?: string;
 };
 
@@ -25,26 +26,45 @@ const variantStyles = {
   },
 } as const;
 
-export function Breadcrumbs({ items, variant = "dark", className = "" }: BreadcrumbsProps) {
+export function Breadcrumbs({
+  items,
+  variant = "dark",
+  align = "center",
+  className = "",
+}: BreadcrumbsProps) {
   const styles = variantStyles[variant];
 
   return (
     <nav aria-label="Breadcrumb" className={className}>
-      <ol className="flex flex-wrap items-center justify-center gap-2 text-sm">
+      <ol
+        className={`flex flex-wrap items-center gap-2 text-sm ${
+          align === "start" ? "justify-start" : "justify-center"
+        }`}
+      >
         {items.map((item, i) => {
           const isLast = i === items.length - 1;
           return (
             <li key={i} className="flex items-center gap-2">
-              {i > 0 && <span className={styles.separator} aria-hidden="true">/</span>}
+              {i > 0 && (
+                <span className={styles.separator} aria-hidden="true">
+                  /
+                </span>
+              )}
               {item.href != null && !isLast ? (
                 <Link
                   href={item.href}
-                  className={styles.link + " focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded"}
+                  className={
+                    styles.link +
+                    " rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                  }
                 >
                   {item.label}
                 </Link>
               ) : (
-                <span className={isLast ? styles.current : undefined} aria-current={isLast ? "page" : undefined}>
+                <span
+                  className={isLast ? styles.current : undefined}
+                  aria-current={isLast ? "page" : undefined}
+                >
                   {item.label}
                 </span>
               )}

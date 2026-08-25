@@ -1,17 +1,26 @@
 import type { Metadata } from "next";
-import { Breadcrumbs } from "../components/breadcrumbs";
+import { PageHero } from "../components/page-hero";
 import { BASE_OG, SITE_URL } from "../lib/config";
 import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact EclipticLink — Get a Free Consultation",
+  title: "Contact | Tell Us Where Leads Stall",
   description:
-    "Contact EclipticLink for custom software, AI, mobile app, cloud, and DevOps projects. Get a free consultation and quote for your next product.",
+    "Tell us where leads stall today - tools, challenges, and what you want automated. We typically reply within one business day with a practical next step.",
+  keywords: [
+    "contact EclipticLink",
+    "book discovery call automation",
+    "GoHighLevel consultant",
+    "CRM workflow consult",
+    "n8n automation quote",
+    "hire automation team",
+  ],
   alternates: { canonical: `${SITE_URL}/contact` },
   openGraph: {
     ...BASE_OG,
-    title: "Contact EclipticLink — Get a Free Consultation",
-    description: "Reach out to EclipticLink for custom software development, AI solutions, and dedicated team hiring.",
+    title: "Contact | Tell Us Where Leads Stall",
+    description:
+      "Share your tools and process. We identify where automation can help and come back with a practical next step.",
     url: `${SITE_URL}/contact`,
   },
 };
@@ -32,47 +41,56 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <section className="bg-brand-dark px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
-        <div className="mx-auto max-w-7xl text-center">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact Us" }]} className="mb-6" />
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            Contact Us
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200">
-            Whether you&apos;re based in the US, UK, Pakistan, Saudi Arabia, or the
-            UAE—we&apos;d love to hear about your project. Get a free consultation
-            and let&apos;s build something great together.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="Tell us where leads stall today"
+        description="Whether response time, CRM hygiene, follow-up, booking, or a custom build - start with a short picture of your process. We will take it from there."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact Us" }]}
+      />
 
-      <section className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8" aria-labelledby="contact-heading">
-        <div className="mx-auto max-w-7xl">
+      <section className="section-pad bg-atmosphere" aria-labelledby="contact-heading">
+        <div className="container-site">
           <h2 id="contact-heading" className="sr-only">
             Contact details and form
           </h2>
-          <div className="grid gap-16 lg:grid-cols-5 lg:gap-12">
+          <div className="grid gap-14 lg:grid-cols-5 lg:gap-16">
             <div className="lg:col-span-2">
-              <h3 className="text-lg font-semibold text-zinc-900">Get in touch</h3>
-              <div className="mt-6 space-y-8">
-                <div>
-                  <span className="text-sm font-semibold uppercase tracking-wider text-zinc-500">
+              <p className="eyebrow-on-light">Reach us</p>
+              <h3 className="mt-3 font-display text-2xl font-semibold text-brand-blue">
+                What happens after you submit
+              </h3>
+              <ol className="mt-6 space-y-5" role="list">
+                {[
+                  "We review your current process and tools.",
+                  "We identify where automation can protect opportunity.",
+                  "We come back with a practical next step.",
+                ].map((step, i) => (
+                  <li key={step} className="flex gap-3 text-sm leading-relaxed text-text-muted">
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-teal/15 font-display text-xs font-semibold text-brand-blue">
+                      {i + 1}
+                    </span>
+                    {step}
+                  </li>
+                ))}
+              </ol>
+              <div className="mt-10 space-y-8">
+                <div className="border-t border-border-subtle pt-6">
+                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">
                     Call us
                   </span>
                   <a
                     href="tel:+923335934448"
-                    className="mt-2 block text-zinc-700 hover:text-zinc-900 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-zinc-900 focus-visible:outline-none"
+                    className="mt-2 block font-medium text-brand-blue transition hover:text-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
                   >
                     +92 333 5934448
                   </a>
                 </div>
-                <div>
-                  <span className="text-sm font-semibold uppercase tracking-wider text-zinc-500">
+                <div className="border-t border-border-subtle pt-6">
+                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">
                     Email us
                   </span>
                   <a
                     href="mailto:info@eclipticlink.com"
-                    className="mt-2 block text-zinc-700 hover:text-zinc-900 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-zinc-900 focus-visible:outline-none"
+                    className="mt-2 block font-medium text-brand-blue transition hover:text-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
                   >
                     info@eclipticlink.com
                   </a>

@@ -9,7 +9,7 @@ export const BASE_OG = {
       url: `${SITE_URL}/og-image.png`,
       width: 1200,
       height: 630,
-      alt: "EclipticLink — Custom Software Development & AI Solutions",
+      alt: "EclipticLink, lead systems and CRM workflows",
     },
   ],
 };

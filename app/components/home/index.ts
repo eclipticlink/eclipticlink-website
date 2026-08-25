@@ -1,0 +1,12 @@
+export { HomeHero } from "./home-hero";
+export { HomeProblem } from "./home-problem";
+export { IdealClient } from "./ideal-client";
+export { WhatAreYouTryingToFix } from "./what-are-you-trying-to-fix";
+export { AutomationPath } from "./automation-path";
+export { BeforeAfter } from "./before-after";
+export { AutomationEcosystem } from "./automation-ecosystem";
+export { TechnologySecond } from "./technology-second";
+export { HomeServicesLadder } from "./home-services-ladder";
+export { DiyVsEclipticLink } from "./diy-vs-eclipticlink";
+export { CaseStudies } from "./case-studies";
+export { HomeProcessSection, HomeEngageSection } from "./home-process-engage";

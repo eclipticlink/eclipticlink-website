@@ -2,32 +2,36 @@
 
 import { useState, useCallback } from "react";
 
-const PER_PAGE = 3;
+const PER_PAGE = 2;
 
 const testimonials = [
   {
     quote:
-      "EclipticLink is truly the best. Always helpful and prompt—they are great at fixing things when stuff changes and get it done quickly at a fair price.",
+      "EclipticLink is truly the best. Always helpful and prompt, they are great at fixing things when stuff changes and get it done quickly at a fair price.",
     name: "Steve V.",
     location: "London, GB",
+    theme: "Prompt support",
   },
   {
     quote:
       "Worked well with EclipticLink and communication was great throughout the whole project. Would work with them again in the future and I highly recommend them.",
     name: "Artwell K.",
     location: "Huddersfield, GB",
+    theme: "Clear communication",
   },
   {
     quote:
-      "EclipticLink helped with very short notice and did exactly what we needed. Much appreciate the guidance and support—will definitely be in touch for future work!",
+      "EclipticLink helped with very short notice and did exactly what we needed. Much appreciate the guidance and support, will definitely be in touch for future work!",
     name: "Huzaifa Sarmad",
     location: "Islamabad, Pakistan",
+    theme: "Short-notice delivery",
   },
   {
     quote:
       "Hired EclipticLink for a 2-part project, first part is complete with no issues whatsoever. Great communication and kept me updated throughout. Would recommend & use again! Looking forward to a seamless and impressive second part of the project.",
     name: "Corrine J.",
     location: "Luton, GB",
+    theme: "Ongoing partnership",
   },
 ];
 
@@ -35,18 +39,23 @@ function TestimonialCard({
   quote,
   name,
   location,
+  theme,
 }: {
   quote: string;
   name: string;
   location: string;
+  theme: string;
 }) {
   return (
-    <blockquote className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-      <p className="text-zinc-700 leading-relaxed">{quote}</p>
-      <footer className="mt-4">
+    <blockquote className="card-lift flex h-full flex-col border-l-2 border-brand-teal bg-surface/80 px-6 py-5">
+      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-brand-teal">
+        {theme}
+      </p>
+      <p className="mt-3 flex-1 leading-relaxed text-slate-700">&ldquo;{quote}&rdquo;</p>
+      <footer className="mt-5">
         <cite className="not-italic">
-          <span className="font-semibold text-brand-blue">{name}</span>
-          <span className="block text-sm text-zinc-600">{location}</span>
+          <span className="font-display font-semibold text-brand-blue">{name}</span>
+          <span className="mt-0.5 block text-sm text-text-muted">{location}</span>
         </cite>
       </footer>
     </blockquote>
@@ -78,60 +87,57 @@ export function TestimonialSlider() {
             return (
               <div
                 key={page}
-                className="grid min-w-full grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
-                aria-hidden={page !== pageIndex}
+                className="grid w-full shrink-0 gap-5 sm:grid-cols-2"
+                style={{ minWidth: "100%" }}
               >
-                {slice.map((t, i) => (
-                  <TestimonialCard
-                    key={start + i}
-                    quote={t.quote}
-                    name={t.name}
-                    location={t.location}
-                  />
+                {slice.map((t) => (
+                  <TestimonialCard key={t.name} {...t} />
                 ))}
               </div>
             );
           })}
         </div>
       </div>
-      {totalPages > 1 && (
-        <div className="mt-8 flex items-center justify-center gap-2">
+
+      {totalPages > 1 ? (
+        <div className="mt-8 flex items-center justify-center gap-3">
           <button
             type="button"
             onClick={() => goTo(pageIndex - 1)}
-            className="rounded-full p-2 text-zinc-500 transition hover:bg-zinc-100 hover:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border-subtle bg-surface text-brand-blue transition hover:border-brand-teal hover:bg-brand-teal-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal"
             aria-label="Previous testimonials"
           >
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <div className="flex gap-1.5">
+          <div className="flex gap-2" role="tablist" aria-label="Testimonial pages">
             {Array.from({ length: totalPages }, (_, i) => (
               <button
                 key={i}
                 type="button"
-                onClick={() => goTo(i)}
-                className={`h-2 rounded-full transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 ${
-                  i === pageIndex ? "w-6 bg-brand-teal" : "w-2 bg-zinc-300 hover:bg-zinc-400"
+                role="tab"
+                aria-selected={i === pageIndex}
+                onClick={() => setPageIndex(i)}
+                className={`h-2.5 w-2.5 rounded-full transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal ${
+                  i === pageIndex ? "bg-brand-teal" : "bg-border-subtle hover:bg-brand-teal/50"
                 }`}
-                aria-label={`Go to slide ${i + 1}`}
-                aria-current={i === pageIndex ? "true" : undefined}
+                aria-label={`Go to page ${i + 1}`}
               />
             ))}
           </div>
           <button
             type="button"
             onClick={() => goTo(pageIndex + 1)}
-            className="rounded-full p-2 text-zinc-500 transition hover:bg-zinc-100 hover:text-brand-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border-subtle bg-surface text-brand-blue transition hover:border-brand-teal hover:bg-brand-teal-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal"
             aria-label="Next testimonials"
           >
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }
