@@ -39,7 +39,7 @@ export const HIRE_TEAM_POSITIONS: Record<HireTeamCategory, readonly string[]> = 
   "Machine Learning": [
     "Machine Learning Engineer",
     "Deep Learning Engineer",
-    "MlOps",
+    "MLOps",
   ],
   "Mobile Application": [
     "Flutter Developer",
@@ -50,24 +50,24 @@ export const HIRE_TEAM_POSITIONS: Record<HireTeamCategory, readonly string[]> = 
   ],
   Automation: [
     "Automation Engineer",
-    "GHL Specialist",
-    "n8n automation Developer",
-    "Zapier automation Expert",
-    "make automation Specialist",
+    "CRM Funnel Specialist",
+    "Workflow Orchestration Developer",
+    "App Integration Specialist",
+    "Process Automation Specialist",
   ],
   Backend: [
-    "Nodejs Developer",
+    "Node.js Developer",
     "Golang Developer",
     "Python Developer",
     "PHP Developer",
     "C# Developer",
   ],
   Frontend: [
-    "Reactjs Developer",
+    "React Developer",
     "Angular Developer",
-    "Vuejs Developer",
+    "Vue.js Developer",
     "UI/UX Developer",
-    "Wordpress Developer",
+    "WordPress Developer",
   ],
   DevOps: [
     "DevOps Engineer",
@@ -134,6 +134,11 @@ const roleDescriptions: Record<string, Omit<HireRole, "title" | "slug" | "catego
     longDescription:
       "MLOps engineers operationalize machine learning at scale. They build and maintain CI/CD for models, feature pipelines, experiment tracking, and model registries; implement monitoring, drift detection, and retraining workflows; and ensure governance and compliance. By applying DevOps practices to the ML lifecycle, our MLOps specialists help you ship models faster and keep them accurate and reliable in production.",
   },
+  MLOps: {
+    shortDescription: "Operationalize ML models with CI/CD, monitoring, and governance.",
+    longDescription:
+      "MLOps engineers operationalize machine learning at scale. They build and maintain CI/CD for models, feature pipelines, experiment tracking, and model registries; implement monitoring, drift detection, and retraining workflows; and ensure governance and compliance. By applying DevOps practices to the ML lifecycle, our MLOps specialists help you ship models faster and keep them accurate and reliable in production.",
+  },
   "Flutter Developer": {
     shortDescription: "Build cross-platform mobile and desktop apps with Flutter.",
     longDescription:
@@ -164,25 +169,30 @@ const roleDescriptions: Record<string, Omit<HireRole, "title" | "slug" | "catego
     longDescription:
       "Automation Engineers map how work actually moves through your business, then build reliable systems around it. They choose the right tools, handle edge cases, and leave documentation your team can own. Expect measurable time saved, not a pile of fragile zaps nobody wants to touch.",
   },
-  "GHL Specialist": {
-    shortDescription: "Make GoHighLevel carry lead capture, nurture, and booking the way your team sells.",
+  "CRM Funnel Specialist": {
+    shortDescription: "Make your CRM and funnels carry lead capture, nurture, and booking the way your team sells.",
     longDescription:
-      "GHL Specialists configure funnels, pipelines, calendars, and integrations inside GoHighLevel so inbound interest does not sit unanswered. From clean setup to advanced workflows and reporting, they align the platform with how your sales process really works.",
+      "CRM Funnel Specialists configure pipelines, calendars, and lead journeys so inbound interest does not sit unanswered. Whether you run GoHighLevel, HubSpot, Zoho, or a mix, they align the stack with how your sales process really works - from clean setup to advanced workflows and reporting.",
   },
-  "n8n automation Developer": {
-    shortDescription: "Build durable n8n workflows for integrations and process orchestration.",
+  "Workflow Orchestration Developer": {
+    shortDescription: "Build durable multi-app workflows for integrations and process orchestration.",
     longDescription:
-      "n8n developers connect apps, APIs, and databases with clear error handling and retries. Whether you self-host or run in the cloud, they leave workflows your team can read, maintain, and extend without starting over.",
+      "Workflow Orchestration Developers connect apps, APIs, and databases with clear error handling and retries - often in n8n or similar orchestration tools. Whether you self-host or run in the cloud, they leave workflows your team can read, maintain, and extend without starting over.",
   },
-  "Zapier automation Expert": {
+  "App Integration Specialist": {
     shortDescription: "Connect the apps your team lives in and cut the copy-paste tax.",
     longDescription:
-      "Zapier experts design multi-step Zaps with filters, paths, and sensible cost control. They document what was built so sales, marketing, and ops keep moving without a full-time Zap babysitter.",
+      "App Integration Specialists design multi-step connections with filters, paths, and sensible cost control - including Zapier when it fits. They document what was built so sales, marketing, and ops keep moving without a full-time babysitter for every integration.",
   },
-  "make automation Specialist": {
-    shortDescription: "Design Make scenarios for complex, branching operational workflows.",
+  "Process Automation Specialist": {
+    shortDescription: "Design branching operational workflows when simpler tools run out of room.",
     longDescription:
-      "Make specialists build scenarios with multiple apps, branches, and transformations when simpler tools run out of room. The goal is sophisticated automation that stays understandable months later.",
+      "Process Automation Specialists build scenarios with multiple apps, branches, and transformations - often in Make or similar tools when the process is complex. The goal is sophisticated automation that stays understandable months later.",
+  },
+  "Node.js Developer": {
+    shortDescription: "Backend and API development with Node.js and modern JavaScript/TypeScript.",
+    longDescription:
+      "Node.js Developers build scalable backends, APIs, and serverless functions using Node.js and TypeScript or JavaScript. They design REST and GraphQL APIs, integrate databases and message queues, and follow security and performance best practices. Our Node.js developers deliver fast, maintainable server-side applications and microservices for web and mobile products.",
   },
   "Nodejs Developer": {
     shortDescription: "Backend and API development with Node.js and modern JavaScript/TypeScript.",
@@ -209,15 +219,25 @@ const roleDescriptions: Record<string, Omit<HireRole, "title" | "slug" | "catego
     longDescription:
       "C# Developers build enterprise applications, APIs, and services using C# and the .NET platform. They work with ASP.NET Core, Entity Framework, and Azure or on-premises deployment targets. Our C# developers deliver robust, scalable backends for line-of-business applications, integrations, and cloud-native services.",
   },
+  "React Developer": {
+    shortDescription: "Modern web UIs with React and ecosystem tools.",
+    longDescription:
+      "React Developers build responsive, accessible web applications using React and the broader ecosystem (Next.js, state management, testing). They componentize UIs, integrate with APIs, and optimize for performance and SEO. Our React developers deliver maintainable frontends that align with your design system and business requirements.",
+  },
   "Reactjs Developer": {
     shortDescription: "Modern web UIs with React and ecosystem tools.",
     longDescription:
-      "React.js Developers build responsive, accessible web applications using React and the broader ecosystem (Next.js, state management, testing). They componentize UIs, integrate with APIs, and optimize for performance and SEO. Our React developers deliver maintainable frontends that align with your design system and business requirements.",
+      "React Developers build responsive, accessible web applications using React and the broader ecosystem (Next.js, state management, testing). They componentize UIs, integrate with APIs, and optimize for performance and SEO. Our React developers deliver maintainable frontends that align with your design system and business requirements.",
   },
   "Angular Developer": {
     shortDescription: "Enterprise web applications with Angular and TypeScript.",
     longDescription:
       "Angular Developers build enterprise-scale web applications using Angular and TypeScript. They structure modular, testable frontends with RxJS and Angular best practices and integrate with REST or GraphQL backends. Our Angular developers deliver consistent, maintainable applications for complex business workflows and large teams.",
+  },
+  "Vue.js Developer": {
+    shortDescription: "Reactive UIs and SPAs with Vue.js and Nuxt.",
+    longDescription:
+      "Vue.js Developers create reactive, component-based UIs and single-page applications with Vue 3 and the Composition API. They use Pinia or Vuex, integrate with backends, and optionally leverage Nuxt for SSR and static sites. Our Vue developers deliver intuitive, performant frontends with a focus on developer experience and long-term maintainability.",
   },
   "Vuejs Developer": {
     shortDescription: "Reactive UIs and SPAs with Vue.js and Nuxt.",
@@ -228,6 +248,11 @@ const roleDescriptions: Record<string, Omit<HireRole, "title" | "slug" | "catego
     shortDescription: "Implement designs and design systems with a focus on usability and code.",
     longDescription:
       "UI/UX Developers bridge design and implementation: they translate wireframes and high-fidelity designs into accessible, responsive interfaces and maintain design systems. They use HTML, CSS, and JavaScript or TypeScript and care about usability, performance, and consistency. Our UI/UX developers ensure that what you ship matches design intent and meets user and business goals.",
+  },
+  "WordPress Developer": {
+    shortDescription: "Custom themes, plugins, and WordPress-based sites and e-commerce.",
+    longDescription:
+      "WordPress Developers build and customize WordPress sites with custom themes, plugins, and integrations. They follow security and performance best practices and work with WooCommerce and page builders when needed. Our WordPress developers deliver content sites, blogs, and e-commerce solutions that are maintainable and aligned with your brand and goals.",
   },
   "Wordpress Developer": {
     shortDescription: "Custom themes, plugins, and WordPress-based sites and e-commerce.",
@@ -326,13 +351,23 @@ function buildRoles(): HireRole[] {
 
 export const HIRE_TEAM_ROLES: HireRole[] = buildRoles();
 
+/** Old platform-first / casing slugs → current outcome-first slugs */
+export const ROLE_SLUG_ALIASES: Record<string, string> = {
+  "ghl-specialist": "crm-funnel-specialist",
+  "n8n-automation-developer": "workflow-orchestration-developer",
+  "zapier-automation-expert": "app-integration-specialist",
+  "make-automation-specialist": "process-automation-specialist",
+  "reactjs-developer": "react-developer",
+};
+
 const slugToRole = new Map<string, HireRole>();
 for (const role of HIRE_TEAM_ROLES) {
   slugToRole.set(role.slug, role);
 }
 
 export function getRoleBySlug(slug: string): HireRole | undefined {
-  return slugToRole.get(slug);
+  const canonical = ROLE_SLUG_ALIASES[slug] ?? slug;
+  return slugToRole.get(canonical) ?? slugToRole.get(slug);
 }
 
 export function getAllRoleSlugs(): string[] {

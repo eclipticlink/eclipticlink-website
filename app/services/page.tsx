@@ -47,8 +47,8 @@ const solutionGroups = [
   {
     title: "Automate your operations",
     body: "Business process automation, workflow orchestration, and integrations that remove repetitive work.",
-    href: "/services/ai-automations",
-    cta: "Explore automation systems",
+    href: "/services/operations-automation",
+    cta: "Explore operations automation",
   },
   {
     title: "Add intelligence",
@@ -81,7 +81,13 @@ export default function ServicesPage() {
   const secondary = solutionGroups.slice(1);
   const supporting = services.filter(
     (s) =>
-      !["ai-automations", "ai", "custom-software-development", "cloud-devops"].includes(s.id)
+      ![
+        "ai-automations",
+        "operations-automation",
+        "ai",
+        "custom-software-development",
+        "cloud-devops",
+      ].includes(s.id)
   );
 
   return (

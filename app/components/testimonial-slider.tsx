@@ -11,6 +11,7 @@ const testimonials = [
     name: "Steve V.",
     location: "London, GB",
     theme: "Prompt support",
+    engagement: "Project · Systems delivery",
   },
   {
     quote:
@@ -18,13 +19,7 @@ const testimonials = [
     name: "Artwell K.",
     location: "Huddersfield, GB",
     theme: "Clear communication",
-  },
-  {
-    quote:
-      "EclipticLink helped with very short notice and did exactly what we needed. Much appreciate the guidance and support, will definitely be in touch for future work!",
-    name: "Huzaifa Sarmad",
-    location: "Islamabad, Pakistan",
-    theme: "Short-notice delivery",
+    engagement: "Project · End-to-end delivery",
   },
   {
     quote:
@@ -32,6 +27,14 @@ const testimonials = [
     name: "Corrine J.",
     location: "Luton, GB",
     theme: "Ongoing partnership",
+    engagement: "Multi-phase project",
+  },
+  {
+    quote: "Excellent work - will use again",
+    name: "Nicholas S.",
+    location: "Palmers Green, GB",
+    theme: "Reliable delivery",
+    engagement: "Project · Website feature",
   },
 ];
 
@@ -40,11 +43,13 @@ function TestimonialCard({
   name,
   location,
   theme,
+  engagement,
 }: {
   quote: string;
   name: string;
   location: string;
   theme: string;
+  engagement: string;
 }) {
   return (
     <blockquote className="card-lift flex h-full flex-col border-l-2 border-brand-teal bg-surface/80 px-6 py-5">
@@ -56,6 +61,7 @@ function TestimonialCard({
         <cite className="not-italic">
           <span className="font-display font-semibold text-brand-blue">{name}</span>
           <span className="mt-0.5 block text-sm text-text-muted">{location}</span>
+          <span className="mt-1 block text-xs text-slate-500">{engagement}</span>
         </cite>
       </footer>
     </blockquote>

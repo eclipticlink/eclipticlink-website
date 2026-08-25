@@ -63,6 +63,46 @@ export const services: Service[] = [
     ],
   },
   {
+    id: "operations-automation",
+    title: "Operations Automation",
+    summary:
+      "Workflows that remove repetitive ops work - approvals, handoffs, data sync, and internal process automation.",
+    details:
+      "We map how work actually moves through operations, then build systems that cut copy-paste, chase, and manual checks. Approvals, ticket routing, document handoffs, and cross-tool sync - designed so your team spends time on exceptions, not the routine.",
+    metaDescription:
+      "Operations automation for approvals, handoffs, data sync, and internal workflows. Built around your process, not a platform pitch.",
+    subServices: [
+      {
+        id: "business-process-automation",
+        title: "Business Process Automation",
+        summary: "Turn repetitive ops steps into reliable, owned workflows.",
+        details:
+          "We document the process, remove dead ends, and automate the steps that should not need a human every time - with clear ownership when something needs judgment.",
+      },
+      {
+        id: "ops-workflow-orchestration",
+        title: "Workflow Orchestration",
+        summary: "Multi-step flows across the tools your ops team already uses.",
+        details:
+          "Approvals, notifications, status updates, and retries wired through n8n, Make, Zapier, or custom glue - so handoffs do not die in inboxes.",
+      },
+      {
+        id: "internal-data-sync",
+        title: "Internal Data Sync",
+        summary: "Keep systems of record aligned without spreadsheet babysitting.",
+        details:
+          "Sync customers, orders, tickets, and inventory between the apps ops relies on, with logging so you can see what moved and what failed.",
+      },
+      {
+        id: "ops-exception-handling",
+        title: "Exception & Escalation Paths",
+        summary: "Automation that knows when to involve a human.",
+        details:
+          "Rules and alerts for the cases that should not auto-complete - so the system stays trusted and people focus on the work that matters.",
+      },
+    ],
+  },
+  {
     id: "ai",
     title: "Intelligent Products",
     summary:

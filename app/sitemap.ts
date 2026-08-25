@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: SITE_URL, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
     { url: `${SITE_URL}/services`, lastModified: now, changeFrequency: "weekly", priority: 0.95 },
     { url: `${SITE_URL}/services/ai-automations`, lastModified: now, changeFrequency: "weekly", priority: 0.98 },
+    { url: `${SITE_URL}/services/operations-automation`, lastModified: now, changeFrequency: "weekly", priority: 0.96 },
     { url: `${SITE_URL}/hire`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/blogs`, lastModified: now, changeFrequency: "weekly", priority: 0.88 },
     { url: `${SITE_URL}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
@@ -27,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const servicePages: MetadataRoute.Sitemap = services
-    .filter((service) => service.id !== "ai-automations")
+    .filter((service) => service.id !== "ai-automations" && service.id !== "operations-automation")
     .map((service) => ({
       url: `${SITE_URL}/services/${service.id}`,
       lastModified: now,

@@ -16,14 +16,15 @@ const mainNavLinks = [
 
 const serviceLinksLeft = [
   { label: "Lead & CRM Systems", href: "/services/ai-automations" },
+  { label: "Operations Automation", href: "/services/operations-automation" },
   { label: "Intelligent Products", href: "/services/ai" },
   { label: "Custom Software", href: "/services/custom-software-development" },
-  { label: "Mobile Apps", href: "/services/mobile-app-development" },
 ];
 
 const serviceLinksRight = [
   { label: "Cloud & DevOps", href: "/services/cloud-devops" },
   { label: "Data & Analytics", href: "/services/big-data" },
+  { label: "Mobile Apps", href: "/services/mobile-app-development" },
   { label: "UI/UX Design", href: "/services/ui-ux-design" },
 ];
 
@@ -197,8 +198,8 @@ export function Header() {
                       Services for revenue and product teams
                     </h3>
                     <p className="mt-2 max-w-xl text-sm leading-relaxed text-text-muted">
-                      Lead and CRM systems on GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier,
-                      with product and software depth when you need to go further.
+                      Lead systems, operations workflows, and product depth when the process
+                      needs more than another tool.
                     </p>
                   </div>
                   <div className="grid min-w-0 grid-cols-2 gap-x-2 gap-y-px px-3 py-3">
@@ -306,8 +307,8 @@ export function Header() {
                       Hire automation &amp; AI specialists
                     </h3>
                     <p className="mt-2 max-w-xl text-sm leading-relaxed text-text-muted">
-                      Scale with vetted automation experts, AI engineers, and full-stack talent.
-                      Pick a role or schedule a free consultation.
+                      Scale with vetted specialists for lead systems, operations workflows,
+                      AI, and full-stack work. Pick a role or request a consultation.
                     </p>
                   </div>
                   <div className="grid grid-cols-[1fr_1.15fr_1.5fr] gap-px bg-border-subtle">

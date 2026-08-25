@@ -82,10 +82,10 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="tel:+923335934448"
+                  href="tel:+923438788662"
                   className="inline-flex min-h-11 items-center text-sm text-white/80 transition hover:text-brand-teal focus-visible:rounded focus-visible:text-brand-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
                 >
-                  +92 333 5934448
+                  +92 343 8788662
                 </a>
               </li>
               <li>

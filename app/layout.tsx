@@ -109,7 +109,7 @@ const organizationJsonLd = {
     { "@type": "Country", name: "Saudi Arabia" },
     { "@type": "Country", name: "United Arab Emirates" },
   ],
-  telephone: "+923335934448",
+  telephone: "+923438788662",
   email: "info@eclipticlink.com",
   sameAs: [
     "https://www.facebook.com/profile.php?id=61584739395956",
@@ -119,7 +119,7 @@ const organizationJsonLd = {
   contactPoint: [
     {
       "@type": "ContactPoint",
-      telephone: "+923335934448",
+      telephone: "+923438788662",
       contactType: "sales",
       email: "info@eclipticlink.com",
       availableLanguage: ["English"],
