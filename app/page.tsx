@@ -1,43 +1,54 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { HeroBackgroundSlider } from "./components/hero-background-slider";
+import {
+  HomeEngageSection,
+  HomePipelineSection,
+  HomeProcessSection,
+  HomeUseCasesSection,
+} from "./components/home-rich-sections";
+import { Reveal } from "./components/reveal";
+import { SectionHeading } from "./components/section-heading";
 import { TestimonialSlider } from "./components/testimonial-slider";
+import { Button } from "./components/ui/button";
 import { BASE_OG, SITE_URL } from "./lib/config";
 import { services } from "./services/data";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "AI Automation Agency | Lead Follow-Up & CRM | EclipticLink",
+    absolute: "EclipticLink | Lead Systems, CRM Workflows & Custom Software",
   },
   description:
-    "Hire an AI automation agency for lead follow-up & CRM workflows. Experts in GoHighLevel (GHL), n8n, Make, Zapier, HubSpot & Zoho — plus AI development & full-stack.",
+    "EclipticLink designs lead response, CRM, and booking workflows on GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier, and builds AI products and software when your stack needs more.",
   keywords: [
-    "AI automation agency",
-    "AI automation services",
     "lead follow-up automation",
-    "GoHighLevel automation",
+    "CRM workflow automation",
+    "GoHighLevel agency",
     "GHL automation",
     "n8n Make Zapier",
-    "HubSpot Zoho CRM automation",
+    "HubSpot Zoho CRM",
     "workflow automation company",
     "AI development company",
     "hire automation specialists",
+    "EclipticLink",
   ],
   alternates: { canonical: SITE_URL },
   openGraph: {
     ...BASE_OG,
-    title: "AI Automation Agency | Lead Follow-Up & CRM | EclipticLink",
+    title: "EclipticLink | Lead Systems, CRM Workflows & Custom Software",
     description:
-      "Automate leads, follow-ups & pipelines with GHL, n8n, Make, Zapier, HubSpot & Zoho. AI development and full-stack software from EclipticLink.",
+      "Follow-up and pipeline systems on GHL, HubSpot, Zoho, n8n, Make, and Zapier, with AI and product engineering when you need to go deeper.",
     url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Automation Agency | GHL, n8n, Make & Zapier",
+    title: "EclipticLink | Lead Systems & CRM Workflows",
     description:
-      "Lead follow-up & CRM automation experts. GoHighLevel, n8n, Make, Zapier, HubSpot & Zoho — plus AI development.",
+      "Faster follow-up, cleaner pipelines, and the engineering behind them. GoHighLevel, HubSpot, Zoho, n8n, Make, Zapier.",
   },
 };
+
+const platforms = ["GoHighLevel", "n8n", "Make", "Zapier", "HubSpot", "Zoho"];
 
 const faqJsonLd = {
   "@context": "https://schema.org",
@@ -45,66 +56,66 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "What AI automation platforms does EclipticLink work with?",
+      name: "Which platforms does EclipticLink work with?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We build and optimize automations on GoHighLevel (GHL), n8n, Make, Zapier, HubSpot, and Zoho—covering lead capture, follow-ups, CRM pipelines, nurture sequences, and booking workflows so your team spends less time on manual tasks.",
+        text: "Most of our client work lives in GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier. We connect those tools to how your sales and ops already run: capture, follow-up, pipeline hygiene, nurture, and booking.",
       },
     },
     {
       "@type": "Question",
-      name: "What AI automation and development services does EclipticLink offer?",
+      name: "What does EclipticLink typically deliver?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Our primary focus is AI automations: lead and follow-up systems, CRM and sales pipeline automation, workflow orchestration, AI-powered outreach, and omnichannel booking. We also offer AI development—chatbots, LLM/RAG solutions, and AI SaaS—plus full-stack web, mobile, cloud, and custom software when your product needs them.",
+        text: "Day to day we ship lead and CRM workflows, outreach sequences, and integrations across your stack. When a workflow is not enough, the same team builds chatbots, LLM-backed features, and the web, mobile, or cloud software around them.",
       },
     },
     {
       "@type": "Question",
-      name: "What is speed-to-lead and why does it matter for AI automations?",
+      name: "What is speed-to-lead, and why should we care?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Speed-to-lead is how fast you respond after someone opts in, calls, or submits a form. AI automations on GoHighLevel, HubSpot, Zoho, n8n, Make, or Zapier can reply in seconds with SMS and email, assign an owner, and start a nurture sequence—so hot leads do not go cold.",
+        text: "Speed-to-lead is how quickly someone hears back after a form, call, or chat. Buyers expect a reply while interest is still warm. Well-built workflows can send SMS and email, assign an owner, and start nurture in seconds, so your team is not racing a spreadsheet.",
       },
     },
     {
       "@type": "Question",
-      name: "Will you be able to increase the number of people in your team if necessary?",
+      name: "Can you scale the team up or down mid-project?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "If you wish to partly reduce the project work intensity or, on the contrary, to increase it at times, we are always ready to adapt. When necessary, we will easily involve more team members in your project to meet your expectations.",
+        text: "Yes. If scope expands or you need to ease intensity for a stretch, we adjust capacity. Extra specialists can join without restarting the relationship from zero.",
       },
     },
     {
       "@type": "Question",
-      name: "What control do you have over project development?",
+      name: "How much visibility do we get during delivery?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We review project requirements, analyze them, and inform you of estimation results. Once you are fine with the cost and time, we create a project report and proposal for review. Once finalized, we move to the development stage.",
+        text: "We review requirements, share an estimate, and only move forward once you are comfortable with cost and timing. From there you get a clear proposal, milestones, and regular progress, not black-box delivery.",
       },
     },
     {
       "@type": "Question",
-      name: "How long does it take to start my automation or product work?",
+      name: "How soon can work begin?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "After we review your requirements and you approve the estimation and proposal, we move quickly to implementation. Timeline depends on scope—we will give you a clear timeline in the proposal.",
+        text: "Once requirements are clear and the proposal is approved, we start quickly. Exact timing depends on scope; the proposal will spell out the calendar so there are no surprises.",
       },
     },
     {
       "@type": "Question",
-      name: "How do we assure privacy and confidentiality?",
+      name: "How do you handle privacy and confidentiality?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We sign NDAs and Confidentiality Agreements as required. All our employees are full-time and bound by company Confidentiality and Non-Disclosure clauses.",
+        text: "We sign NDAs when needed. The people on your work are full-time team members covered by our confidentiality agreements.",
       },
     },
     {
       "@type": "Question",
-      name: "Should I be familiar with technical details to work with you?",
+      name: "Do we need to be technical to work with you?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. You do not need to be an expert in automation tools or software development—we are. We explain unclear moments and the essence of all stages. You need a clear vision of what you want to achieve; we help make it a reality.",
+        text: "No. Bring a clear sense of the outcome you want. We handle the tools, architecture, and trade-offs, and we explain decisions in plain language along the way.",
       },
     },
   ],
@@ -115,6 +126,41 @@ const breadcrumbJsonLd = {
   "@type": "BreadcrumbList",
   itemListElement: [{ "@type": "ListItem", position: 1, name: "EclipticLink", item: SITE_URL }],
 };
+
+const faqs = [
+  {
+    q: "Which platforms does EclipticLink work with?",
+    a: "Most of our client work lives in GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier. We connect those tools to how your sales and ops already run: capture, follow-up, pipeline hygiene, nurture, and booking.",
+  },
+  {
+    q: "What does EclipticLink typically deliver?",
+    a: "Day to day we ship lead and CRM workflows, outreach sequences, and integrations across your stack. When a workflow is not enough, the same team builds chatbots, LLM-backed features, and the web, mobile, or cloud software around them.",
+  },
+  {
+    q: "What is speed-to-lead, and why should we care?",
+    a: "Speed-to-lead is how quickly someone hears back after a form, call, or chat. Buyers expect a reply while interest is still warm. Well-built workflows can send SMS and email, assign an owner, and start nurture in seconds, so your team is not racing a spreadsheet.",
+  },
+  {
+    q: "Can you scale the team up or down mid-project?",
+    a: "Yes. If scope expands or you need to ease intensity for a stretch, we adjust capacity. Extra specialists can join without restarting the relationship from zero.",
+  },
+  {
+    q: "How much visibility do we get during delivery?",
+    a: "We review requirements, share an estimate, and only move forward once you are comfortable with cost and timing. From there you get a clear proposal, milestones, and regular progress, not black-box delivery.",
+  },
+  {
+    q: "How soon can work begin?",
+    a: "Once requirements are clear and the proposal is approved, we start quickly. Exact timing depends on scope; the proposal will spell out the calendar so there are no surprises.",
+  },
+  {
+    q: "How do you handle privacy and confidentiality?",
+    a: "We sign NDAs when needed. The people on your work are full-time team members covered by our confidentiality agreements.",
+  },
+  {
+    q: "Do we need to be technical to work with you?",
+    a: "No. Bring a clear sense of the outcome you want. We handle the tools, architecture, and trade-offs, and we explain decisions in plain language along the way.",
+  },
+];
 
 export default function Home() {
   return (
@@ -127,401 +173,418 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
+
       {/* Hero */}
       <section
-        className="relative min-h-128 overflow-hidden px-4 py-24 text-white sm:min-h-144 sm:px-6 sm:py-32 lg:min-h-160 lg:px-8"
+        className="relative flex min-h-[min(92vh,48rem)] flex-col overflow-hidden text-white sm:min-h-[min(88vh,50rem)]"
         aria-labelledby="hero-heading"
       >
         <HeroBackgroundSlider />
         <div
-          className="absolute inset-0 z-1 bg-linear-to-b from-brand-dark/35 via-brand-dark/55 to-brand-dark/85"
+          className="absolute inset-0 z-1 bg-linear-to-b from-brand-dark/55 via-brand-dark/75 to-brand-dark/95"
           aria-hidden="true"
         />
-        <div className="relative z-10 mx-auto flex min-h-112 max-w-7xl flex-col items-center justify-center text-center sm:min-h-128 lg:min-h-144">
+        <div
+          className="absolute inset-0 z-1 opacity-25"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.05) 1px, transparent 1px)",
+            backgroundSize: "56px 56px",
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="container-site relative z-10 flex flex-1 flex-col items-center justify-center px-4 py-24 text-center sm:px-6 sm:py-28 lg:px-8">
+          <p className="eyebrow animate-fade-up">EclipticLink</p>
           <h1
             id="hero-heading"
-            className="mx-auto max-w-4xl text-4xl font-bold tracking-tight drop-shadow-sm sm:text-5xl lg:text-6xl"
+            className="animate-fade-up-delay mx-auto mt-4 max-w-4xl font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl"
           >
-            AI Automation Agency for Leads, Follow-Ups &amp; CRM
+            Turn inbound interest into booked conversations
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-200 drop-shadow-sm">
-            EclipticLink is an AI automation agency that builds lead follow-up and
-            CRM workflows on GoHighLevel (GHL), n8n, Make, Zapier, HubSpot, and
-            Zoho—so speed-to-lead stays high and your pipeline never stalls. Need
-            more than workflows? We also deliver custom AI development and
-            full-stack software.
+          <p className="animate-fade-up-delay-2 mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
+            We design the follow-up, CRM, and booking workflows sales teams actually rely on,
+            across GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier.
           </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex h-12 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-teal px-6 text-base font-semibold text-brand-dark shadow-lg shadow-brand-dark/30 transition hover:bg-brand-teal-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
-            >
-              Get a free automation consult
-            </Link>
-            <Link
-              href="/services/ai-automations"
-              className="inline-flex h-12 min-h-11 cursor-pointer items-center justify-center rounded-lg border-2 border-white/80 bg-white/5 px-6 text-base font-semibold text-white backdrop-blur-sm transition hover:bg-white/15 hover:border-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
-            >
-              Explore AI Automations
-            </Link>
+          <div className="animate-fade-up-delay-2 mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Button href="/contact" variant="primary" size="lg">
+              Book a discovery call
+            </Button>
+            <Button href="/services/ai-automations" variant="secondary" size="lg">
+              See how we work
+            </Button>
           </div>
         </div>
-      </section>
 
-      {/* Services */}
-      <section id="services" className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8" aria-labelledby="services-heading">
-        <div className="mx-auto max-w-7xl">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 id="services-heading" className="text-3xl font-bold tracking-tight text-brand-blue sm:text-4xl">
-              AI Automation, AI Development &amp; Full-Stack Services
-            </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg leading-relaxed text-zinc-600">
-              Primary: AI automation services for GHL, n8n, Make, Zapier, HubSpot &amp; Zoho.
-              Next: AI development. Then custom software, mobile, and cloud when you need to build.
-            </p>
-          </div>
-          <div className="mx-auto mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <Link
-                key={service.id}
-                href={`/services/${service.id}`}
-                className="group flex flex-col rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm transition hover:shadow-md hover:border-brand-teal-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
+        {/* Platforms, part of hero, not a separate band */}
+        <div className="relative z-10 border-t border-white/10 bg-brand-dark/55 px-4 py-5 backdrop-blur-md sm:px-6 sm:py-6 lg:px-8">
+          <div className="container-site">
+            <div className="flex flex-col items-center gap-4 lg:flex-row lg:justify-between lg:gap-8">
+              <p className="shrink-0 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-brand-teal/90">
+                Platforms we ship on
+              </p>
+              <ul
+                className="flex flex-wrap items-center justify-center gap-x-1 gap-y-2 lg:justify-end"
+                role="list"
               >
-                <h3 className="text-lg font-semibold text-brand-blue group-hover:text-brand-blue-hover">{service.title}</h3>
-                <p className="mt-2 flex-1 text-zinc-600 leading-relaxed">{service.summary}</p>
-                <span className="mt-4 inline-flex cursor-pointer items-center text-sm font-medium text-brand-teal transition group-hover:text-brand-teal-hover">
-                  Explore {service.title.toLowerCase()} services
-                  <svg className="ml-1 h-4 w-4 transition group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-              </Link>
-            ))}
-          </div>
-          <div className="mt-12 text-center">
-            <Link
-              href="/services"
-              className="inline-flex h-11 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-blue px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-blue active:scale-[0.98] motion-reduce:active:scale-100"
-            >
-              View all AI automation &amp; software services
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* About Us */}
-      <section className="bg-zinc-50 px-4 py-20 sm:px-6 sm:py-28 lg:px-8" aria-labelledby="about-heading">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <h2 id="about-heading" className="text-3xl font-bold tracking-tight text-brand-blue sm:text-4xl">
-                About EclipticLink
-              </h2>
-              <p className="mt-4 max-w-prose text-lg leading-relaxed text-zinc-600">
-                We help startups and enterprises automate growth—leads, follow-ups,
-                CRM pipelines, and customer journeys—using AI and modern automation
-                platforms. With years of combined experience, we deliver through
-                milestone-based and hourly engagement, dedicated project managers,
-                and a hands-on technical team.
-              </p>
-              <p className="mt-4 max-w-prose text-zinc-600 leading-relaxed">
-                From AI automations and custom AI development to full-stack web,
-                mobile, cloud, and UI/UX—we build what your business needs to scale
-                without drowning in manual work.
-              </p>
-              <div className="mt-8">
-                <Link
-                  href="/about"
-                  className="inline-flex h-11 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-blue px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-blue active:scale-[0.98] motion-reduce:active:scale-100"
-                >
-                  Learn more about EclipticLink
-                </Link>
-              </div>
-            </div>
-            <div className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm lg:p-8">
-              <h3 className="text-lg font-semibold text-brand-blue">Why work with us</h3>
-              <ul className="mt-4 space-y-3" role="list">
-                <li className="flex gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-teal text-brand-dark" aria-hidden="true">✓</span>
-                  <span className="text-zinc-600">Specialists in GHL, n8n, Make, Zapier, HubSpot &amp; Zoho</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-teal text-brand-dark" aria-hidden="true">✓</span>
-                  <span className="text-zinc-600">Automations that capture leads and never miss a follow-up</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-teal text-brand-dark" aria-hidden="true">✓</span>
-                  <span className="text-zinc-600">AI development and full-stack build when workflows are not enough</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-teal text-brand-dark" aria-hidden="true">✓</span>
-                  <span className="text-zinc-600">Transparent delivery: milestone-based or hourly</span>
-                </li>
+                {platforms.map((name, i) => (
+                  <li key={name} className="flex items-center">
+                    {i > 0 ? (
+                      <span className="mx-3 hidden h-3 w-px bg-white/20 sm:block" aria-hidden="true" />
+                    ) : null}
+                    <span className="px-1 font-display text-sm font-medium tracking-wide text-white/80 sm:text-[0.95rem]">
+                      {name}
+                    </span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us / Value proposition */}
-      <section className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8" aria-labelledby="why-heading">
-        <div className="mx-auto max-w-7xl">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 id="why-heading" className="text-3xl font-bold tracking-tight text-brand-blue sm:text-4xl">
-              Automate growth. Scale with confidence.
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-zinc-600">
-              We help businesses stop leaking leads and start running predictable, AI-assisted follow-up and operations.
-            </p>
-          </div>
-          <ul className="mx-auto mt-16 grid max-w-4xl gap-6 sm:grid-cols-2" role="list">
-            <li className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <h3 className="text-base font-semibold text-brand-blue">Platform expertise</h3>
-              <p className="mt-2 text-zinc-600 leading-relaxed">Deep experience with GoHighLevel, n8n, Make, Zapier, HubSpot, and Zoho—wired to how your sales and ops actually work.</p>
-            </li>
-            <li className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <h3 className="text-base font-semibold text-brand-blue">Outcome-focused automations</h3>
-              <p className="mt-2 text-zinc-600 leading-relaxed">Lead response, nurture sequences, pipeline hygiene, booking, and reminders designed for conversion—not busywork.</p>
-            </li>
-            <li className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <h3 className="text-base font-semibold text-brand-blue">Real-time visibility</h3>
-              <p className="mt-2 text-zinc-600 leading-relaxed">Milestone-based plans keep you involved with clear progress on every automation and product engagement.</p>
-            </li>
-            <li className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <h3 className="text-base font-semibold text-brand-blue">Full capability when needed</h3>
-              <p className="mt-2 text-zinc-600 leading-relaxed">Custom AI, web, mobile, and cloud teams ready when your automation layer needs a product or deeper integration.</p>
-            </li>
+      <HomePipelineSection />
+
+      {/* Services */}
+      <section id="services" className="section-pad bg-atmosphere" aria-labelledby="services-heading">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading
+              id="services-heading"
+              eyebrow="What we do"
+              title="Workflows that catch every lead. Products when you need more."
+              description="Most engagements start with the systems behind response time and pipeline hygiene. When the work calls for it, we also build intelligent products and the software that sits underneath."
+            />
+          </Reveal>
+          <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" role="list">
+            {services.map((service, i) => (
+              <li key={service.id}>
+                <Reveal delay={i * 70} className="h-full">
+                  <Link
+                    href={`/services/${service.id}`}
+                    className="card-lift group flex h-full flex-col rounded-xl border border-border-subtle bg-surface p-6 hover:border-brand-teal-muted hover:bg-brand-teal-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 sm:p-7"
+                  >
+                    <h3 className="font-display text-lg font-semibold text-brand-blue transition group-hover:text-brand-blue-hover">
+                      {service.title}
+                    </h3>
+                    <p className="mt-3 flex-1 text-[0.95rem] leading-relaxed text-text-muted">
+                      {service.summary}
+                    </p>
+                    <span className="link-arrow mt-5">
+                      Explore
+                      <svg
+                        className="h-4 w-4 shrink-0"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </Link>
+                </Reveal>
+              </li>
+            ))}
           </ul>
-          <p className="mx-auto mt-12 max-w-prose text-center text-zinc-600 leading-relaxed">
-            Stand apart with AI automation and software services tailored to your business—rapid, iterative delivery that keeps you in the loop from the first workflow to production.
-          </p>
+          <Reveal delay={200}>
+            <div className="mt-12 text-center">
+              <Button href="/services" variant="primaryBlue">
+                View all services
+              </Button>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* Hire Team / Staff Augmentation */}
-      <section className="bg-brand-dark px-4 py-20 text-white sm:px-6 sm:py-28 lg:px-8" aria-labelledby="hire-heading">
-        <div className="mx-auto max-w-7xl">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 id="hire-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Hire automation &amp; AI specialists
-            </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg leading-relaxed text-zinc-200">
-              Scale your capacity with vetted automation experts, AI engineers, and full-stack talent. From GHL and n8n specialists to AI and mobile developers—hire without the overhead.
-            </p>
-          </div>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/hire"
-              className="inline-flex h-12 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-teal px-6 text-base font-semibold text-brand-dark shadow-sm transition hover:bg-brand-teal-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
-            >
-              Hire dedicated specialists
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex h-12 min-h-11 cursor-pointer items-center justify-center rounded-lg border-2 border-brand-teal px-6 text-base font-semibold text-white transition hover:bg-brand-teal/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
-            >
-              Get a consultation
-            </Link>
+      <HomeUseCasesSection />
+
+      {/* About */}
+      <section className="section-pad bg-surface-muted" aria-labelledby="about-heading">
+        <div className="container-site">
+          <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+            <Reveal variant="left" className="min-w-0">
+              <p className="eyebrow-on-light">About us</p>
+              <span className="accent-line !mx-0" aria-hidden="true" />
+              <h2
+                id="about-heading"
+                className="mt-3 font-display text-3xl font-semibold tracking-tight text-brand-blue sm:text-4xl"
+              >
+                Built for teams who are tired of leaking opportunity
+              </h2>
+              <p className="mt-5 max-w-prose text-lg leading-relaxed text-text-muted">
+                EclipticLink partners with startups and established companies that already
+                generate interest, but lose it in slow replies, messy CRMs, and manual chase.
+              </p>
+              <p className="mt-4 max-w-prose leading-relaxed text-text-muted">
+                We put reliable systems around that work, then stay close when the next step
+                is a custom product, an intelligent assistant, or a full application.
+              </p>
+              <div className="mt-8">
+                <Button href="/about" variant="primaryBlue">
+                  Our story
+                </Button>
+              </div>
+            </Reveal>
+            <ul className="min-w-0 space-y-4" role="list">
+              {[
+                "Hands-on with GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier",
+                "Systems designed so inbound interest does not sit unanswered",
+                "Product and engineering depth when a workflow alone will not cut it",
+                "Clear delivery: milestones you can see, or flexible hourly capacity",
+              ].map((item, i) => (
+                <li key={item}>
+                  <Reveal delay={100 + i * 80}>
+                    <div className="card-lift rounded-lg border border-border-subtle bg-surface px-5 py-4 leading-relaxed text-slate-700">
+                      <span
+                        className="mr-3 inline-block h-1.5 w-1.5 rounded-full bg-brand-teal align-middle"
+                        aria-hidden="true"
+                      />
+                      {item}
+                    </div>
+                  </Reveal>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
 
-      {/* Our Work / Featured solutions */}
-      <section className="bg-zinc-50 px-4 py-20 sm:px-6 sm:py-28 lg:px-8" aria-labelledby="work-heading">
-        <div className="mx-auto max-w-7xl">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 id="work-heading" className="text-3xl font-bold tracking-tight text-brand-blue sm:text-4xl">
-              What we deliver
-            </h2>
-            <p className="mt-4 text-lg text-zinc-600">
-              AI automations that grow your pipeline, AI products that differentiate your business, and full-stack software when you need to build.
-            </p>
+      {/* Why choose */}
+      <section className="section-pad bg-atmosphere" aria-labelledby="why-heading">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading
+              id="why-heading"
+              eyebrow="Why EclipticLink"
+              title="Fewer dropped balls. More conversations that convert."
+              description="We care less about stacking tools and more about whether a lead gets a reply, a deal stays moving, and your team knows what happens next."
+            />
+          </Reveal>
+          <ol className="mx-auto mt-14 grid max-w-5xl gap-8 sm:grid-cols-2" role="list">
+            {[
+              {
+                n: "01",
+                title: "Platform fluency",
+                body: "We live in GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier, and we wire them to the way your sales and operations actually work.",
+              },
+              {
+                n: "02",
+                title: "Outcomes over busywork",
+                body: "Response time, nurture, stage hygiene, booking, and reminders are designed to protect conversion, not to generate more noise.",
+              },
+              {
+                n: "03",
+                title: "Visibility while we build",
+                body: "Milestone plans keep you involved. You always know what shipped, what is next, and what decisions still need you.",
+              },
+              {
+                n: "04",
+                title: "Room to go deeper",
+                body: "When the stack needs a product layer, an assistant, or a custom app, the same partnership can take you there without a handoff scramble.",
+              },
+            ].map((item, i) => (
+              <li key={item.n}>
+                <Reveal delay={i * 90} className="h-full">
+                  <div className="card-lift h-full rounded-xl border border-border-subtle bg-surface p-6 sm:p-7">
+                    <span className="font-display text-sm font-semibold tracking-widest text-brand-teal">
+                      {item.n}
+                    </span>
+                    <h3 className="mt-2 font-display text-lg font-semibold text-brand-blue">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 leading-relaxed text-text-muted">{item.body}</p>
+                  </div>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <HomeProcessSection />
+
+      <HomeEngageSection />
+
+      {/* Deliverables */}
+      <section className="section-pad bg-surface-muted" aria-labelledby="work-heading">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading
+              id="work-heading"
+              eyebrow="Delivery"
+              title="What lands in your hands"
+              description="Reliable systems for the pipeline, intelligent features when they earn their place, and software that holds the rest together."
+            />
+          </Reveal>
+          <div className="mx-auto mt-14 grid max-w-5xl gap-5 md:grid-cols-3">
+            {[
+              {
+                title: "Lead & CRM systems",
+                body: "Follow-up, pipelines, and integrations across GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier.",
+              },
+              {
+                title: "Intelligent products",
+                body: "Assistants, LLM-backed features, and AI-native tools grounded in your data and processes.",
+              },
+              {
+                title: "Software & apps",
+                body: "Custom web and mobile products, cloud foundations, and the engineering to keep them steady.",
+              },
+            ].map((item, i) => (
+              <Reveal key={item.title} delay={i * 90} className="h-full">
+                <div className="card-lift h-full rounded-xl border border-border-subtle bg-surface p-6 sm:p-7">
+                  <h3 className="font-display text-lg font-semibold text-brand-blue">{item.title}</h3>
+                  <p className="mt-3 leading-relaxed text-text-muted">{item.body}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
-          <div className="mx-auto mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-brand-blue">AI Automations</h3>
-              <p className="mt-2 text-zinc-600">Lead follow-ups, CRM pipelines, and workflows on GHL, n8n, Make, Zapier, HubSpot, and Zoho.</p>
+          <Reveal delay={200}>
+            <div className="mt-12 text-center">
+              <Button href="/services" variant="primaryBlue">
+                Explore all services
+              </Button>
             </div>
-            <div className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-brand-blue">AI Development</h3>
-              <p className="mt-2 text-zinc-600">Chatbots, LLM/RAG solutions, AI integrations, and AI-native SaaS products.</p>
-            </div>
-            <div className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-brand-blue">Full-stack &amp; apps</h3>
-              <p className="mt-2 text-zinc-600">Custom software, web and mobile apps, cloud, and DevOps to support your stack.</p>
-            </div>
-          </div>
-          <div className="mt-12 text-center">
-            <Link
-              href="/services"
-              className="inline-flex h-11 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-blue px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-blue active:scale-[0.98] motion-reduce:active:scale-100"
-            >
-              Explore all services we offer
-            </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8" aria-labelledby="testimonials-heading">
-        <div className="mx-auto max-w-7xl">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 id="testimonials-heading" className="text-3xl font-bold tracking-tight text-brand-blue sm:text-4xl">
-              Testimonials
-            </h2>
-            <p className="mt-4 text-lg text-zinc-600">
-              What our clients say about working with EclipticLink.
-            </p>
-          </div>
-          <div className="mt-16">
-            <TestimonialSlider />
-          </div>
+      <section className="section-pad bg-atmosphere" aria-labelledby="testimonials-heading">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading
+              id="testimonials-heading"
+              eyebrow="Clients"
+              title="What partners say about working with us"
+              description="Teams who needed faster response, cleaner handoffs, and delivery they could trust."
+            />
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="mt-14">
+              <TestimonialSlider />
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="bg-zinc-50 px-4 py-20 sm:px-6 sm:py-28 lg:px-8" aria-labelledby="faq-heading">
-        <div className="mx-auto max-w-3xl">
-          <h2 id="faq-heading" className="text-center text-3xl font-bold tracking-tight text-brand-blue sm:text-4xl">
-            Frequently Asked Questions
-          </h2>
-          <dl className="mt-16 space-y-8">
-            <div>
-              <dt className="text-base font-semibold text-brand-blue">
-                What AI automation platforms does EclipticLink work with?
-              </dt>
-              <dd className="mt-2 text-zinc-600 leading-relaxed">
-                We build and optimize automations on GoHighLevel (GHL), n8n, Make, Zapier, HubSpot, and Zoho—covering lead capture, follow-ups, CRM pipelines, nurture sequences, and booking workflows so your team spends less time on manual tasks.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-base font-semibold text-brand-blue">
-                What AI automation and development services does EclipticLink offer?
-              </dt>
-              <dd className="mt-2 text-zinc-600 leading-relaxed">
-                Our primary focus is AI automations: lead and follow-up systems, CRM and sales pipeline automation, workflow orchestration, AI-powered outreach, and omnichannel booking. We also offer AI development—chatbots, LLM/RAG solutions, and AI SaaS—plus full-stack web, mobile, cloud, and custom software when your product needs them.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-base font-semibold text-brand-blue">
-                What is speed-to-lead and why does it matter for AI automations?
-              </dt>
-              <dd className="mt-2 text-zinc-600 leading-relaxed">
-                Speed-to-lead is how fast you respond after someone opts in, calls, or submits a form. AI automations on GoHighLevel, HubSpot, Zoho, n8n, Make, or Zapier can reply in seconds with SMS and email, assign an owner, and start a nurture sequence—so hot leads do not go cold.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-base font-semibold text-brand-blue">
-                Will you be able to increase the number of people in your team if necessary?
-              </dt>
-              <dd className="mt-2 text-zinc-600 leading-relaxed">
-                If you wish to partly reduce the project work intensity or, on the contrary, to increase it at times, we are always ready to adapt. When necessary, we will easily involve more team members in your project to meet your expectations.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-base font-semibold text-brand-blue">
-                What control do you have over project development?
-              </dt>
-              <dd className="mt-2 text-zinc-600 leading-relaxed">
-                We review project requirements, analyze them, and inform you of estimation results. Once you are fine with the cost and time, we create a project report and proposal for review. Once finalized, we move to the development stage.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-base font-semibold text-brand-blue">
-                How long does it take to start my automation or product work?
-              </dt>
-              <dd className="mt-2 text-zinc-600 leading-relaxed">
-                After we review your requirements and you approve the estimation and proposal, we move quickly to implementation. Timeline depends on scope—we will give you a clear timeline in the proposal.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-base font-semibold text-brand-blue">
-                How do we assure privacy and confidentiality?
-              </dt>
-              <dd className="mt-2 text-zinc-600 leading-relaxed">
-                We sign NDAs and Confidentiality Agreements as required. All our employees are full-time and bound by company Confidentiality and Non-Disclosure clauses.
-              </dd>
-            </div>
-            <div>
-              <dt className="text-base font-semibold text-brand-blue">
-                Should I be familiar with technical details to work with you?
-              </dt>
-              <dd className="mt-2 text-zinc-600 leading-relaxed">
-                No. You do not need to be an expert in automation tools or software development—we are. We explain unclear moments and the essence of all stages. You need a clear vision of what you want to achieve; we help make it a reality.
-              </dd>
-            </div>
-          </dl>
+      <section className="section-pad bg-surface" aria-labelledby="faq-heading">
+        <div className="container-site">
+          <div className="mx-auto max-w-3xl">
+            <Reveal>
+              <SectionHeading id="faq-heading" eyebrow="FAQ" title="Frequently asked questions" />
+            </Reveal>
+            <dl className="mt-14 divide-y divide-border-subtle border-y border-border-subtle">
+              {faqs.map((item, i) => (
+                <Reveal key={item.q} delay={Math.min(i * 40, 200)}>
+                  <div className="py-7 transition-colors duration-300 hover:bg-brand-teal-light/25">
+                    <dt className="font-display text-base font-semibold text-brand-blue">{item.q}</dt>
+                    <dd className="mt-3 leading-relaxed text-text-muted">{item.a}</dd>
+                  </div>
+                </Reveal>
+              ))}
+            </dl>
+          </div>
         </div>
       </section>
 
-      {/* Markets we serve */}
-      <section className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8" aria-labelledby="markets-heading">
-        <div className="mx-auto max-w-7xl">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 id="markets-heading" className="text-3xl font-bold tracking-tight text-brand-blue sm:text-4xl">
-              Serving clients worldwide
-            </h2>
-            <p className="mt-4 text-lg text-zinc-600 leading-relaxed">
-              We partner with startups and enterprises across five key markets, delivering AI automations,
-              AI development, and dedicated engineering teams with timezone-friendly collaboration.
-            </p>
-          </div>
-          <ul className="mx-auto mt-16 grid max-w-4xl gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
-            <li className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm">
-              <h3 className="text-base font-semibold text-brand-blue">United States</h3>
-              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">AI automations, CRM workflows, and staff augmentation for US startups and enterprises. Hire remote specialists with US-aligned working hours.</p>
-            </li>
-            <li className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm">
-              <h3 className="text-base font-semibold text-brand-blue">United Kingdom</h3>
-              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">Automation and AI development for UK businesses. Scalable solutions with transparent, milestone-based delivery.</p>
-            </li>
-            <li className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm">
-              <h3 className="text-base font-semibold text-brand-blue">Pakistan</h3>
-              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">AI automation hub in Rawalpindi. GHL, n8n, Make, Zapier, HubSpot, Zoho, AI development, and full-stack delivery for local and international clients.</p>
-            </li>
-            <li className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm">
-              <h3 className="text-base font-semibold text-brand-blue">Saudi Arabia</h3>
-              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">AI automations and digital transformation for Saudi Arabian businesses. Lead systems, enterprise apps, and dedicated engineering teams.</p>
-            </li>
-            <li className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm">
-              <h3 className="text-base font-semibold text-brand-blue">United Arab Emirates</h3>
-              <p className="mt-2 text-sm text-zinc-600 leading-relaxed">Automation, AI, and IT consulting for Dubai and UAE enterprises. CRM workflows, SaaS products, and cloud infrastructure built to scale.</p>
-            </li>
-            <li className="flex items-center justify-center rounded-xl border border-dashed border-zinc-300 bg-zinc-50/30 p-6">
-              <Link
-                href="/contact"
-                className="text-sm font-semibold text-brand-teal transition hover:text-brand-teal-hover"
-              >
-                Working from another region? Let&apos;s talk &rarr;
-              </Link>
+      {/* Markets */}
+      <section className="section-pad bg-atmosphere-muted" aria-labelledby="markets-heading">
+        <div className="container-site">
+          <Reveal>
+            <SectionHeading
+              id="markets-heading"
+              eyebrow="Where we work"
+              title="Clients across five markets"
+              description="We collaborate with startups and enterprises in the regions below, with schedules that respect your timezone."
+            />
+          </Reveal>
+          <ul className="mx-auto mt-14 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3" role="list">
+            {[
+              {
+                title: "United States",
+                body: "Pipeline systems, CRM cleanup, and embedded specialists for US product and revenue teams.",
+              },
+              {
+                title: "United Kingdom",
+                body: "Workflow and product work for UK businesses that want clarity on scope, cost, and progress.",
+              },
+              {
+                title: "Pakistan",
+                body: "Our home base in Rawalpindi, supporting local and international clients from one delivery hub.",
+              },
+              {
+                title: "Saudi Arabia",
+                body: "Lead systems, enterprise applications, and dedicated engineering for Saudi organizations.",
+              },
+              {
+                title: "United Arab Emirates",
+                body: "Operations tooling, integrations, and advisory for teams in Dubai and across the UAE.",
+              },
+            ].map((m, i) => (
+              <li key={m.title}>
+                <Reveal delay={i * 70} className="h-full">
+                  <div className="card-lift h-full rounded-xl border border-border-subtle bg-surface p-6">
+                    <h3 className="font-display text-base font-semibold text-brand-blue">{m.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-text-muted">{m.body}</p>
+                  </div>
+                </Reveal>
+              </li>
+            ))}
+            <li>
+              <Reveal delay={350} className="h-full">
+                <div className="card-lift flex h-full items-center rounded-xl border border-dashed border-border-subtle bg-surface/60 p-6">
+                  <Link href="/contact" className="link-arrow">
+                    Working from another region? Let&apos;s talk
+                    <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </Reveal>
             </li>
           </ul>
         </div>
       </section>
 
-      {/* CTA - Get in touch */}
-      <section className="bg-brand-dark px-4 py-20 text-white sm:px-6 sm:py-28 lg:px-8" aria-labelledby="cta-heading">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 id="cta-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Ready to automate your growth?
-          </h2>
-          <p className="mt-4 text-lg text-zinc-200 leading-relaxed">
-            Tell us about your leads, CRM, and tools—we&apos;ll map an AI automation plan and get back to you with next steps.
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex h-12 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-teal px-6 text-base font-semibold text-brand-dark shadow-sm transition hover:bg-brand-teal-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
+      {/* Final CTA, same base as footer so colors match */}
+      <section
+        className="relative overflow-hidden bg-brand-dark section-pad text-white"
+        aria-labelledby="cta-heading"
+      >
+        <div
+          className="pointer-events-none absolute inset-0"
+          aria-hidden="true"
+          style={{
+            background:
+              "radial-gradient(ellipse 55% 45% at 85% 15%, rgb(116 210 176 / 0.14), transparent 55%)",
+          }}
+        />
+        <div className="container-site relative z-10 max-w-3xl text-center">
+          <Reveal variant="scale">
+            <p className="eyebrow">Next step</p>
+            <span className="accent-line" aria-hidden="true" />
+            <h2
+              id="cta-heading"
+              className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl"
             >
-              Get in touch
-            </Link>
-            <Link
-              href="/hire"
-              className="inline-flex h-12 min-h-11 cursor-pointer items-center justify-center rounded-lg border-2 border-brand-teal px-6 text-base font-semibold text-white transition hover:bg-brand-teal/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-teal active:scale-[0.98] motion-reduce:active:scale-100"
-            >
-              Hire a dedicated team
-            </Link>
-          </div>
+              Tell us where leads stall today
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-white/75">
+              Share a short picture of your tools and process. We will come back with a
+              practical path, not a generic pitch deck.
+            </p>
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <Button href="/contact" variant="primary" size="lg">
+                Start a conversation
+              </Button>
+              <Button href="/hire" variant="secondary" size="lg">
+                Browse dedicated roles
+              </Button>
+            </div>
+          </Reveal>
         </div>
       </section>
     </>

@@ -1,25 +1,25 @@
 import type { Metadata } from "next";
-import { Breadcrumbs } from "../components/breadcrumbs";
+import { PageHero } from "../components/page-hero";
 import { BASE_OG, SITE_URL } from "../lib/config";
 import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact | Free AI Automation Consult",
+  title: "Contact | Talk With EclipticLink",
   description:
-    "Contact EclipticLink for a free AI automation consult — GHL, n8n, Make, Zapier, HubSpot & Zoho. Also AI development & software projects. Fast response.",
+    "Tell us where leads stall or what you want to build. We typically reply within one business day with a practical next step.",
   keywords: [
-    "AI automation consult",
     "contact EclipticLink",
     "GoHighLevel consultant",
+    "CRM workflow consult",
     "n8n automation quote",
-    "hire automation agency",
+    "hire automation team",
   ],
   alternates: { canonical: `${SITE_URL}/contact` },
   openGraph: {
     ...BASE_OG,
-    title: "Contact EclipticLink | Free AI Automation Consult",
+    title: "Contact | Talk With EclipticLink",
     description:
-      "Talk to our AI automation team about lead follow-up, CRM workflows, and platforms like GHL, n8n, Make, Zapier, HubSpot & Zoho.",
+      "Share a short picture of your tools and process. We will follow up with clear next steps.",
     url: `${SITE_URL}/contact`,
   },
 };
@@ -40,47 +40,46 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <section className="bg-brand-dark px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
-        <div className="mx-auto max-w-7xl text-center">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact Us" }]} className="mb-6" />
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            Contact Us for AI Automation &amp; Development
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200">
-            Based in the US, UK, Pakistan, Saudi Arabia, or the UAE? Tell us about your
-            leads, CRM, and tools (GHL, n8n, Make, Zapier, HubSpot, Zoho). Get a free
-            AI automation consult and clear next steps.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="Let’s talk"
+        description="Whether you need a sharper lead system, cleaner CRM handoffs, or help building something new, start with a short note. We will take it from there."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact Us" }]}
+      />
 
-      <section className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8" aria-labelledby="contact-heading">
-        <div className="mx-auto max-w-7xl">
+      <section className="section-pad bg-atmosphere" aria-labelledby="contact-heading">
+        <div className="container-site">
           <h2 id="contact-heading" className="sr-only">
             Contact details and form
           </h2>
-          <div className="grid gap-16 lg:grid-cols-5 lg:gap-12">
+          <div className="grid gap-14 lg:grid-cols-5 lg:gap-16">
             <div className="lg:col-span-2">
-              <h3 className="text-lg font-semibold text-zinc-900">Get in touch</h3>
-              <div className="mt-6 space-y-8">
-                <div>
-                  <span className="text-sm font-semibold uppercase tracking-wider text-zinc-500">
+              <p className="eyebrow-on-light">Reach us</p>
+              <h3 className="mt-3 font-display text-2xl font-semibold text-brand-blue">
+                We reply within a business day
+              </h3>
+              <p className="mt-4 leading-relaxed text-text-muted">
+                Share what is broken or what you want to improve. A few sentences about your
+                tools and goals is enough for a useful first reply.
+              </p>
+              <div className="mt-10 space-y-8">
+                <div className="border-t border-border-subtle pt-6">
+                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">
                     Call us
                   </span>
                   <a
                     href="tel:+923335934448"
-                    className="mt-2 block text-zinc-700 hover:text-zinc-900 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-zinc-900 focus-visible:outline-none"
+                    className="mt-2 block font-medium text-brand-blue transition hover:text-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
                   >
                     +92 333 5934448
                   </a>
                 </div>
-                <div>
-                  <span className="text-sm font-semibold uppercase tracking-wider text-zinc-500">
+                <div className="border-t border-border-subtle pt-6">
+                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">
                     Email us
                   </span>
                   <a
                     href="mailto:info@eclipticlink.com"
-                    className="mt-2 block text-zinc-700 hover:text-zinc-900 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-zinc-900 focus-visible:outline-none"
+                    className="mt-2 block font-medium text-brand-blue transition hover:text-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
                   >
                     info@eclipticlink.com
                   </a>

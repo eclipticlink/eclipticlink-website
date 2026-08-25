@@ -1,25 +1,25 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Breadcrumbs } from "../components/breadcrumbs";
+import { PageHero } from "../components/page-hero";
+import { Button } from "../components/ui/button";
 import { BASE_OG, SITE_URL } from "../lib/config";
 
 export const metadata: Metadata = {
-  title: "About EclipticLink | AI Automation Agency & Partner",
+  title: "About EclipticLink | Our Story & How We Work",
   description:
-    "About EclipticLink — AI automation agency for GHL, n8n, Make, Zapier, HubSpot & Zoho. AI development & full-stack teams for US, UK, Pakistan, KSA & UAE.",
+    "EclipticLink helps teams stop losing opportunity to slow follow-up and messy CRMs. Meet the people behind the systems, products, and software we deliver.",
   keywords: [
-    "AI automation agency",
     "about EclipticLink",
-    "GoHighLevel automation partner",
-    "AI development company",
-    "software outsourcing US UK UAE",
+    "lead workflow agency",
+    "GoHighLevel partner",
+    "CRM automation company",
+    "software team US UK UAE",
   ],
   alternates: { canonical: `${SITE_URL}/about` },
   openGraph: {
     ...BASE_OG,
-    title: "About EclipticLink | AI Automation Agency",
+    title: "About EclipticLink | Our Story & How We Work",
     description:
-      "Meet EclipticLink: AI automations for leads & CRM, AI development, and full-stack delivery with milestone-based transparency.",
+      "How EclipticLink grew from a delivery-focused studio into a partner for lead systems, intelligent products, and custom software.",
     url: `${SITE_URL}/about`,
   },
 };
@@ -35,50 +35,50 @@ const breadcrumbJsonLd = {
 
 const strengths = [
   {
-    title: "Automation expertise",
+    title: "Comfortable in the tools you already use",
     description:
-      "Hands-on specialists in GoHighLevel, n8n, Make, Zapier, HubSpot, and Zoho—building lead, follow-up, and pipeline systems that stick.",
+      "GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier are where a lot of our work lives. We build around your process instead of forcing a new stack overnight.",
   },
   {
-    title: "AI & full-stack depth",
+    title: "Product and engineering when you need depth",
     description:
-      "When workflows are not enough, our AI engineers and full-stack teams build chatbots, custom products, web, and mobile apps.",
+      "Some problems need an assistant, a custom feature, or a full application. The same partnership can move into that work without a clumsy handoff.",
   },
   {
-    title: "Milestone-based delivery",
+    title: "Milestones you can actually follow",
     description:
-      "Our milestone-based plans ensure optimal involvement of clients and real-time visibility on progress status.",
+      "You see what shipped, what is next, and where your input matters. No long silences between kickoff and a surprise demo.",
   },
   {
-    title: "Dedicated support",
+    title: "A dedicated point of contact",
     description:
-      "Consultancy approach with a dedicated, experienced project manager to resolve any type of issues.",
+      "A seasoned project lead stays close to the work, so questions get answered and issues do not bounce between inboxes.",
   },
   {
-    title: "Hourly-based model",
+    title: "Flexible capacity when plans change",
     description:
-      "Flexible hourly engagement when you need extra capacity or prefer pay-as-you-go. Scale up or down without long-term commitment while still getting the same quality and transparency.",
+      "Prefer hourly engagement or need to scale for a sprint? We adjust without locking you into a rigid long-term commitment.",
   },
 ] as const;
 
 const historyMilestones = [
   {
     year: "2024",
-    title: "Our beginnings",
+    title: "Where we started",
     description:
-      "EclipticLink was founded in 2024 to help startups and growing businesses solve technical challenges and scale with confidence. From day one we focused on transparent delivery, dedicated project management, and long-term partnerships—with deep roots in software and AI.",
+      "EclipticLink began in 2024 with a simple promise: help growing companies solve hard technical work with clear delivery and people they could trust. Software and intelligent systems were in our DNA from the first engagements.",
   },
   {
     year: "Growth",
-    title: "Expanding into AI automations",
+    title: "Leaning into the revenue stack",
     description:
-      "We expanded into AI-powered business automations—leads, follow-ups, CRM pipelines, and workflow orchestration on platforms like GoHighLevel, n8n, Make, Zapier, HubSpot, and Zoho—while keeping AI development, custom software, mobile, cloud, and data capabilities for clients who need to build.",
+      "Clients kept asking for help with leads that went cold, CRMs that lied, and tools that never quite talked to each other. We deepened that practice across GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier, while keeping the product and engineering craft that made us useful when a workflow alone was not enough.",
   },
   {
     year: "Today",
-    title: "Where we are now",
+    title: "Where we stand",
     description:
-      "Today we partner with startups and enterprises across the US, UK, Pakistan, Saudi Arabia, and the UAE—leading with AI automations, then AI development, then full-stack delivery. Milestone-based and hourly engagements keep you in the loop from the first workflow to production.",
+      "We work with startups and larger organizations across the US, UK, Pakistan, Saudi Arabia, and the UAE. Some come for a tightly scoped lead system. Others need a dedicated specialist or a full product build. Either way, they get the same clarity on scope, timing, and progress.",
   },
 ] as const;
 
@@ -89,105 +89,71 @@ export default function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <section className="bg-brand-dark px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
-        <div className="mx-auto max-w-7xl text-center">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About Us" }]} className="mb-6" />
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            About EclipticLink — AI Automation Agency
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-200">
-            We help startups and enterprises in the United States, United
-            Kingdom, Pakistan, Saudi Arabia, and the UAE automate growth with AI—
-            leads, follow-ups, and CRM workflows—then AI development and full-stack
-            software when you need to build. Almost nine years of combined
-            experience and transparent delivery—milestone-based or hourly.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="About EclipticLink"
+        description="We help teams protect every inbound opportunity, then build the products and software that take the business further."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "About Us" }]}
+      />
 
-      <section
-        className="bg-zinc-50 px-4 py-20 sm:px-6 sm:py-28 lg:px-8"
-        aria-labelledby="company-history-heading"
-      >
-        <div className="mx-auto max-w-7xl">
+      <section className="section-pad bg-atmosphere-muted" aria-labelledby="company-history-heading">
+        <div className="container-site">
+          <p className="eyebrow-on-light text-center">Our story</p>
           <h2
             id="company-history-heading"
-            className="text-center text-3xl font-bold tracking-tight text-brand-blue sm:text-4xl"
+            className="mt-3 text-center font-display text-3xl font-semibold tracking-tight text-brand-blue sm:text-4xl"
           >
-            Company history
+            How we got here
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-zinc-600">
-            Our journey from founding to today—focused on helping businesses
-            scale through AI automations, expert teams, and transparent delivery.
+          <p className="mx-auto mt-4 max-w-2xl text-center text-lg leading-relaxed text-text-muted">
+            A short history of a studio that grew by listening to what clients actually needed.
           </p>
-          <ul
-            className="mx-auto mt-16 max-w-3xl border-l-2 border-zinc-200 pl-10"
-            role="list"
-          >
+          <ul className="mx-auto mt-16 max-w-3xl border-l-2 border-brand-teal/40 pl-10" role="list">
             {historyMilestones.map(({ year, title, description }) => (
-              <li
-                key={year}
-                className="relative pb-12 last:pb-0"
-              >
+              <li key={year} className="relative pb-12 last:pb-0">
                 <span
-                  className="absolute left-0 top-0 h-4 w-4 -translate-x-[calc(2.5rem+0.5rem-1px)] rounded-full border-2 border-brand-teal bg-white"
+                  className="absolute left-0 top-1.5 h-3 w-3 -translate-x-[calc(2.5rem+0.375rem+1px)] rounded-full bg-brand-teal"
                   aria-hidden="true"
                 />
-                <span className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
+                <span className="text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">
                   {year}
                 </span>
-                <h3 className="mt-1 text-lg font-semibold tracking-tight text-brand-blue">
+                <h3 className="mt-1 font-display text-lg font-semibold tracking-tight text-brand-blue">
                   {title}
                 </h3>
-                <p className="mt-3 max-w-prose text-zinc-600 leading-relaxed">
-                  {description}
-                </p>
+                <p className="mt-3 max-w-prose leading-relaxed text-text-muted">{description}</p>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section
-        className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8"
-        aria-labelledby="how-we-deliver-heading"
-      >
-        <div className="mx-auto max-w-7xl">
+      <section className="section-pad bg-atmosphere" aria-labelledby="how-we-deliver-heading">
+        <div className="container-site">
+          <p className="eyebrow-on-light text-center">How we work</p>
           <h2
             id="how-we-deliver-heading"
-            className="text-center text-3xl font-bold tracking-tight text-brand-blue sm:text-4xl"
+            className="mt-3 text-center font-display text-3xl font-semibold tracking-tight text-brand-blue sm:text-4xl"
           >
-            How we deliver
+            What clients notice
           </h2>
-          <ul
-            className="mx-auto mt-16 grid max-w-4xl gap-6 sm:grid-cols-2"
-            role="list"
-          >
+          <ul className="mx-auto mt-14 grid max-w-4xl gap-10 sm:grid-cols-2" role="list">
             {strengths.map(({ title, description }) => (
-              <li
-                key={title}
-                className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm"
-              >
-                <h3 className="text-base font-semibold tracking-tight text-brand-blue">
+              <li key={title} className="border-t border-border-subtle pt-6">
+                <h3 className="font-display text-base font-semibold tracking-tight text-brand-blue">
                   {title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-600">
-                  {description}
-                </p>
+                <p className="mt-3 text-sm leading-relaxed text-text-muted">{description}</p>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section className="bg-zinc-50 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        <div className="mx-auto max-w-7xl text-center">
-          <Link
-            href="/contact"
-            className="inline-flex h-12 min-h-11 cursor-pointer items-center justify-center rounded-lg bg-brand-blue px-6 text-base font-semibold text-white shadow-sm transition hover:bg-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 active:scale-[0.98] motion-reduce:active:scale-100"
-          >
-            Get in touch
-          </Link>
+      <section className="section-pad bg-surface-muted">
+        <div className="container-site text-center">
+          <Button href="/contact" variant="primaryBlue" size="lg">
+            Start a conversation
+          </Button>
         </div>
       </section>
     </>

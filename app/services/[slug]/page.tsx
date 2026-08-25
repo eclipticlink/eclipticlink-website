@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Breadcrumbs } from "../../components/breadcrumbs";
+import { PageHero } from "../../components/page-hero";
+import { Button } from "../../components/ui/button";
 import { BASE_OG, SITE_URL } from "../../lib/config";
 import { SERVICE_SEO } from "../../lib/seo";
 import { getAllServiceSlugs, getServiceBySlug } from "../data";
@@ -105,82 +105,64 @@ export default async function ServicePage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
-      <section className="bg-brand-dark px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
-        <div className="mx-auto max-w-7xl text-center">
-          <Breadcrumbs
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Services", href: "/services" },
-              { label: service.title },
-            ]}
-            className="mb-6"
-          />
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            {h1}
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200 leading-relaxed">
-            {service.summary}
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title={h1}
+        description={service.summary}
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Services", href: "/services" },
+          { label: service.title },
+        ]}
+      />
 
       <section
-        className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8"
+        className="section-pad bg-atmosphere"
         aria-labelledby="service-overview-heading"
       >
-        <div className="mx-auto max-w-3xl">
-          <h2 id="service-overview-heading" className="text-2xl font-bold tracking-tight text-zinc-900 sm:text-3xl">
+        <div className="container-site max-w-3xl">
+          <p className="eyebrow-on-light">Overview</p>
+          <h2 id="service-overview-heading" className="mt-3 font-display text-2xl font-semibold tracking-tight text-brand-blue sm:text-3xl">
             Overview
           </h2>
-          <div className="prose prose-zinc mt-6 max-w-none prose-p:text-zinc-600 prose-p:leading-8">
-            <p className="text-lg">{service.details}</p>
-          </div>
+          <p className="mt-6 text-lg leading-relaxed text-text-muted">{service.details}</p>
         </div>
       </section>
 
       <section
-        className="bg-zinc-50 px-4 py-20 sm:px-6 sm:py-28 lg:px-8"
+        className="section-pad bg-surface-muted"
         aria-labelledby="subservices-heading"
       >
-        <div className="mx-auto max-w-4xl">
-          <h2 id="subservices-heading" className="text-center text-2xl font-bold tracking-tight text-zinc-900 sm:text-3xl">
+        <div className="container-site max-w-4xl">
+          <p className="eyebrow-on-light text-center">Capabilities</p>
+          <h2 id="subservices-heading" className="mt-3 text-center font-display text-2xl font-semibold tracking-tight text-brand-blue sm:text-3xl">
             What we offer
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-zinc-600">
+          <p className="mx-auto mt-4 max-w-2xl text-center text-text-muted">
             Our {service.title} capabilities include the following.
           </p>
-          <ul className="mt-12 grid gap-8 sm:grid-cols-1 lg:gap-10">
+          <ul className="mt-12 divide-y divide-border-subtle border-y border-border-subtle" role="list">
             {service.subServices.map((sub) => (
-              <li
-                key={sub.id}
-                className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:shadow-md sm:p-8"
-              >
-                <h3 className="text-xl font-semibold text-zinc-900">
+              <li key={sub.id} className="py-8">
+                <h3 className="font-display text-xl font-semibold text-brand-blue">
                   {sub.title}
                 </h3>
-                <p className="mt-2 text-zinc-600">{sub.summary}</p>
-                <p className="mt-4 text-zinc-500 leading-7">{sub.details}</p>
+                <p className="mt-2 text-text-muted">{sub.summary}</p>
+                <p className="mt-4 leading-relaxed text-slate-500">{sub.details}</p>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section className="bg-white px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
+      <section className="section-pad bg-atmosphere">
+        <div className="container-site max-w-3xl">
           <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex h-12 min-h-11 items-center justify-center rounded-lg bg-brand-blue px-6 text-base font-semibold text-white shadow-sm transition hover:bg-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-blue"
-            >
+            <Button href="/contact" variant="primaryBlue" size="lg">
               Get in touch
-            </Link>
-            <Link
-              href="/services"
-              className="inline-flex h-12 min-h-11 items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 text-base font-semibold text-zinc-900 shadow-sm transition hover:bg-zinc-50 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-zinc-900"
-            >
+            </Button>
+            <Button href="/services" variant="secondaryOnLight" size="lg">
               View all services
-            </Link>
+            </Button>
           </div>
         </div>
       </section>

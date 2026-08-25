@@ -1,12 +1,10 @@
 /**
- * Central SEO keyword clusters and helpers for EclipticLink.
- * Primary focus: AI automations → AI development → full-stack.
+ * SEO keyword clusters for EclipticLink.
+ * Kept for discoverability; page copy should not mirror this order robotically.
  */
 
 export const SEO_KEYWORDS = {
   primary: [
-    "AI automation services",
-    "AI automations",
     "lead follow-up automation",
     "CRM automation",
     "GoHighLevel automation",
@@ -19,6 +17,8 @@ export const SEO_KEYWORDS = {
     "workflow automation agency",
     "sales pipeline automation",
     "AI workflow automation",
+    "AI automation services",
+    "AI automations",
   ],
   secondary: [
     "AI development company",
@@ -62,8 +62,8 @@ export const SERVICE_SEO: Record<
   { title: string; keywords: string[]; h1?: string }
 > = {
   "ai-automations": {
-    title: "AI Automation Services | GHL, n8n, Make, Zapier",
-    h1: "AI Automation Services for Leads, Follow-Ups & CRM",
+    title: "Lead & CRM Systems | GHL, HubSpot, Zoho, n8n",
+    h1: "Lead and CRM systems that keep opportunity moving",
     keywords: [
       "AI automation services",
       "GoHighLevel automation",
@@ -79,8 +79,8 @@ export const SERVICE_SEO: Record<
     ],
   },
   ai: {
-    title: "AI Development Company | Chatbots, LLM & RAG",
-    h1: "AI Development Services — Chatbots, LLM & Custom AI",
+    title: "AI Product Development | Assistants, LLM & RAG",
+    h1: "Intelligent products grounded in your data",
     keywords: [
       "AI development company",
       "custom AI development",
@@ -92,8 +92,8 @@ export const SERVICE_SEO: Record<
     ],
   },
   "custom-software-development": {
-    title: "Custom Software Development Company",
-    h1: "Custom Software Development & Full-Stack Engineering",
+    title: "Custom Software Development",
+    h1: "Software built around how your business actually works",
     keywords: [
       "custom software development company",
       "full-stack development",
@@ -113,7 +113,7 @@ export const SERVICE_SEO: Record<
     ],
   },
   "cloud-devops": {
-    title: "Cloud & DevOps Services | CI/CD & Migration",
+    title: "Cloud & DevOps | CI/CD, Migration & Reliability",
     keywords: [
       "cloud DevOps services",
       "CI/CD pipeline setup",
@@ -122,7 +122,7 @@ export const SERVICE_SEO: Record<
     ],
   },
   "big-data": {
-    title: "Big Data & Analytics Services",
+    title: "Data & Analytics Services",
     keywords: [
       "big data consulting",
       "data pipeline development",
@@ -131,7 +131,7 @@ export const SERVICE_SEO: Record<
     ],
   },
   "ui-ux-design": {
-    title: "UI/UX Design Services | Product & Brand",
+    title: "UI/UX Design | Product & Brand",
     keywords: [
       "UI UX design agency",
       "product design services",
@@ -141,7 +141,7 @@ export const SERVICE_SEO: Record<
   },
 };
 
-/** Trim meta description to ~155–160 chars without cutting mid-word when possible */
+/** Trim meta description to ~155, 160 chars without cutting mid-word when possible */
 export function clipMetaDescription(text: string, max = 158): string {
   const t = text.trim();
   if (t.length <= max) return t;

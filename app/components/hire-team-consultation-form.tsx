@@ -81,11 +81,11 @@ export function HireTeamConsultationForm() {
       : "border-zinc-300 focus:border-brand-teal";
 
   return (
-    <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm">
-      <h3 id="consultation-heading" className="text-base font-bold tracking-tight text-brand-blue">
+    <div className="border border-border-subtle bg-surface p-5">
+      <h3 id="consultation-heading" className="font-display text-base font-semibold tracking-tight text-brand-blue">
         Schedule a Free Consultation
       </h3>
-      <p className="mt-1 text-sm text-zinc-600">
+      <p className="mt-1 text-sm text-text-muted">
         So our team can reach out to you on time
       </p>
       <form onSubmit={handleSubmit} className="mt-4 space-y-4" aria-labelledby="consultation-heading">

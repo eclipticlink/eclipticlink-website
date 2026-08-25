@@ -7,7 +7,7 @@ const PER_PAGE = 3;
 const testimonials = [
   {
     quote:
-      "EclipticLink is truly the best. Always helpful and prompt—they are great at fixing things when stuff changes and get it done quickly at a fair price.",
+      "EclipticLink is truly the best. Always helpful and prompt, they are great at fixing things when stuff changes and get it done quickly at a fair price.",
     name: "Steve V.",
     location: "London, GB",
   },
@@ -19,7 +19,7 @@ const testimonials = [
   },
   {
     quote:
-      "EclipticLink helped with very short notice and did exactly what we needed. Much appreciate the guidance and support—will definitely be in touch for future work!",
+      "EclipticLink helped with very short notice and did exactly what we needed. Much appreciate the guidance and support, will definitely be in touch for future work!",
     name: "Huzaifa Sarmad",
     location: "Islamabad, Pakistan",
   },
@@ -41,12 +41,12 @@ function TestimonialCard({
   location: string;
 }) {
   return (
-    <blockquote className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm">
-      <p className="text-zinc-700 leading-relaxed">{quote}</p>
-      <footer className="mt-4">
+    <blockquote className="card-lift border-l-2 border-brand-teal bg-surface/80 px-6 py-5">
+      <p className="leading-relaxed text-slate-700">&ldquo;{quote}&rdquo;</p>
+      <footer className="mt-5">
         <cite className="not-italic">
-          <span className="font-semibold text-brand-blue">{name}</span>
-          <span className="block text-sm text-zinc-600">{location}</span>
+          <span className="font-display font-semibold text-brand-blue">{name}</span>
+          <span className="mt-0.5 block text-sm text-text-muted">{location}</span>
         </cite>
       </footer>
     </blockquote>

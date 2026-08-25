@@ -1,28 +1,29 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Breadcrumbs } from "../components/breadcrumbs";
+import { PageHero } from "../components/page-hero";
+import { Button } from "../components/ui/button";
 import { BASE_OG, SITE_URL } from "../lib/config";
 import { services } from "./data";
 
 export const metadata: Metadata = {
-  title: "AI Automation Services | GHL, n8n, Make, Zapier, HubSpot",
+  title: "Services | Lead Systems, Intelligent Products & Software",
   description:
-    "AI automation services for lead follow-up & CRM: GoHighLevel, n8n, Make, Zapier, HubSpot & Zoho. Plus AI development, custom software, mobile & cloud.",
+    "Lead and CRM systems on GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier, plus intelligent products, custom software, mobile, cloud, and design.",
   keywords: [
-    "AI automation services",
-    "GoHighLevel automation services",
+    "lead follow-up systems",
+    "GoHighLevel services",
     "n8n automation agency",
-    "Zapier Make automation",
-    "HubSpot Zoho CRM automation",
-    "AI development services",
-    "custom software development services",
+    "Zapier Make workflows",
+    "HubSpot Zoho CRM",
+    "AI product development",
+    "custom software development",
   ],
   alternates: { canonical: `${SITE_URL}/services` },
   openGraph: {
     ...BASE_OG,
-    title: "AI Automation Services | GHL, n8n, Make, Zapier | EclipticLink",
+    title: "Services | Lead Systems, Intelligent Products & Software",
     description:
-      "Lead follow-up & CRM automation on GHL, n8n, Make, Zapier, HubSpot & Zoho — then AI development and full-stack software.",
+      "From the workflows behind faster follow-up to the products and applications that sit underneath them.",
     url: `${SITE_URL}/services`,
   },
 };
@@ -43,55 +44,45 @@ export default function ServicesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <section className="bg-brand-dark px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
-        <div className="mx-auto max-w-7xl text-center">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services" }]} className="mb-6" />
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            AI Automation Services &amp; Software Development
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200 leading-relaxed">
-            End-to-end AI automation services for lead follow-up and CRM workflows on
-            GoHighLevel, n8n, Make, Zapier, HubSpot, and Zoho—backed by AI development
-            and full-stack engineering when you need to build products.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="Services shaped around how you sell and operate"
+        description="Most clients start with follow-up and CRM work on platforms they already trust. Others need intelligent features or a full product. We cover the ground in between."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
+      />
 
-      <section className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8" aria-labelledby="services-list-heading">
-        <div className="mx-auto max-w-7xl">
+      <section className="section-pad bg-atmosphere" aria-labelledby="services-list-heading">
+        <div className="container-site">
           <h2 id="services-list-heading" className="sr-only">
             Our services
           </h2>
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" role="list">
             {services.map((service) => (
-              <article
-                key={service.id}
-                className="flex flex-col rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 shadow-sm transition hover:shadow-md"
-              >
-                <h3 className="text-xl font-semibold text-zinc-900">
-                  {service.title}
-                </h3>
-                <p className="mt-2 text-zinc-600">{service.summary}</p>
-                <p className="mt-4 text-sm text-zinc-500">{service.details}</p>
-                <Link
-                  href={`/services/${service.id}`}
-                  className="mt-4 inline-flex items-center text-sm font-medium text-zinc-900 transition hover:text-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-2"
-                >
-                  Learn more
-                  <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </article>
+              <li key={service.id}>
+                <article className="card-lift flex h-full flex-col rounded-xl border border-border-subtle bg-surface p-6 sm:p-7">
+                  <h3 className="font-display text-xl font-semibold text-brand-blue">
+                    {service.title}
+                  </h3>
+                  <p className="mt-2 text-text-muted">{service.summary}</p>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-500">
+                    {service.details}
+                  </p>
+                  <Link
+                    href={`/services/${service.id}`}
+                    className="link-arrow mt-5"
+                  >
+                    Learn more
+                    <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </article>
+              </li>
             ))}
-          </div>
-          <div className="mt-16 text-center">
-            <Link
-              href="/contact"
-              className="inline-flex h-12 min-h-11 items-center justify-center rounded-lg bg-brand-blue px-6 text-base font-semibold text-white shadow-sm transition hover:bg-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-blue"
-            >
-              Get in touch
-            </Link>
+          </ul>
+          <div className="mt-14 text-center">
+            <Button href="/contact" variant="primaryBlue" size="lg">
+              Ask about a fit
+            </Button>
           </div>
         </div>
       </section>

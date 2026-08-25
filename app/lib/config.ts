@@ -9,7 +9,7 @@ export const BASE_OG = {
       url: `${SITE_URL}/og-image.png`,
       width: 1200,
       height: 630,
-      alt: "EclipticLink AI automation agency — GHL, n8n, Make, Zapier, HubSpot, Zoho",
+      alt: "EclipticLink, lead systems and CRM workflows",
     },
   ],
 };

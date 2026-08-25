@@ -1,19 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Outfit } from "next/font/google";
 import Script from "next/script";
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";
 import { HubSpotChatRefresh } from "./components/hubspot-chat-refresh";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const fontSans = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 import { SITE_URL } from "./lib/config";
@@ -22,11 +18,11 @@ import { DEFAULT_KEYWORDS } from "./lib/seo";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "AI Automation Agency | GHL, n8n, Make & Zapier",
+    default: "EclipticLink | Lead Systems, CRM Workflows & Software",
     template: "%s | EclipticLink",
   },
   description:
-    "Top AI automation agency for lead follow-up & CRM workflows. GoHighLevel (GHL), n8n, Make, Zapier, HubSpot & Zoho experts. AI development & full-stack too.",
+    "EclipticLink designs lead response and CRM workflows on GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier, and builds intelligent products and software when your stack needs more.",
   keywords: DEFAULT_KEYWORDS,
   authors: [{ name: "EclipticLink", url: SITE_URL }],
   creator: "EclipticLink",
@@ -39,24 +35,24 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "EclipticLink",
     locale: "en_US",
-    title: "AI Automation Agency | GHL, n8n, Make, Zapier | EclipticLink",
+    title: "EclipticLink | Lead Systems, CRM Workflows & Software",
     description:
-      "Automate leads, follow-ups & sales pipelines with GoHighLevel, n8n, Make, Zapier, HubSpot & Zoho. AI development and full-stack software when you need to build.",
+      "Follow-up and pipeline systems on the platforms you already run, with product and engineering support when you need to go deeper.",
     url: SITE_URL,
     images: [
       {
         url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "EclipticLink AI automation agency — GHL, n8n, Make, Zapier, HubSpot, Zoho",
+        alt: "EclipticLink, lead systems and CRM workflows on GoHighLevel, HubSpot, Zoho, n8n, Make, Zapier",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Automation Agency | GHL, n8n, Make & Zapier",
+    title: "EclipticLink | Lead Systems & CRM Workflows",
     description:
-      "Lead follow-up & CRM automation on GHL, n8n, Make, Zapier, HubSpot & Zoho. Hire AI & automation specialists at EclipticLink.",
+      "Faster follow-up, cleaner pipelines, and the engineering behind them.",
     images: [`${SITE_URL}/og-image.png`],
     site: "@eclipticlink",
   },
@@ -90,8 +86,8 @@ const organizationJsonLd = {
   logo: `${SITE_URL}/ecliptic-link-logo.png`,
   image: `${SITE_URL}/og-image.png`,
   description:
-    "EclipticLink is an AI automation agency specializing in lead follow-up and CRM workflows on GoHighLevel (GHL), n8n, Make, Zapier, HubSpot, and Zoho — plus AI development and full-stack software for startups and enterprises in the US, UK, Pakistan, Saudi Arabia, and the UAE.",
-  slogan: "AI automations for leads, follow-ups, and growth",
+    "EclipticLink helps teams protect inbound opportunity with lead and CRM systems on GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier, and builds intelligent products and custom software when the work calls for it.",
+  slogan: "Protect every inbound opportunity",
   knowsAbout: [
     "AI automation",
     "GoHighLevel",
@@ -139,7 +135,7 @@ const websiteJsonLd = {
   alternateName: "Eclipticlink",
   url: SITE_URL,
   description:
-    "AI automation agency for GoHighLevel, n8n, Make, Zapier, HubSpot, and Zoho — plus AI development and full-stack software.",
+    "Lead systems, CRM workflows, intelligent products, and custom software from EclipticLink.",
   publisher: { "@type": "Organization", name: "EclipticLink", url: SITE_URL },
   inLanguage: "en-US",
 };
@@ -152,7 +148,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
+        className={`${fontSans.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
         {/* Google tag (gtag.js) */}

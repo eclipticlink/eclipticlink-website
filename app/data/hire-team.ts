@@ -107,7 +107,7 @@ const roleDescriptions: Record<string, Omit<HireRole, "title" | "slug" | "catego
   "Generative AI Engineer": {
     shortDescription: "Specialists in LLMs, diffusion models, and generative applications.",
     longDescription:
-      "Generative AI Engineers at EclipticLink specialize in large language models (LLMs), diffusion models, and agentic systems. They build RAG pipelines, fine-tune foundation models, and integrate generative capabilities into your products—from chatbots and copilots to content generation and code assistance. They stay current with leading providers and open-source tools to deliver secure, cost-effective generative solutions.",
+      "Generative AI Engineers at EclipticLink specialize in large language models (LLMs), diffusion models, and agentic systems. They build RAG pipelines, fine-tune foundation models, and integrate generative capabilities into your products, from chatbots and copilots to content generation and code assistance. They stay current with leading providers and open-source tools to deliver secure, cost-effective generative solutions.",
   },
   "Prompt Engineer": {
     shortDescription: "Craft prompts and workflows that maximize LLM performance and reliability.",
@@ -122,7 +122,7 @@ const roleDescriptions: Record<string, Omit<HireRole, "title" | "slug" | "catego
   "Machine Learning Engineer": {
     shortDescription: "Build and maintain ML pipelines, models, and data workflows.",
     longDescription:
-      "Machine Learning Engineers develop end-to-end ML systems: data pipelines, feature stores, model training and evaluation, and deployment. They bridge data science and production engineering, ensuring models are reproducible, monitored, and performant. Our MLEs work across domains—recommendation, forecasting, classification, and more—using modern frameworks and cloud ML services to deliver reliable, scalable machine learning at scale.",
+      "Machine Learning Engineers develop end-to-end ML systems: data pipelines, feature stores, model training and evaluation, and deployment. They bridge data science and production engineering, ensuring models are reproducible, monitored, and performant. Our MLEs work across domains, recommendation, forecasting, classification, and more, using modern frameworks and cloud ML services to deliver reliable, scalable machine learning at scale.",
   },
   "Deep Learning Engineer": {
     shortDescription: "Implement and optimize neural networks and deep learning systems.",
@@ -160,29 +160,29 @@ const roleDescriptions: Record<string, Omit<HireRole, "title" | "slug" | "catego
       "iOS Developers build native applications for iPhone and iPad using Swift and SwiftUI or UIKit. They follow Apple's design and platform guidelines, implement smooth animations and accessibility, and integrate with backend services and system frameworks. Our iOS specialists deliver apps that excel on the App Store in performance, usability, and compliance with Apple's standards.",
   },
   "Automation Engineer": {
-    shortDescription: "Design and implement end-to-end business and IT automation.",
+    shortDescription: "Design and ship the workflows that remove repetitive work from sales and ops.",
     longDescription:
-      "Automation Engineers design and implement end-to-end automation for business processes and IT operations. They analyze workflows, select tools and platforms, and build reliable, maintainable automations that reduce manual work and errors. Our automation engineers work across RPA, workflow engines, and scripting to deliver measurable efficiency gains and clear documentation for your teams.",
+      "Automation Engineers map how work actually moves through your business, then build reliable systems around it. They choose the right tools, handle edge cases, and leave documentation your team can own. Expect measurable time saved, not a pile of fragile zaps nobody wants to touch.",
   },
   "GHL Specialist": {
-    shortDescription: "Implement and optimize marketing and sales automation in GoHighLevel.",
+    shortDescription: "Make GoHighLevel carry lead capture, nurture, and booking the way your team sells.",
     longDescription:
-      "GHL Specialists implement and optimize marketing and sales automation within GoHighLevel. They configure funnels, CRMs, pipelines, calendars, and integrations to streamline lead capture, nurturing, and conversion. From setup to advanced workflows and reporting, our GHL specialists help you get the most from the platform and align it with your business processes and goals.",
+      "GHL Specialists configure funnels, pipelines, calendars, and integrations inside GoHighLevel so inbound interest does not sit unanswered. From clean setup to advanced workflows and reporting, they align the platform with how your sales process really works.",
   },
   "n8n automation Developer": {
-    shortDescription: "Build workflow automations with n8n for integrations and process orchestration.",
+    shortDescription: "Build durable n8n workflows for integrations and process orchestration.",
     longDescription:
-      "n8n automation Developers build and maintain workflow automations using the n8n platform. They connect apps, APIs, and databases with self-hosted or cloud n8n, design error handling and retries, and document workflows for your team. Our n8n developers help you automate repetitive tasks, sync data across systems, and create reliable, transparent workflows without lock-in to proprietary platforms.",
+      "n8n developers connect apps, APIs, and databases with clear error handling and retries. Whether you self-host or run in the cloud, they leave workflows your team can read, maintain, and extend without starting over.",
   },
   "Zapier automation Expert": {
-    shortDescription: "Connect apps and automate workflows with Zapier.",
+    shortDescription: "Connect the apps your team lives in and cut the copy-paste tax.",
     longDescription:
-      "Zapier automation Experts design and maintain Zaps and Zapier workflows to connect your critical apps and eliminate manual data entry. They structure multi-step Zaps, handle errors and filters, and recommend best practices for reliability and cost. Our Zapier experts help you scale automation across sales, marketing, support, and operations with clear documentation and minimal ongoing maintenance.",
+      "Zapier experts design multi-step Zaps with filters, paths, and sensible cost control. They document what was built so sales, marketing, and ops keep moving without a full-time Zap babysitter.",
   },
   "make automation Specialist": {
-    shortDescription: "Design complex automations with Make (Integromat) for advanced workflows.",
+    shortDescription: "Design Make scenarios for complex, branching operational workflows.",
     longDescription:
-      "Make automation Specialists design and implement complex automations using Make (formerly Integromat). They build scenarios with multiple apps, branches, and error handling, and optimize for performance and cost. Our Make specialists help you automate sophisticated workflows—from multi-system syncs to conditional logic and data transformations—with clarity and maintainability.",
+      "Make specialists build scenarios with multiple apps, branches, and transformations when simpler tools run out of room. The goal is sophisticated automation that stays understandable months later.",
   },
   "Nodejs Developer": {
     shortDescription: "Backend and API development with Node.js and modern JavaScript/TypeScript.",
@@ -292,7 +292,7 @@ const roleDescriptions: Record<string, Omit<HireRole, "title" | "slug" | "catego
   "AWS Cloud Engineer": {
     shortDescription: "Design and operate workloads on Amazon Web Services.",
     longDescription:
-      "AWS Cloud Engineers design and operate solutions on Amazon Web Services. They use core and advanced services—EC2, Lambda, ECS/EKS, RDS, S3, and more—with best practices for security, cost, and performance. Our AWS engineers help you build and run scalable, reliable workloads on AWS.",
+      "AWS Cloud Engineers design and operate solutions on Amazon Web Services. They use core and advanced services, EC2, Lambda, ECS/EKS, RDS, S3, and more, with best practices for security, cost, and performance. Our AWS engineers help you build and run scalable, reliable workloads on AWS.",
   },
   "Cloud Infrastructure Engineer": {
     shortDescription: "Manage and scale cloud infrastructure and platform services.",

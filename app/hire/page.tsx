@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Breadcrumbs } from "../components/breadcrumbs";
+import { PageHero } from "../components/page-hero";
+import { Button } from "../components/ui/button";
 import {
   HIRE_TEAM_CATEGORIES,
   getRolesByCategory,
@@ -8,9 +9,9 @@ import {
 import { BASE_OG, SITE_URL } from "../lib/config";
 
 export const metadata: Metadata = {
-  title: "Hire Automation Experts | GHL, n8n, AI & Full-Stack",
+  title: "Hire Specialists | Automation, AI & Engineering",
   description:
-    "Hire dedicated automation specialists: GoHighLevel, n8n, Make, Zapier experts, AI engineers & full-stack developers. Staff augmentation with EclipticLink.",
+    "Embed dedicated GoHighLevel, n8n, Make, Zapier, AI, and full-stack talent into your team. Staff augmentation without the hiring overhead.",
   keywords: [
     "hire automation specialists",
     "hire GHL specialist",
@@ -18,14 +19,14 @@ export const metadata: Metadata = {
     "hire Zapier expert",
     "hire AI engineers",
     "hire dedicated developers",
-    "staff augmentation AI",
+    "staff augmentation",
   ],
   alternates: { canonical: `${SITE_URL}/hire` },
   openGraph: {
     ...BASE_OG,
-    title: "Hire Automation & AI Specialists | EclipticLink",
+    title: "Hire Specialists | Automation, AI & Engineering",
     description:
-      "Staff augmentation for GHL, n8n, Make, Zapier, AI, ML, and full-stack. Hire dedicated talent without the overhead.",
+      "Add capacity for GoHighLevel, n8n, Make, Zapier, AI, and product engineering without a full-time search.",
     url: `${SITE_URL}/hire`,
   },
 };
@@ -46,22 +47,14 @@ export default function HirePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <section className="bg-brand-dark px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8">
-        <div className="mx-auto max-w-7xl text-center">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Hire Team" }]} className="mb-6" />
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-            Hire Automation, AI &amp; Full-Stack Specialists
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-200">
-            Hire dedicated GoHighLevel, n8n, Make, and Zapier automation experts,
-            AI engineers, and full-stack developers. Scale capacity without hiring overhead—
-            staff augmentation built for speed-to-lead and product delivery.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="Hire people who already know the stack"
+        description="Dedicated specialists for GoHighLevel, n8n, Make, Zapier, intelligent systems, and product engineering. Scale capacity without starting a full hiring cycle."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Hire Team" }]}
+      />
 
-      <section className="bg-white px-4 py-20 sm:px-6 sm:py-28 lg:px-8" aria-labelledby="hire-list-heading">
-        <div className="mx-auto max-w-7xl">
+      <section className="section-pad bg-atmosphere" aria-labelledby="hire-list-heading">
+        <div className="container-site">
           <h2 id="hire-list-heading" className="sr-only">
             Hire by role
           </h2>
@@ -70,25 +63,28 @@ export default function HirePage() {
               const roles = getRolesByCategory(category);
               const categoryId = category.toLowerCase().replace(/\s+/g, "-");
               return (
-                <div key={category} id={categoryId} className="scroll-mt-24">
-                  <h3 className="text-2xl font-bold text-zinc-900 border-b border-zinc-200 pb-3 mb-6">
+                <div key={category} id={categoryId} className="scroll-mt-28">
+                  <h3 className="border-b border-border-subtle pb-3 font-display text-2xl font-semibold text-brand-blue">
                     {category}
                   </h3>
-                  <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 list-none p-0 m-0">
+                  <ul className="m-0 mt-6 grid list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3" role="list">
                     {roles.map((role) => (
-                      <li key={role.slug} className="flex min-h-[180px]">
+                      <li key={role.slug}>
                         <Link
                           href={`/hire/role/${role.slug}`}
-                          className="flex w-full min-h-full flex-col rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 shadow-sm transition hover:shadow-md hover:border-brand-teal-light hover:bg-brand-teal-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
+                          className="card-lift group flex h-full min-h-40 flex-col rounded-xl border border-border-subtle bg-surface p-5 hover:border-brand-teal-muted hover:bg-brand-teal-light/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
                         >
-                          <span className="text-lg font-semibold text-zinc-900">
+                          <span className="font-display text-lg font-semibold text-brand-blue group-hover:text-brand-blue-hover">
                             {role.title}
                           </span>
-                          <p className="mt-2 flex-1 text-sm text-zinc-600 line-clamp-2 min-h-0">
+                          <p className="mt-2 flex-1 text-sm leading-relaxed text-text-muted line-clamp-2">
                             {role.shortDescription}
                           </p>
-                          <span className="mt-3 shrink-0 text-sm font-medium text-brand-blue">
-                            View role details →
+                          <span className="link-arrow mt-4">
+                            View role details
+                            <svg className="h-4 w-4 shrink-0 transition group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
                           </span>
                         </Link>
                       </li>
@@ -99,12 +95,9 @@ export default function HirePage() {
             })}
           </div>
           <div className="mt-16 text-center">
-            <Link
-              href="/contact"
-              className="inline-flex h-12 min-h-11 items-center justify-center rounded-lg bg-brand-blue px-6 text-base font-semibold text-white shadow-sm transition hover:bg-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-blue"
-            >
-              Get in touch
-            </Link>
+            <Button href="/contact" variant="primaryBlue" size="lg">
+              Talk about a role
+            </Button>
           </div>
         </div>
       </section>

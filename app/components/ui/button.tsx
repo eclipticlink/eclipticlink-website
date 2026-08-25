@@ -1,17 +1,17 @@
 import Link from "next/link";
 
 const base =
-  "inline-flex min-h-11 items-center justify-center rounded-lg px-5 py-3 text-sm font-semibold shadow-sm transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-70 motion-reduce:active:scale-100";
+  "inline-flex min-h-11 cursor-pointer items-center justify-center rounded-md px-5 py-3 text-sm font-semibold transition duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-70 motion-reduce:active:scale-100 motion-reduce:transition-colors";
 
 const variants = {
   primary:
-    "bg-brand-teal text-brand-dark hover:bg-brand-teal-hover focus-visible:ring-brand-teal",
+    "bg-brand-teal text-brand-dark shadow-sm shadow-brand-dark/10 hover:-translate-y-0.5 hover:bg-brand-teal-hover hover:shadow-md hover:shadow-brand-teal/25 focus-visible:ring-brand-teal motion-reduce:hover:translate-y-0",
   primaryBlue:
-    "bg-brand-blue text-white hover:bg-brand-blue-hover focus-visible:ring-brand-blue",
+    "bg-brand-blue text-white shadow-sm shadow-brand-blue/20 hover:-translate-y-0.5 hover:bg-brand-blue-hover hover:shadow-md hover:shadow-brand-blue/30 focus-visible:ring-brand-blue motion-reduce:hover:translate-y-0",
   secondary:
-    "border-2 border-brand-teal bg-transparent text-white hover:bg-brand-teal/10 focus-visible:ring-brand-teal",
+    "border border-white/35 bg-white/5 text-white backdrop-blur-sm hover:-translate-y-0.5 hover:border-white/55 hover:bg-white/12 focus-visible:ring-brand-teal motion-reduce:hover:translate-y-0",
   secondaryOnLight:
-    "border-2 border-brand-blue bg-transparent text-brand-blue hover:bg-brand-blue/5 focus-visible:ring-brand-blue",
+    "border border-brand-blue/25 bg-transparent text-brand-blue hover:-translate-y-0.5 hover:border-brand-blue hover:bg-brand-blue/[0.04] focus-visible:ring-brand-blue motion-reduce:hover:translate-y-0",
   ghost:
     "text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900 focus-visible:ring-zinc-900",
 } as const;
