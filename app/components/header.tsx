@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useLayoutEffect } from "react";
 import { HireTeamConsultationForm } from "./hire-team-consultation-form";
 import { Button } from "./ui/button";
 
@@ -39,6 +39,7 @@ export function Header() {
   const servicesTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hireTeamTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hireTeamDropdownRef = useRef<HTMLDivElement | null>(null);
+  const hireTeamPanelRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -46,6 +47,30 @@ export function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useLayoutEffect(() => {
+    const panel = hireTeamPanelRef.current;
+    if (!hireTeamOpen || !panel) {
+      if (panel) panel.style.transform = "";
+      return;
+    }
+
+    const clampLeft = () => {
+      panel.style.transform = "";
+      const left = panel.getBoundingClientRect().left;
+      const minLeft = 16;
+      if (left < minLeft) {
+        panel.style.transform = `translateX(${minLeft - left}px)`;
+      }
+    };
+
+    clampLeft();
+    window.addEventListener("resize", clampLeft);
+    return () => {
+      window.removeEventListener("resize", clampLeft);
+      panel.style.transform = "";
+    };
+  }, [hireTeamOpen]);
 
   useEffect(() => {
     if (!mobileMenuOpen) return;
@@ -299,10 +324,12 @@ export function Header() {
                   }
                 }}
                 onMouseLeave={closeHireTeam}
-                className={`fixed inset-x-0 top-[4.25rem] z-50 px-4 sm:px-6 lg:px-8 ${hireTeamOpen ? "block" : "hidden"}`}
+                className={`absolute right-0 top-full z-50 pt-2 ${hireTeamOpen ? "block" : "hidden"}`}
               >
-                <div className="mx-auto max-w-7xl pt-2">
-                  <div className="overflow-hidden rounded-xl border border-border-subtle bg-white shadow-xl shadow-brand-dark/10 ring-1 ring-brand-dark/5">
+                <div
+                  ref={hireTeamPanelRef}
+                  className="min-w-208 max-w-232 overflow-hidden rounded-xl border border-border-subtle bg-white shadow-xl shadow-brand-dark/10 ring-1 ring-brand-dark/5"
+                >
                   <div className="border-b border-border-subtle bg-atmosphere px-6 py-5">
                     <h3 className="font-display text-base font-semibold tracking-tight text-brand-blue">
                       Hire automation &amp; AI specialists
@@ -312,7 +339,7 @@ export function Header() {
                       AI, and full-stack work. Pick a role or request a consultation.
                     </p>
                   </div>
-                  <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)_minmax(0,1.5fr)] gap-px bg-border-subtle">
+                  <div className="grid grid-cols-[1fr_1.15fr_1.5fr] gap-px bg-border-subtle">
                     <div className="bg-white p-3" role="tablist" aria-label="Hire by category">
                       {HIRE_TEAM_CATEGORIES.map((category) => (
                         <button
@@ -352,7 +379,7 @@ export function Header() {
                         ))}
                       </ul>
                     </div>
-                    <div className="min-w-0 bg-white p-4">
+                    <div className="bg-white p-4">
                       <HireTeamConsultationForm />
                     </div>
                   </div>
@@ -367,7 +394,6 @@ export function Header() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </Link>
-                  </div>
                   </div>
                 </div>
               </div>
