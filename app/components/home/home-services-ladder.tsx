@@ -12,12 +12,10 @@ const solutions = [
     primary: true,
   },
   {
-    id: "ai-automations",
+    id: "operations-automation",
     title: "Automate your operations",
     body: "Business process automation, workflow orchestration, and integrations that remove repetitive work.",
-    cta: "Explore automation systems",
-    primary: false,
-    anchor: true,
+    cta: "Explore operations automation",
   },
   {
     id: "ai",

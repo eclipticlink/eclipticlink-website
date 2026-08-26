@@ -78,6 +78,18 @@ export const SERVICE_SEO: Record<
       "sales automation agency",
     ],
   },
+  "operations-automation": {
+    title: "Operations Automation | Workflows & Process Systems",
+    h1: "Operations systems that remove repetitive work",
+    keywords: [
+      "operations automation",
+      "business process automation",
+      "workflow automation agency",
+      "internal process automation",
+      "ops workflow orchestration",
+      "n8n Make Zapier operations",
+    ],
+  },
   ai: {
     title: "AI Product Development | Assistants, LLM & RAG",
     h1: "Intelligent products grounded in your data",

@@ -5,42 +5,51 @@ import { Button } from "../ui/button";
 const cases = [
   {
     title: "Speed-to-lead systems",
+    industry: "Professional services · UK",
+    engagement: "Project delivery",
     problem:
-      "Inbound interest sat unanswered while the team juggled other work - replies depended on someone noticing.",
-    impact: "Warm leads cooled off before a human conversation could start.",
+      "Inbound interest sat unanswered while the team juggled delivery work - replies depended on someone noticing a form fill or missed call.",
+    impact: "Warm leads cooled off before a human conversation could start, and owners argued over who was supposed to reply.",
     solution:
-      "A response, routing, and CRM-update system that runs as soon as interest arrives.",
+      "A response, routing, and CRM-update system that runs as soon as interest arrives - without asking the team to live in the inbox.",
     journey:
       "Lead arrives → system responds → owner assigned → CRM updated → sales takes over warm.",
     technology:
-      "Automation, CRM workflows, messaging integrations - chosen to fit the client's existing stack.",
+      "Automation, CRM workflows, and messaging integrations - chosen to fit the client's existing stack, not a forced platform swap.",
     outcome:
-      "Leads hear back while interest is still warm, and sales starts from a clean, assigned record.",
+      "Leads hear back while interest is still warm, and sales starts from a clean, assigned record instead of a shared spreadsheet.",
   },
   {
     title: "CRM hygiene & routing",
-    problem: "Stages, owners, and tags drifted out of date, so the pipeline stopped reflecting reality.",
-    impact: "Handoffs failed and reporting couldn't be trusted for decisions.",
+    industry: "B2B sales team · multi-tool stack",
+    engagement: "Project delivery",
+    problem:
+      "Stages, owners, and tags drifted out of date, so the pipeline stopped reflecting reality and handoffs failed between marketing and sales.",
+    impact: "Reporting could not be trusted for decisions, and follow-up depended on tribal knowledge.",
     solution:
       "Automated validation, enrichment, assignment, and stage sync across the systems that hold customer truth.",
     journey:
       "Incoming data → validated → enriched → assigned → CRM updated → reports stay honest.",
     technology:
       "Integrations, business rules, and CRM configuration - without forcing a platform swap.",
-    outcome: "Handoffs happen when they should, and the team can trust what the CRM shows.",
+    outcome:
+      "Handoffs happen when they should, and leadership can trust what the CRM shows in weekly reviews.",
   },
   {
     title: "Follow-up & booking journeys",
-    problem: "Nurture was inconsistent and booking meant endless email back-and-forth.",
-    impact: "Prospects went quiet and meetings never landed on the calendar.",
+    industry: "Appointment-led business · US / UK",
+    engagement: "Project delivery",
+    problem:
+      "Nurture was inconsistent and booking meant endless email back-and-forth after the first conversation stalled.",
+    impact: "Prospects went quiet and meetings never landed on the calendar - even when interest was real.",
     solution:
-      "Multi-step follow-up, reminders, and recovery paths wired into calendar and CRM.",
+      "Multi-step follow-up, reminders, and recovery paths wired into calendar and CRM so chase work is not manual.",
     journey:
       "No response → nurture → engagement logged → booking link → confirmation → no-show recovery.",
     technology:
       "Workflow automation, calendar integrations, and messaging - plus AI only where it helped qualify or draft.",
     outcome:
-      "Prospects stay engaged without manual chase, and more conversations land on the calendar.",
+      "Prospects stay engaged without manual chase, and more conversations land on the calendar with fewer empty slots.",
   },
 ];
 
@@ -53,7 +62,7 @@ export function CaseStudies() {
             id="cases-heading"
             eyebrow="Systems we've built"
             title="Problem → solution → outcome"
-            description="Examples of how we work - starting with what was broken, not with which tool we used."
+            description="Representative work patterns from recent engagements - starting with what was broken, not with which tool we used. Named logos and metrics available under NDA."
           />
         </Reveal>
 
@@ -62,9 +71,13 @@ export function CaseStudies() {
             <li key={item.title}>
               <Reveal delay={i * 80} className="h-full">
                 <article className="flex h-full flex-col rounded-2xl border border-border-subtle bg-surface p-6 sm:p-7">
-                  <h3 className="font-display text-lg font-semibold text-brand-blue">
+                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-brand-teal">
+                    {item.industry}
+                  </p>
+                  <h3 className="mt-2 font-display text-lg font-semibold text-brand-blue">
                     {item.title}
                   </h3>
+                  <p className="mt-1 text-xs text-slate-500">{item.engagement}</p>
 
                   <div className="mt-5 space-y-4 text-sm leading-relaxed">
                     <div>

@@ -256,7 +256,7 @@ export default function Home() {
               id="testimonials-heading"
               eyebrow="Client experience"
               title="What partners say about working with us"
-              description="Real feedback on communication, delivery, and staying close when things change."
+              description="Feedback from recent project engagements - on communication, delivery, and staying close when priorities shift."
             />
           </Reveal>
           <Reveal delay={120}>

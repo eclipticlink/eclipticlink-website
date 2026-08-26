@@ -78,10 +78,10 @@ export default function ContactPage() {
                     Call us
                   </span>
                   <a
-                    href="tel:+923335934448"
+                    href="tel:+923438788662"
                     className="mt-2 block font-medium text-brand-blue transition hover:text-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
                   >
-                    +92 333 5934448
+                    +92 343 8788662
                   </a>
                 </div>
                 <div className="border-t border-border-subtle pt-6">

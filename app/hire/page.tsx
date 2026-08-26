@@ -11,12 +11,11 @@ import { BASE_OG, SITE_URL } from "../lib/config";
 export const metadata: Metadata = {
   title: "Hire Specialists | Automation Capacity Without Full-Time Hiring",
   description:
-    "Need GoHighLevel, n8n, Make, Zapier, AI, or product engineering capacity without hiring full-time? Embed dedicated specialists into your team.",
+    "Need lead systems, operations automation, AI, or product engineering capacity without hiring full-time? Embed dedicated specialists into your team.",
   keywords: [
     "hire automation specialists",
-    "hire GHL specialist",
-    "hire n8n developer",
-    "hire Zapier expert",
+    "hire CRM specialists",
+    "hire workflow developers",
     "hire AI engineers",
     "hire dedicated developers",
     "staff augmentation",
@@ -26,7 +25,7 @@ export const metadata: Metadata = {
     ...BASE_OG,
     title: "Hire Specialists | Automation Capacity Without Full-Time Hiring",
     description:
-      "Add capacity for GoHighLevel, n8n, Make, Zapier, AI, and product engineering without a full-time search.",
+      "Add capacity for lead systems, operations workflows, AI, and product engineering without a full-time search.",
     url: `${SITE_URL}/hire`,
   },
 };
@@ -41,12 +40,11 @@ const breadcrumbJsonLd = {
 };
 
 const stacks = [
-  "GoHighLevel",
-  "n8n",
-  "Make",
-  "Zapier",
-  "Product engineering",
+  "Lead & CRM systems",
+  "Operations workflows",
+  "AI & product",
   "Web & mobile",
+  "Cloud & DevOps",
 ];
 
 export default function HirePage() {
@@ -58,7 +56,7 @@ export default function HirePage() {
       />
       <PageHero
         title="Need automation or engineering capacity without hiring full-time?"
-        description="Dedicated specialists join your existing team - GoHighLevel, n8n, Make, Zapier, AI, and product engineering - without the cost and delay of a permanent hire."
+        description="Dedicated specialists join your existing team - lead systems, operations workflows, AI, and product engineering - without the cost and delay of a permanent hire."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Hire Team" }]}
       />
 
@@ -71,10 +69,10 @@ export default function HirePage() {
               id="hire-why-heading"
               className="mt-3 font-display text-3xl font-semibold tracking-tight text-brand-blue sm:text-4xl"
             >
-              Extra hands who already know the stack
+              Extra hands who already know the work
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-text-muted">
-              When your roadmap outpaces your team - or you need specialists for automation
+              When your roadmap outpaces your team - or you need specialists for systems work
               without opening a full-time role - we embed vetted talent into how you already work.
             </p>
           </div>
@@ -93,8 +91,8 @@ export default function HirePage() {
           <div className="mx-auto mt-14 grid max-w-4xl gap-6 md:grid-cols-3">
             {[
               {
-                title: "Matched to your tools",
-                body: "Specialists experienced in GoHighLevel, n8n, Make, Zapier, and modern product stacks.",
+                title: "Matched to the work",
+                body: "Specialists for lead systems, operations workflows, AI, and modern product stacks - tools chosen after the process is clear.",
               },
               {
                 title: "Flexible engagement",
@@ -199,7 +197,7 @@ export default function HirePage() {
             Ready to add capacity?
           </h2>
           <p className="mt-4 text-white/75">
-            Tell us the stack and how you work. We will match specialists and outline a
+            Tell us what you need done and how you work. We will match specialists and outline a
             practical engagement.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">

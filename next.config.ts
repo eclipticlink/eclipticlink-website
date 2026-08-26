@@ -8,6 +8,23 @@ const nextConfig: NextConfig = {
       { source: "/service-details.html", destination: "/services", permanent: true },
       { source: "/hire/role/c", destination: "/hire/role/c-sharp-developer", permanent: true },
       { source: "/hire/role/c%23-developer", destination: "/hire/role/c-sharp-developer", permanent: true },
+      { source: "/hire/role/ghl-specialist", destination: "/hire/role/crm-funnel-specialist", permanent: true },
+      {
+        source: "/hire/role/n8n-automation-developer",
+        destination: "/hire/role/workflow-orchestration-developer",
+        permanent: true,
+      },
+      {
+        source: "/hire/role/zapier-automation-expert",
+        destination: "/hire/role/app-integration-specialist",
+        permanent: true,
+      },
+      {
+        source: "/hire/role/make-automation-specialist",
+        destination: "/hire/role/process-automation-specialist",
+        permanent: true,
+      },
+      { source: "/hire/role/reactjs-developer", destination: "/hire/role/react-developer", permanent: true },
     ];
   },
 };
