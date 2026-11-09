@@ -3,6 +3,7 @@ import { JetBrains_Mono, Outfit } from "next/font/google";
 import Script from "next/script";
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";
+import { AmbientMotion } from "./components/ambient-motion";
 import { AnalyticsEvents } from "./components/analytics-events";
 import { DeferredHubSpot } from "./components/deferred-hubspot";
 import { HubSpotChatRefresh } from "./components/hubspot-chat-refresh";
@@ -219,6 +220,7 @@ export default function RootLayout({
           }}
         />
         <DeferredHubSpot />
+        <AmbientMotion />
         <AnalyticsEvents />
         <HubSpotChatRefresh />
         <Header />

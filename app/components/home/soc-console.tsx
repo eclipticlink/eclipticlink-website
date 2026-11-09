@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Verdict = "blocked" | "escalated" | "benign" | "contained";
 type Event = {
@@ -46,6 +46,9 @@ const verdictLabel: Record<Verdict, string> = {
 };
 
 const VISIBLE = 5;
+const TICK_MS = 2200;
+/** Wait after window load before animating, so the hero is visually stable while the page loads. */
+const START_DELAY_MS = 5000;
 
 function stamp(i: number) {
   // Deterministic timestamps so server and client render identically
@@ -58,11 +61,52 @@ function stamp(i: number) {
 
 export function SocConsole() {
   const [tick, setTick] = useState(0);
+  const rootRef = useRef<HTMLDivElement>(null);
 
+  // Tick only after the page has settled, while the console is on screen and the tab is visible.
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = setInterval(() => setTick((t) => t + 1), 2200);
-    return () => clearInterval(id);
+    const el = rootRef.current;
+    if (!el) return;
+
+    let ready = false;
+    let onScreen = false;
+    let interval: number | undefined;
+    let startTimer: number | undefined;
+
+    const sync = () => {
+      const shouldRun = ready && onScreen && document.visibilityState === "visible";
+      if (shouldRun && interval === undefined) {
+        interval = window.setInterval(() => setTick((t) => t + 1), TICK_MS);
+      } else if (!shouldRun && interval !== undefined) {
+        window.clearInterval(interval);
+        interval = undefined;
+      }
+    };
+    const arm = () => {
+      startTimer = window.setTimeout(() => {
+        ready = true;
+        sync();
+      }, START_DELAY_MS);
+    };
+
+    if (document.readyState === "complete") arm();
+    else window.addEventListener("load", arm, { once: true });
+
+    const io = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      sync();
+    });
+    io.observe(el);
+    document.addEventListener("visibilitychange", sync);
+
+    return () => {
+      window.removeEventListener("load", arm);
+      window.clearTimeout(startTimer);
+      window.clearInterval(interval);
+      io.disconnect();
+      document.removeEventListener("visibilitychange", sync);
+    };
   }, []);
 
   const rows = Array.from({ length: VISIBLE }, (_, i) => {
@@ -74,7 +118,7 @@ export function SocConsole() {
   const suppressed = 18_391 + tick * 136;
 
   return (
-    <div className="card brackets relative overflow-hidden shadow-[0_40px_120px_-40px_rgb(116_210_176/0.35)]">
+    <div ref={rootRef} className="card brackets relative overflow-hidden shadow-[0_40px_120px_-40px_rgb(116_210_176/0.35)]">
       <div className="scanline" aria-hidden="true" />
       <div className="flex items-center justify-between border-b border-line px-4 py-3">
         <div className="flex items-center gap-2" aria-hidden="true">
@@ -103,11 +147,14 @@ export function SocConsole() {
       </dl>
 
       <ul className="divide-y divide-line" aria-label="Sample security events (illustrative)">
+        {/* Rows are keyed by position so they never move (no layout shift); only their content
+            changes. The inner wrapper is keyed by event so the newest row re-runs its fade-in. */}
         {rows.map((r, i) => (
-          <li
-            key={r.key}
-            className={`grid grid-cols-[auto_1fr_auto] items-center gap-3 px-4 py-3 ${i === 0 ? "feed-in bg-white/[0.02]" : ""}`}
-          >
+          <li key={i} className={`h-16 px-4 ${i === 0 ? "bg-white/[0.02]" : ""}`}>
+            <div
+              key={r.key}
+              className={`grid h-full grid-cols-[auto_1fr_auto] items-center gap-3 ${i === 0 && tick > 0 ? "feed-in" : ""}`}
+            >
             <span
               className={`w-12 rounded border px-1.5 py-0.5 text-center font-mono text-[0.6rem] font-medium uppercase ${sevStyle[r.sev]}`}
             >
@@ -122,6 +169,7 @@ export function SocConsole() {
             <span className={`whitespace-nowrap font-mono text-[0.68rem] ${verdictStyle[r.verdict]}`}>
               {verdictLabel[r.verdict]}
             </span>
+            </div>
           </li>
         ))}
       </ul>
