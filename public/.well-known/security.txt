@@ -1,0 +1,6 @@
+# EclipticLink vulnerability disclosure
+# Please report security issues privately. Do not include sensitive data in your first message.
+Contact: mailto:info@eclipticlink.com
+Expires: 2027-11-09T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://eclipticlink.com/.well-known/security.txt

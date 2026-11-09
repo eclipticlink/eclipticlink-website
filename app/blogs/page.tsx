@@ -1,161 +1,99 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CtaBand } from "../components/cta-band";
+import { JsonLd } from "../components/json-ld";
 import { PageHero } from "../components/page-hero";
-import { Button } from "../components/ui/button";
+import { Reveal } from "../components/reveal";
 import { blogPosts } from "../data/blogs";
 import { BASE_OG, SITE_URL } from "../lib/config";
+import { breadcrumbJsonLd } from "../lib/seo";
+
+const TITLE = "Cybersecurity Blog & Security Insights";
+const DESCRIPTION =
+  "Practical cybersecurity guidance from EclipticLink: AI and LLM security, managed detection and response, penetration testing, cloud security, and compliance.";
 
 export const metadata: Metadata = {
-  title: "Blog | Lead Systems, CRM, Products & Engineering",
-  description:
-    "Practical writing on GoHighLevel, HubSpot, Zoho, n8n, Make, Zapier, intelligent products, and software delivery from the EclipticLink team.",
-  keywords: [
-    "GoHighLevel tutorials",
-    "n8n vs Make vs Zapier",
-    "HubSpot CRM automation",
-    "lead follow-up guide",
-    "AI product development",
-    "software delivery blog",
-  ],
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: `${SITE_URL}/blogs` },
-  openGraph: {
-    ...BASE_OG,
-    title: "Blog | Lead Systems, CRM, Products & Engineering",
-    description:
-      "Field notes on follow-up systems, CRM workflows, intelligent products, and how we build software.",
-    url: `${SITE_URL}/blogs`,
-  },
+  openGraph: { ...BASE_OG, title: TITLE, description: DESCRIPTION, url: `${SITE_URL}/blogs` },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
 };
 
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "EclipticLink", item: SITE_URL },
-    { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blogs` },
-  ],
-};
-
-const CATEGORY_ORDER = [
-  "AI Automations",
-  "AI Development",
-  "Full-Stack Development",
-] as const;
-
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
-
-function sortBlogPosts(posts: typeof blogPosts) {
-  return [...posts].sort((a, b) => {
-    const ai = CATEGORY_ORDER.indexOf(a.category as (typeof CATEGORY_ORDER)[number]);
-    const bi = CATEGORY_ORDER.indexOf(b.category as (typeof CATEGORY_ORDER)[number]);
-    const ao = ai === -1 ? 99 : ai;
-    const bo = bi === -1 ? 99 : bi;
-    if (ao !== bo) return ao - bo;
-    return b.publishedAt.localeCompare(a.publishedAt);
-  });
+function formatDate(d: string) {
+  return new Date(d).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
 }
 
 export default function BlogsPage() {
-  const posts = sortBlogPosts(blogPosts);
-  const categories = CATEGORY_ORDER.filter((cat) =>
-    posts.some((p) => p.category === cat)
-  );
+  const posts = [...blogPosts].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+  const [featured, ...rest] = posts;
+
+  const blogJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "EclipticLink Security Insights",
+    url: `${SITE_URL}/blogs`,
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    blogPost: posts.map((p) => ({
+      "@type": "BlogPosting",
+      headline: p.title,
+      url: `${SITE_URL}/blogs/${p.slug}`,
+      datePublished: p.publishedAt,
+    })),
+  };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <JsonLd data={[breadcrumbJsonLd(SITE_URL, [{ name: "Insights", path: "/blogs" }]), blogJsonLd]} />
       <PageHero
-        title="Notes from the work"
-        description="Guides and opinions on lead systems, CRM workflows, intelligent products, and software delivery, written by the people who ship them."
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Blog" }]}
+        eyebrow="Security insights"
+        title="Cybersecurity insights for the AI era"
+        description="Practical, vendor-neutral guidance on AI security, threat detection, offensive testing, cloud, and compliance from the EclipticLink security team."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Insights" }]}
       />
 
-      <section className="section-pad bg-atmosphere" aria-labelledby="blogs-heading">
+      <section className="section-pad" aria-labelledby="posts-heading">
         <div className="container-site">
-          <div className="mb-12 flex flex-wrap gap-3">
-            {categories.map((cat) => (
-              <span
-                key={cat}
-                className="border border-border-subtle bg-surface px-3 py-1 text-xs font-semibold tracking-wide text-brand-blue"
-              >
-                {cat}
-              </span>
-            ))}
-          </div>
-
-          <h2 id="blogs-heading" className="sr-only">
+          <h2 id="posts-heading" className="sr-only">
             All articles
           </h2>
+          {featured ? (
+            <Link href={`/blogs/${featured.slug}`} className="card card-hover group grid gap-6 p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-end">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-wider text-accent">
+                  Featured · {featured.category}
+                </p>
+                <h3 className="mt-4 max-w-3xl text-2xl font-semibold leading-tight text-ink group-hover:text-accent sm:text-3xl">
+                  {featured.title}
+                </h3>
+                <p className="mt-4 max-w-3xl leading-relaxed text-muted">{featured.excerpt}</p>
+              </div>
+              <p className="font-mono text-xs text-subtle">
+                <time dateTime={featured.publishedAt}>{formatDate(featured.publishedAt)}</time> · {featured.readingTime} min
+              </p>
+            </Link>
+          ) : null}
 
-          <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" role="list">
-            {posts.map((post) => (
+          <ul className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3" role="list">
+            {rest.map((post, i) => (
               <li key={post.slug}>
-                <article className="card-lift group flex h-full flex-col rounded-xl border border-border-subtle bg-surface p-6 hover:border-brand-teal-muted hover:bg-brand-teal-light/30">
-                  <div className="mb-3 flex flex-wrap items-center gap-3 text-xs text-text-muted">
-                    <span className="font-semibold text-brand-teal">{post.category}</span>
-                    <span aria-hidden="true">·</span>
-                    <span>{post.readingTime} min read</span>
-                  </div>
-                  <h3 className="font-display text-lg font-semibold leading-snug text-brand-blue transition group-hover:text-brand-blue-hover">
-                    <Link
-                      href={`/blogs/${post.slug}`}
-                      className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
-                    >
-                      {post.title}
-                    </Link>
-                  </h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-text-muted line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                  <div className="mt-5 flex items-center justify-between gap-3">
-                    <time dateTime={post.publishedAt} className="text-xs text-text-muted">
-                      {formatDate(post.publishedAt)}
-                    </time>
-                    <Link
-                      href={`/blogs/${post.slug}`}
-                      className="link-arrow"
-                      aria-label={`Read ${post.title}`}
-                    >
-                      Read
-                      <svg className="h-4 w-4 shrink-0 transition group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </Link>
-                  </div>
-                </article>
+                <Reveal delay={(i % 3) * 70} className="h-full">
+                  <Link href={`/blogs/${post.slug}`} className="card card-hover group flex h-full flex-col p-6">
+                    <p className="font-mono text-xs uppercase tracking-wider text-accent">{post.category}</p>
+                    <h3 className="mt-3 text-lg font-semibold leading-snug text-ink group-hover:text-accent">{post.title}</h3>
+                    <p className="mt-3 line-clamp-3 flex-1 text-sm leading-relaxed text-muted">{post.excerpt}</p>
+                    <p className="mt-5 font-mono text-xs text-subtle">
+                      <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time> · {post.readingTime} min read
+                    </p>
+                  </Link>
+                </Reveal>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section className="section-pad bg-surface-muted">
-        <div className="container-site max-w-3xl text-center">
-          <h2 className="font-display text-2xl font-semibold tracking-tight text-brand-blue sm:text-3xl">
-            Want to talk through a challenge?
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-text-muted">
-            If something in these articles sounds like your stack, we are happy to dig into the specifics.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button href="/contact" variant="primaryBlue">
-              Start a conversation
-            </Button>
-            <Button href="/services" variant="secondaryOnLight">
-              Browse services
-            </Button>
-          </div>
-        </div>
-      </section>
+      <CtaBand />
     </>
   );
 }

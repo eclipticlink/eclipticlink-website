@@ -1,3 +1,13 @@
+export type IconName =
+  | "radar"
+  | "target"
+  | "brain"
+  | "cloud"
+  | "scan"
+  | "shield-check"
+  | "siren"
+  | "code";
+
 export type SubService = {
   id: string;
   title: string;
@@ -5,354 +15,644 @@ export type SubService = {
   details: string;
 };
 
+export type ServiceFaq = { q: string; a: string };
+
 export type Service = {
   id: string;
+  /** Short label for nav and cards */
   title: string;
+  /** SEO title tag (≤ 60 chars, brand appended by template) */
+  seoTitle: string;
+  /** Page H1 */
+  h1: string;
+  icon: IconName;
   summary: string;
   details: string;
-  metaDescription?: string;
+  metaDescription: string;
+  keywords: string[];
+  /** How AI is used in this service, stated plainly */
+  aiEdge: string;
+  outcomes: string[];
+  deliverables: string[];
   subServices: SubService[];
+  faqs: ServiceFaq[];
 };
 
 export const services: Service[] = [
   {
-    id: "ai-automations",
-    title: "Lead & CRM Systems",
+    id: "managed-detection-response",
+    title: "AI-Powered MDR & SOC",
+    seoTitle: "AI-Powered MDR & Managed SOC Services",
+    h1: "AI-powered managed detection and response",
+    icon: "radar",
     summary:
-      "Follow-up, pipelines, and booking workflows on GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier.",
+      "Continuous threat monitoring where AI triages the noise and analysts act on what matters.",
     details:
-      "We design the systems that answer inbound interest, keep CRM stages honest, and carry nurture without someone living in the inbox. Whether you run GoHighLevel, HubSpot, Zoho, or a mix of n8n, Make, and Zapier, we connect the tools you already trust to how your team actually sells.",
+      "We connect to the telemetry you already have (endpoint, identity, cloud, email, and network logs) and run it through AI-assisted correlation and triage. Low-value alerts are suppressed with an audit trail, real threats are enriched with context, and a security analyst validates every escalation before anyone is paged.",
     metaDescription:
-      "Lead follow-up and CRM systems on GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier. Built for response time, pipeline hygiene, and booked conversations.",
+      "AI-powered MDR and managed SOC: continuous monitoring, AI-assisted alert triage, threat hunting, and analyst-validated response across endpoint and cloud.",
+    keywords: [
+      "managed detection and response",
+      "AI-powered MDR",
+      "managed SOC services",
+      "SOC as a service",
+      "AI threat detection",
+      "24/7 security monitoring",
+      "threat hunting services",
+      "XDR managed service",
+    ],
+    aiEdge:
+      "Machine-learning models baseline normal behavior per user, host, and workload, then score deviations. An LLM-assisted triage layer summarizes each alert, maps it to MITRE ATT&CK, and drafts the investigation notes, so analysts spend their time deciding rather than collecting.",
+    outcomes: [
+      "Far fewer false positives reaching your team",
+      "Faster mean time to detect and respond",
+      "Every escalation reviewed by a human analyst",
+      "Clear monthly reporting your board can read",
+    ],
+    deliverables: [
+      "Onboarding and log-source coverage map",
+      "Detection rules tuned to your environment",
+      "Escalation runbooks and contact matrix",
+      "Monthly threat and coverage report",
+    ],
     subServices: [
       {
-        id: "lead-follow-up-automation",
-        title: "Lead & Follow-Up Systems",
-        summary: "Instant replies, multi-touch sequences, and no lead left waiting.",
+        id: "continuous-monitoring",
+        title: "Continuous monitoring",
+        summary: "Endpoint, identity, cloud, email, and network telemetry watched around the clock.",
         details:
-          "Form fills, missed calls, and chat inquiries trigger the right next step: a fast reply, an owner, and a path that does not depend on someone remembering to follow up. Multi-channel nurture keeps interest warm until a human conversation makes sense.",
+          "We integrate with your EDR, SIEM, identity provider, and cloud audit logs, or deploy lightweight collectors where there are gaps, so detection coverage is measured, not assumed.",
       },
       {
-        id: "crm-sales-pipeline-automation",
-        title: "CRM & Pipeline Workflows",
-        summary: "HubSpot, Zoho, and GoHighLevel stages that update themselves.",
+        id: "ai-alert-triage",
+        title: "AI-assisted alert triage",
+        summary: "Correlation, enrichment, and prioritization before a human looks.",
         details:
-          "We configure pipelines so stage changes, tasks, scoring, and handoffs happen when they should. Marketing and sales see the same truth, and nobody has to babysit a spreadsheet to know what is next.",
+          "Related events are grouped into a single incident, enriched with asset, user, and threat-intel context, and ranked by likely impact, which cuts alert fatigue without hiding anything.",
       },
       {
-        id: "workflow-automation-n8n-make-zapier",
-        title: "Workflow Orchestration (n8n, Make, Zapier)",
-        summary: "Connect the apps you already use and cut the copy-paste tax.",
+        id: "threat-hunting",
+        title: "Proactive threat hunting",
+        summary: "Hypothesis-driven hunts mapped to MITRE ATT&CK techniques.",
         details:
-          "From simple two-step connections to branched flows with logging and retries, we build n8n, Make, and Zapier workflows that sync data and trigger the right action without becoming a maintenance nightmare.",
+          "Analysts hunt for attacker behavior that signatures miss, such as living-off-the-land binaries, token theft, and unusual OAuth grants, and turn findings into new detections.",
       },
       {
-        id: "ai-outreach-nurture-sequences",
-        title: "Outreach & Nurture Sequences",
-        summary: "Email, SMS, and messaging that stay personal at scale.",
+        id: "guided-response",
+        title: "Guided and active response",
+        summary: "Isolate hosts, disable accounts, and contain threats with pre-agreed playbooks.",
         details:
-          "Sequences that segment, personalize, and time follow-ups with care, wired into your CRM so cold leads get a second chance and warm ones are not ignored. Written to sound like your team, not a robot.",
+          "You decide in advance which actions we can take automatically and which need your approval. Containment happens in minutes, with every action logged.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Do we need to replace our existing security tools?",
+        a: "Usually not. We integrate with common EDR, SIEM, identity, and cloud platforms and only recommend new tooling where there is a measurable coverage gap.",
       },
       {
-        id: "omnichannel-booking-automation",
-        title: "Booking & Omnichannel Journeys",
-        summary: "Appointments, reminders, and recovery when someone no-shows.",
-        details:
-          "We automate booking, reminders, and no-show recovery across email, SMS, chat, and voice, often inside GoHighLevel or connected through n8n or Make. Fewer empty calendar slots, less coordinator busywork.",
+        q: "Does AI make the final call on incidents?",
+        a: "No. AI handles correlation, enrichment, summarization, and prioritization. A security analyst validates every escalation and any response action that has not been pre-approved.",
+      },
+      {
+        q: "What does onboarding look like?",
+        a: "We map your assets and log sources, connect telemetry, tune detections against a baseline period, and agree escalation paths with you before monitoring goes live.",
       },
     ],
   },
   {
-    id: "operations-automation",
-    title: "Operations Automation",
+    id: "penetration-testing",
+    title: "Penetration Testing",
+    seoTitle: "Penetration Testing Services | Web, API, Cloud",
+    h1: "Penetration testing that finds what scanners miss",
+    icon: "target",
     summary:
-      "Workflows that remove repetitive ops work - approvals, handoffs, data sync, and internal process automation.",
+      "Manual, adversary-minded testing of web apps, APIs, mobile, networks, and cloud, sped up by AI-assisted recon.",
     details:
-      "We map how work actually moves through operations, then build systems that cut copy-paste, chase, and manual checks. Approvals, ticket routing, document handoffs, and cross-tool sync - designed so your team spends time on exceptions, not the routine.",
+      "Automated scanners find known issues. Attackers chain small weaknesses into real breaches. Our testers combine AI-assisted reconnaissance and attack-surface mapping with manual exploitation to show you exactly how an attacker would get in, and how to stop them.",
     metaDescription:
-      "Operations automation for approvals, handoffs, data sync, and internal workflows. Built around your process, not a platform pitch.",
+      "Penetration testing for web apps, APIs, mobile, networks, and cloud. Manual testing aligned to OWASP and PTES, with clear remediation guidance and retesting.",
+    keywords: [
+      "penetration testing services",
+      "web application penetration testing",
+      "API penetration testing",
+      "network penetration testing",
+      "cloud penetration testing",
+      "mobile app pentest",
+      "red team assessment",
+      "ethical hacking services",
+    ],
+    aiEdge:
+      "AI speeds up the slow parts: enumerating subdomains, endpoints, and parameters, clustering similar findings, and drafting reproducible write-ups. That leaves more of the engagement for the manual, creative exploitation that tools cannot do.",
+    outcomes: [
+      "Proven, exploitable findings instead of scanner noise",
+      "Risk-ranked remediation your developers can act on",
+      "Evidence for SOC 2, ISO 27001, and PCI DSS audits",
+      "A retest that confirms fixes actually work",
+    ],
+    deliverables: [
+      "Executive summary for leadership",
+      "Technical report with proof-of-concept steps",
+      "CVSS-scored, prioritized findings",
+      "Retest and attestation letter",
+    ],
     subServices: [
       {
-        id: "business-process-automation",
-        title: "Business Process Automation",
-        summary: "Turn repetitive ops steps into reliable, owned workflows.",
+        id: "web-application-pentest",
+        title: "Web application testing",
+        summary: "OWASP Top 10, business-logic flaws, and authentication bypasses.",
         details:
-          "We document the process, remove dead ends, and automate the steps that should not need a human every time - with clear ownership when something needs judgment.",
+          "Authenticated and unauthenticated testing of your web apps, covering access control, injection, session handling, and the business-logic abuse that automated tools cannot reason about.",
       },
       {
-        id: "ops-workflow-orchestration",
-        title: "Workflow Orchestration",
-        summary: "Multi-step flows across the tools your ops team already uses.",
+        id: "api-pentest",
+        title: "API security testing",
+        summary: "REST, GraphQL, and gRPC tested against the OWASP API Security Top 10.",
         details:
-          "Approvals, notifications, status updates, and retries wired through n8n, Make, Zapier, or custom glue - so handoffs do not die in inboxes.",
+          "We test for broken object-level authorization, mass assignment, excessive data exposure, and rate-limit abuse, the API flaws behind many modern breaches.",
       },
       {
-        id: "internal-data-sync",
-        title: "Internal Data Sync",
-        summary: "Keep systems of record aligned without spreadsheet babysitting.",
+        id: "network-pentest",
+        title: "Internal and external network",
+        summary: "Perimeter exposure, lateral movement, and Active Directory attack paths.",
         details:
-          "Sync customers, orders, tickets, and inventory between the apps ops relies on, with logging so you can see what moved and what failed.",
+          "From an external foothold or an assumed-breach position, we map how far an attacker could move and which identity misconfigurations make it easy.",
       },
       {
-        id: "ops-exception-handling",
-        title: "Exception & Escalation Paths",
-        summary: "Automation that knows when to involve a human.",
+        id: "red-teaming",
+        title: "Red team and social engineering",
+        summary: "Objective-based campaigns that test people, process, and technology together.",
         details:
-          "Rules and alerts for the cases that should not auto-complete - so the system stays trusted and people focus on the work that matters.",
+          "Scenario-driven exercises, including phishing simulations, that measure whether your detection and response actually work under realistic pressure.",
+      },
+    ],
+    faqs: [
+      {
+        q: "How is a penetration test different from a vulnerability scan?",
+        a: "A scan lists potential weaknesses automatically. A penetration test has skilled testers manually exploit and chain those weaknesses to prove real-world impact, and removes false positives.",
+      },
+      {
+        q: "Will testing disrupt production?",
+        a: "We agree scope, timing, and rules of engagement up front, avoid destructive techniques by default, and can test against staging when production risk is a concern.",
+      },
+      {
+        q: "Is retesting included?",
+        a: "Yes. After you remediate, we retest the reported findings and update the report so you have evidence the fixes hold.",
       },
     ],
   },
   {
-    id: "ai",
-    title: "Intelligent Products",
+    id: "ai-security",
+    title: "AI & LLM Security",
+    seoTitle: "AI & LLM Security | Prompt Injection Testing",
+    h1: "Security for the AI systems you are shipping",
+    icon: "brain",
     summary:
-      "Assistants, LLM features, and AI-native products grounded in your data and processes.",
+      "Red-teaming, secure architecture, and governance for LLM apps, AI agents, and RAG pipelines.",
     details:
-      "When a workflow needs judgment, language, or retrieval, we build the product layer: conversational assistants, RAG systems, model integrations, and AI-native SaaS. Designed for production, not a demo that dies in a slide deck.",
+      "Chatbots, copilots, and autonomous agents add an attack surface traditional testing does not cover. We assess your AI applications against the OWASP Top 10 for LLM Applications and MITRE ATLAS, covering prompt injection, data leakage, insecure tool use, and model supply-chain risk, then help you build guardrails that hold up.",
     metaDescription:
-      "Custom AI product development: assistants, LLM integrations, RAG systems, and AI-native SaaS built for production use.",
+      "AI and LLM security: prompt injection testing, AI red teaming, secure RAG and agent design, and governance aligned to OWASP LLM Top 10 and NIST AI RMF.",
+    keywords: [
+      "AI security services",
+      "LLM security",
+      "prompt injection testing",
+      "AI red teaming",
+      "OWASP Top 10 for LLM",
+      "AI agent security",
+      "RAG security",
+      "AI governance",
+      "NIST AI RMF",
+      "ISO 42001",
+    ],
+    aiEdge:
+      "We use AI to attack AI: automated adversarial prompt generation and mutation run thousands of jailbreak and injection variants, and experienced testers take the promising ones further by hand.",
+    outcomes: [
+      "Confidence that your assistant will not leak data or follow hostile instructions",
+      "Agents and tools scoped to least privilege",
+      "Guardrails and monitoring that catch abuse in production",
+      "Documentation for customers, auditors, and AI regulation",
+    ],
+    deliverables: [
+      "AI threat model for your application",
+      "Red-team report with reproducible prompts",
+      "Guardrail and architecture recommendations",
+      "AI governance policy pack",
+    ],
     subServices: [
       {
-        id: "ai-integrations",
-        title: "AI Integrations",
-        summary: "Bring models and APIs into the systems you already run.",
+        id: "llm-red-teaming",
+        title: "LLM and AI red teaming",
+        summary: "Direct and indirect prompt injection, jailbreaks, and system-prompt extraction.",
         details:
-          "We embed intelligence into CRMs, internal tools, and customer-facing apps so teams can enrich data, route work, and make decisions without rebuilding everything from scratch.",
+          "We test chatbots, copilots, and agents with direct attacks and with poisoned content hidden in documents, emails, and web pages your model reads.",
       },
       {
-        id: "ai-chatbots-virtual-assistants",
-        title: "Assistants & Chatbots",
-        summary: "Conversational help for support, sales, and internal knowledge.",
+        id: "secure-rag-agents",
+        title: "Secure RAG and agent design",
+        summary: "Permission-aware retrieval, tool sandboxing, and output handling.",
         details:
-          "Assistants that qualify leads, answer from your knowledge base, or take routine work off your team. Powered by LLMs and your content, tuned to sound on-brand and stay useful after launch.",
+          "Architecture reviews that make sure retrieval respects user permissions, agents cannot take high-impact actions without confirmation, and model output is treated as untrusted input.",
       },
       {
-        id: "ai-saas-development",
-        title: "AI-Native SaaS",
-        summary: "Products where intelligence is part of the core experience.",
+        id: "ai-supply-chain",
+        title: "Model and data supply chain",
+        summary: "Third-party models, datasets, plugins, and MCP servers assessed for risk.",
         details:
-          "From early MVP to a product that can scale, we design and build SaaS where models, embeddings, or agents sit at the center. Architecture, security, and cost discipline included.",
+          "We review where your models, embeddings, plugins, and tool servers come from, how they are versioned, and what they can access.",
       },
       {
-        id: "custom-llm-rag-solutions",
-        title: "LLM & RAG Solutions",
-        summary: "Answers and agents grounded in your documents and systems.",
+        id: "ai-governance",
+        title: "AI governance and compliance",
+        summary: "Policies and controls aligned to NIST AI RMF, ISO/IEC 42001, and the EU AI Act.",
         details:
-          "RAG pipelines and agent workflows that pull from your documents and systems of record. Accurate enough for real work, auditable enough for stakeholders who care about where answers come from.",
+          "Acceptable-use policies, an AI system inventory, risk assessments, and vendor reviews that let you adopt AI quickly without losing control.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is prompt injection?",
+        a: "Prompt injection is when an attacker crafts input, either typed directly or hidden in content the model reads, that overrides the application's instructions. It can cause data leakage, unauthorized actions, or harmful output.",
+      },
+      {
+        q: "We use a major model provider. Isn't security their job?",
+        a: "Providers secure the model. You are responsible for how your application uses it: what data it can see, what tools it can call, and how its output is handled. Most AI incidents happen at that layer.",
+      },
+      {
+        q: "Can you test AI agents that call tools or APIs?",
+        a: "Yes. Agentic systems are a priority because excessive agency turns a prompt injection into real-world actions. We test tool permissions, confirmation flows, and blast radius.",
       },
     ],
   },
   {
-    id: "custom-software-development",
-    title: "Custom Software",
+    id: "cloud-security",
+    title: "Cloud Security",
+    seoTitle: "Cloud Security Services | AWS, Azure, GCP",
+    h1: "Cloud security posture you can actually see",
+    icon: "cloud",
     summary:
-      "Web apps, SaaS, and enterprise tools when off-the-shelf stops fitting.",
+      "Posture management, misconfiguration fixes, and Kubernetes hardening across AWS, Azure, and GCP.",
     details:
-      "When platforms and workflows are not enough, we design and build the software underneath: enterprise applications, SaaS products, APIs, and integrations that scale with how you operate.",
+      "Most cloud breaches start with a misconfiguration: an exposed bucket, an over-privileged role, a forgotten access key. We assess your cloud accounts against CIS Benchmarks, map toxic combinations of risk, and fix them in infrastructure-as-code so they stay fixed.",
     metaDescription:
-      "Custom software development for SaaS, enterprise apps, and APIs that fit how your business actually works.",
+      "Cloud security for AWS, Azure, and GCP: posture assessments, IAM hardening, Kubernetes security, and infrastructure-as-code scanning aligned to CIS Benchmarks.",
+    keywords: [
+      "cloud security services",
+      "AWS security assessment",
+      "Azure security",
+      "GCP security",
+      "CSPM",
+      "cloud security posture management",
+      "Kubernetes security",
+      "IAM security review",
+      "infrastructure as code security",
+    ],
+    aiEdge:
+      "AI-assisted attack-path analysis connects findings across identity, network, and data to show which combinations are actually exploitable, so you fix the five issues that matter before the five hundred that don't.",
+    outcomes: [
+      "A complete inventory of cloud assets and exposure",
+      "Least-privilege IAM without breaking deployments",
+      "Guardrails that stop misconfigurations before deploy",
+      "Continuous posture tracking instead of point-in-time audits",
+    ],
+    deliverables: [
+      "Cloud security assessment report",
+      "Prioritized attack-path findings",
+      "Terraform and IaC fixes or pull requests",
+      "Posture dashboard and monthly review",
+    ],
     subServices: [
       {
-        id: "enterprise-applications",
-        title: "Enterprise Applications",
-        summary: "Internal tools shaped around your processes.",
+        id: "cloud-posture-assessment",
+        title: "Cloud posture assessment",
+        summary: "CIS Benchmark and best-practice review across all accounts and subscriptions.",
         details:
-          "Applications for operations, reporting, and workflow that match how your organization already works, with role-based access and room to grow.",
+          "Storage exposure, logging gaps, encryption, network rules, and identity configuration reviewed and ranked by real exploitability.",
       },
       {
-        id: "saas-product-development",
-        title: "SaaS Product Development",
-        summary: "Multi-tenant products from concept through scale.",
+        id: "iam-hardening",
+        title: "Identity and access hardening",
+        summary: "Least-privilege roles, key hygiene, and federated access.",
         details:
-          "Billing, analytics, admin tooling, and the performance and security work that comes with serving real customers, not just a prototype.",
+          "We remove standing admin access, rotate or eliminate long-lived keys, and enforce MFA and conditional access across your cloud and SaaS estate.",
       },
       {
-        id: "system-integration",
-        title: "System Integration",
-        summary: "Connect CRMs, payments, identity, and internal services.",
+        id: "kubernetes-security",
+        title: "Container and Kubernetes security",
+        summary: "Cluster hardening, image scanning, and runtime protection.",
         details:
-          "APIs, webhooks, and event-driven links between the systems that matter, documented so the next engineer can maintain them.",
+          "RBAC review, network policies, admission controls, secrets management, and image provenance for EKS, AKS, GKE, and self-managed clusters.",
       },
       {
-        id: "custom-api-development",
-        title: "Custom API Development",
-        summary: "REST, GraphQL, and event APIs with clear contracts.",
+        id: "iac-security",
+        title: "Infrastructure-as-code security",
+        summary: "Policy-as-code checks in CI so insecure changes never ship.",
         details:
-          "APIs that serve your apps, partners, and internal services with versioning and documentation so the ecosystem can evolve without breaking.",
+          "Terraform, CloudFormation, Bicep, and Helm scanned in your pipeline, with policies tuned to your environment to avoid alert fatigue for developers.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Which cloud providers do you cover?",
+        a: "AWS, Microsoft Azure, and Google Cloud, plus Kubernetes and the major SaaS platforms that hold your data.",
+      },
+      {
+        q: "Do you need admin access to our cloud?",
+        a: "No. Assessments use read-only roles that you create and can revoke at any time. Remediation happens through your own change process or pull requests.",
       },
     ],
   },
   {
-    id: "mobile-app-development",
-    title: "Mobile Apps",
+    id: "vulnerability-management",
+    title: "Vulnerability Management",
+    seoTitle: "Vulnerability & Attack Surface Management",
+    h1: "Vulnerability management prioritized by real risk",
+    icon: "scan",
     summary:
-      "Native and cross-platform apps that sit alongside your web and CRM stack.",
+      "Continuous scanning and external attack-surface monitoring, with AI ranking what to patch first.",
     details:
-      "Consumer apps, B2B tools, and companions to the workflows you already run. Native or cross-platform, from early build to store launch.",
+      "Scanners produce thousands of findings; teams can patch dozens. We run continuous internal and external scanning, discover forgotten internet-facing assets, and rank vulnerabilities by exploitability, exposure, and business impact so your patch effort goes where it reduces the most risk.",
     metaDescription:
-      "Mobile app development for iOS, Android, React Native, Flutter, and PWAs connected to your existing systems.",
+      "Risk-based vulnerability management and attack surface monitoring. Continuous scanning with AI prioritization by exploitability and business context.",
+    keywords: [
+      "vulnerability management services",
+      "risk-based vulnerability management",
+      "attack surface management",
+      "external attack surface monitoring",
+      "vulnerability scanning",
+      "patch prioritization",
+      "continuous threat exposure management",
+    ],
+    aiEdge:
+      "Our prioritization combines CVSS with known-exploited status (CISA KEV), exploit-prediction scores (EPSS), asset exposure, and business criticality. AI groups duplicate findings and writes fix guidance specific to your stack.",
+    outcomes: [
+      "A short, ranked fix list instead of a 5,000-row spreadsheet",
+      "Shadow IT and forgotten assets discovered",
+      "Measurable reduction in exposure over time",
+      "Patch SLAs tracked and reported",
+    ],
+    deliverables: [
+      "Asset inventory and exposure map",
+      "Risk-ranked remediation queue",
+      "Ticketing integration (Jira, Linear, ServiceNow)",
+      "Monthly trend reporting",
+    ],
     subServices: [
       {
-        id: "native-ios-development",
-        title: "Native iOS Development",
-        summary: "Swift apps that feel at home on iPhone and iPad.",
+        id: "external-attack-surface",
+        title: "External attack surface monitoring",
+        summary: "Discover every domain, IP, certificate, and exposed service you own.",
         details:
-          "Native iOS work with Swift and Apple frameworks, through App Store submission and ongoing updates.",
+          "Continuous discovery of internet-facing assets, including the ones nobody remembers launching, with alerts when something risky appears.",
       },
       {
-        id: "native-android-development",
-        title: "Native Android Development",
-        summary: "Kotlin apps built for the Android ecosystem.",
+        id: "continuous-scanning",
+        title: "Continuous scanning",
+        summary: "Authenticated internal, external, and cloud workload scanning.",
         details:
-          "Native Android with Kotlin and Jetpack, Material Design, offline support, and Play Store readiness.",
+          "Scheduled and on-change scans across servers, endpoints, containers, and cloud workloads, with results de-duplicated and normalized.",
       },
       {
-        id: "cross-platform-development",
-        title: "Cross-Platform Development",
-        summary: "One codebase for iOS and Android with React Native or Flutter.",
+        id: "risk-prioritization",
+        title: "Risk-based prioritization",
+        summary: "Known-exploited, internet-facing, and business-critical first.",
         details:
-          "Ship both platforms without doubling the team, with quality high enough for production use, not just an MVP demo.",
+          "Findings are scored on real-world exploitability and context, then routed to the right owner with clear fix steps.",
       },
+    ],
+    faqs: [
       {
-        id: "progressive-web-apps",
-        title: "Progressive Web Apps (PWA)",
-        summary: "Installable web apps that work offline.",
-        details:
-          "Reach across devices without separate store listings, or use a PWA as a companion to native apps.",
+        q: "How is this different from buying a scanner?",
+        a: "A scanner gives you data. We run, tune, and triage it, discover assets the scanner was never pointed at, and turn the results into a prioritized, owned remediation plan.",
       },
     ],
   },
   {
-    id: "cloud-devops",
-    title: "Cloud & DevOps",
+    id: "compliance-grc",
+    title: "Compliance & GRC",
+    seoTitle: "SOC 2, ISO 27001 & HIPAA Compliance Services",
+    h1: "Compliance readiness without the spreadsheet chaos",
+    icon: "shield-check",
     summary:
-      "CI/CD, infrastructure, and reliability so releases stay boring in the best way.",
+      "SOC 2, ISO 27001, HIPAA, PCI DSS, and GDPR readiness, with AI-assisted evidence collection.",
     details:
-      "Pipelines, infrastructure as code, and cloud strategy so products and integrations deploy often, recover quickly, and scale when traffic asks for it.",
+      "Customers and investors want proof that you take security seriously. We run gap assessments, write policies that match how you actually operate, implement the missing controls, and automate evidence collection so audits are an export, not a fire drill.",
     metaDescription:
-      "Cloud and DevOps: CI/CD, infrastructure as code, migration, and monitoring for reliable delivery.",
+      "SOC 2, ISO 27001, HIPAA, PCI DSS, and GDPR compliance readiness. Gap assessments, policies, control implementation, and AI-assisted audit evidence collection.",
+    keywords: [
+      "SOC 2 compliance services",
+      "ISO 27001 consulting",
+      "HIPAA compliance",
+      "PCI DSS compliance",
+      "GDPR compliance",
+      "virtual CISO",
+      "vCISO services",
+      "GRC consulting",
+      "NIST CSF assessment",
+    ],
+    aiEdge:
+      "AI maps your existing controls across frameworks so one control satisfies SOC 2, ISO 27001, and HIPAA at once. It also drafts policies from your real practices and pre-fills security questionnaires from your approved answers.",
+    outcomes: [
+      "Audit-ready in a defined, predictable timeline",
+      "Policies your team will actually follow",
+      "Security questionnaires answered in hours, not weeks",
+      "A security program that keeps working after the audit",
+    ],
+    deliverables: [
+      "Gap assessment and remediation roadmap",
+      "Policy and procedure set",
+      "Control implementation support",
+      "Evidence library and auditor liaison",
+    ],
     subServices: [
       {
-        id: "ci-cd-pipelines",
-        title: "CI/CD Pipelines",
-        summary: "Build, test, and deploy without the manual ritual.",
+        id: "soc-2-readiness",
+        title: "SOC 2 readiness",
+        summary: "Type I and Type II preparation for SaaS and service companies.",
         details:
-          "GitHub Actions, GitLab CI, Jenkins, or cloud-native tools wired so every commit can move safely toward production.",
+          "Scoping, Trust Services Criteria mapping, control design, and evidence automation through to your auditor's fieldwork.",
       },
       {
-        id: "infrastructure-as-code",
-        title: "Infrastructure as Code",
-        summary: "Repeatable cloud with Terraform, Pulumi, or CloudFormation.",
+        id: "iso-27001",
+        title: "ISO 27001 and ISO 42001",
+        summary: "ISMS and AI management system design and certification support.",
         details:
-          "Servers, networks, and services defined as code so environments stay consistent and reviewable.",
+          "Risk assessment, Statement of Applicability, internal audit, and management review, including ISO/IEC 42001 for organizations building AI.",
       },
       {
-        id: "cloud-migration",
-        title: "Cloud Migration",
-        summary: "Move workloads with a plan, not a leap of faith.",
+        id: "regulated-industries",
+        title: "HIPAA, PCI DSS, and GDPR",
+        summary: "Controls for health, payment, and personal data.",
         details:
-          "Phased migrations with rollback options and cost visibility, whether you lift-and-shift or reshape along the way.",
+          "Data-flow mapping, safeguard implementation, and documentation for regulated data, without slowing product teams down.",
       },
       {
-        id: "monitoring-reliability",
-        title: "Monitoring & Reliability",
-        summary: "Know when something breaks, and why.",
+        id: "vciso",
+        title: "Virtual CISO",
+        summary: "Fractional security leadership for growing teams.",
         details:
-          "Logging, metrics, tracing, and alerting with runbooks that shorten recovery time when production misbehaves.",
+          "Strategy, board reporting, vendor risk, and program ownership from an experienced security leader at a fraction of a full-time hire.",
+      },
+    ],
+    faqs: [
+      {
+        q: "How long does SOC 2 readiness take?",
+        a: "It depends on your starting point and scope. After the gap assessment we give you a realistic timeline. Type II also requires an observation period during which controls must operate.",
+      },
+      {
+        q: "Are you an auditor?",
+        a: "No. We prepare you for the audit and work alongside your independent auditor. Keeping those roles separate protects the integrity of your report.",
       },
     ],
   },
   {
-    id: "big-data",
-    title: "Data & Analytics",
+    id: "incident-response",
+    title: "Incident Response",
+    seoTitle: "Incident Response & Forensics Services",
+    h1: "Incident response when every minute counts",
+    icon: "siren",
     summary:
-      "Pipelines, warehouses, and BI that give teams numbers they can trust.",
+      "Rapid containment, forensic investigation, and recovery from ransomware, BEC, and breaches.",
     details:
-      "We help you ingest, store, and explore data at scale, so reporting and intelligent features rest on a foundation that stays fresh and governable.",
+      "When something goes wrong, you need calm, experienced responders, fast. We contain the threat, preserve evidence, investigate root cause and scope, and guide recovery and communication. Retainers mean pre-agreed terms and faster response when you need it most.",
     metaDescription:
-      "Data pipelines, warehouses, analytics, and ML-ready infrastructure for teams that need trustworthy numbers.",
+      "Incident response and digital forensics: ransomware response, business email compromise, breach investigation, and IR retainers with pre-agreed response times.",
+    keywords: [
+      "incident response services",
+      "ransomware response",
+      "digital forensics",
+      "DFIR services",
+      "incident response retainer",
+      "business email compromise investigation",
+      "breach response",
+      "tabletop exercise",
+    ],
+    aiEdge:
+      "AI-assisted forensics parses large volumes of logs, mailbox data, and endpoint artifacts into a timeline in hours instead of days. Responders verify every conclusion before it goes into the report.",
+    outcomes: [
+      "Threat contained and attacker access removed",
+      "A clear, evidence-backed account of what happened",
+      "Defensible documentation for insurers and regulators",
+      "Hardening steps so it does not happen again",
+    ],
+    deliverables: [
+      "Containment and eradication plan",
+      "Forensic timeline and root-cause report",
+      "Regulatory and insurer documentation support",
+      "Post-incident hardening roadmap",
+    ],
     subServices: [
       {
-        id: "data-pipelines",
-        title: "Data Pipeline Development",
-        summary: "Ingest, transform, and deliver data you can rely on.",
+        id: "emergency-response",
+        title: "Emergency incident response",
+        summary: "Ransomware, account takeover, data theft, and insider threats.",
         details:
-          "Batch and streaming pipelines with monitoring and fault tolerance so downstream teams are not guessing.",
+          "Triage, containment, and eradication with clear communication to leadership throughout.",
       },
       {
-        id: "analytics-business-intelligence",
-        title: "Analytics & Business Intelligence",
-        summary: "Dashboards and self-service reporting for decision-makers.",
+        id: "forensics",
+        title: "Digital forensics",
+        summary: "Endpoint, cloud, and mailbox investigations that hold up to scrutiny.",
         details:
-          "BI that stakeholders can explore without filing a ticket for every chart, with attention to performance and access control.",
+          "Evidence is collected and preserved with chain of custody, then analyzed to establish scope, entry point, and data impact.",
       },
       {
-        id: "data-warehouse-solutions",
-        title: "Data Warehouse Solutions",
-        summary: "A single place for reporting and model training.",
+        id: "ir-readiness",
+        title: "IR plans and tabletop exercises",
+        summary: "Be ready before the call comes.",
         details:
-          "Warehouses and lakehouses on platforms like Snowflake, BigQuery, Redshift, or Databricks, designed with schema and governance in mind.",
+          "Incident response plans, playbooks, and realistic tabletop exercises for technical teams and executives.",
       },
       {
-        id: "ml-ai-data-integration",
-        title: "ML & AI Data Integration",
-        summary: "Clean feeds for training and production inference.",
+        id: "ir-retainer",
+        title: "IR retainer",
+        summary: "Pre-negotiated terms and priority response.",
         details:
-          "Feature stores, training pipelines, and production data paths so models stay useful after the pilot ends.",
+          "Skip contract negotiation during a crisis. Unused retainer hours can go toward proactive readiness work.",
+      },
+    ],
+    faqs: [
+      {
+        q: "We think we are under attack right now. What should we do?",
+        a: "Call us immediately. Don't power off affected machines, because memory evidence is lost. Disconnect them from the network instead, and avoid alerting the attacker through compromised email accounts.",
+      },
+      {
+        q: "Do we need cyber insurance approval before engaging?",
+        a: "Check your policy. Many insurers have panel requirements. We can work alongside your insurer and legal counsel and provide the documentation they need.",
       },
     ],
   },
   {
-    id: "ui-ux-design",
-    title: "UI/UX Design",
+    id: "application-security",
+    title: "Application Security & DevSecOps",
+    seoTitle: "Application Security & DevSecOps Services",
+    h1: "Application security built into how you ship",
+    icon: "code",
     summary:
-      "Interfaces for dashboards, products, and customer-facing apps people can actually use.",
+      "Secure code review, threat modeling, and security checks in CI/CD that developers won't hate.",
     details:
-      "Research, wireframes, prototypes, and polished UI for the tools your teams and customers live in every day.",
+      "The cheapest vulnerability to fix is the one that never ships. We bring security into your SDLC with threat modeling, secure code review, software composition analysis, and pipeline checks tuned to keep false positives low and developer velocity high.",
     metaDescription:
-      "UI/UX design for product interfaces, dashboards, and brand systems that stay clear as you scale.",
+      "Application security and DevSecOps: secure code review, threat modeling, SAST, DAST, SCA, secrets scanning, and supply chain security in your CI/CD.",
+    keywords: [
+      "application security services",
+      "DevSecOps consulting",
+      "secure code review",
+      "threat modeling",
+      "SAST DAST",
+      "software composition analysis",
+      "software supply chain security",
+      "secure SDLC",
+      "SBOM",
+    ],
+    aiEdge:
+      "AI-assisted code review flags risky patterns in context and suppresses findings that are not reachable. For real issues, it proposes fixes as pull requests that your developers review, not a PDF they have to translate.",
+    outcomes: [
+      "Fewer vulnerabilities reaching production",
+      "Security checks in CI that developers trust",
+      "A software bill of materials and dependency hygiene",
+      "Secure-by-design architecture for new features",
+    ],
+    deliverables: [
+      "Threat models for critical systems",
+      "Secure code review findings with fixes",
+      "CI/CD security pipeline configuration",
+      "Developer secure-coding training",
+    ],
     subServices: [
       {
-        id: "user-research-discovery",
-        title: "User Research & Discovery",
-        summary: "Learn what users need before you build the wrong thing.",
+        id: "secure-code-review",
+        title: "Secure code review",
+        summary: "Manual and AI-assisted review of high-risk code paths.",
         details:
-          "Interviews, surveys, and journey work that align stakeholders and set direction before design and engineering spend.",
+          "Authentication, authorization, cryptography, and data handling reviewed by engineers who also build software.",
       },
       {
-        id: "wireframing-prototyping",
-        title: "Wireframing & Prototyping",
-        summary: "Test flows early with low- and high-fidelity prototypes.",
+        id: "threat-modeling",
+        title: "Threat modeling",
+        summary: "Find design flaws before they are written.",
         details:
-          "Prototypes that expose friction before code, with specs developers can implement without guessing.",
+          "Lightweight STRIDE-based sessions with your engineers for new features and critical systems.",
       },
       {
-        id: "ui-visual-design",
-        title: "UI & Visual Design",
-        summary: "Clear screens with consistent type, color, and components.",
+        id: "pipeline-security",
+        title: "CI/CD pipeline security",
+        summary: "SAST, SCA, secrets scanning, and container checks in your pipeline.",
         details:
-          "High-fidelity UI and assets that stay accessible, on-brand, and ready for handoff.",
+          "Tooling selected for your stack and tuned so the build only fails on issues worth stopping for.",
       },
       {
-        id: "ux-experience-design",
-        title: "UX & Experience Design",
-        summary: "Information architecture and flows that finish the job.",
+        id: "supply-chain-security",
+        title: "Software supply chain security",
+        summary: "SBOMs, dependency pinning, and build provenance.",
         details:
-          "Navigation, interaction patterns, and microcopy aimed at completion, not decoration.",
+          "Protect against malicious packages and compromised builds with SBOM generation, signing, and SLSA-aligned practices.",
       },
+    ],
+    faqs: [
       {
-        id: "design-systems",
-        title: "Design Systems & Component Libraries",
-        summary: "Shared tokens and components as the product grows.",
-        details:
-          "Documented systems so design and engineering stay aligned and new screens do not reinvent the wheel.",
-      },
-      {
-        id: "branding-visual-identity",
-        title: "Branding & Visual Identity",
-        summary: "Logo, palette, and guidelines that hold together in market.",
-        details:
-          "Identity work for new brands or refreshes, so product and marketing present one coherent face.",
+        q: "Will this slow down our developers?",
+        a: "It shouldn't. We tune tools to cut noise, put findings where developers already work, and focus blocking checks on high-confidence, high-impact issues.",
       },
     ],
   },

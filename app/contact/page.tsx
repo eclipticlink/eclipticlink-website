@@ -1,106 +1,101 @@
 import type { Metadata } from "next";
+import { Icon } from "../components/icons";
+import { JsonLd } from "../components/json-ld";
 import { PageHero } from "../components/page-hero";
-import { BASE_OG, SITE_URL } from "../lib/config";
+import { BASE_OG, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_DISPLAY, SITE_URL } from "../lib/config";
+import { breadcrumbJsonLd } from "../lib/seo";
+import Link from "next/link";
+import { locations } from "../data/locations";
 import { ContactForm } from "./contact-form";
 
+const TITLE = "Contact | Request a Cybersecurity Assessment";
+const DESCRIPTION =
+  "Talk to EclipticLink's security team. Request a cybersecurity assessment, penetration test, AI security review, or emergency incident response.";
+
 export const metadata: Metadata = {
-  title: "Contact | Tell Us Where Leads Stall",
-  description:
-    "Tell us where leads stall today - tools, challenges, and what you want automated. We typically reply within one business day with a practical next step.",
-  keywords: [
-    "contact EclipticLink",
-    "book discovery call automation",
-    "GoHighLevel consultant",
-    "CRM workflow consult",
-    "n8n automation quote",
-    "hire automation team",
-  ],
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: `${SITE_URL}/contact` },
-  openGraph: {
-    ...BASE_OG,
-    title: "Contact | Tell Us Where Leads Stall",
-    description:
-      "Share your tools and process. We identify where automation can help and come back with a practical next step.",
-    url: `${SITE_URL}/contact`,
-  },
+  openGraph: { ...BASE_OG, title: TITLE, description: DESCRIPTION, url: `${SITE_URL}/contact` },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
 };
 
-const breadcrumbJsonLd = {
+const contactPageJsonLd = {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "EclipticLink", item: SITE_URL },
-    { "@type": "ListItem", position: 2, name: "Contact", item: `${SITE_URL}/contact` },
-  ],
+  "@type": "ContactPage",
+  name: TITLE,
+  url: `${SITE_URL}/contact`,
+  about: { "@id": `${SITE_URL}/#organization` },
 };
 
 export default function ContactPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <JsonLd data={[breadcrumbJsonLd(SITE_URL, [{ name: "Contact", path: "/contact" }]), contactPageJsonLd]} />
       <PageHero
-        title="Tell us where leads stall today"
-        description="Whether response time, CRM hygiene, follow-up, booking, or a custom build - start with a short picture of your process. We will take it from there."
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact Us" }]}
+        eyebrow="Contact"
+        title="Talk to a security expert"
+        description="Whether you need a penetration test, SOC 2 readiness, an AI security review, or ongoing monitoring, start here. We'll respond within one business day."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
       />
 
-      <section className="section-pad bg-atmosphere" aria-labelledby="contact-heading">
-        <div className="container-site">
-          <h2 id="contact-heading" className="sr-only">
-            Contact details and form
-          </h2>
-          <div className="grid gap-14 lg:grid-cols-5 lg:gap-16">
-            <div className="lg:col-span-2">
-              <p className="eyebrow-on-light">Reach us</p>
-              <h3 className="mt-3 font-display text-2xl font-semibold text-brand-blue">
-                What happens after you submit
-              </h3>
-              <ol className="mt-6 space-y-5" role="list">
-                {[
-                  "We review your current process and tools.",
-                  "We identify where automation can protect opportunity.",
-                  "We come back with a practical next step.",
-                ].map((step, i) => (
-                  <li key={step} className="flex gap-3 text-sm leading-relaxed text-text-muted">
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-teal/15 font-display text-xs font-semibold text-brand-blue">
-                      {i + 1}
-                    </span>
-                    {step}
-                  </li>
-                ))}
-              </ol>
-              <div className="mt-10 space-y-8">
-                <div className="border-t border-border-subtle pt-6">
-                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">
-                    Call us
-                  </span>
-                  <a
-                    href="tel:+923438788662"
-                    className="mt-2 block font-medium text-brand-blue transition hover:text-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
-                  >
-                    +92 343 8788662
-                  </a>
-                </div>
-                <div className="border-t border-border-subtle pt-6">
-                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-text-muted">
-                    Email us
-                  </span>
-                  <a
-                    href="mailto:info@eclipticlink.com"
-                    className="mt-2 block font-medium text-brand-blue transition hover:text-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2"
-                  >
-                    info@eclipticlink.com
-                  </a>
-                </div>
-              </div>
+      <section className="section-pad" aria-labelledby="contact-details-heading">
+        <div className="container-site grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+          <div>
+            <h2 id="contact-details-heading" className="sr-only">
+              Contact details
+            </h2>
+            <div className="rounded-2xl border border-threat/40 bg-threat-soft p-6">
+              <p className="flex items-center gap-2 font-semibold text-[#ffb3ba]">
+                <Icon name="siren" className="h-5 w-5" />
+                Under attack right now?
+              </p>
+              <p className="mt-2 text-sm text-muted">Skip the form. Call our incident line directly.</p>
+              <a href={`tel:${CONTACT_PHONE}`} className="mt-4 block font-mono text-xl text-ink hover:text-accent">
+                {CONTACT_PHONE_DISPLAY}
+              </a>
             </div>
-            <div className="lg:col-span-3">
-              <ContactForm />
+
+            <dl className="mt-8 space-y-6">
+              <div className="border-t border-line pt-6">
+                <dt className="font-mono text-xs uppercase tracking-[0.14em] text-subtle">Email</dt>
+                <dd className="mt-2">
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="text-lg text-ink hover:text-accent">
+                    {CONTACT_EMAIL}
+                  </a>
+                </dd>
+              </div>
+              <div className="border-t border-line pt-6">
+                <dt className="font-mono text-xs uppercase tracking-[0.14em] text-subtle">Phone</dt>
+                <dd className="mt-2">
+                  <a href={`tel:${CONTACT_PHONE}`} className="text-lg text-ink hover:text-accent">
+                    {CONTACT_PHONE_DISPLAY}
+                  </a>
+                </dd>
+              </div>
+              <div className="border-t border-line pt-6">
+                <dt className="font-mono text-xs uppercase tracking-[0.14em] text-subtle">Regions served</dt>
+                <dd className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-muted">
+                  {locations.map((l) => (
+                    <Link key={l.slug} href={`/locations/${l.slug}`} className="hover:text-accent">
+                      {l.short}
+                    </Link>
+                  ))}
+                </dd>
+              </div>
+            </dl>
+
+            <div className="card mt-8 p-6">
+              <p className="flex items-center gap-2 font-semibold text-ink">
+                <Icon name="lock" className="h-5 w-5 text-accent" />
+                Confidential by default
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                We&apos;re happy to sign an NDA before any detailed discussion of your environment.
+              </p>
             </div>
           </div>
+          <ContactForm />
         </div>
       </section>
     </>

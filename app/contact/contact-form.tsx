@@ -1,83 +1,64 @@
 "use client";
 
 import { useState } from "react";
+import { trackEvent } from "@/app/lib/analytics";
 import { sendContactEmail } from "@/app/lib/emailjs";
+import { services } from "@/app/services/data";
 
-const TOOLS = [
-  "GoHighLevel",
-  "HubSpot",
-  "Zoho",
-  "n8n",
-  "Make",
-  "Zapier",
-  "Other / custom",
+const URGENCY = [
+  { value: "planning", label: "Planning ahead" },
+  { value: "soon", label: "Need help this month" },
+  { value: "incident", label: "Active incident" },
 ] as const;
 
-const CHALLENGES = [
-  { value: "", label: "Select your main challenge" },
-  { value: "slow-response", label: "Leads are not getting replies quickly" },
-  { value: "messy-crm", label: "CRM is messy or outdated" },
-  { value: "inconsistent-followup", label: "Follow-up is inconsistent" },
-  { value: "booking-friction", label: "Meetings are hard to book" },
-  { value: "tool-silos", label: "Tools are not connected" },
-  { value: "need-ai", label: "Need AI / intelligent product" },
-  { value: "need-software", label: "Need custom software" },
-  { value: "need-capacity", label: "Need dedicated specialists" },
-  { value: "other", label: "Something else" },
-] as const;
-
-const PROJECT_TYPES = [
-  { value: "project", label: "Project delivery" },
-  { value: "hire", label: "Hire team / staff augmentation" },
-  { value: "unsure", label: "Not sure yet" },
-] as const;
+const SIZES = ["1–50", "51–200", "201–1,000", "1,000+"] as const;
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const [tools, setTools] = useState<string[]>([]);
+  const [interests, setInterests] = useState<string[]>([]);
+  const [urgency, setUrgency] = useState<string>("");
 
-  function toggleTool(tool: string) {
-    setTools((prev) =>
-      prev.includes(tool) ? prev.filter((t) => t !== tool) : [...prev, tool]
-    );
+  function toggle(id: string) {
+    setInterests((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("sending");
     const form = e.currentTarget;
-    const formData = new FormData(form);
-    const name = (formData.get("name") as string) ?? "";
-    const email = (formData.get("email") as string) ?? "";
-    const company = (formData.get("company") as string) ?? "";
-    const challenge = (formData.get("challenge") as string) ?? "";
-    const automate = (formData.get("automate") as string) ?? "";
-    const projectType = (formData.get("projectType") as string) ?? "";
-    const budget = (formData.get("budget") as string) ?? "";
-    const details = (formData.get("details") as string) ?? "";
+    const fd = new FormData(form);
+    // Honeypot: bots fill hidden fields
+    if (fd.get("website")) return;
+    setStatus("sending");
 
-    const challengeLabel =
-      CHALLENGES.find((c) => c.value === challenge)?.label ?? challenge;
-    const projectLabel =
-      PROJECT_TYPES.find((p) => p.value === projectType)?.label ?? projectType;
+    const get = (k: string) => ((fd.get(k) as string) ?? "").trim();
+    const interestLabels = interests
+      .map((id) => services.find((s) => s.id === id)?.title ?? id)
+      .join(", ");
+    const urgencyLabel = URGENCY.find((u) => u.value === urgency)?.label ?? "-";
 
     const message = [
-      `Company: ${company || "-"}`,
-      `Current tools: ${tools.length ? tools.join(", ") : "-"}`,
-      `Main challenge: ${challengeLabel || "-"}`,
-      `What they want automated: ${automate || "-"}`,
-      `Project type: ${projectLabel || "-"}`,
-      `Budget / timeline: ${budget || "-"}`,
+      `Company: ${get("company") || "-"}`,
+      `Role: ${get("role") || "-"}`,
+      `Company size: ${get("size") || "-"}`,
+      `Urgency: ${urgencyLabel}`,
+      `Services of interest: ${interestLabels || "-"}`,
       "",
-      "Additional details:",
-      details || "-",
+      "What they need:",
+      get("details") || "-",
     ].join("\n");
 
     try {
-      await sendContactEmail({ from_name: name, from_email: email, message });
+      await sendContactEmail({ from_name: get("name"), from_email: get("email"), message });
       setStatus("success");
+      trackEvent("generate_lead", {
+        form: "contact",
+        urgency,
+        services: interests.join(",") || "none",
+        company_size: get("size") || "unknown",
+      });
       form.reset();
-      setTools([]);
+      setInterests([]);
+      setUrgency("");
     } catch {
       setStatus("error");
     }
@@ -85,45 +66,22 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div
-        className="border border-brand-teal/40 bg-surface p-6 sm:p-8"
-        role="status"
-        aria-live="polite"
-      >
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-teal">
-          Request received
-        </p>
-        <h2 className="mt-2 font-display text-xl font-semibold tracking-tight text-brand-blue sm:text-2xl">
-          Thanks - we have your request.
-        </h2>
-        <p className="mt-3 text-sm leading-relaxed text-text-muted">
-          Here is what happens next:
-        </p>
+      <div className="card brackets p-8" role="status" aria-live="polite">
+        <p className="eyebrow">Request received</p>
+        <h2 className="mt-4 text-2xl font-semibold text-ink">Thanks, we&apos;re on it.</h2>
         <ol className="mt-6 space-y-4" role="list">
           {[
-            {
-              n: "1",
-              title: "We review your current process",
-              body: "Tools, handoffs, and where leads stall today.",
-            },
-            {
-              n: "2",
-              title: "We identify where automation can help",
-              body: "Response, CRM hygiene, follow-up, booking - or product work if needed.",
-            },
-            {
-              n: "3",
-              title: "We come back with a practical next step",
-              body: "A clear recommendation, not a generic pitch deck.",
-            },
-          ].map((step) => (
-            <li key={step.n} className="flex gap-4">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-teal/15 font-display text-sm font-semibold text-brand-blue">
-                {step.n}
+            ["A security specialist reviews your request", "Usually within one business day."],
+            ["We schedule a short scoping call", "To understand your environment, risks, and goals."],
+            ["You get a clear, prioritized proposal", "Scope, timeline, and cost, with no surprises."],
+          ].map(([t, b], i) => (
+            <li key={t} className="flex gap-4">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-accent/40 bg-accent-soft font-mono text-sm text-accent">
+                {i + 1}
               </span>
               <div>
-                <p className="font-display font-semibold text-brand-blue">{step.title}</p>
-                <p className="mt-0.5 text-sm text-text-muted">{step.body}</p>
+                <p className="font-semibold text-ink">{t}</p>
+                <p className="text-sm text-muted">{b}</p>
               </div>
             </li>
           ))}
@@ -131,7 +89,7 @@ export function ContactForm() {
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-8 text-sm font-semibold text-brand-blue underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal"
+          className="mt-8 text-sm font-semibold text-accent underline-offset-4 hover:underline"
         >
           Send another message
         </button>
@@ -139,194 +97,150 @@ export function ContactForm() {
     );
   }
 
+  const disabled = status === "sending";
+
   return (
-    <div className="border border-border-subtle bg-surface p-6 sm:p-8">
-      <h2 className="font-display text-xl font-semibold tracking-tight text-brand-blue sm:text-2xl">
-        Tell us where leads stall today
-      </h2>
-      <p className="mt-1 text-sm text-text-muted">
-        A few details help us come back with a practical next step. We typically respond
-        within one business day.
+    <div className="card p-6 sm:p-8">
+      <h2 className="text-2xl font-semibold text-ink">Request a security assessment</h2>
+      <p className="mt-1 text-sm text-muted">
+        Tell us a little about your environment. All information is treated as confidential.
       </p>
+
+      {urgency === "incident" ? (
+        <div className="mt-6 rounded-xl border border-threat/40 bg-threat-soft p-4 text-sm" role="alert">
+          <p className="font-semibold text-[#ffb3ba]">Active incident? Don&apos;t wait for email.</p>
+          <p className="mt-1 text-muted">
+            Call{" "}
+            <a href="tel:+923438788662" className="font-semibold text-ink underline underline-offset-2">
+              +92 343 8788662
+            </a>{" "}
+            now. Isolate affected systems from the network, but don&apos;t power them off.
+          </p>
+        </div>
+      ) : null}
+
       <form onSubmit={handleSubmit} className="mt-6 space-y-5">
+        <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
-            <label htmlFor="contact-name" className="block text-sm font-medium text-slate-700">
-              Name <span className="text-red-600" aria-hidden="true">*</span>
+            <label htmlFor="c-name" className="text-sm font-medium text-ink">
+              Full name <span className="text-threat" aria-hidden="true">*</span>
             </label>
-            <input
-              id="contact-name"
-              type="text"
-              name="name"
-              required
-              autoComplete="name"
-              className="mt-2 block w-full rounded-md border border-border-subtle bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 transition focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/30 focus-visible:outline-none disabled:opacity-70"
-              disabled={status === "sending"}
-              placeholder="Your name"
-            />
+            <input id="c-name" name="name" required autoComplete="name" className="field" disabled={disabled} placeholder="Jane Doe" />
           </div>
           <div>
-            <label htmlFor="contact-company" className="block text-sm font-medium text-slate-700">
+            <label htmlFor="c-email" className="text-sm font-medium text-ink">
+              Work email <span className="text-threat" aria-hidden="true">*</span>
+            </label>
+            <input id="c-email" name="email" type="email" required autoComplete="email" className="field" disabled={disabled} placeholder="jane@company.com" />
+          </div>
+          <div>
+            <label htmlFor="c-company" className="text-sm font-medium text-ink">
               Company
             </label>
-            <input
-              id="contact-company"
-              type="text"
-              name="company"
-              autoComplete="organization"
-              className="mt-2 block w-full rounded-md border border-border-subtle bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 transition focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/30 focus-visible:outline-none disabled:opacity-70"
-              disabled={status === "sending"}
-              placeholder="Company name"
-            />
+            <input id="c-company" name="company" autoComplete="organization" className="field" disabled={disabled} placeholder="Company name" />
+          </div>
+          <div>
+            <label htmlFor="c-role" className="text-sm font-medium text-ink">
+              Your role
+            </label>
+            <input id="c-role" name="role" autoComplete="organization-title" className="field" disabled={disabled} placeholder="CTO, IT manager, founder…" />
           </div>
         </div>
 
         <div>
-          <label htmlFor="contact-email" className="block text-sm font-medium text-slate-700">
-            Email <span className="text-red-600" aria-hidden="true">*</span>
+          <label htmlFor="c-size" className="text-sm font-medium text-ink">
+            Company size
           </label>
-          <input
-            id="contact-email"
-            type="email"
-            name="email"
-            required
-            autoComplete="email"
-            className="mt-2 block w-full rounded-md border border-border-subtle bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 transition focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/30 focus-visible:outline-none disabled:opacity-70"
-            disabled={status === "sending"}
-            placeholder="you@company.com"
-          />
+          <select id="c-size" name="size" className="field" disabled={disabled} defaultValue="">
+            <option value="">Select employees</option>
+            {SIZES.map((s) => (
+              <option key={s} value={s}>
+                {s} employees
+              </option>
+            ))}
+          </select>
         </div>
 
         <fieldset>
-          <legend className="text-sm font-medium text-slate-700">Current tools / platforms</legend>
-          <div className="mt-2 flex flex-wrap gap-2">
-            {TOOLS.map((tool) => {
-              const selected = tools.includes(tool);
+          <legend className="text-sm font-medium text-ink">What can we help with?</legend>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {services.map((s) => {
+              const on = interests.includes(s.id);
               return (
                 <button
-                  key={tool}
+                  key={s.id}
                   type="button"
-                  onClick={() => toggleTool(tool)}
-                  disabled={status === "sending"}
-                  aria-pressed={selected}
-                  className={`rounded-md border px-3 py-1.5 text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal ${
-                    selected
-                      ? "border-brand-teal bg-brand-teal-light text-brand-blue"
-                      : "border-border-subtle bg-white text-slate-600 hover:border-brand-teal-muted"
+                  aria-pressed={on}
+                  disabled={disabled}
+                  onClick={() => toggle(s.id)}
+                  className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition ${
+                    on ? "border-accent bg-accent-soft text-accent" : "border-line-strong text-muted hover:border-accent/50 hover:text-ink"
                   }`}
                 >
-                  {tool}
+                  {s.title}
                 </button>
               );
             })}
           </div>
         </fieldset>
 
-        <div>
-          <label htmlFor="contact-challenge" className="block text-sm font-medium text-slate-700">
-            Main challenge <span className="text-red-600" aria-hidden="true">*</span>
-          </label>
-          <select
-            id="contact-challenge"
-            name="challenge"
-            required
-            className="mt-2 block w-full rounded-md border border-border-subtle bg-white px-4 py-3 text-slate-900 transition focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/30 focus-visible:outline-none disabled:opacity-70"
-            disabled={status === "sending"}
-            defaultValue=""
-          >
-            {CHALLENGES.map((c) => (
-              <option key={c.value || "empty"} value={c.value} disabled={!c.value}>
-                {c.label}
-              </option>
+        <fieldset>
+          <legend className="text-sm font-medium text-ink">
+            Urgency <span className="text-threat" aria-hidden="true">*</span>
+          </legend>
+          <div className="mt-3 grid gap-2 sm:grid-cols-3">
+            {URGENCY.map((u) => (
+              <label
+                key={u.value}
+                className={`flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-3 text-sm transition has-[:checked]:border-accent has-[:checked]:bg-accent-soft ${
+                  u.value === "incident" ? "border-threat/40 text-[#ffb3ba] has-[:checked]:border-threat has-[:checked]:bg-threat-soft" : "border-line-strong text-ink"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="urgency"
+                  value={u.value}
+                  required
+                  disabled={disabled}
+                  checked={urgency === u.value}
+                  onChange={() => setUrgency(u.value)}
+                  className="accent-[var(--accent)]"
+                />
+                {u.label}
+              </label>
             ))}
-          </select>
-        </div>
+          </div>
+        </fieldset>
 
         <div>
-          <label htmlFor="contact-automate" className="block text-sm font-medium text-slate-700">
-            What do you want automated? <span className="text-red-600" aria-hidden="true">*</span>
+          <label htmlFor="c-details" className="text-sm font-medium text-ink">
+            What&apos;s going on? <span className="text-threat" aria-hidden="true">*</span>
           </label>
           <textarea
-            id="contact-automate"
-            name="automate"
-            required
-            rows={3}
-            className="mt-2 block min-h-[88px] w-full resize-y rounded-md border border-border-subtle bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 transition focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/30 focus-visible:outline-none disabled:opacity-70"
-            disabled={status === "sending"}
-            placeholder="e.g. Instant lead reply, CRM stage updates, nurture sequences, booking reminders…"
-          />
-        </div>
-
-        <div>
-          <fieldset>
-            <legend className="text-sm font-medium text-slate-700">
-              Project type <span className="text-red-600" aria-hidden="true">*</span>
-            </legend>
-            <div className="mt-2 grid gap-2 sm:grid-cols-3">
-              {PROJECT_TYPES.map((pt) => (
-                <label
-                  key={pt.value}
-                  className="flex cursor-pointer items-center gap-2 rounded-md border border-border-subtle bg-white px-3 py-3 text-sm has-[:checked]:border-brand-teal has-[:checked]:bg-brand-teal-light/50"
-                >
-                  <input
-                    type="radio"
-                    name="projectType"
-                    value={pt.value}
-                    required
-                    disabled={status === "sending"}
-                    className="accent-[var(--brand-teal)]"
-                  />
-                  {pt.label}
-                </label>
-              ))}
-            </div>
-          </fieldset>
-        </div>
-
-        <div>
-          <label htmlFor="contact-budget" className="block text-sm font-medium text-slate-700">
-            Budget / timeline <span className="font-normal text-text-muted">(optional)</span>
-          </label>
-          <input
-            id="contact-budget"
-            type="text"
-            name="budget"
-            className="mt-2 block w-full rounded-md border border-border-subtle bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 transition focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/30 focus-visible:outline-none disabled:opacity-70"
-            disabled={status === "sending"}
-            placeholder="e.g. Starting this quarter, flexible budget"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="contact-details" className="block text-sm font-medium text-slate-700">
-            Additional details <span className="font-normal text-text-muted">(optional)</span>
-          </label>
-          <textarea
-            id="contact-details"
+            id="c-details"
             name="details"
-            rows={3}
-            className="mt-2 block min-h-[88px] w-full resize-y rounded-md border border-border-subtle bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 transition focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/30 focus-visible:outline-none disabled:opacity-70"
-            disabled={status === "sending"}
-            placeholder="Anything else we should know?"
+            required
+            rows={4}
+            className="field min-h-28 resize-y"
+            disabled={disabled}
+            placeholder="e.g. Customer asked for a SOC 2 report, we're launching an AI assistant, we need a pentest before a funding round…"
           />
+          <p className="mt-2 text-xs text-subtle">Please don&apos;t include passwords, keys, or other secrets.</p>
         </div>
 
-        {status === "error" && (
-          <p
-            className="rounded-md bg-red-50 p-3 text-sm font-medium text-red-800"
-            role="alert"
-            aria-live="assertive"
-          >
-            Something went wrong. Please try again or email us directly.
+        {status === "error" ? (
+          <p className="rounded-lg border border-threat/40 bg-threat-soft p-3 text-sm text-[#ffb3ba]" role="alert">
+            Something went wrong. Please try again or email info@eclipticlink.com.
           </p>
-        )}
+        ) : null}
 
         <button
           type="submit"
-          disabled={status === "sending"}
-          className="inline-flex h-12 min-h-11 w-full min-w-[140px] cursor-pointer items-center justify-center rounded-md bg-brand-blue px-6 text-base font-semibold text-white transition hover:bg-brand-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 disabled:opacity-70 sm:w-auto"
+          disabled={disabled}
+          className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-accent px-6 font-semibold text-bg transition hover:bg-accent-hover disabled:opacity-70 sm:w-auto"
         >
-          {status === "sending" ? "Sending…" : "Book a discovery call"}
+          {disabled ? "Sending…" : "Request assessment"}
         </button>
       </form>
     </div>

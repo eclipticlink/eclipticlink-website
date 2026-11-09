@@ -11,7 +11,7 @@ const testimonials = [
     name: "Steve V.",
     location: "London, GB",
     theme: "Prompt support",
-    engagement: "Project · Systems delivery",
+    engagement: "Ongoing engagement",
   },
   {
     quote:
@@ -19,7 +19,7 @@ const testimonials = [
     name: "Artwell K.",
     location: "Huddersfield, GB",
     theme: "Clear communication",
-    engagement: "Project · End-to-end delivery",
+    engagement: "End-to-end delivery",
   },
   {
     quote:
@@ -34,7 +34,7 @@ const testimonials = [
     name: "Nicholas S.",
     location: "Palmers Green, GB",
     theme: "Reliable delivery",
-    engagement: "Project · Website feature",
+    engagement: "Project delivery",
   },
 ];
 
@@ -52,16 +52,16 @@ function TestimonialCard({
   engagement: string;
 }) {
   return (
-    <blockquote className="card-lift flex h-full flex-col border-l-2 border-brand-teal bg-surface/80 px-6 py-5">
-      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-brand-teal">
+    <blockquote className="card flex h-full flex-col px-6 py-6">
+      <p className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-accent">
         {theme}
       </p>
-      <p className="mt-3 flex-1 leading-relaxed text-slate-700">&ldquo;{quote}&rdquo;</p>
+      <p className="mt-3 flex-1 leading-relaxed text-ink/90">&ldquo;{quote}&rdquo;</p>
       <footer className="mt-5">
         <cite className="not-italic">
-          <span className="font-display font-semibold text-brand-blue">{name}</span>
-          <span className="mt-0.5 block text-sm text-text-muted">{location}</span>
-          <span className="mt-1 block text-xs text-slate-500">{engagement}</span>
+          <span className="font-display font-semibold text-ink">{name}</span>
+          <span className="mt-0.5 block text-sm text-muted">{location}</span>
+          <span className="mt-1 block text-xs text-subtle">{engagement}</span>
         </cite>
       </footer>
     </blockquote>
@@ -110,7 +110,7 @@ export function TestimonialSlider() {
           <button
             type="button"
             onClick={() => goTo(pageIndex - 1)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border-subtle bg-surface text-brand-blue transition hover:border-brand-teal hover:bg-brand-teal-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-line bg-surface text-ink transition hover:border-accent hover:text-accent"
             aria-label="Previous testimonials"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -125,8 +125,8 @@ export function TestimonialSlider() {
                 role="tab"
                 aria-selected={i === pageIndex}
                 onClick={() => setPageIndex(i)}
-                className={`h-2.5 w-2.5 rounded-full transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal ${
-                  i === pageIndex ? "bg-brand-teal" : "bg-border-subtle hover:bg-brand-teal/50"
+                className={`h-2.5 w-2.5 rounded-full transition ${
+                  i === pageIndex ? "bg-accent" : "bg-line-strong hover:bg-accent/50"
                 }`}
                 aria-label={`Go to page ${i + 1}`}
               />
@@ -135,7 +135,7 @@ export function TestimonialSlider() {
           <button
             type="button"
             onClick={() => goTo(pageIndex + 1)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border-subtle bg-surface text-brand-blue transition hover:border-brand-teal hover:bg-brand-teal-light/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-line bg-surface text-ink transition hover:border-accent hover:text-accent"
             aria-label="Next testimonials"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

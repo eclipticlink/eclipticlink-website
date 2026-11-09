@@ -1,180 +1,173 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CtaBand } from "../components/cta-band";
+import { Icon } from "../components/icons";
+import { JsonLd } from "../components/json-ld";
 import { PageHero } from "../components/page-hero";
+import { Reveal } from "../components/reveal";
+import { SectionHeading } from "../components/section-heading";
 import { Button } from "../components/ui/button";
 import { BASE_OG, SITE_URL } from "../lib/config";
+import { breadcrumbJsonLd } from "../lib/seo";
 import { services } from "./data";
 
+const TITLE = "Cybersecurity Services: MDR, Pentesting & AI | EclipticLink";
+const DESCRIPTION =
+  "AI-powered cybersecurity services: managed detection and response, penetration testing, AI and LLM security, cloud security, compliance, and incident response.";
+
 export const metadata: Metadata = {
-  title: "Services | Automate, Add Intelligence & Build What Tools Can't",
-  description:
-    "Problem-first services: automate operations and sales processes, add AI where it helps, build custom software when tools aren't enough, and connect systems reliably.",
+  title: { absolute: TITLE },
+  description: DESCRIPTION,
   keywords: [
-    "business process automation",
-    "sales process automation",
-    "AI systems",
-    "custom software",
-    "system integrations",
-    "workflow automation",
+    "cybersecurity services",
+    "AI-powered cybersecurity",
+    "managed security services",
+    "penetration testing",
+    "managed detection and response",
+    "AI security",
+    "cloud security",
+    "compliance services",
   ],
   alternates: { canonical: `${SITE_URL}/services` },
-  openGraph: {
-    ...BASE_OG,
-    title: "Services | Automate, Add Intelligence & Build What Tools Can't",
-    description:
-      "We start with the problem, design the journey, then choose automation, AI, integrations, or software as needed.",
-    url: `${SITE_URL}/services`,
-  },
+  openGraph: { ...BASE_OG, title: TITLE, description: DESCRIPTION, url: `${SITE_URL}/services` },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
 };
 
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "EclipticLink", item: SITE_URL },
-    { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
-  ],
-};
-
-const solutionGroups = [
+const groups = [
   {
-    title: "Automate your sales process",
-    body: "Lead capture, qualification, routing, CRM hygiene, follow-up, and booking designed around how you sell.",
-    href: "/services/ai-automations",
-    cta: "Explore lead & CRM systems",
-    primary: true,
+    label: "Detect & respond",
+    body: "See attacks early and contain them fast.",
+    ids: ["managed-detection-response", "incident-response"],
   },
   {
-    title: "Automate your operations",
-    body: "Business process automation, workflow orchestration, and integrations that remove repetitive work.",
-    href: "/services/operations-automation",
-    cta: "Explore operations automation",
+    label: "Find & fix",
+    body: "Discover weaknesses before attackers do.",
+    ids: ["penetration-testing", "vulnerability-management", "application-security"],
   },
   {
-    title: "Add intelligence",
-    body: "AI assistants, agents, document processing, and decision support - only where they improve the process.",
-    href: "/services/ai",
-    cta: "Explore AI",
+    label: "Secure the platform",
+    body: "Harden the cloud and AI systems your business runs on.",
+    ids: ["cloud-security", "ai-security"],
   },
   {
-    title: "Build what existing tools can't",
-    body: "Custom software, SaaS, web applications, and internal tools when the process needs a product layer.",
-    href: "/services/custom-software-development",
-    cta: "Explore custom software",
-  },
-  {
-    title: "Connect your systems",
-    body: "APIs, integrations, data synchronization, and architecture so information flows reliably.",
-    href: "/services/cloud-devops",
-    cta: "Explore cloud & integrations",
-  },
-  {
-    title: "Scale and operate",
-    body: "Cloud infrastructure, DevOps, monitoring, and reliability as your systems grow.",
-    href: "/services/cloud-devops",
-    cta: "Explore cloud & DevOps",
+    label: "Govern & prove",
+    body: "Turn security work into trust customers and auditors accept.",
+    ids: ["compliance-grc"],
   },
 ];
 
-export default function ServicesPage() {
-  const primary = solutionGroups[0];
-  const secondary = solutionGroups.slice(1);
-  const supporting = services.filter(
-    (s) =>
-      ![
-        "ai-automations",
-        "operations-automation",
-        "ai",
-        "custom-software-development",
-        "cloud-devops",
-      ].includes(s.id)
-  );
+const itemListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "EclipticLink cybersecurity services",
+  itemListElement: services.map((s, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    url: `${SITE_URL}/services/${s.id}`,
+    name: s.title,
+  })),
+};
 
+export default function ServicesPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <JsonLd data={[breadcrumbJsonLd(SITE_URL, [{ name: "Services", path: "/services" }]), itemListJsonLd]} />
       <PageHero
-        title="We don't start by choosing a tool. We start by understanding the problem."
-        description="Then we design the simplest reliable system that solves it - combining automation, AI, integrations, and software only as needed."
+        eyebrow="Cybersecurity services"
+        title="AI-powered cybersecurity services, end to end"
+        description="Detect threats, find vulnerabilities, secure your cloud and AI systems, and prove it to customers and auditors. Each service pairs AI speed with experienced security professionals."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
-      />
+      >
+        <div className="flex flex-wrap gap-3">
+          <Button href="/contact" size="lg">
+            Get a security assessment
+          </Button>
+          <Button href="/services/incident-response" variant="danger" size="lg">
+            Under attack?
+          </Button>
+        </div>
+      </PageHero>
 
-      <section className="section-pad bg-atmosphere" aria-labelledby="services-list-heading">
+      <section className="section-pad" aria-labelledby="catalog-heading">
         <div className="container-site">
-          <h2 id="services-list-heading" className="sr-only">
-            Our services
+          <h2 id="catalog-heading" className="sr-only">
+            Service catalog
           </h2>
-
-          <article className="overflow-hidden rounded-2xl border border-brand-teal/35 bg-brand-dark text-white">
-            <div className="p-8 sm:p-10">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-teal">
-                Primary focus
-              </p>
-              <h3 className="mt-3 font-display text-2xl font-semibold sm:text-3xl">
-                {primary.title}
-              </h3>
-              <p className="mt-4 max-w-2xl leading-relaxed text-white/75">{primary.body}</p>
-              <Button href={primary.href} variant="primary" className="mt-8">
-                {primary.cta}
-              </Button>
-            </div>
-          </article>
-
-          <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" role="list">
-            {secondary.map((item) => (
-              <li key={item.title}>
-                <article className="flex h-full flex-col rounded-xl border border-border-subtle bg-surface p-6 sm:p-7">
-                  <h3 className="font-display text-xl font-semibold text-brand-blue">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 flex-1 text-text-muted">{item.body}</p>
-                  <Link href={item.href} className="link-arrow mt-5">
-                    {item.cta}
-                    <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                </article>
-              </li>
+          <div className="space-y-16">
+            {groups.map((g) => (
+              <div key={g.label} className="grid gap-8 lg:grid-cols-[16rem_1fr]">
+                <div>
+                  <p className="eyebrow">{g.label}</p>
+                  <p className="mt-3 text-muted">{g.body}</p>
+                </div>
+                <ul className="grid gap-5 md:grid-cols-2 xl:grid-cols-3" role="list">
+                  {g.ids.map((id, i) => {
+                    const s = services.find((x) => x.id === id)!;
+                    return (
+                      <li key={id}>
+                        <Reveal delay={i * 70} className="h-full">
+                          <Link href={`/services/${s.id}`} className="card card-hover group flex h-full flex-col p-6">
+                            <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-accent-soft text-accent">
+                              <Icon name={s.icon} className="h-5 w-5" />
+                            </span>
+                            <h3 className="mt-5 text-xl font-semibold text-ink">{s.title}</h3>
+                            <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{s.summary}</p>
+                            <ul className="mt-5 space-y-1.5 text-sm text-muted" role="list">
+                              {s.subServices.slice(0, 3).map((sub) => (
+                                <li key={sub.id} className="flex gap-2">
+                                  <Icon name="check" className="mt-1 h-3.5 w-3.5 shrink-0 text-accent" />
+                                  {sub.title}
+                                </li>
+                              ))}
+                            </ul>
+                            <span className="link-arrow mt-6">
+                              Explore {s.title}
+                              <Icon name="arrow" className="h-4 w-4" />
+                            </span>
+                          </Link>
+                        </Reveal>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             ))}
-          </ul>
-
-          {supporting.length > 0 ? (
-            <>
-              <p className="mt-14 text-center text-sm font-semibold uppercase tracking-[0.14em] text-brand-blue">
-                Supporting capabilities
-              </p>
-              <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" role="list">
-                {supporting.map((service) => (
-                  <li key={service.id}>
-                    <article className="flex h-full flex-col rounded-xl border border-border-subtle bg-surface p-6">
-                      <h3 className="font-display text-lg font-semibold text-brand-blue">
-                        {service.title}
-                      </h3>
-                      <p className="mt-2 flex-1 text-sm text-text-muted">{service.summary}</p>
-                      <Link href={`/services/${service.id}`} className="link-arrow mt-4">
-                        Explore {service.title}
-                        <svg className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
-                    </article>
-                  </li>
-                ))}
-              </ul>
-            </>
-          ) : null}
-
-          <div className="mt-14 text-center">
-            <Button href="/contact" variant="primaryBlue" size="lg">
-              Book a discovery call
-            </Button>
           </div>
         </div>
       </section>
+
+      <section className="section-pad bg-section-alt" aria-labelledby="engage-heading">
+        <div className="container-site">
+          <SectionHeading
+            id="engage-heading"
+            eyebrow="Ways to engage"
+            title="Start where your risk is highest"
+          />
+          <ul className="mt-12 grid gap-5 md:grid-cols-3" role="list">
+            {[
+              {
+                t: "Security assessment",
+                b: "A fixed-scope review of your attack surface, cloud, identity, and AI usage, with a prioritized roadmap.",
+              },
+              {
+                t: "Project engagement",
+                b: "Penetration tests, compliance readiness, cloud hardening, or AI red teaming with clear scope and deliverables.",
+              },
+              {
+                t: "Managed security",
+                b: "Ongoing MDR, vulnerability management, and vCISO leadership as an extension of your team.",
+              },
+            ].map((x) => (
+              <li key={x.t} className="card p-6">
+                <h3 className="text-lg font-semibold text-ink">{x.t}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{x.b}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <CtaBand />
     </>
   );
 }
