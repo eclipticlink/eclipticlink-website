@@ -23,12 +23,7 @@ export function Reveal({
     const el = ref.current;
     if (!el) return;
 
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) {
-      setVisible(true);
-      return;
-    }
-
+    // Reduced-motion users see content immediately via CSS (.reveal is forced visible).
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

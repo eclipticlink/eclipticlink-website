@@ -1,45 +1,42 @@
 import { Breadcrumbs, type BreadcrumbItem } from "./breadcrumbs";
 
 type PageHeroProps = {
+  eyebrow?: string;
   title: string;
   description: string;
   breadcrumbs: BreadcrumbItem[];
   headingId?: string;
+  children?: React.ReactNode;
 };
 
 export function PageHero({
+  eyebrow = "EclipticLink Security",
   title,
   description,
   breadcrumbs,
   headingId = "page-heading",
+  children,
 }: PageHeroProps) {
   return (
     <section
-      className="relative overflow-hidden bg-brand-dark px-4 py-20 text-white sm:px-6 sm:py-24 lg:px-8 lg:py-28"
+      className="relative overflow-hidden border-b border-line px-5 pb-20 pt-32 sm:px-6 sm:pb-24 sm:pt-36 lg:px-8"
       aria-labelledby={headingId}
     >
-      <div className="bg-hero-mesh mesh-animate pointer-events-none absolute inset-0 opacity-90" aria-hidden="true" />
-      <div
-        className="absolute inset-0 opacity-[0.35]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgb(255 255 255 / 0.04) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.04) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-        aria-hidden="true"
-      />
-      <div className="container-site relative z-10 text-center">
-        <Breadcrumbs items={breadcrumbs} className="mb-8" />
-        <p className="eyebrow mb-4">EclipticLink</p>
+      <div className="bg-grid bg-grid-fade pointer-events-none absolute inset-0" aria-hidden="true" />
+      <div className="bg-hero-glow pointer-events-none absolute inset-0" aria-hidden="true" />
+      <div className="container-site relative z-10">
+        <Breadcrumbs items={breadcrumbs} align="start" className="mb-8" />
+        <p className="eyebrow animate-fade-up">{eyebrow}</p>
         <h1
           id={headingId}
-          className="mx-auto max-w-4xl text-4xl font-semibold tracking-tight sm:text-5xl lg:text-[3.25rem]"
+          className="mt-5 max-w-4xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl lg:text-[3.4rem] lg:leading-[1.08]"
         >
           {title}
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
           {description}
         </p>
+        {children ? <div className="animate-fade-up-3 mt-9">{children}</div> : null}
       </div>
     </section>
   );

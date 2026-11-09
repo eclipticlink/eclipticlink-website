@@ -1,9 +1,15 @@
-import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { JetBrains_Mono, Outfit } from "next/font/google";
 import Script from "next/script";
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";
+import { AnalyticsEvents } from "./components/analytics-events";
+import { DeferredHubSpot } from "./components/deferred-hubspot";
 import { HubSpotChatRefresh } from "./components/hubspot-chat-refresh";
+import { JsonLd } from "./components/json-ld";
+import { CONTACT_EMAIL, CONTACT_PHONE, SITE_URL } from "./lib/config";
+import { DEFAULT_KEYWORDS } from "./lib/seo";
+import { services } from "./services/data";
 import "./globals.css";
 
 const fontSans = Outfit({
@@ -12,22 +18,35 @@ const fontSans = Outfit({
   display: "swap",
 });
 
-import { SITE_URL } from "./lib/config";
-import { DEFAULT_KEYWORDS } from "./lib/seo";
+const fontMono = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500"],
+});
+
+const DEFAULT_TITLE = "EclipticLink | AI-Powered Cybersecurity Services";
+const DEFAULT_DESCRIPTION =
+  "AI-powered cybersecurity: managed detection and response, penetration testing, AI and LLM security, cloud security, and SOC 2 / ISO 27001 compliance.";
+
+export const viewport: Viewport = {
+  themeColor: "#050a14",
+  colorScheme: "dark",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "EclipticLink | Lead Systems, CRM Workflows & Software",
+    default: DEFAULT_TITLE,
     template: "%s | EclipticLink",
   },
-  description:
-    "EclipticLink designs lead response and CRM workflows on GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier, and builds intelligent products and software when your stack needs more.",
+  description: DEFAULT_DESCRIPTION,
+  applicationName: "EclipticLink",
   keywords: DEFAULT_KEYWORDS,
   authors: [{ name: "EclipticLink", url: SITE_URL }],
   creator: "EclipticLink",
   publisher: "EclipticLink",
-  category: "technology",
+  category: "cybersecurity",
   alternates: {
     canonical: SITE_URL,
   },
@@ -35,24 +54,22 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "EclipticLink",
     locale: "en_US",
-    title: "EclipticLink | Lead Systems, CRM Workflows & Software",
-    description:
-      "Follow-up and pipeline systems on the platforms you already run, with product and engineering support when you need to go deeper.",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
     url: SITE_URL,
     images: [
       {
         url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "EclipticLink, lead systems and CRM workflows on GoHighLevel, HubSpot, Zoho, n8n, Make, Zapier",
+        alt: "EclipticLink: AI-powered cybersecurity",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "EclipticLink | Lead Systems & CRM Workflows",
-    description:
-      "Faster follow-up, cleaner pipelines, and the engineering behind them.",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
     images: [`${SITE_URL}/og-image.png`],
     site: "@eclipticlink",
   },
@@ -80,27 +97,44 @@ export const metadata: Metadata = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": ["Organization", "ProfessionalService"],
+  "@id": `${SITE_URL}/#organization`,
   name: "EclipticLink",
   alternateName: ["Eclipticlink", "Ecliptic Link"],
   url: SITE_URL,
   logo: `${SITE_URL}/ecliptic-link-logo.png`,
   image: `${SITE_URL}/og-image.png`,
   description:
-    "EclipticLink helps teams protect inbound opportunity with lead and CRM systems on GoHighLevel, HubSpot, Zoho, n8n, Make, and Zapier, and builds intelligent products and custom software when the work calls for it.",
-  slogan: "Problem-first systems that keep your business moving",
+    "EclipticLink is an AI-powered cybersecurity company providing managed detection and response, penetration testing, AI and LLM security, cloud security, vulnerability management, compliance, and incident response.",
+  slogan: "AI-powered cybersecurity, human-verified",
   knowsAbout: [
-    "AI automation",
-    "GoHighLevel",
-    "n8n",
-    "Make.com",
-    "Zapier",
-    "HubSpot",
-    "Zoho CRM",
-    "lead follow-up automation",
-    "CRM automation",
-    "AI chatbot development",
-    "custom software development",
+    "Cybersecurity",
+    "Managed detection and response",
+    "Security operations center",
+    "Penetration testing",
+    "AI security",
+    "LLM security",
+    "Prompt injection",
+    "Cloud security",
+    "Vulnerability management",
+    "SOC 2",
+    "ISO 27001",
+    "Incident response",
+    "Digital forensics",
+    "DevSecOps",
   ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Cybersecurity services",
+    itemListElement: services.map((s) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: s.title,
+        description: s.summary,
+        url: `${SITE_URL}/services/${s.id}`,
+      },
+    })),
+  },
   knowsLanguage: ["en"],
   areaServed: [
     { "@type": "Country", name: "United States" },
@@ -109,8 +143,8 @@ const organizationJsonLd = {
     { "@type": "Country", name: "Saudi Arabia" },
     { "@type": "Country", name: "United Arab Emirates" },
   ],
-  telephone: "+923438788662",
-  email: "info@eclipticlink.com",
+  telephone: CONTACT_PHONE,
+  email: CONTACT_EMAIL,
   sameAs: [
     "https://www.facebook.com/profile.php?id=61584739395956",
     "https://www.instagram.com/eclipticlink/",
@@ -119,9 +153,9 @@ const organizationJsonLd = {
   contactPoint: [
     {
       "@type": "ContactPoint",
-      telephone: "+923438788662",
+      telephone: CONTACT_PHONE,
       contactType: "sales",
-      email: "info@eclipticlink.com",
+      email: CONTACT_EMAIL,
       availableLanguage: ["English"],
       areaServed: ["US", "GB", "PK", "SA", "AE"],
     },
@@ -131,12 +165,12 @@ const organizationJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
   name: "EclipticLink",
   alternateName: "Eclipticlink",
   url: SITE_URL,
-  description:
-    "Lead systems, CRM workflows, intelligent products, and custom software from EclipticLink.",
-  publisher: { "@type": "Organization", name: "EclipticLink", url: SITE_URL },
+  description: DEFAULT_DESCRIPTION,
+  publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: "en-US",
 };
 
@@ -146,9 +180,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="bg-bg" suppressHydrationWarning>
       <body
-        className={`${fontSans.variable} font-sans antialiased`}
+        className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
         {/* Google tag (gtag.js) */}
@@ -169,14 +203,7 @@ export default function RootLayout({
             `,
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-        />
+        <JsonLd data={[organizationJsonLd, websiteJsonLd]} />
         {/* HubSpot tracking + chat: settings must run before the script loads */}
         <script
           type="text/javascript"
@@ -191,14 +218,11 @@ export default function RootLayout({
             `,
           }}
         />
-        <Script
-          id="hs-script-loader"
-          src={`https://js-na2.hs-scripts.com/${String(process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID || "245439892")}.js`}
-          strategy="afterInteractive"
-        />
+        <DeferredHubSpot />
+        <AnalyticsEvents />
         <HubSpotChatRefresh />
         <Header />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <Footer />
       </body>
     </html>

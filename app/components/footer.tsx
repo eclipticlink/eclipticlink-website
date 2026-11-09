@@ -1,138 +1,130 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "./ui/button";
+import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_DISPLAY } from "../lib/config";
+import { locations } from "../data/locations";
+import { services } from "../services/data";
 
-const quickLinks = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Hire Team", href: "/hire" },
-  { label: "About Us", href: "/about" },
-  { label: "Blogs", href: "/blogs" },
-  { label: "Contact Us", href: "/contact" },
+const company = [
+  { label: "About us", href: "/about" },
+  { label: "All services", href: "/services" },
+  { label: "Locations", href: "/locations" },
+  { label: "Security insights", href: "/blogs" },
+  { label: "Contact", href: "/contact" },
 ];
 
-const socialLinks = [
-  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61584739395956" },
-  { label: "Instagram", href: "https://www.instagram.com/eclipticlink/" },
+const social = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/eclipticlink/" },
+  { label: "Instagram", href: "https://www.instagram.com/eclipticlink/" },
+  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61584739395956" },
 ];
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-brand-dark text-white" role="contentinfo">
-      <div
-        className="pointer-events-none absolute inset-0"
-        aria-hidden="true"
-        style={{
-          background:
-            "radial-gradient(ellipse 50% 40% at 0% 100%, rgb(116 210 176 / 0.12), transparent 55%)",
-        }}
-      />
-      <div className="container-site relative z-10 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
-          <div>
-            <Link
-              href="/"
-              aria-label="EclipticLink home"
-              className="inline-block rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
-            >
-              <Image
-                src="/ecliptic-link-logo.png"
-                alt="EclipticLink footer logo"
-                width={180}
-                height={48}
-                className="h-12 w-auto object-contain object-left sm:h-14"
-              />
+    <footer className="relative border-t border-line bg-bg-elevated">
+      <div className="container-site px-5 py-16 sm:px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <Link href="/" className="flex items-center gap-2.5" aria-label="EclipticLink home">
+              <Image src="/ecliptic-link-logo.png" alt="" width={36} height={36} className="h-9 w-9" />
+              <span className="font-display text-lg font-semibold text-ink">
+                Ecliptic<span className="text-accent">Link</span>
+              </span>
             </Link>
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/65">
-              Lead systems, CRM workflows, and the product engineering behind
-              teams that refuse to let opportunity sit unanswered.
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">
+              AI-powered cybersecurity: managed detection and response, penetration testing,
+              AI and LLM security, cloud security, and compliance for growing companies.
             </p>
-            <p className="mt-6 text-sm text-white/50" suppressHydrationWarning>
-              © {new Date().getFullYear()} EclipticLink. All rights reserved.
-            </p>
+            <div className="mt-6 rounded-xl border border-threat/30 bg-threat-soft p-4">
+              <p className="text-sm font-semibold text-[#ffb3ba]">Active security incident?</p>
+              <p className="mt-1 text-sm text-muted">
+                Call{" "}
+                <a href={`tel:${CONTACT_PHONE}`} className="font-medium text-ink hover:text-accent">
+                  {CONTACT_PHONE_DISPLAY}
+                </a>{" "}
+                or see{" "}
+                <Link href="/services/incident-response" className="font-medium text-ink hover:text-accent">
+                  incident response
+                </Link>
+                .
+              </p>
+            </div>
           </div>
 
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-teal">
-              Quick links
-            </h3>
-            <ul className="mt-4 flex flex-col gap-1" role="list">
-              {quickLinks.map(({ label, href }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="inline-flex items-center py-1.5 text-sm text-white/70 transition hover:text-brand-teal focus-visible:rounded focus-visible:text-brand-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
-                  >
-                    {label}
+          <nav aria-label="Services" className="lg:col-span-3">
+            <p className="font-mono text-xs uppercase tracking-[0.16em] text-subtle">Services</p>
+            <ul className="mt-4 space-y-2.5" role="list">
+              {services.map((s) => (
+                <li key={s.id}>
+                  <Link href={`/services/${s.id}`} className="text-sm text-muted transition hover:text-accent">
+                    {s.title}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-teal">
-              Contact
-            </h3>
-            <ul className="mt-4 space-y-3" role="list">
+          <nav aria-label="Company" className="lg:col-span-2">
+            <p className="font-mono text-xs uppercase tracking-[0.16em] text-subtle">Company</p>
+            <ul className="mt-4 space-y-2.5" role="list">
+              {company.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-sm text-muted transition hover:text-accent">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="lg:col-span-3">
+            <p className="font-mono text-xs uppercase tracking-[0.16em] text-subtle">Contact</p>
+            <ul className="mt-4 space-y-2.5 text-sm" role="list">
               <li>
-                <span className="text-sm text-white/55">Offices</span>
-                <p className="mt-1 text-sm text-white/80">Pakistan · UK · UAE</p>
-              </li>
-              <li>
-                <a
-                  href="tel:+923438788662"
-                  className="inline-flex min-h-11 items-center text-sm text-white/80 transition hover:text-brand-teal focus-visible:rounded focus-visible:text-brand-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
-                >
-                  +92 343 8788662
+                <a href={`mailto:${CONTACT_EMAIL}`} className="text-muted transition hover:text-accent">
+                  {CONTACT_EMAIL}
                 </a>
               </li>
               <li>
-                <a
-                  href="mailto:info@eclipticlink.com"
-                  className="inline-flex min-h-11 items-center text-sm text-white/80 transition hover:text-brand-teal focus-visible:rounded focus-visible:text-brand-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"
-                >
-                  info@eclipticlink.com
+                <a href={`tel:${CONTACT_PHONE}`} className="text-muted transition hover:text-accent">
+                  {CONTACT_PHONE_DISPLAY}
                 </a>
               </li>
             </ul>
-            <ul className="mt-6 flex gap-4" role="list">
-              {socialLinks.map(({ label, href }) => (
-                <li key={label}>
+            <p className="mt-6 font-mono text-xs uppercase tracking-[0.16em] text-subtle">Regions</p>
+            <ul className="mt-4 space-y-2.5 text-sm" role="list">
+              {locations.map((l) => (
+                <li key={l.slug}>
+                  <Link href={`/locations/${l.slug}`} className="text-muted transition hover:text-accent">
+                    Cybersecurity in {l.short}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 font-mono text-xs uppercase tracking-[0.16em] text-subtle">Follow</p>
+            <ul className="mt-4 flex flex-wrap gap-4 text-sm" role="list">
+              {social.map((s) => (
+                <li key={s.href}>
                   <a
-                    href={href}
+                    href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-white/60 transition hover:text-brand-teal focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal"
+                    className="text-muted transition hover:text-accent"
                   >
-                    {label}
+                    {s.label}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
-
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-teal">
-              Ready when you are
-            </h3>
-            <p className="mt-4 text-sm leading-relaxed text-white/70">
-              Tell us where follow-up stalls or what you want to build. We will
-              reply with a practical next step.
-            </p>
-            <Button
-              href="/contact"
-              variant="primary"
-              className="mt-5 focus-visible:ring-offset-brand-dark"
-            >
-              Book a discovery call
-            </Button>
-          </div>
         </div>
-        <p className="mt-12 border-t border-white/10 pt-6 text-xs text-white/40">
-          Serving clients in the US, UK, Pakistan, Saudi Arabia &amp; UAE.
-        </p>
+
+        <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-xs text-subtle sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} EclipticLink. All rights reserved.</p>
+          <p className="flex items-center gap-2 font-mono">
+            <span className="live-dot" aria-hidden="true" />
+            Secure by design
+          </p>
+        </div>
       </div>
     </footer>
   );

@@ -1,19 +1,16 @@
 import Link from "next/link";
 
 const base =
-  "inline-flex min-h-11 cursor-pointer items-center justify-center rounded-md px-5 py-3 text-sm font-semibold transition duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-70 motion-reduce:active:scale-100 motion-reduce:transition-colors";
+  "inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg active:scale-[0.98] disabled:pointer-events-none disabled:opacity-70 motion-reduce:active:scale-100";
 
 const variants = {
   primary:
-    "bg-brand-teal text-brand-dark shadow-sm shadow-brand-dark/10 hover:-translate-y-0.5 hover:bg-brand-teal-hover hover:shadow-md hover:shadow-brand-teal/25 focus-visible:ring-brand-teal motion-reduce:hover:translate-y-0",
-  primaryBlue:
-    "bg-brand-blue text-white shadow-sm shadow-brand-blue/20 hover:-translate-y-0.5 hover:bg-brand-blue-hover hover:shadow-md hover:shadow-brand-blue/30 focus-visible:ring-brand-blue motion-reduce:hover:translate-y-0",
+    "bg-accent text-bg shadow-[0_0_0_1px_rgb(116_210_176/0.4),0_10px_30px_-10px_rgb(116_210_176/0.6)] hover:bg-accent-hover hover:shadow-[0_0_0_1px_rgb(116_210_176/0.6),0_14px_40px_-10px_rgb(116_210_176/0.75)] focus-visible:ring-accent",
   secondary:
-    "border border-white/35 bg-white/5 text-white backdrop-blur-sm hover:-translate-y-0.5 hover:border-white/55 hover:bg-white/12 focus-visible:ring-brand-teal motion-reduce:hover:translate-y-0",
-  secondaryOnLight:
-    "border border-brand-blue/25 bg-transparent text-brand-blue hover:-translate-y-0.5 hover:border-brand-blue hover:bg-brand-blue/[0.04] focus-visible:ring-brand-blue motion-reduce:hover:translate-y-0",
-  ghost:
-    "text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900 focus-visible:ring-zinc-900",
+    "border border-line-strong bg-white/[0.03] text-ink hover:border-accent/60 hover:bg-accent-soft focus-visible:ring-accent",
+  danger:
+    "border border-threat/50 bg-threat-soft text-[#ffb3ba] hover:border-threat hover:bg-threat/20 focus-visible:ring-threat",
+  ghost: "text-muted hover:text-ink focus-visible:ring-accent",
 } as const;
 
 type ButtonVariant = keyof typeof variants;
@@ -35,12 +32,7 @@ export function Button({
   children,
   ...props
 }: ButtonProps) {
-  const classes = [
-    base,
-    variants[variant],
-    size === "lg" ? "h-12 px-6 text-base" : "",
-    className,
-  ]
+  const classes = [base, variants[variant], size === "lg" ? "h-12 px-6 text-base" : "", className]
     .filter(Boolean)
     .join(" ");
 

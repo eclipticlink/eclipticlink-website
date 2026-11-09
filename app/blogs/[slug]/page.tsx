@@ -1,14 +1,21 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "../../components/breadcrumbs";
-import { Button } from "../../components/ui/button";
+import { CtaBand } from "../../components/cta-band";
+import { Icon } from "../../components/icons";
+import { JsonLd } from "../../components/json-ld";
+import { getAllBlogSlugs, getBlogBySlug, blogPosts } from "../../data/blogs";
 import { BASE_OG, SITE_URL } from "../../lib/config";
+import { breadcrumbJsonLd } from "../../lib/seo";
+import { getServiceBySlug } from "../../services/data";
 import { BlogContent } from "../blog-content";
-import { getAllBlogSlugs, getBlogBySlug } from "../../data/blogs";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return getAllBlogSlugs().map((slug) => ({ slug }));
@@ -17,34 +24,28 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = getBlogBySlug(slug);
-  if (!post) return { title: "Blog | EclipticLink" };
+  if (!post) return {};
+  const url = `${SITE_URL}/blogs/${post.slug}`;
   return {
-    title: post.title,
+    title: post.title.length > 46 ? { absolute: post.title } : post.title,
     description: post.metaDescription,
-    keywords: post.tags.join(", "),
-    alternates: { canonical: `${SITE_URL}/blogs/${post.slug}` },
+    keywords: post.tags,
+    alternates: { canonical: url },
     openGraph: {
       ...BASE_OG,
       title: post.title,
       description: post.metaDescription,
-      url: `${SITE_URL}/blogs/${post.slug}`,
+      url,
       type: "article",
       publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt ?? post.publishedAt,
+      section: post.category,
       tags: post.tags,
-      images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, alt: post.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.metaDescription,
-      images: [`${SITE_URL}/og-image.png`],
-      site: "@eclipticlink",
-    },
-    robots: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
     },
   };
 }
@@ -54,138 +55,127 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getBlogBySlug(slug);
   if (!post) notFound();
 
-  const pageUrl = `${SITE_URL}/blogs/${post.slug}`;
-
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "EclipticLink", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blogs` },
-      { "@type": "ListItem", position: 3, name: post.title, item: pageUrl },
-    ],
-  };
+  const url = `${SITE_URL}/blogs/${post.slug}`;
+  const service = post.relatedService ? getServiceBySlug(post.relatedService) : undefined;
+  const more = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
     description: post.metaDescription,
-    url: pageUrl,
+    url,
     datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
     inLanguage: "en-US",
-    wordCount: post.readingTime * 200,
-    author: {
-      "@type": "Organization",
-      name: "EclipticLink",
-      url: SITE_URL,
-    },
+    author: { "@type": "Organization", name: "EclipticLink Security Team", url: SITE_URL },
     publisher: {
       "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
       name: "EclipticLink",
-      url: SITE_URL,
       logo: { "@type": "ImageObject", url: `${SITE_URL}/ecliptic-link-logo.png` },
     },
     image: { "@type": "ImageObject", url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 },
     keywords: post.tags.join(", "),
     articleSection: post.category,
-    mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
-    isPartOf: { "@type": "Blog", name: "EclipticLink Blog", url: `${SITE_URL}/blogs` },
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
   };
 
-  const formattedDate = new Date(post.publishedAt).toLocaleDateString("en-US", {
+  const date = new Date(post.publishedAt).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
+    timeZone: "UTC",
   });
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      <JsonLd
+        data={[
+          breadcrumbJsonLd(SITE_URL, [
+            { name: "Insights", path: "/blogs" },
+            { name: post.title, path: `/blogs/${post.slug}` },
+          ]),
+          articleJsonLd,
+        ]}
       />
 
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-brand-dark px-4 py-20 text-white sm:px-6 sm:py-24 lg:px-8 lg:py-28">
-        <div className="bg-hero-mesh pointer-events-none absolute inset-0 opacity-90" aria-hidden="true" />
-        <div className="container-site relative z-10 max-w-3xl">
-          <Breadcrumbs
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Blog", href: "/blogs" },
-              { label: post.title },
-            ]}
-            align="start"
-            className="mb-8"
-          />
-          <div className="mb-4 flex flex-wrap items-center gap-3">
-            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-teal">
-              {post.category}
-            </span>
-            <span className="text-sm text-white/55">{post.readingTime} min read</span>
+      <article>
+        <header className="relative overflow-hidden border-b border-line px-5 pb-16 pt-32 sm:px-6 sm:pt-36 lg:px-8">
+          <div className="bg-grid bg-grid-fade pointer-events-none absolute inset-0" aria-hidden="true" />
+          <div className="bg-hero-glow pointer-events-none absolute inset-0" aria-hidden="true" />
+          <div className="relative z-10 mx-auto max-w-3xl">
+            <Breadcrumbs
+              items={[{ label: "Home", href: "/" }, { label: "Insights", href: "/blogs" }, { label: post.category }]}
+              align="start"
+              className="mb-8"
+            />
+            <p className="eyebrow">{post.category}</p>
+            <h1 className="mt-5 text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl lg:text-5xl">
+              {post.title}
+            </h1>
+            <p className="mt-6 text-lg leading-relaxed text-muted">{post.excerpt}</p>
+            <p className="mt-6 flex flex-wrap items-center gap-3 font-mono text-xs text-subtle">
+              <span>EclipticLink Security Team</span>
+              <span aria-hidden="true">·</span>
+              <time dateTime={post.publishedAt}>{date}</time>
+              <span aria-hidden="true">·</span>
+              <span>{post.readingTime} min read</span>
+            </p>
           </div>
-          <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
-            {post.title}
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-white/75">
-            {post.excerpt}
-          </p>
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/50">
-            <span>By <strong className="font-medium text-white/80">EclipticLink Team</strong></span>
-            <span aria-hidden="true">·</span>
-            <time dateTime={post.publishedAt}>{formattedDate}</time>
+        </header>
+
+        <div className="section-pad">
+          <BlogContent blocks={post.body} />
+
+          <div className="mx-auto mt-14 max-w-3xl">
+            <ul className="flex flex-wrap gap-2" aria-label="Tags">
+              {post.tags.map((tag) => (
+                <li key={tag} className="rounded-md border border-line bg-surface px-3 py-1 font-mono text-xs text-muted">
+                  {tag}
+                </li>
+              ))}
+            </ul>
+
+            {service ? (
+              <aside className="card brackets mt-10 flex flex-col gap-5 p-7 sm:flex-row sm:items-center">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-line bg-accent-soft text-accent">
+                  <Icon name={service.icon} className="h-6 w-6" />
+                </span>
+                <div className="flex-1">
+                  <p className="font-semibold text-ink">{service.title}</p>
+                  <p className="mt-1 text-sm text-muted">{service.summary}</p>
+                </div>
+                <Link href={`/services/${service.id}`} className="link-arrow shrink-0">
+                  Explore {service.title}
+                  <Icon name="arrow" className="h-4 w-4" />
+                </Link>
+              </aside>
+            ) : null}
           </div>
         </div>
-      </section>
+      </article>
 
-      {/* Article body */}
-      <section className="section-pad bg-atmosphere">
-        <BlogContent blocks={post.body} />
-      </section>
-
-      {/* Tags */}
-      <section className="border-y border-border-subtle bg-surface-muted px-4 py-10 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl">
-          <div className="flex flex-wrap gap-2">
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="border border-border-subtle bg-surface px-3 py-1 text-xs font-medium text-text-muted"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="relative overflow-hidden bg-brand-dark section-pad text-white">
-        <div className="bg-hero-mesh pointer-events-none absolute inset-0 opacity-90" aria-hidden="true" />
-        <div className="container-site relative z-10 max-w-3xl text-center">
-          <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-            Ready to put this into practice?
+      <section className="section-pad border-t border-line bg-section-alt" aria-labelledby="more-heading">
+        <div className="container-site">
+          <h2 id="more-heading" className="text-2xl font-semibold text-ink">
+            More security insights
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-white/75">
-            EclipticLink builds AI automations for leads and CRM workflows, custom AI development,
-            and full-stack software. Let&apos;s talk about your project.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button href="/contact" variant="primary" size="lg">
-              Get a free consult
-            </Button>
-            <Button href="/services/ai-automations" variant="secondary" size="lg">
-              Explore AI Automations
-            </Button>
-          </div>
+          <ul className="mt-8 grid gap-5 md:grid-cols-3" role="list">
+            {more.map((p) => (
+              <li key={p.slug}>
+                <Link href={`/blogs/${p.slug}`} className="card card-hover group flex h-full flex-col p-6">
+                  <p className="font-mono text-xs uppercase tracking-wider text-accent">{p.category}</p>
+                  <h3 className="mt-3 font-semibold leading-snug text-ink group-hover:text-accent">{p.title}</h3>
+                  <p className="mt-auto pt-4 font-mono text-xs text-subtle">{p.readingTime} min read</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
+
+      <CtaBand />
     </>
   );
 }
