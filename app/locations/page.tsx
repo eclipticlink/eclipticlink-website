@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Flag } from "../components/flag";
 import Link from "next/link";
 import { CtaBand } from "../components/cta-band";
 import { Icon } from "../components/icons";
@@ -39,7 +40,7 @@ export default function LocationsPage() {
             {locations.map((l) => (
               <li key={l.slug}>
                 <Link href={`/locations/${l.slug}`} className="card card-hover group flex h-full flex-col p-7">
-                  <span className="font-mono text-xs uppercase tracking-wider text-accent">{l.countryCode}</span>
+                  <Flag code={l.countryCode} className="h-5 w-[1.875rem]" />
                   <h3 className="mt-3 text-2xl font-semibold text-ink group-hover:text-accent">{l.short}</h3>
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
                     {l.regulations

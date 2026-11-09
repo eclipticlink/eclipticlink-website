@@ -1,6 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_DISPLAY } from "../lib/config";
+import { Flag } from "./flag";
+import {
+  COMPANY_ADDRESS,
+  COMPANY_LEGAL_NAME,
+  COMPANY_PHONE_DISPLAY,
+  COMPANY_WHATSAPP_URL,
+  CONTACT_EMAIL,
+  CONTACT_US_MAILTO,
+  LEGAL_LINKS,
+} from "../lib/config";
 import { locations } from "../data/locations";
 import { services } from "../services/data";
 
@@ -20,7 +29,7 @@ const social = [
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-line bg-bg-elevated">
+    <footer className="relative border-t border-line bg-bg">
       <div className="container-site px-5 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
@@ -34,12 +43,11 @@ export function Footer() {
               AI-powered cybersecurity: managed detection and response, penetration testing,
               AI and LLM security, cloud security, and compliance for growing companies.
             </p>
-            <div className="mt-6 rounded-xl border border-threat/30 bg-threat-soft p-4">
-              <p className="text-sm font-semibold text-[#ffb3ba]">Active security incident?</p>
+            <div className="mt-6 rounded-xl border border-threat/20 bg-threat-soft p-4">
+              <p className="text-sm font-semibold text-threat">Active security incident?</p>
               <p className="mt-1 text-sm text-muted">
-                Call{" "}
-                <a href={`tel:${CONTACT_PHONE}`} className="font-medium text-ink hover:text-accent">
-                  {CONTACT_PHONE_DISPLAY}
+                <a href={CONTACT_US_MAILTO} className="font-medium text-ink underline underline-offset-2 hover:text-accent">
+                  Email us
                 </a>{" "}
                 or see{" "}
                 <Link href="/services/incident-response" className="font-medium text-ink hover:text-accent">
@@ -74,6 +82,16 @@ export function Footer() {
                 </li>
               ))}
             </ul>
+            <p className="mt-8 font-mono text-xs uppercase tracking-[0.16em] text-subtle">Legal</p>
+            <ul className="mt-4 space-y-2.5" role="list">
+              {LEGAL_LINKS.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-sm text-muted transition-colors hover:text-accent">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </nav>
 
           <div className="lg:col-span-3">
@@ -85,16 +103,25 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href={`tel:${CONTACT_PHONE}`} className="text-muted transition hover:text-accent">
-                  {CONTACT_PHONE_DISPLAY}
+                <a
+                  href={COMPANY_WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted transition hover:text-accent"
+                >
+                  {COMPANY_PHONE_DISPLAY}
                 </a>
+              </li>
+              <li className="text-muted">
+                <address className="not-italic">{COMPANY_ADDRESS}</address>
               </li>
             </ul>
             <p className="mt-6 font-mono text-xs uppercase tracking-[0.16em] text-subtle">Regions</p>
             <ul className="mt-4 space-y-2.5 text-sm" role="list">
               {locations.map((l) => (
                 <li key={l.slug}>
-                  <Link href={`/locations/${l.slug}`} className="text-muted transition hover:text-accent">
+                  <Link href={`/locations/${l.slug}`} className="flex items-center gap-2.5 text-muted transition hover:text-accent">
+                    <Flag code={l.countryCode} className="h-3.5 w-5" />
                     Cybersecurity in {l.short}
                   </Link>
                 </li>
@@ -119,7 +146,12 @@ export function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-xs text-subtle sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} EclipticLink. All rights reserved.</p>
+          <div className="space-y-1">
+            <p>EclipticLink is operated by {COMPANY_LEGAL_NAME}</p>
+            <p>
+              © {new Date().getFullYear()} {COMPANY_LEGAL_NAME} All rights reserved.
+            </p>
+          </div>
           <p className="flex items-center gap-2 font-mono">
             <span className="live-dot" aria-hidden="true" />
             Secure by design

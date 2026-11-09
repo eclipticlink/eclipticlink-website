@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BlogCover } from "../components/blog-cover";
+import { Icon } from "../components/icons";
 import { CtaBand } from "../components/cta-band";
 import { JsonLd } from "../components/json-ld";
 import { PageHero } from "../components/page-hero";
@@ -58,8 +60,12 @@ export default function BlogsPage() {
             All articles
           </h2>
           {featured ? (
-            <Link href={`/blogs/${featured.slug}`} className="card card-hover group grid gap-6 p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-end">
-              <div>
+            <Link
+              href={`/blogs/${featured.slug}`}
+              className="card card-hover group grid overflow-hidden rounded-3xl lg:grid-cols-[1.1fr_1fr]"
+            >
+              <BlogCover category={featured.category} seed={featured.slug} className="aspect-[16/9] lg:aspect-auto lg:min-h-[20rem]" />
+              <div className="flex flex-col justify-center p-8 sm:p-10">
                 <p className="font-mono text-xs uppercase tracking-wider text-accent">
                   Featured · {featured.category}
                 </p>
@@ -67,10 +73,17 @@ export default function BlogsPage() {
                   {featured.title}
                 </h3>
                 <p className="mt-4 max-w-3xl leading-relaxed text-muted">{featured.excerpt}</p>
+                <p className="mt-6 flex items-center justify-between font-mono text-xs text-subtle">
+                  <span>
+                    <time dateTime={featured.publishedAt}>{formatDate(featured.publishedAt)}</time> · {featured.readingTime} min
+                    read
+                  </span>
+                  <span className="link-arrow text-xs">
+                    Read article
+                    <Icon name="arrow" className="h-3.5 w-3.5" />
+                  </span>
+                </p>
               </div>
-              <p className="font-mono text-xs text-subtle">
-                <time dateTime={featured.publishedAt}>{formatDate(featured.publishedAt)}</time> · {featured.readingTime} min
-              </p>
             </Link>
           ) : null}
 
@@ -78,13 +91,16 @@ export default function BlogsPage() {
             {rest.map((post, i) => (
               <li key={post.slug}>
                 <Reveal delay={(i % 3) * 70} className="h-full">
-                  <Link href={`/blogs/${post.slug}`} className="card card-hover group flex h-full flex-col p-6">
+                  <Link href={`/blogs/${post.slug}`} className="card card-hover group flex h-full flex-col overflow-hidden rounded-2xl">
+                    <BlogCover category={post.category} seed={post.slug} className="aspect-[16/9]" />
+                    <div className="flex flex-1 flex-col p-6">
                     <p className="font-mono text-xs uppercase tracking-wider text-accent">{post.category}</p>
                     <h3 className="mt-3 text-lg font-semibold leading-snug text-ink group-hover:text-accent">{post.title}</h3>
                     <p className="mt-3 line-clamp-3 flex-1 text-sm leading-relaxed text-muted">{post.excerpt}</p>
                     <p className="mt-5 font-mono text-xs text-subtle">
                       <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time> · {post.readingTime} min read
                     </p>
+                    </div>
                   </Link>
                 </Reveal>
               </li>

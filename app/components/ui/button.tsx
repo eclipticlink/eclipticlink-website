@@ -1,15 +1,15 @@
 import Link from "next/link";
 
 const base =
-  "inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg active:scale-[0.98] disabled:pointer-events-none disabled:opacity-70 motion-reduce:active:scale-100";
+  "inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-[background-color,border-color,color,box-shadow,transform] duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg active:scale-[0.98] disabled:pointer-events-none disabled:opacity-70 motion-reduce:active:scale-100";
 
 const variants = {
   primary:
-    "bg-accent text-bg shadow-[0_0_0_1px_rgb(116_210_176/0.4),0_10px_30px_-10px_rgb(116_210_176/0.6)] hover:bg-accent-hover hover:shadow-[0_0_0_1px_rgb(116_210_176/0.6),0_14px_40px_-10px_rgb(116_210_176/0.75)] focus-visible:ring-accent",
+    "btn-neon text-white focus-visible:ring-accent",
   secondary:
-    "border border-line-strong bg-white/[0.03] text-ink hover:border-accent/60 hover:bg-accent-soft focus-visible:ring-accent",
+    "border border-line-strong bg-surface text-ink hover:border-accent/40 hover:bg-accent-soft focus-visible:ring-accent",
   danger:
-    "border border-threat/50 bg-threat-soft text-[#ffb3ba] hover:border-threat hover:bg-threat/20 focus-visible:ring-threat",
+    "border border-threat/30 bg-threat-soft text-threat hover:border-threat/60 hover:bg-threat/10 focus-visible:ring-threat",
   ghost: "text-muted hover:text-ink focus-visible:ring-accent",
 } as const;
 

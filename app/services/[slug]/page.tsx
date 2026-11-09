@@ -9,7 +9,7 @@ import { Reveal } from "../../components/reveal";
 import { SectionHeading } from "../../components/section-heading";
 import { Button } from "../../components/ui/button";
 import { blogPosts } from "../../data/blogs";
-import { BASE_OG, SITE_URL } from "../../lib/config";
+import { BASE_OG, CONTACT_US_MAILTO, SITE_URL } from "../../lib/config";
 import { breadcrumbJsonLd, faqJsonLd } from "../../lib/seo";
 import { getAllServiceSlugs, getServiceBySlug, services } from "../data";
 
@@ -103,8 +103,8 @@ export default async function ServicePage({ params }: Props) {
         <div className="flex flex-wrap gap-3">
           {isIR ? (
             <>
-              <Button href="tel:+923438788662" variant="danger" size="lg">
-                Call now: +92 343 8788662
+              <Button href={CONTACT_US_MAILTO} variant="danger" size="lg">
+                Email us now
               </Button>
               <Button href="/contact" variant="secondary" size="lg">
                 Set up an IR retainer
@@ -173,11 +173,11 @@ export default async function ServicePage({ params }: Props) {
               </ul>
             </div>
             <div className="card p-6">
-              <h3 className="font-mono text-xs uppercase tracking-[0.14em] text-[#9db6ff]">Deliverables</h3>
+              <h3 className="font-mono text-xs uppercase tracking-[0.14em] text-signal">Deliverables</h3>
               <ul className="mt-4 space-y-3 text-sm text-ink/90" role="list">
                 {service.deliverables.map((d) => (
                   <li key={d} className="flex gap-2.5">
-                    <Icon name="shield-check" className="mt-0.5 h-4 w-4 shrink-0 text-[#9db6ff]" />
+                    <Icon name="shield-check" className="mt-0.5 h-4 w-4 shrink-0 text-signal" />
                     {d}
                   </li>
                 ))}

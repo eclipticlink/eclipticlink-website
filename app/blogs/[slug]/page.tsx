@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BlogCover } from "../../components/blog-cover";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "../../components/breadcrumbs";
 import { CtaBand } from "../../components/cta-band";
@@ -103,7 +104,6 @@ export default async function BlogPostPage({ params }: Props) {
       <article>
         <header className="relative overflow-hidden border-b border-line px-5 pb-16 pt-32 sm:px-6 sm:pt-36 lg:px-8">
           <div className="bg-grid bg-grid-fade pointer-events-none absolute inset-0" aria-hidden="true" />
-          <div className="bg-hero-glow pointer-events-none absolute inset-0" aria-hidden="true" />
           <div className="relative z-10 mx-auto max-w-3xl">
             <Breadcrumbs
               items={[{ label: "Home", href: "/" }, { label: "Insights", href: "/blogs" }, { label: post.category }]}
@@ -122,6 +122,11 @@ export default async function BlogPostPage({ params }: Props) {
               <span aria-hidden="true">·</span>
               <span>{post.readingTime} min read</span>
             </p>
+            <BlogCover
+              category={post.category}
+              seed={post.slug}
+              className="mt-10 aspect-[2/1] rounded-3xl shadow-[0_40px_80px_-50px_rgb(11_32_27/0.55)]"
+            />
           </div>
         </header>
 
@@ -164,10 +169,13 @@ export default async function BlogPostPage({ params }: Props) {
           <ul className="mt-8 grid gap-5 md:grid-cols-3" role="list">
             {more.map((p) => (
               <li key={p.slug}>
-                <Link href={`/blogs/${p.slug}`} className="card card-hover group flex h-full flex-col p-6">
-                  <p className="font-mono text-xs uppercase tracking-wider text-accent">{p.category}</p>
-                  <h3 className="mt-3 font-semibold leading-snug text-ink group-hover:text-accent">{p.title}</h3>
-                  <p className="mt-auto pt-4 font-mono text-xs text-subtle">{p.readingTime} min read</p>
+                <Link href={`/blogs/${p.slug}`} className="card card-hover group flex h-full flex-col overflow-hidden rounded-2xl">
+                  <BlogCover category={p.category} seed={p.slug} className="aspect-[16/9]" />
+                  <div className="flex flex-1 flex-col p-6">
+                    <p className="font-mono text-xs uppercase tracking-wider text-accent">{p.category}</p>
+                    <h3 className="mt-3 font-semibold leading-snug text-ink group-hover:text-accent">{p.title}</h3>
+                    <p className="mt-auto pt-4 font-mono text-xs text-subtle">{p.readingTime} min read</p>
+                  </div>
                 </Link>
               </li>
             ))}

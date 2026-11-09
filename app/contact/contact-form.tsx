@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { trackEvent } from "@/app/lib/analytics";
+import { CONTACT_US_MAILTO } from "@/app/lib/config";
 import { sendContactEmail } from "@/app/lib/emailjs";
 import { services } from "@/app/services/data";
 
@@ -108,11 +109,10 @@ export function ContactForm() {
 
       {urgency === "incident" ? (
         <div className="mt-6 rounded-xl border border-threat/40 bg-threat-soft p-4 text-sm" role="alert">
-          <p className="font-semibold text-[#ffb3ba]">Active incident? Don&apos;t wait for email.</p>
+          <p className="font-semibold text-threat">Active incident? Don&apos;t wait for the form.</p>
           <p className="mt-1 text-muted">
-            Call{" "}
-            <a href="tel:+923438788662" className="font-semibold text-ink underline underline-offset-2">
-              +92 343 8788662
+            <a href={CONTACT_US_MAILTO} className="font-semibold text-ink underline underline-offset-2">
+              Email us
             </a>{" "}
             now. Isolate affected systems from the network, but don&apos;t power them off.
           </p>
@@ -194,7 +194,7 @@ export function ContactForm() {
               <label
                 key={u.value}
                 className={`flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-3 text-sm transition has-[:checked]:border-accent has-[:checked]:bg-accent-soft ${
-                  u.value === "incident" ? "border-threat/40 text-[#ffb3ba] has-[:checked]:border-threat has-[:checked]:bg-threat-soft" : "border-line-strong text-ink"
+                  u.value === "incident" ? "border-threat/40 text-threat has-[:checked]:border-threat has-[:checked]:bg-threat-soft" : "border-line-strong text-ink"
                 }`}
               >
                 <input
@@ -230,7 +230,7 @@ export function ContactForm() {
         </div>
 
         {status === "error" ? (
-          <p className="rounded-lg border border-threat/40 bg-threat-soft p-3 text-sm text-[#ffb3ba]" role="alert">
+          <p className="rounded-lg border border-threat/40 bg-threat-soft p-3 text-sm text-threat" role="alert">
             Something went wrong. Please try again or email info@eclipticlink.com.
           </p>
         ) : null}
@@ -238,7 +238,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={disabled}
-          className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-accent px-6 font-semibold text-bg transition hover:bg-accent-hover disabled:opacity-70 sm:w-auto"
+          className="inline-flex h-12 w-full items-center justify-center btn-neon rounded-lg px-6 font-semibold text-white transition-[background-color,box-shadow] disabled:opacity-70 sm:w-auto"
         >
           {disabled ? "Sending…" : "Request assessment"}
         </button>

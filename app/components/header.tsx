@@ -66,15 +66,15 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-300 ${
         scrolled || mobileOpen
-          ? "border-b border-line bg-bg/85 backdrop-blur-xl"
+          ? "border-b border-line bg-white/95 backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       }`}
     >
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-bg"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-white"
       >
         Skip to content
       </a>
@@ -120,17 +120,17 @@ export function Header() {
             </button>
             <div
               id="services-menu"
-              className={`absolute left-1/2 top-full w-[44rem] -translate-x-1/2 pt-3 transition duration-200 ${
+              className={`absolute left-1/2 top-full w-[44rem] -translate-x-1/2 pt-3 transition-[opacity,transform,visibility] duration-200 ease-out ${
                 servicesOpen ? "visible opacity-100" : "invisible -translate-y-1 opacity-0"
               }`}
             >
-              <div className="card overflow-hidden p-3 shadow-2xl shadow-black/60">
+              <div className="card overflow-hidden p-3 shadow-[0_24px_48px_-24px_rgb(11_32_27/0.25)]">
                 <ul className="grid grid-cols-2 gap-1" role="list">
                   {services.map((s) => (
                     <li key={s.id}>
                       <Link
                         href={`/services/${s.id}`}
-                        className="group flex gap-3 rounded-lg p-3 transition hover:bg-white/[0.04]"
+                        className="group flex gap-3 rounded-lg p-3 transition hover:bg-surface-2"
                       >
                         <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line bg-accent-soft text-accent">
                           <Icon name={s.icon} className="h-5 w-5" />
@@ -173,9 +173,9 @@ export function Header() {
         <div className="hidden items-center gap-3 lg:flex">
           <Link
             href="/services/incident-response"
-            className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-[#ffb3ba] transition hover:text-white"
+            className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-threat transition-colors hover:text-ink"
           >
-            <span className="h-2 w-2 rounded-full bg-threat shadow-[0_0_8px_rgb(255_93_108/0.9)]" aria-hidden="true" />
+            <span className="live-dot live-dot-threat" aria-hidden="true" />
             Under attack?
           </Link>
           <Button href="/contact" variant="primary">
@@ -209,7 +209,7 @@ export function Header() {
             <li key={s.id}>
               <Link
                 href={`/services/${s.id}`}
-                className="flex items-center gap-3 rounded-lg px-2 py-2.5 text-ink hover:bg-white/[0.04]"
+                className="flex items-center gap-3 rounded-lg px-2 py-2.5 text-ink hover:bg-surface-2"
               >
                 <Icon name={s.icon} className="h-5 w-5 text-accent" />
                 {s.title}
@@ -221,7 +221,7 @@ export function Header() {
         <ul className="grid gap-1" role="list">
           {[{ label: "All services", href: "/services" }, ...navLinks].map((l) => (
             <li key={l.href}>
-              <Link href={l.href} className="block rounded-lg px-2 py-2.5 text-lg font-medium text-ink hover:bg-white/[0.04]">
+              <Link href={l.href} className="block rounded-lg px-2 py-2.5 text-lg font-medium text-ink hover:bg-surface-2">
                 {l.label}
               </Link>
             </li>

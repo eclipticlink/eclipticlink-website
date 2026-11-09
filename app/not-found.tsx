@@ -11,7 +11,6 @@ export default function NotFound() {
   return (
     <section className="relative overflow-hidden px-5 pb-28 pt-40 sm:px-6 lg:px-8">
       <div className="bg-grid bg-grid-fade pointer-events-none absolute inset-0" aria-hidden="true" />
-      <div className="bg-hero-glow pointer-events-none absolute inset-0" aria-hidden="true" />
       <div className="container-site relative z-10 max-w-2xl text-center">
         <p className="font-mono text-sm text-threat">ERR 404 · resource not found</p>
         <h1 className="mt-4 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">

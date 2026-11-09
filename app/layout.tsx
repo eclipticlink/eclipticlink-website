@@ -8,7 +8,7 @@ import { AnalyticsEvents } from "./components/analytics-events";
 import { DeferredHubSpot } from "./components/deferred-hubspot";
 import { HubSpotChatRefresh } from "./components/hubspot-chat-refresh";
 import { JsonLd } from "./components/json-ld";
-import { CONTACT_EMAIL, CONTACT_PHONE, SITE_URL } from "./lib/config";
+import { CONTACT_EMAIL, SITE_URL } from "./lib/config";
 import { DEFAULT_KEYWORDS } from "./lib/seo";
 import { services } from "./services/data";
 import "./globals.css";
@@ -31,8 +31,8 @@ const DEFAULT_DESCRIPTION =
   "AI-powered cybersecurity: managed detection and response, penetration testing, AI and LLM security, cloud security, and SOC 2 / ISO 27001 compliance.";
 
 export const viewport: Viewport = {
-  themeColor: "#050a14",
-  colorScheme: "dark",
+  themeColor: "#ffffff",
+  colorScheme: "light",
 };
 
 export const metadata: Metadata = {
@@ -144,7 +144,6 @@ const organizationJsonLd = {
     { "@type": "Country", name: "Saudi Arabia" },
     { "@type": "Country", name: "United Arab Emirates" },
   ],
-  telephone: CONTACT_PHONE,
   email: CONTACT_EMAIL,
   sameAs: [
     "https://www.facebook.com/profile.php?id=61584739395956",
@@ -154,7 +153,6 @@ const organizationJsonLd = {
   contactPoint: [
     {
       "@type": "ContactPoint",
-      telephone: CONTACT_PHONE,
       contactType: "sales",
       email: CONTACT_EMAIL,
       availableLanguage: ["English"],

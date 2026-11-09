@@ -13,7 +13,82 @@ const base = {
   "aria-hidden": true,
 };
 
-export const Icons: Record<IconName | "shield" | "arrow" | "check" | "lock" | "bolt" | "eye" | "alert", (p: Props) => React.ReactElement> = {
+type ExtraIcon =
+  | "shield"
+  | "arrow"
+  | "check"
+  | "lock"
+  | "bolt"
+  | "eye"
+  | "alert"
+  | "user"
+  | "laptop"
+  | "server"
+  | "database"
+  | "mail"
+  | "bot"
+  | "file"
+  | "terminal"
+  | "git";
+
+export const Icons: Record<IconName | ExtraIcon, (p: Props) => React.ReactElement> = {
+  user: (p) => (
+    <svg {...base} {...p}>
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
+    </svg>
+  ),
+  laptop: (p) => (
+    <svg {...base} {...p}>
+      <rect x="4" y="5" width="16" height="11" rx="1.5" />
+      <path d="M2 19h20" />
+    </svg>
+  ),
+  server: (p) => (
+    <svg {...base} {...p}>
+      <rect x="4" y="4" width="16" height="7" rx="1.5" />
+      <rect x="4" y="13" width="16" height="7" rx="1.5" />
+      <path d="M8 7.5h.01M8 16.5h.01" />
+    </svg>
+  ),
+  database: (p) => (
+    <svg {...base} {...p}>
+      <ellipse cx="12" cy="6" rx="7" ry="3" />
+      <path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3" />
+    </svg>
+  ),
+  mail: (p) => (
+    <svg {...base} {...p}>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="M3.5 6.5l8.5 6 8.5-6" />
+    </svg>
+  ),
+  bot: (p) => (
+    <svg {...base} {...p}>
+      <rect x="5" y="8" width="14" height="11" rx="2.5" />
+      <path d="M12 4v4M9.5 13h.01M14.5 13h.01M2.5 13v2M21.5 13v2" />
+    </svg>
+  ),
+  file: (p) => (
+    <svg {...base} {...p}>
+      <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" />
+      <path d="M14 3v5h5M9 13h6M9 17h4" />
+    </svg>
+  ),
+  terminal: (p) => (
+    <svg {...base} {...p}>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="M7 9l3 3-3 3M12.5 15H17" />
+    </svg>
+  ),
+  git: (p) => (
+    <svg {...base} {...p}>
+      <circle cx="6" cy="6" r="2.2" />
+      <circle cx="6" cy="18" r="2.2" />
+      <circle cx="18" cy="9" r="2.2" />
+      <path d="M6 8.2v7.6M18 11.2c0 3-3 4-7 4.6" />
+    </svg>
+  ),
   radar: (p) => (
     <svg {...base} {...p}>
       <circle cx="12" cy="12" r="9" />

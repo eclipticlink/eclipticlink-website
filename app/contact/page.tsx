@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Icon } from "../components/icons";
 import { JsonLd } from "../components/json-ld";
 import { PageHero } from "../components/page-hero";
-import { BASE_OG, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_DISPLAY, SITE_URL } from "../lib/config";
+import { BASE_OG, CONTACT_EMAIL, CONTACT_US_MAILTO, SITE_URL } from "../lib/config";
 import { breadcrumbJsonLd } from "../lib/seo";
 import Link from "next/link";
 import { locations } from "../data/locations";
@@ -46,13 +46,17 @@ export default function ContactPage() {
               Contact details
             </h2>
             <div className="rounded-2xl border border-threat/40 bg-threat-soft p-6">
-              <p className="flex items-center gap-2 font-semibold text-[#ffb3ba]">
+              <p className="flex items-center gap-2 font-semibold text-threat">
                 <Icon name="siren" className="h-5 w-5" />
                 Under attack right now?
               </p>
-              <p className="mt-2 text-sm text-muted">Skip the form. Call our incident line directly.</p>
-              <a href={`tel:${CONTACT_PHONE}`} className="mt-4 block font-mono text-xl text-ink hover:text-accent">
-                {CONTACT_PHONE_DISPLAY}
+              <p className="mt-2 text-sm text-muted">Skip the form. Email our incident team directly.</p>
+              <a
+                href={CONTACT_US_MAILTO}
+                className="mt-4 inline-flex items-center gap-2 text-xl font-semibold text-ink underline underline-offset-4 hover:text-accent"
+              >
+                Email us
+                <Icon name="arrow" className="h-4 w-4" />
               </a>
             </div>
 
@@ -66,10 +70,10 @@ export default function ContactPage() {
                 </dd>
               </div>
               <div className="border-t border-line pt-6">
-                <dt className="font-mono text-xs uppercase tracking-[0.14em] text-subtle">Phone</dt>
+                <dt className="font-mono text-xs uppercase tracking-[0.14em] text-subtle">Talk to us</dt>
                 <dd className="mt-2">
-                  <a href={`tel:${CONTACT_PHONE}`} className="text-lg text-ink hover:text-accent">
-                    {CONTACT_PHONE_DISPLAY}
+                  <a href={CONTACT_US_MAILTO} className="text-lg text-ink underline underline-offset-4 hover:text-accent">
+                    Email us
                   </a>
                 </dd>
               </div>

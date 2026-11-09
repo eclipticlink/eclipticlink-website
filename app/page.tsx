@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SocConsole } from "./components/home/soc-console";
+import { BlogCover } from "./components/blog-cover";
+import { Flag } from "./components/flag";
+import { CountUp } from "./components/count-up";
+import { CardSwitcher } from "./components/home/card-switcher";
+import { HeroBackdrop } from "./components/home/hero-backdrop";
+import { HeroShowcase } from "./components/home/hero-showcase";
+import { LlmCoverage } from "./components/home/llm-coverage";
+import { ServiceScroller } from "./components/home/service-scroller";
+import { industryItems, threatItems, whyItems } from "./components/home/switch-data";
+import { EdgeMotif } from "./components/home/edge-motif";
 import { Icon } from "./components/icons";
 import { JsonLd } from "./components/json-ld";
 import { Reveal } from "./components/reveal";
@@ -39,31 +48,14 @@ const frameworks = [
   "CIS Controls",
 ];
 
-const problems = [
-  {
-    icon: "bolt" as const,
-    title: "Attackers already use AI",
-    body: "Phishing is more convincing, recon is automated, and exploits for new vulnerabilities appear faster. Manual-only defense can't keep pace.",
-  },
-  {
-    icon: "alert" as const,
-    title: "Alert fatigue hides real threats",
-    body: "Thousands of alerts a day, most of them noise. The one that matters gets buried, and your best people burn out triaging the rest.",
-  },
-  {
-    icon: "brain" as const,
-    title: "Your AI is a new attack surface",
-    body: "Chatbots, copilots, and agents can be manipulated through prompt injection, leak sensitive data, or take actions nobody approved.",
-  },
-];
 
 const pipeline = [
-  { step: "Ingest", body: "Endpoint, identity, cloud, email, network, and AI-app telemetry.", who: "auto" },
-  { step: "Correlate", body: "Machine learning baselines behavior and links related events.", who: "ai" },
-  { step: "Triage", body: "AI enriches, maps to MITRE ATT&CK, and ranks by impact.", who: "ai" },
-  { step: "Verify", body: "A security analyst validates every escalation.", who: "human" },
-  { step: "Respond", body: "Pre-approved playbooks contain threats in minutes.", who: "human" },
-];
+  { step: "Ingest", icon: "database", body: "Endpoint, identity, cloud, email, network, and AI-app telemetry.", who: "auto" },
+  { step: "Correlate", icon: "brain", body: "Machine learning baselines behavior and links related events.", who: "ai" },
+  { step: "Triage", icon: "radar", body: "AI enriches, maps to MITRE ATT&CK, and ranks by impact.", who: "ai" },
+  { step: "Verify", icon: "user", body: "A security analyst validates every escalation.", who: "human" },
+  { step: "Respond", icon: "shield-check", body: "Pre-approved playbooks contain threats in minutes.", who: "human" },
+] as const;
 
 const aiRisks = [
   { id: "LLM01", name: "Prompt injection", body: "Direct and indirect attacks that hijack model instructions." },
@@ -82,33 +74,7 @@ const process = [
   { n: "05", title: "Prove", body: "Reports and evidence your board, customers, and auditors can rely on." },
 ];
 
-const industries = [
-  { title: "SaaS & technology", body: "SOC 2, secure SDLC, and customer security reviews that don't stall deals." },
-  { title: "AI-native startups", body: "LLM red teaming and secure agent architecture before launch." },
-  { title: "Fintech & payments", body: "PCI DSS, fraud-resistant identity, and API security." },
-  { title: "Healthcare", body: "HIPAA safeguards and protection for patient data and devices." },
-  { title: "E-commerce & retail", body: "Account takeover defense, payment security, and bot mitigation." },
-  { title: "Professional services", body: "Email security, client-data protection, and ransomware readiness." },
-];
 
-const why = [
-  {
-    title: "AI does the heavy lifting. Humans make the call.",
-    body: "Automation handles scale and speed. Experienced analysts and testers make the decisions that need judgment.",
-  },
-  {
-    title: "Outcomes, not alert dumps",
-    body: "You get a short, ranked list of what to fix and why, written for the people who will fix it.",
-  },
-  {
-    title: "Your stack, not ours",
-    body: "We work with the security tools you already own and only recommend new ones where there is a real gap.",
-  },
-  {
-    title: "Security for the AI era",
-    body: "We secure the AI you build and adopt, not just the infrastructure underneath it.",
-  },
-];
 
 const faqs = [
   {
@@ -133,9 +99,19 @@ const faqs = [
   },
   {
     q: "What if we have an active incident right now?",
-    a: "Contact us immediately by phone. Disconnect affected systems from the network rather than powering them off, so forensic evidence is preserved, and avoid using potentially compromised email accounts to coordinate.",
+    a: "Email us immediately at contact@eclipticlink.com. Disconnect affected systems from the network rather than powering them off, so forensic evidence is preserved, and avoid using potentially compromised email accounts to coordinate.",
   },
 ];
+
+const facts = [
+  { value: services.length, suffix: "", label: "security services, one accountable team" },
+  { value: frameworks.length, suffix: "", label: "frameworks our work maps to" },
+  { value: locations.length, suffix: "", label: "regions with local regulatory alignment" },
+  { value: 24, suffix: "/7", label: "AI-assisted monitoring with analyst escalation" },
+];
+
+/* Packet travel across the pipeline (see .packet in globals.css): it reaches node i at i × 1.2s. */
+const NODE_STEP_S = 1.2;
 
 export default function Home() {
   const latestPosts = [...blogPosts]
@@ -148,36 +124,50 @@ export default function Home() {
 
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden px-5 pb-20 pt-32 sm:px-6 sm:pt-36 lg:px-8 lg:pb-28 lg:pt-40"
+        className="relative overflow-hidden px-5 pb-16 pt-28 sm:px-6 sm:pt-32 lg:flex lg:min-h-[min(100svh,58rem)] lg:items-center lg:px-[5vw] lg:pb-14 lg:pt-28"
         aria-labelledby="hero-heading"
       >
-        <div className="bg-grid bg-grid-fade pointer-events-none absolute inset-0" aria-hidden="true" />
-        <div className="bg-hero-glow pointer-events-none absolute inset-0" aria-hidden="true" />
-        <div className="container-site relative z-10 grid items-center gap-14 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
-          <div>
+        <HeroBackdrop />
+        <div className="container-site relative z-10 grid items-center gap-16 lg:max-w-none! lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
+          <div className="hero-copy-out">
             <p className="eyebrow animate-fade-up">AI-powered cybersecurity</p>
             <h1
               id="hero-heading"
-              className="mt-5 text-[2.6rem] font-semibold leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-[4rem]"
+              className="mt-6 text-[2.7rem] font-semibold leading-[1.04] tracking-[-0.04em] text-ink sm:text-6xl lg:text-[3.5rem] xl:text-[3.9rem]"
             >
-              Stop threats at <span className="text-gradient">machine speed.</span> Keep humans in
-              control.
+              <span className="line-mask">
+                <span style={{ animationDelay: "0.06s" }}>Stop threats at</span>
+              </span>
+              <span className="line-mask">
+                <span style={{ animationDelay: "0.16s" }} className="text-accent">
+                  machine speed.
+                </span>
+              </span>
+              <span className="line-mask text-subtle">
+                <span style={{ animationDelay: "0.26s" }}>Keep humans in control.</span>
+              </span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+            <p className="animate-fade-up-2 mt-6 max-w-xl text-lg leading-relaxed text-muted">
               EclipticLink combines AI-driven detection, testing, and triage with experienced
               security analysts to protect your cloud, applications, people, and the AI systems
               you&apos;re building.
             </p>
-            <div className="animate-fade-up-3 mt-9 flex flex-wrap gap-3">
-              <Button href="/contact" size="lg">
+            <div className="animate-fade-up-3 mt-8 flex flex-wrap gap-3">
+              <Button href="/contact" size="lg" className="group">
                 Get a security assessment
-                <Icon name="arrow" className="h-4 w-4" />
+                <Icon
+                  name="arrow"
+                  className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                />
               </Button>
               <Button href="/services" variant="secondary" size="lg">
                 Explore services
               </Button>
             </div>
-            <ul className="animate-fade-up-3 mt-10 grid max-w-lg grid-cols-1 gap-3 text-sm text-muted sm:grid-cols-2" role="list">
+            <ul
+              className="animate-fade-up-3 mt-8 grid max-w-lg grid-cols-1 gap-3 text-sm text-muted sm:grid-cols-2"
+              role="list"
+            >
               {[
                 "Human-verified escalations",
                 "Works with your existing tools",
@@ -191,103 +181,116 @@ export default function Home() {
               ))}
             </ul>
           </div>
-          <div className="animate-fade-up-2 relative">
-            <SocConsole />
+
+          <div className="animate-fade-up-2 relative min-w-0 lg:-mr-[4%]" style={{ perspective: "1400px" }}>
+            <div className="hero-window-out">
+              <HeroShowcase />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Frameworks strip ─────────────────────────────────── */}
-      <section aria-label="Security frameworks we align to" className="border-y border-line bg-bg-elevated">
-        <div className="container-site flex flex-col items-center gap-5 px-5 py-8 sm:px-6 lg:flex-row lg:px-8">
-          <p className="shrink-0 font-mono text-xs uppercase tracking-[0.16em] text-subtle">
-            Aligned to
-          </p>
-          <ul className="flex flex-wrap justify-center gap-x-7 gap-y-3 lg:justify-start" role="list">
-            {frameworks.map((f) => (
-              <li key={f} className="font-mono text-sm text-muted">
-                {f}
-              </li>
-            ))}
-          </ul>
+      {/* ── Frameworks marquee ───────────────────────────────── */}
+      <section aria-label="Security frameworks we align to" className="bg-navy">
+        <div className="container-site flex flex-col items-center gap-5 px-5 py-7 sm:px-6 lg:flex-row lg:gap-10 lg:px-8">
+          <p className="shrink-0 font-mono text-xs uppercase tracking-[0.16em] text-brand">Aligned to</p>
+          <div className="marquee w-full overflow-hidden">
+            <div className="marquee-track">
+              {[0, 1].map((copy) => (
+                <ul
+                  key={copy}
+                  className="flex shrink-0 items-center gap-3 pr-3"
+                  role="list"
+                  aria-hidden={copy === 1 ? true : undefined}
+                >
+                  {frameworks.map((f) => (
+                    <li
+                      key={f}
+                      className="flex items-center gap-2 whitespace-nowrap rounded-full border border-white/15 bg-white/[0.06] px-4 py-2 font-mono text-sm text-white"
+                    >
+                      <Icon name="shield-check" className="h-4 w-4 text-brand" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
+      {/* ── At a glance ──────────────────────────────────────── */}
+      <section aria-label="EclipticLink at a glance" className="px-5 pt-20 sm:px-6 lg:px-8 lg:pt-24">
+        <dl className="container-site flow grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+          {facts.map((f) => (
+            <div
+              key={f.label}
+              className="theme-deep bg-deep flex flex-col-reverse rounded-2xl p-6 sm:p-7"
+            >
+              <dt className="mt-3 max-w-[14rem] text-sm leading-relaxed text-muted">{f.label}</dt>
+              <dd className="text-5xl font-semibold tracking-[-0.04em] text-accent sm:text-6xl">
+                <CountUp to={f.value} suffix={f.suffix} />
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
       {/* ── Problem ──────────────────────────────────────────── */}
-      <section className="section-pad" aria-labelledby="problem-heading">
-        <div className="container-site">
+      <section className="section-pad relative overflow-hidden" aria-labelledby="problem-heading">
+        <EdgeMotif kind="radar" side="right" />
+        <div className="container-site flow relative">
           <Reveal>
             <SectionHeading
               id="problem-heading"
               eyebrow="The threat landscape"
-              title="The attack surface grew. Security teams didn't."
+              title={
+                <>
+                  The attack surface grew. <span className="text-subtle">Security teams didn&apos;t.</span>
+                </>
+              }
               description="Cloud sprawl, SaaS everywhere, remote access, and now AI applications. Every new capability is another door. Most teams are defending it with the same headcount as five years ago."
+              align="left"
             />
           </Reveal>
-          <ul className="mt-14 grid gap-5 md:grid-cols-3" role="list">
-            {problems.map((p, i) => (
-              <li key={p.title}>
-                <Reveal delay={i * 90} className="h-full">
-                  <article className="card h-full p-7">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-threat/30 bg-threat-soft text-[#ff8f9a]">
-                      <Icon name={p.icon} className="h-5 w-5" />
-                    </span>
-                    <h3 className="mt-5 text-xl font-semibold text-ink">{p.title}</h3>
-                    <p className="mt-2 leading-relaxed text-muted">{p.body}</p>
-                  </article>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
+          <div className="mt-14">
+            <CardSwitcher items={threatItems} label="Threats" />
+          </div>
         </div>
       </section>
 
       {/* ── Services ─────────────────────────────────────────── */}
-      <section className="section-pad bg-section-alt" aria-labelledby="services-heading">
-        <div className="container-site">
+      <section className="section-pad relative overflow-hidden bg-section-alt" aria-labelledby="services-heading">
+        <EdgeMotif kind="network" side="right" />
+        <div className="container-site flow relative">
           <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
             <Reveal>
               <SectionHeading
                 id="services-heading"
                 eyebrow="Cybersecurity services"
-                title="End-to-end protection, accelerated by AI"
+                title={
+                  <>
+                    Eight services. <span className="text-subtle">One accountable team.</span>
+                  </>
+                }
                 description="From finding weaknesses to watching for attackers to proving compliance, each service uses AI where it makes us faster and people where it matters."
                 align="left"
               />
             </Reveal>
-            <Button href="/services" variant="secondary" className="shrink-0">
+            <Link href="/services" className="link-arrow group shrink-0 text-[0.95rem]">
               All services
               <Icon name="arrow" className="h-4 w-4" />
-            </Button>
+            </Link>
           </div>
-          <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" role="list">
-            {services.map((s, i) => (
-              <li key={s.id}>
-                <Reveal delay={(i % 4) * 70} className="h-full">
-                  <Link
-                    href={`/services/${s.id}`}
-                    className="card card-hover group flex h-full flex-col p-6"
-                  >
-                    <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-accent-soft text-accent">
-                      <Icon name={s.icon} className="h-5 w-5" />
-                    </span>
-                    <h3 className="mt-5 text-lg font-semibold text-ink">{s.title}</h3>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{s.summary}</p>
-                    <span className="link-arrow mt-5">
-                      Learn more
-                      <Icon name="arrow" className="h-4 w-4" />
-                    </span>
-                  </Link>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
+          <div className="mt-14">
+            <ServiceScroller />
+          </div>
         </div>
       </section>
 
-      {/* ── How AI fits ──────────────────────────────────────── */}
-      <section className="section-pad" aria-labelledby="ai-heading">
-        <div className="container-site">
+      {/* ── How AI fits: the detection pipeline ─────────────── */}
+      <section className="section-pad relative overflow-hidden" aria-labelledby="ai-heading">
+        <div className="container-site flow">
           <Reveal>
             <SectionHeading
               id="ai-heading"
@@ -300,46 +303,79 @@ export default function Home() {
               description="AI is excellent at volume and speed, and it can still be wrong. Our detection pipeline uses AI where it outperforms people and keeps analysts accountable for every decision that affects your business."
             />
           </Reveal>
-          <ol className="relative mt-16 grid gap-4 lg:grid-cols-5" role="list">
+          <div className="relative mt-16">
+            {/* The line a signal travels: centre of the first node to centre of the last */}
             <div
-              className="pointer-events-none absolute left-0 right-0 top-[2.2rem] hidden h-px bg-gradient-to-r from-transparent via-line-strong to-transparent lg:block"
+              className="pipeline-track pointer-events-none absolute top-7 hidden h-0.5 bg-brand/30 lg:block"
+              style={{ left: "calc((100% - 4rem) / 10)", right: "calc((100% - 4rem) / 10)" }}
               aria-hidden="true"
-            />
-            {pipeline.map((p, i) => (
-              <li key={p.step} className="relative">
-                <Reveal delay={i * 90} className="h-full">
-                  <div className="card h-full p-6">
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs text-subtle">0{i + 1}</span>
-                      <span
-                        className={`rounded-full border px-2.5 py-0.5 font-mono text-[0.62rem] uppercase tracking-wider ${
+            >
+              <span className="packet absolute -left-[7px] -top-[6px] block h-3.5 w-3.5 rounded-full bg-deep ring-4 ring-brand/60" />
+            </div>
+            <ol className="relative grid gap-8 lg:grid-cols-5 lg:gap-4" role="list">
+              {pipeline.map((p, i) => (
+                <li key={p.step}>
+                  <Reveal delay={i * 90} className="h-full">
+                    <div className="flex h-full gap-5 lg:flex-col lg:items-center lg:gap-0 lg:text-center">
+                      <div
+                        className={`relative flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 bg-surface ${
                           p.who === "ai"
-                            ? "border-signal/40 bg-signal-soft text-[#9db6ff]"
+                            ? "border-signal/35 text-signal"
                             : p.who === "human"
-                              ? "border-accent/40 bg-accent-soft text-accent"
-                              : "border-line text-subtle"
+                              ? "border-accent/40 text-accent"
+                              : "border-line-strong text-muted"
                         }`}
+                        style={{ "--d": `${i * NODE_STEP_S}s` } as React.CSSProperties}
                       >
-                        {p.who === "ai" ? "AI" : p.who === "human" ? "Analyst" : "Automated"}
-                      </span>
+                        <span
+                          className={`absolute inset-1 rounded-full ${
+                            p.who === "ai" ? "bg-signal-soft" : p.who === "human" ? "bg-accent-soft" : "bg-surface-2"
+                          }`}
+                          aria-hidden="true"
+                        />
+                        <Icon name={p.icon} className="relative h-6 w-6" />
+                        <span
+                          className="node-lit absolute -inset-0.5 flex items-center justify-center rounded-full bg-brand-strong text-white"
+                          aria-hidden="true"
+                        >
+                          <Icon name={p.icon} className="h-6 w-6" />
+                        </span>
+                        <span className="node-ping absolute -inset-0.5 rounded-full border-2 border-brand-strong" aria-hidden="true" />
+                        <span className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full border border-line bg-surface font-mono text-[0.6rem] text-ink">
+                          {i + 1}
+                        </span>
+                      </div>
+                      <div className="lg:mt-6">
+                        <span
+                          className={`inline-block rounded-full border px-2.5 py-0.5 font-mono text-[0.62rem] uppercase tracking-wider ${
+                            p.who === "ai"
+                              ? "border-signal/30 bg-signal-soft text-signal"
+                              : p.who === "human"
+                                ? "border-accent/30 bg-accent-soft text-accent"
+                                : "border-line text-subtle"
+                          }`}
+                        >
+                          {p.who === "ai" ? "AI" : p.who === "human" ? "Analyst" : "Automated"}
+                        </span>
+                        <h3 className="mt-3 text-lg font-semibold text-ink">{p.step}</h3>
+                        <p className="mt-1.5 text-sm leading-relaxed text-muted">{p.body}</p>
+                      </div>
                     </div>
-                    <h3 className="mt-4 text-lg font-semibold text-ink">{p.step}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">{p.body}</p>
-                  </div>
-                </Reveal>
-              </li>
-            ))}
-          </ol>
+                  </Reveal>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </section>
 
       {/* ── AI / LLM security spotlight ─────────────────────── */}
       <section className="section-pad bg-section-alt" aria-labelledby="llm-heading">
-        <div className="container-site grid items-center gap-14 lg:grid-cols-2">
+        <div className="container-site flow grid items-center gap-14 lg:grid-cols-2">
           <Reveal>
             <p className="eyebrow">AI & LLM security</p>
-            <h2 id="llm-heading" className="mt-4 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-              Shipping AI? Attackers are already testing it.
+            <h2 id="llm-heading" className="mt-5 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+              Shipping AI? <span className="text-subtle">Attackers are already testing it.</span>
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-muted">
               Every chatbot, copilot, RAG pipeline, and autonomous agent adds a new attack surface.
@@ -366,33 +402,14 @@ export default function Home() {
             </div>
           </Reveal>
           <Reveal delay={120}>
-            <div className="card p-2">
-              <div className="flex items-center justify-between border-b border-line px-4 py-3">
-                <p className="font-mono text-xs text-subtle">owasp-llm-top-10 · coverage</p>
-                <span className="font-mono text-xs text-accent">tested</span>
-              </div>
-              <ul className="divide-y divide-line" role="list">
-                {aiRisks.map((r) => (
-                  <li key={r.id} className="flex items-start gap-4 px-4 py-4">
-                    <span className="mt-0.5 rounded border border-line bg-bg-elevated px-2 py-0.5 font-mono text-[0.68rem] text-[#9db6ff]">
-                      {r.id}
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <p className="font-medium text-ink">{r.name}</p>
-                      <p className="mt-0.5 text-sm text-muted">{r.body}</p>
-                    </div>
-                    <Icon name="shield-check" className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <LlmCoverage risks={aiRisks} />
           </Reveal>
         </div>
       </section>
 
       {/* ── Process ──────────────────────────────────────────── */}
       <section className="section-pad" aria-labelledby="process-heading">
-        <div className="container-site">
+        <div className="container-site flow">
           <Reveal>
             <SectionHeading
               id="process-heading"
@@ -401,11 +418,15 @@ export default function Home() {
               description="A practical, repeatable path that improves your security posture every month and shows the improvement."
             />
           </Reveal>
-          <ol className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5" role="list">
+          {/* One line that fills as you scroll through the five steps */}
+          <div className="relative mt-14 hidden h-1 rounded-full bg-tint lg:block" aria-hidden="true">
+            <div className="progress-fill absolute inset-0 rounded-full bg-brand-strong" />
+          </div>
+          <ol className="mt-14 grid gap-5 sm:grid-cols-2 lg:mt-0 lg:grid-cols-5" role="list">
             {process.map((p, i) => (
               <li key={p.n}>
                 <Reveal delay={i * 80} className="h-full">
-                  <div className="h-full border-t-2 border-accent/60 pt-6">
+                  <div className="h-full border-t-2 border-brand-strong pt-6 lg:border-t-0 lg:pt-7">
                     <span className="font-mono text-sm text-accent">{p.n}</span>
                     <h3 className="mt-2 text-xl font-semibold text-ink">{p.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted">{p.body}</p>
@@ -418,33 +439,30 @@ export default function Home() {
       </section>
 
       {/* ── Industries ───────────────────────────────────────── */}
-      <section className="section-pad bg-section-alt" aria-labelledby="industries-heading">
-        <div className="container-site">
+      <section className="section-pad relative overflow-hidden bg-section-alt" aria-labelledby="industries-heading">
+        <EdgeMotif kind="lock" side="right" />
+        <div className="container-site flow relative">
           <Reveal>
             <SectionHeading
               id="industries-heading"
               eyebrow="Who we protect"
-              title="Built for growing companies with real risk"
+              title={
+                <>
+                  Built for growing companies <span className="text-subtle">with real risk.</span>
+                </>
+              }
               description="Teams that handle sensitive data, sell to security-conscious customers, or are building with AI, and need enterprise-grade security without an enterprise-sized security department."
+              align="left"
             />
           </Reveal>
-          <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" role="list">
-            {industries.map((ind, i) => (
-              <li key={ind.title}>
-                <Reveal delay={(i % 3) * 80} className="h-full">
-                  <div className="card h-full p-6">
-                    <h3 className="text-lg font-semibold text-ink">{ind.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">{ind.body}</p>
-                  </div>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
+          <div className="mt-14">
+            <CardSwitcher items={industryItems} label="Industries" />
+          </div>
         </div>
       </section>
 
       {/* ── Regions ──────────────────────────────────────────── */}
-      <section className="border-y border-line px-5 py-12 sm:px-6 lg:px-8" aria-labelledby="regions-heading">
+      <section className="px-5 py-12 sm:px-6 lg:px-8" aria-labelledby="regions-heading">
         <div className="container-site flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <h2 id="regions-heading" className="text-xl font-semibold text-ink">
@@ -457,9 +475,9 @@ export default function Home() {
               <li key={l.slug}>
                 <Link
                   href={`/locations/${l.slug}`}
-                  className="flex items-center gap-2 rounded-lg border border-line bg-surface px-4 py-2 text-sm text-ink transition hover:border-accent/50 hover:text-accent"
+                  className="flex h-10 items-center gap-2 rounded-full border border-line bg-surface px-4 text-sm font-medium text-ink transition-colors hover:border-accent/40 hover:text-accent active:scale-[0.97]"
                 >
-                  <span className="font-mono text-xs text-subtle">{l.countryCode}</span>
+                  <Flag code={l.countryCode} className="h-4 w-6" />
                   {l.short}
                 </Link>
               </li>
@@ -469,41 +487,37 @@ export default function Home() {
       </section>
 
       {/* ── Why ──────────────────────────────────────────────── */}
-      <section className="section-pad" aria-labelledby="why-heading">
-        <div className="container-site grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
-          <Reveal>
-            <SectionHeading
-              id="why-heading"
-              eyebrow="Why EclipticLink"
-              title="Security partners, not another dashboard"
-              description="We built EclipticLink for companies that need real security outcomes and can't afford to staff a full SOC, red team, and GRC function on their own."
-              align="left"
-            />
-            <div className="mt-8">
-              <Button href="/about" variant="secondary">
-                About EclipticLink
-              </Button>
-            </div>
-          </Reveal>
-          <ul className="grid gap-5 sm:grid-cols-2" role="list">
-            {why.map((w, i) => (
-              <li key={w.title}>
-                <Reveal delay={i * 80} className="h-full">
-                  <div className="card h-full p-6">
-                    <Icon name="shield-check" className="h-6 w-6 text-accent" />
-                    <h3 className="mt-4 text-lg font-semibold text-ink">{w.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">{w.body}</p>
-                  </div>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
+      <section className="section-pad relative overflow-hidden bg-section-alt" aria-labelledby="why-heading">
+        <EdgeMotif kind="fingerprint" side="left" />
+        <div className="container-site flow relative">
+          <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
+            <Reveal>
+              <SectionHeading
+                id="why-heading"
+                eyebrow="Why EclipticLink"
+                title={
+                  <>
+                    Security partners, <span className="text-subtle">not another dashboard.</span>
+                  </>
+                }
+                description="We built EclipticLink for companies that need real security outcomes and can't afford to staff a full SOC, red team, and GRC function on their own."
+                align="left"
+              />
+            </Reveal>
+            <Link href="/about" className="link-arrow group shrink-0 text-[0.95rem]">
+              About EclipticLink
+              <Icon name="arrow" className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="mt-14">
+            <CardSwitcher items={whyItems} label="Why EclipticLink" />
+          </div>
         </div>
       </section>
 
       {/* ── Testimonials ─────────────────────────────────────── */}
-      <section className="section-pad bg-section-alt" aria-labelledby="testimonials-heading">
-        <div className="container-site">
+      <section className="section-pad" aria-labelledby="testimonials-heading">
+        <div className="container-site flow">
           <Reveal>
             <SectionHeading
               id="testimonials-heading"
@@ -520,8 +534,8 @@ export default function Home() {
       </section>
 
       {/* ── Insights ─────────────────────────────────────────── */}
-      <section className="section-pad" aria-labelledby="insights-heading">
-        <div className="container-site">
+      <section className="section-pad bg-section-alt" aria-labelledby="insights-heading">
+        <div className="container-site flow">
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
             <SectionHeading
               id="insights-heading"
@@ -529,20 +543,30 @@ export default function Home() {
               title="Practical guidance from the front line"
               align="left"
             />
-            <Button href="/blogs" variant="secondary" className="shrink-0">
+            <Link href="/blogs" className="link-arrow group shrink-0 text-[0.95rem]">
               All articles
-            </Button>
+              <Icon name="arrow" className="h-4 w-4" />
+            </Link>
           </div>
-          <ul className="mt-12 grid gap-5 md:grid-cols-3" role="list">
+          <ul className="mt-12 grid gap-4 md:grid-cols-3" role="list">
             {latestPosts.map((post) => (
               <li key={post.slug}>
-                <Link href={`/blogs/${post.slug}`} className="card card-hover group flex h-full flex-col p-6">
+                <Link href={`/blogs/${post.slug}`} className="card card-hover group flex h-full flex-col overflow-hidden rounded-2xl">
+                  <BlogCover category={post.category} seed={post.slug} className="aspect-[16/9]" />
+                  <div className="flex flex-1 flex-col p-6">
                   <span className="font-mono text-xs uppercase tracking-wider text-accent">{post.category}</span>
-                  <h3 className="mt-3 text-lg font-semibold leading-snug text-ink group-hover:text-accent">
+                  <h3 className="mt-3 text-lg font-semibold leading-snug text-ink transition-colors group-hover:text-accent">
                     {post.title}
                   </h3>
                   <p className="mt-3 line-clamp-3 flex-1 text-sm leading-relaxed text-muted">{post.excerpt}</p>
-                  <span className="mt-5 font-mono text-xs text-subtle">{post.readingTime} min read</span>
+                  <span className="mt-6 flex items-center justify-between border-t border-line pt-4">
+                    <span className="font-mono text-xs text-subtle">{post.readingTime} min read</span>
+                    <span className="link-arrow text-xs">
+                      Read
+                      <Icon name="arrow" className="h-3.5 w-3.5" />
+                    </span>
+                  </span>
+                  </div>
                 </Link>
               </li>
             ))}
@@ -551,19 +575,28 @@ export default function Home() {
       </section>
 
       {/* ── FAQ ──────────────────────────────────────────────── */}
-      <section className="section-pad bg-section-alt" aria-labelledby="faq-heading">
-        <div className="container-site max-w-3xl">
-          <SectionHeading id="faq-heading" eyebrow="FAQ" title="Frequently asked questions" />
-          <div className="mt-12 divide-y divide-line border-y border-line">
+      <section className="section-pad" aria-labelledby="faq-heading">
+        <div className="container-site flow grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+          <SectionHeading
+            id="faq-heading"
+            eyebrow="FAQ"
+            title="Frequently asked questions"
+            description="Straight answers about how we work, what we cover, and what to do if you're under attack right now."
+            align="left"
+          />
+          <div className="divide-y divide-line border-y border-line">
             {faqs.map((f) => (
-              <details key={f.q} className="group py-5">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-left text-base font-semibold text-ink [&::-webkit-details-marker]:hidden">
+              <details key={f.q} className="faq group py-5">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-left text-base font-semibold text-ink transition-colors hover:text-accent [&::-webkit-details-marker]:hidden">
                   <h3>{f.q}</h3>
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-line text-accent transition group-open:rotate-45" aria-hidden="true">
+                  <span
+                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-line-strong text-accent transition-transform duration-200 group-open:rotate-45"
+                    aria-hidden="true"
+                  >
                     +
                   </span>
                 </summary>
-                <p className="mt-3 leading-relaxed text-muted">{f.a}</p>
+                <p className="pt-3 leading-relaxed text-muted">{f.a}</p>
               </details>
             ))}
           </div>
