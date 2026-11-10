@@ -63,11 +63,13 @@ function Timeline({ v, p }: { v: TimelineVisual; p: number }) {
           {clock(p)}
         </p>
       </div>
-      <div className="mt-3 grid grid-cols-[6.5rem_1fr] gap-x-4 sm:grid-cols-[8rem_1fr]">
+      <div className="mt-3 grid grid-cols-[5.5rem_1fr] gap-x-3 sm:grid-cols-[8rem_1fr] sm:gap-x-4">
         <span />
         <div className="flex justify-between font-mono text-[0.62rem] text-subtle">
-          {["09:00", "11:00", "13:00", "15:00", "17:00"].map((t) => (
-            <span key={t}>{t}</span>
+          {["09:00", "11:00", "13:00", "15:00", "17:00"].map((t, i) => (
+            <span key={t} className={i % 2 ? "hidden sm:inline" : ""}>
+              {t}
+            </span>
           ))}
         </div>
 
@@ -98,7 +100,7 @@ function Timeline({ v, p }: { v: TimelineVisual; p: number }) {
                 className="tl-mark absolute inset-y-1 flex w-2.5 -translate-x-1/2 rounded-full bg-brand-strong"
                 style={{ left: `${m.at * 100}%` }}
               >
-                <span className="absolute -top-5 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-[0.6rem] font-semibold text-accent">
+                <span className="absolute -top-5 left-1/2 hidden -translate-x-1/2 whitespace-nowrap font-mono text-[0.6rem] font-semibold text-accent sm:block">
                   {m.label}
                 </span>
               </span>
@@ -109,7 +111,7 @@ function Timeline({ v, p }: { v: TimelineVisual; p: number }) {
       </div>
 
       {/* Measure */}
-      <div className="mt-10 grid grid-cols-[6.5rem_1fr_auto] items-center gap-x-4 gap-y-3 sm:grid-cols-[8rem_1fr_auto]">
+      <div className="mt-10 grid grid-cols-[5.5rem_1fr_auto] items-center gap-x-3 gap-y-3 sm:grid-cols-[8rem_1fr_auto] sm:gap-x-4">
         <p className="text-[0.7rem] text-subtle">{v.measure.label}</p>
         <div className="h-3.5 overflow-hidden rounded-full bg-surface-2">
           <div
@@ -117,7 +119,7 @@ function Timeline({ v, p }: { v: TimelineVisual; p: number }) {
             style={{ "--max": v.measure.withoutPct } as CSSProperties}
           />
         </div>
-        <p className="w-20 font-mono text-sm font-semibold text-threat">{v.measure.without}</p>
+        <p className="whitespace-nowrap font-mono text-xs font-semibold text-threat sm:w-20 sm:text-sm">{v.measure.without}</p>
         <p className="text-[0.7rem] text-subtle">With EclipticLink</p>
         <div className="h-3.5 overflow-hidden rounded-full bg-surface-2">
           <div
@@ -125,7 +127,7 @@ function Timeline({ v, p }: { v: TimelineVisual; p: number }) {
             style={{ "--max": v.measure.withPct } as CSSProperties}
           />
         </div>
-        <p className="w-20 font-mono text-sm font-semibold text-accent">{v.measure.with}</p>
+        <p className="whitespace-nowrap font-mono text-xs font-semibold text-accent sm:w-20 sm:text-sm">{v.measure.with}</p>
       </div>
     </div>
   );
@@ -369,7 +371,7 @@ export function CardSwitcher({ items, label }: { items: SwitchItem[]; label: str
           <div key={item.key} className="sc-in flex flex-1 flex-col">
             <div className="mb-6 flex items-center justify-between gap-4">
               <p className="font-semibold text-ink">{v.title}</p>
-              <span className="flex items-center gap-2 rounded-full border border-line px-3 py-1 font-mono text-[0.66rem] text-ink">
+              <span className="flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-line px-2.5 py-1 font-mono text-[0.6rem] text-ink sm:px-3 sm:text-[0.66rem]">
                 <span className={`live-dot ${v.kind === "timeline" ? "" : ""}`} aria-hidden="true" />
                 {v.chip}
               </span>

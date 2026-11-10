@@ -1142,8 +1142,13 @@ html.ambient .motif-spin {
   transform-origin: left center;
 }
 
+/*
+ * Desktop only. On phones the hero tour sits below the headline and sections
+ * are taller than the screen, so scroll-linked fades would dim content before
+ * it is even in view.
+ */
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
+  @media (prefers-reduced-motion: no-preference) and (min-width: 1024px) {
     .flow {
       animation: flow linear both;
       animation-timeline: view();
