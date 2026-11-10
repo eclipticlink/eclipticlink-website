@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Outfit } from "next/font/google";
+import localFont from "next/font/local";
 import Script from "next/script";
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";
@@ -13,17 +13,22 @@ import { DEFAULT_KEYWORDS } from "./lib/seo";
 import { services } from "./services/data";
 import "./globals.css";
 
-const fontSans = Outfit({
+/*
+ * Fonts are self-hosted (variable woff2, latin subset, SIL OFL licences in
+ * app/fonts) so builds never depend on reaching Google Fonts.
+ */
+const fontSans = localFont({
+  src: "./fonts/outfit-latin-wght-normal.woff2",
   variable: "--font-outfit",
-  subsets: ["latin"],
+  weight: "100 900",
   display: "swap",
 });
 
-const fontMono = JetBrains_Mono({
+const fontMono = localFont({
+  src: "./fonts/jetbrains-mono-latin-wght-normal.woff2",
   variable: "--font-jetbrains",
-  subsets: ["latin"],
+  weight: "100 800",
   display: "swap",
-  weight: ["400", "500"],
 });
 
 const DEFAULT_TITLE = "EclipticLink | AI-Powered Cybersecurity Services";
