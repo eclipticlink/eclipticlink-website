@@ -39,11 +39,11 @@ export const locations: Location[] = [
     deepDive: {
       "eyebrow": "NCA ECC guide",
       "title": "Getting ready for the NCA Essential Cybersecurity Controls",
-      "intro": "The ECC sets the minimum cybersecurity requirements for government organizations and critical national infrastructure in Saudi Arabia, and it reaches their suppliers through contracts. Readiness comes down to four areas.",
+      "intro": "The ECC (current version ECC-2:2024) sets the minimum cybersecurity requirements for government organizations and critical national infrastructure in Saudi Arabia, and it reaches their suppliers through contracts. Its controls are grouped into four domains.",
       "items": [
         {
           "title": "Cybersecurity governance",
-          "body": "A cybersecurity strategy and policies approved by leadership, a cybersecurity function independent of IT and led by a qualified, full-time Saudi national, plus periodic risk assessments and compliance reviews."
+          "body": "A cybersecurity strategy and policies approved by leadership, a dedicated cybersecurity function independent of IT, cybersecurity positions filled by qualified, full-time Saudi professionals, plus periodic risk assessments and compliance reviews."
         },
         {
           "title": "Cybersecurity defense",
@@ -55,19 +55,19 @@ export const locations: Location[] = [
         },
         {
           "title": "Third-party and cloud security",
-          "body": "Security requirements in supplier and outsourcing contracts, and controls for cloud services, including hosting and storing covered data inside the Kingdom."
+          "body": "Security requirements in supplier and outsourcing contracts, and cybersecurity controls for cloud computing and hosting services. Data localization is now governed mainly by SDAIA's National Data Management Office (NDMO) rules and sector regulations."
         }
       ],
       "checklistTitle": "NCA ECC readiness checklist",
       "checklist": [
         "Confirm whether you are in scope directly (government or CNI) or through a client contract",
         "Download the latest ECC version from NCA and assign an owner to every control",
-        "Establish a cybersecurity function independent of IT with a qualified Saudi head",
+        "Establish a cybersecurity function independent of IT, staffed by qualified, full-time Saudi professionals",
         "Approve a cybersecurity strategy and core policies at leadership level",
         "Build an asset inventory and run a documented risk assessment",
         "Run vulnerability management and schedule periodic penetration tests",
         "Centralize logging and monitor security events",
-        "Review supplier and cloud contracts for ECC requirements and data residency",
+        "Review supplier and cloud contracts for ECC requirements, and check NDMO and sector data-residency rules",
         "Collect evidence for each control ahead of NCA compliance assessments"
       ]
     },
@@ -98,7 +98,11 @@ export const locations: Location[] = [
     regulations: [
       {
         name: "NCA Essential Cybersecurity Controls (ECC)",
-        body: "The baseline controls the National Cybersecurity Authority requires of government entities, critical infrastructure operators, and many of their suppliers. We run ECC gap assessments, implement missing controls, and prepare evidence for NCA compliance reviews.",
+        body: "The baseline controls (currently ECC-2:2024) the National Cybersecurity Authority requires of government entities and critical infrastructure operators, which also reach many of their suppliers through contracts. We run ECC gap assessments, implement missing controls, and prepare evidence for NCA compliance reviews.",
+      },
+      {
+        name: "NCA Non-CNI Cybersecurity Controls (NCNICC)",
+        body: "Adopted by NCA in December 2025, NCNICC-1:2025 sets baseline cybersecurity controls for private-sector companies that are not critical national infrastructure, with requirements scaled to company size. We help you confirm whether and how it applies, then close the gaps.",
       },
       {
         name: "NCA Cloud Cybersecurity Controls (CCC)",
@@ -125,7 +129,7 @@ export const locations: Location[] = [
     faqs: [
       {
         q: "Who has to comply with the NCA Essential Cybersecurity Controls?",
-        a: "The ECC applies to government organizations, private-sector organizations that own, operate, or host critical national infrastructure, and, through contracts, many of their technology vendors. If you sell to Saudi government or critical-infrastructure clients, expect ECC requirements in your contracts.",
+        a: "The ECC applies to government organizations inside and outside the Kingdom, private-sector organizations that own, operate, or host critical national infrastructure, and, through contracts, many of their technology vendors. Since December 2025, other private companies may also fall under NCA's Non-CNI Cybersecurity Controls (NCNICC-1:2025), scaled by company size.",
       },
       {
         q: "Does the Saudi PDPL apply to companies outside Saudi Arabia?",
@@ -146,7 +150,7 @@ export const locations: Location[] = [
       "items": [
         {
           "title": "Mainland UAE: the federal PDPL",
-          "body": "Federal Decree-Law No. 45 of 2021 governs personal data processed by companies outside the financial free zones. It requires appropriate security measures and notifying the UAE Data Office of breaches that put individuals' privacy at risk. Some details depend on implementing regulations, so confirm the current position."
+          "body": "Federal Decree-Law No. 45 of 2021 governs personal data processed by companies outside the financial free zones. It requires appropriate security measures and notifying the regulator of breaches that put individuals' privacy at risk. Its Executive Regulations, which set details such as timelines and penalties, had not been published as of late 2026, and the UAE Data Office's role is moving to the new Artificial Intelligence and Data Authority."
         },
         {
           "title": "DIFC: Data Protection Law No. 5 of 2020",
@@ -157,8 +161,8 @@ export const locations: Location[] = [
           "body": "Abu Dhabi Global Market's regime is closely modelled on the GDPR, including notifying the regulator of reportable breaches within 72 hours where feasible."
         },
         {
-          "title": "Dubai government suppliers: the ISR",
-          "body": "The Dubai Electronic Security Center (DESC) Information Security Regulation applies to Dubai government entities, and its requirements reach suppliers through contracts, tenders, and security questionnaires."
+          "title": "Dubai government and critical entities: the ISR",
+          "body": "The Dubai Electronic Security Center (DESC) Information Security Regulation applies to Dubai government entities, and Law No. 15 of 2024 also brings critical non-government entities under DESC's security rules. Suppliers typically meet ISR-aligned requirements through contracts, and cybersecurity providers to these entities need DESC Cyber Force certification."
         },
         {
           "title": "Government and critical sectors: UAE IA Standards",
@@ -210,7 +214,7 @@ export const locations: Location[] = [
       },
       {
         name: "Dubai Information Security Regulation (ISR)",
-        body: "Issued by the Dubai Electronic Security Center (DESC) for Dubai government entities and their suppliers. We run ISR gap assessments and help implement required controls.",
+        body: "Issued by the Dubai Electronic Security Center (DESC) for Dubai government entities, with critical non-government entities also covered by DESC rules under Law No. 15 of 2024. Suppliers usually meet its requirements through contracts. We run ISR gap assessments and help implement required controls.",
       },
       {
         name: "UAE Information Assurance Standards",
@@ -242,7 +246,7 @@ export const locations: Location[] = [
       },
       {
         q: "Do Dubai government suppliers need to follow the ISR?",
-        a: "Dubai government entities are required to comply with the Information Security Regulation, and they commonly pass relevant requirements on to suppliers through contracts. If you serve Dubai government clients, expect ISR-aligned security questions.",
+        a: "The ISR applies directly to Dubai government entities, and critical non-government entities are covered by DESC rules under Law No. 15 of 2024. Suppliers are usually not regulated directly, but government clients pass relevant requirements on through contracts and security questionnaires, so expect ISR-aligned questions.",
       },
       {
         q: "Can you test applications hosted in UAE data centers?",

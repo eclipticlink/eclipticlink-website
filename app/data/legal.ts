@@ -317,7 +317,7 @@ export const regionalSections: LegalSection[] = [
           "You can request information about and access to your data, correction, erasure, restriction of processing, and data portability.",
           "You can object to processing for direct marketing and to decisions based solely on automated processing that significantly affect you.",
           "Transfers outside the UAE take place only to jurisdictions or under safeguards that the applicable law permits.",
-          "You can complain to the UAE Data Office or, in DIFC or ADGM, to the relevant Commissioner.",
+          "You can complain to the UAE federal data protection regulator (the UAE Data Office, whose functions are moving to the Artificial Intelligence and Data Authority) or, in DIFC or ADGM, to the relevant Commissioner.",
         ],
       },
     ],
