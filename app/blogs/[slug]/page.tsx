@@ -10,6 +10,7 @@ import { getAllBlogSlugs, getBlogBySlug, blogPosts } from "../../data/blogs";
 import { BASE_OG, SITE_URL } from "../../lib/config";
 import { breadcrumbJsonLd, faqJsonLd } from "../../lib/seo";
 import { getServiceBySlug } from "../../services/data";
+import { getLocationBySlug } from "../../data/locations";
 import { BlogContent } from "../blog-content";
 
 type Props = {
@@ -58,6 +59,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   const url = `${SITE_URL}/blogs/${post.slug}`;
   const service = post.relatedService ? getServiceBySlug(post.relatedService) : undefined;
+  const region = post.relatedLocation ? getLocationBySlug(post.relatedLocation) : undefined;
   const more = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
   const articleJsonLd = {
@@ -166,6 +168,21 @@ export default async function BlogPostPage({ params }: Props) {
                 </li>
               ))}
             </ul>
+
+            {region ? (
+              <aside className="card mt-10 flex flex-col gap-4 p-7 sm:flex-row sm:items-center">
+                <div className="flex-1">
+                  <p className="font-semibold text-ink">Cybersecurity in {region.short}</p>
+                  <p className="mt-1 text-sm text-muted">
+                    Local regulations, the services companies use most, and FAQs for {region.short}.
+                  </p>
+                </div>
+                <Link href={`/locations/${region.slug}`} className="link-arrow shrink-0">
+                  View {region.short} page
+                  <Icon name="arrow" className="h-4 w-4" />
+                </Link>
+              </aside>
+            ) : null}
 
             {service ? (
               <aside className="card brackets mt-10 flex flex-col gap-5 p-7 sm:flex-row sm:items-center">

@@ -8,6 +8,7 @@ import { PageHero } from "../../components/page-hero";
 import { Reveal } from "../../components/reveal";
 import { SectionHeading } from "../../components/section-heading";
 import { Button } from "../../components/ui/button";
+import { blogPosts } from "../../data/blogs";
 import { getLocationBySlug, locations } from "../../data/locations";
 import { BASE_OG, SITE_URL } from "../../lib/config";
 import { breadcrumbJsonLd, faqJsonLd } from "../../lib/seo";
@@ -43,6 +44,7 @@ export default async function LocationPage({ params }: Props) {
 
   const url = `${SITE_URL}/locations/${loc.slug}`;
   const others = locations.filter((l) => l.slug !== loc.slug);
+  const guides = blogPosts.filter((b) => b.relatedLocation === loc.slug);
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -147,6 +149,56 @@ export default async function LocationPage({ params }: Props) {
           </p>
         </div>
       </section>
+
+      {/* Deep dive (optional) */}
+      {loc.deepDive ? (
+        <section className="section-pad" style={{ paddingBottom: 0 }} aria-labelledby="deep-dive-heading">
+          <div className="container-site">
+            <SectionHeading
+              id="deep-dive-heading"
+              eyebrow={loc.deepDive.eyebrow}
+              title={loc.deepDive.title}
+              description={loc.deepDive.intro}
+            />
+            <ol className="mt-12 grid gap-5 md:grid-cols-2" role="list">
+              {loc.deepDive.items.map((item, i) => (
+                <li key={item.title}>
+                  <Reveal delay={(i % 2) * 80} className="h-full">
+                    <article className="card h-full p-7">
+                      <span className="font-mono text-xs text-subtle">{String(i + 1).padStart(2, "0")}</span>
+                      <h3 className="mt-2 text-xl font-semibold text-ink">{item.title}</h3>
+                      <p className="mt-2 leading-relaxed text-muted">{item.body}</p>
+                    </article>
+                  </Reveal>
+                </li>
+              ))}
+            </ol>
+            {loc.deepDive.checklist?.length ? (
+              <div className="card mt-8 p-7 sm:p-9">
+                <h3 className="text-xl font-semibold text-ink">{loc.deepDive.checklistTitle ?? "Checklist"}</h3>
+                <ul className="mt-5 grid gap-3 sm:grid-cols-2" role="list">
+                  {loc.deepDive.checklist.map((c) => (
+                    <li key={c} className="flex gap-3 text-muted">
+                      <Icon name="check" className="mt-1 h-4 w-4 shrink-0 text-accent" />
+                      <span className="leading-relaxed">{c}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+            {guides.length ? (
+              <div className="mt-8 flex flex-col gap-3">
+                {guides.map((g) => (
+                  <Link key={g.slug} href={`/blogs/${g.slug}`} className="link-arrow">
+                    Read the full guide: {g.title}
+                    <Icon name="arrow" className="h-4 w-4 shrink-0" />
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </section>
+      ) : null}
 
       {/* Services */}
       <section className="section-pad" aria-labelledby="loc-services-heading">

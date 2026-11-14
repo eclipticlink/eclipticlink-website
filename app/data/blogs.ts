@@ -17,6 +17,10 @@ export type BlogPost = {
   category: string;
   /** Service id this article supports (internal linking) */
   relatedService?: string;
+  /** Other service pages that should list this article under "Further reading" */
+  alsoRelated?: string[];
+  /** Location slug this article supports (linked both ways) */
+  relatedLocation?: string;
   tags: string[];
   readingTime: number;
   body: BlogBlock[];
@@ -25,6 +29,99 @@ export type BlogPost = {
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "dubai-uae-cybersecurity-compliance-guide",
+    title: "Dubai Cybersecurity Compliance: ISR, PDPL, DIFC & ADGM",
+    excerpt: "Mainland, DIFC, ADGM, government supplier, or regulated sector? The cybersecurity and data protection rules you follow in the UAE depend on all of these. Here is how they fit together, and where to start.",
+    metaDescription: "A practical guide to cybersecurity compliance in Dubai and the UAE: federal PDPL, DIFC and ADGM data protection, Dubai ISR, UAE IA Standards and sector rules.",
+    publishedAt: "2026-11-14",
+    category: "Compliance",
+    relatedService: "compliance-grc",
+    relatedLocation: "uae",
+    tags: ["cybersecurity compliance Dubai", "UAE PDPL", "Dubai ISR", "DIFC data protection", "ADGM data protection", "UAE IA Standards", "UAE cybersecurity regulations"],
+    readingTime: 9,
+    faqs: [
+      { q: "Does the UAE PDPL apply to companies in DIFC or ADGM?", a: "Generally no. The DIFC and ADGM financial free zones have their own data protection laws and regulators, and the federal PDPL applies outside them. Some data covered by other specific laws, such as certain health and banking data, also has its own rules." },
+      { q: "Is ISO 27001 mandatory in the UAE?", a: "ISO 27001 is not generally required by law, but customers, government tenders and regulators frequently ask for it. It also maps well to the UAE IA Standards and the Dubai ISR, which makes it a practical common baseline." },
+      { q: "Do Dubai government suppliers need to follow the ISR?", a: "The Dubai Information Security Regulation applies to Dubai government entities, and they commonly pass relevant requirements on to suppliers through contracts and security questionnaires. If you sell to Dubai government, expect ISR-aligned requirements." },
+      { q: "Can health data be stored outside the UAE?", a: "Federal Law No. 2 of 2019 on the use of ICT in health fields generally requires health data to be stored and processed inside the UAE, with limited exceptions. Confirm your specific case with legal counsel before choosing cloud regions." },
+    ],
+    body: [
+      {"type": "p", "text": "Companies in Dubai and across the UAE face more cybersecurity and data protection frameworks than almost anywhere else in the region. A startup in Dubai Internet City, a bank in DIFC, a clinic in Abu Dhabi, and a supplier to a Dubai government entity can all be subject to different rules, sometimes several at once."},
+      {"type": "p", "text": "This guide explains how the main frameworks fit together, how to work out which apply to you, and how to build one security program that satisfies them all without duplicating work."},
+      {"type": "blockquote", "text": "Start with three questions: where is your company licensed, which sector are you in, and who are your customers? The answers decide which rules apply."},
+      {"type": "h2", "text": "Step 1: Where is your company licensed?"},
+      {"type": "p", "text": "Data protection in the UAE depends first on jurisdiction. The financial free zones have their own data protection regimes, separate from the federal law that applies on the mainland and in most other free zones."},
+      {"type": "table", "headers": ["Jurisdiction", "Data protection law", "Regulator"], "rows": [["Mainland UAE and most free zones", "Federal Decree-Law No. 45 of 2021 (PDPL)", "UAE Data Office"], ["Dubai International Financial Centre (DIFC)", "DIFC Data Protection Law No. 5 of 2020", "DIFC Commissioner of Data Protection"], ["Abu Dhabi Global Market (ADGM)", "ADGM Data Protection Regulations 2021", "ADGM Office of Data Protection"]]},
+      {"type": "h3", "text": "The federal PDPL"},
+      {"type": "p", "text": "The UAE's Personal Data Protection Law applies to personal data processing by organizations outside the financial free zones. It sets familiar principles such as lawful processing, purpose limitation, and data subject rights, requires <strong>appropriate technical and organizational security measures</strong>, and requires notifying the UAE Data Office of breaches that put individuals' privacy at risk. Several details depend on implementing regulations, so check the current position before finalizing your program."},
+      {"type": "h3", "text": "DIFC Data Protection Law"},
+      {"type": "p", "text": "DIFC's law is one of the most mature data protection regimes in the region. It includes accountability requirements, breach notification to the Commissioner, and specific rules for personal data processed by AI and other autonomous systems, which matters if you are deploying AI assistants or automated decision-making."},
+      {"type": "h3", "text": "ADGM Data Protection Regulations"},
+      {"type": "p", "text": "ADGM's regulations are closely modelled on the EU GDPR, including notifying the regulator of reportable personal data breaches <strong>within 72 hours where feasible</strong>. If you already run a GDPR program, much of it carries over."},
+      {"type": "h2", "text": "Step 2: Do you serve government or critical sectors?"},
+      {"type": "h3", "text": "Dubai Information Security Regulation (ISR)"},
+      {"type": "p", "text": "Issued by the Dubai Electronic Security Center (DESC), the ISR sets security requirements for Dubai government entities. In practice, it reaches many private companies through supplier contracts, tenders, and security questionnaires. Expect questions on governance, access control, incident management, and how you protect government data."},
+      {"type": "h3", "text": "UAE Information Assurance Standards"},
+      {"type": "p", "text": "Originally issued as the NESA standards, the UAE IA Standards define controls for government entities and organizations in critical sectors. Their structure is risk-based and maps closely to ISO 27001, so one well-designed control set can serve both."},
+      {"type": "h2", "text": "Step 3: Are you in a regulated sector?"},
+      {"type": "ul", "items": ["<strong>Financial services:</strong> banks and financial firms face cyber and technology risk requirements from their regulator, which is the CBUAE, the DFSA in DIFC, or the FSRA in ADGM, depending on their licence.", "<strong>Healthcare:</strong> Federal Law No. 2 of 2019 on ICT in health fields generally requires health data to stay in the UAE. Abu Dhabi healthcare entities must also meet the ADHICS standard, and Dubai has its own health data rules.", "<strong>Telecoms and critical infrastructure:</strong> sector regulators and the UAE Cybersecurity Council set additional expectations."]},
+      {"type": "h2", "text": "One program, many frameworks"},
+      {"type": "p", "text": "The most efficient approach is to build a single information security management system, usually based on <strong>ISO 27001</strong>, and map each additional framework onto it. Most requirements overlap: risk assessment, access control, logging and monitoring, incident response, supplier management, and security testing appear in all of them."},
+      {"type": "table", "headers": ["Control area", "Why it matters across UAE frameworks"], "rows": [["Data mapping", "Every data protection law needs to know what personal data you hold, where, and why"], ["Access control and MFA", "Core requirement in ISO 27001, the IA Standards, the ISR, and sector rules"], ["Logging and monitoring", "Needed to detect breaches and meet notification duties"], ["Incident response plan", "Breach-notification expectations differ by regulator, so plan for each"], ["Supplier management", "Government and financial regulators expect security in outsourcing contracts"], ["Penetration testing", "Common evidence that controls actually work"]]},
+      {"type": "h2", "text": "A practical roadmap"},
+      {"type": "ol", "items": ["Confirm your jurisdiction, sector, and customer requirements, and list every framework that applies.", "Map personal and sensitive data, including which cloud regions it is stored in.", "Run a gap assessment against ISO 27001 plus the specific frameworks that apply to you.", "Fix the highest-risk gaps first: identity and access, logging, backups, and incident response.", "Write policies that reflect how you actually work, then train your team.", "Validate with a <a href=\"/services/penetration-testing\">penetration test</a> and keep evidence ready for audits and tenders."]},
+      {"type": "h2", "text": "Key takeaways"},
+      {"type": "ul", "items": ["Your licensing jurisdiction decides which data protection law applies: PDPL, DIFC, or ADGM.", "Government and critical-sector work brings in the Dubai ISR and the UAE IA Standards, often through contracts.", "Financial and health data have additional sector rules, including data residency for health data.", "Build one ISO 27001-based program and map each framework onto it instead of running separate projects."]},
+      {"type": "p", "text": "EclipticLink helps companies across the UAE with <a href=\"/services/compliance-grc\">compliance readiness</a>, from gap assessments to audit evidence. See our <a href=\"/locations/uae\">cybersecurity services in the UAE</a>. This guide is general information, not legal advice; confirm your obligations with qualified counsel."},
+    ],
+  },
+  {
+    slug: "nca-ecc-compliance-checklist-saudi-arabia",
+    title: "NCA ECC Compliance Checklist for Saudi Companies",
+    excerpt: "The NCA Essential Cybersecurity Controls are the baseline for Saudi government entities, critical infrastructure, and the companies that supply them. Here is who must comply, what the controls cover, and a practical readiness checklist.",
+    metaDescription: "A practical NCA ECC compliance checklist for Saudi Arabia: who must comply, what the Essential Cybersecurity Controls cover, common gaps, and how to prepare.",
+    publishedAt: "2026-11-14",
+    category: "Compliance",
+    relatedService: "compliance-grc",
+    relatedLocation: "saudi-arabia",
+    tags: ["NCA ECC", "Essential Cybersecurity Controls", "NCA compliance", "Saudi cybersecurity regulations", "ECC checklist", "Saudi Arabia cybersecurity"],
+    readingTime: 8,
+    faqs: [
+      { q: "Who must comply with the NCA ECC?", a: "Government organizations in Saudi Arabia, their companies and entities, and private-sector organizations that own, operate, or host critical national infrastructure. Many other companies meet ECC requirements because government and CNI clients include them in contracts." },
+      { q: "Where can I get the latest version of the ECC?", a: "Download it from the National Cybersecurity Authority's official website. NCA updates its control frameworks over time, so always work from the current version before starting a gap assessment." },
+      { q: "Does the ECC require data to stay in Saudi Arabia?", a: "For covered organizations, the ECC's cloud and hosting controls require information to be hosted and stored inside the Kingdom. The NCA Cloud Cybersecurity Controls and the Personal Data Protection Law add further requirements." },
+      { q: "How is the ECC different from the SAMA Cyber Security Framework?", a: "The ECC is the national baseline set by NCA. The SAMA Cyber Security Framework applies specifically to financial institutions regulated by the Saudi Central Bank. Some financial institutions need to address both." },
+    ],
+    body: [
+      {"type": "p", "text": "The <strong>Essential Cybersecurity Controls (ECC)</strong> from Saudi Arabia's National Cybersecurity Authority (NCA) define the minimum cybersecurity requirements for organizations that matter most to the Kingdom's security and economy. As Vision 2030 moves more services online, ECC requirements increasingly appear in contracts for software vendors, IT service providers, and consultancies too."},
+      {"type": "p", "text": "This guide explains who must comply, what the controls cover, and how to prepare, with a checklist you can work through."},
+      {"type": "h2", "text": "Who must comply?"},
+      {"type": "ul", "items": ["<strong>Government organizations</strong> inside and outside the Kingdom, including ministries, authorities, and their companies and entities.", "<strong>Private-sector organizations</strong> that own, operate, or host critical national infrastructure (CNI).", "<strong>Suppliers, in practice:</strong> government and CNI organizations must manage third-party risk, so they pass ECC requirements to vendors through contracts and security questionnaires."]},
+      {"type": "blockquote", "text": "If you sell technology or services to Saudi government or critical-infrastructure clients, plan for ECC requirements, even if you are not directly in scope."},
+      {"type": "h2", "text": "What the ECC covers"},
+      {"type": "p", "text": "The controls are grouped into main domains. Always check the latest version on NCA's website, but the core areas are consistent:"},
+      {"type": "table", "headers": ["Domain", "What it includes"], "rows": [["Cybersecurity governance", "Strategy, cybersecurity function and roles, policies, risk management, compliance reviews, HR security, awareness and training"], ["Cybersecurity defense", "Asset management, identity and access, system and network protection, email security, mobile and data protection, cryptography, backups, vulnerability management, penetration testing, logging and monitoring, incident management, physical security, web application security"], ["Cybersecurity resilience", "Cybersecurity in business continuity management"], ["Third-party and cloud cybersecurity", "Security requirements for suppliers, outsourcing, and cloud and hosting services"]]},
+      {"type": "h3", "text": "Related NCA control frameworks"},
+      {"type": "p", "text": "The ECC is the baseline. Depending on your situation, NCA's more specific frameworks may also apply, such as the <strong>Cloud Cybersecurity Controls (CCC)</strong> for cloud providers and customers, the <strong>Critical Systems Cybersecurity Controls (CSCC)</strong>, the <strong>Data Cybersecurity Controls (DCC)</strong>, the <strong>Operational Technology Cybersecurity Controls (OTCC)</strong>, and the <strong>Telework Cybersecurity Controls (TCC)</strong>."},
+      {"type": "h2", "text": "NCA ECC readiness checklist"},
+      {"type": "h3", "text": "Governance"},
+      {"type": "ul", "items": ["Cybersecurity strategy approved by leadership and aligned with business goals", "A cybersecurity function independent of IT, led by a qualified, full-time Saudi national", "Cybersecurity policies and procedures approved, published, and reviewed periodically", "Documented cybersecurity risk assessment and treatment plan", "Cybersecurity requirements built into projects and change management", "Security awareness and training program for all staff"]},
+      {"type": "h3", "text": "Defense"},
+      {"type": "ul", "items": ["Complete, maintained inventory of information and technology assets", "Identity and access management with MFA for remote and privileged access", "Hardened systems, network segmentation, and email protection", "Data classification, protection, and approved cryptography", "Tested backups for critical systems", "Vulnerability management with defined remediation timelines", "Periodic penetration testing of external and critical systems", "Centralized security event logging and monitoring", "Documented incident response process and reporting to NCA where required"]},
+      {"type": "h3", "text": "Resilience"},
+      {"type": "ul", "items": ["Cybersecurity requirements included in business continuity and disaster recovery plans", "Continuity plans tested and updated after exercises"]},
+      {"type": "h3", "text": "Third parties and cloud"},
+      {"type": "ul", "items": ["Cybersecurity clauses in supplier and outsourcing contracts, including confidentiality and incident notification", "Supplier security assessments before onboarding and periodically after", "Cloud and hosting arrangements that keep covered data inside the Kingdom"]},
+      {"type": "h2", "text": "Common gaps we see"},
+      {"type": "ol", "items": ["No independent cybersecurity function, with security sitting informally inside IT.", "Policies copied from templates that do not match real practice.", "Incomplete asset inventories, especially for cloud and SaaS.", "Penetration testing done once, not periodically, and findings not tracked to closure.", "Supplier contracts with no cybersecurity requirements.", "Evidence scattered across emails and shared drives instead of organized per control."]},
+      {"type": "h2", "text": "How to prepare: a practical sequence"},
+      {"type": "ol", "items": ["Confirm your scope: directly regulated, or bound through client contracts.", "Download the latest ECC from NCA and assign an owner to every control.", "Run a gap assessment and rank gaps by risk and effort.", "Fix governance foundations first: the cybersecurity function, strategy, and policies.", "Close technical gaps: access, logging, vulnerabilities, backups, and testing.", "Organize evidence per control so you are ready for NCA compliance assessments and client audits."]},
+      {"type": "h2", "text": "Key takeaways"},
+      {"type": "ul", "items": ["The ECC applies directly to government and CNI organizations, and indirectly to many of their suppliers.", "It covers governance, defense, resilience, and third-party and cloud security.", "Governance gaps, such as an independent cybersecurity function and real policies, are the most common blockers.", "Work from the latest NCA version, and keep evidence organized per control."]},
+      {"type": "p", "text": "EclipticLink supports Saudi organizations with <a href=\"/services/compliance-grc\">NCA ECC gap assessments and remediation</a>, <a href=\"/services/penetration-testing\">penetration testing</a>, and ongoing monitoring. See our <a href=\"/locations/saudi-arabia\">cybersecurity services in Saudi Arabia</a>. This guide is general information, not legal advice; always confirm requirements against NCA's official publications."},
+    ],
+  },
   {
     slug: "mcp-security-risks",
     title: "MCP Security Risks: What to Check Before You Connect",
@@ -537,6 +634,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "penetration-testing-vs-vulnerability-scanning",
+    alsoRelated: ["vulnerability-management"],
     updatedAt: "2026-11-14",
     faqs: [
       {

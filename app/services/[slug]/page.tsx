@@ -75,7 +75,9 @@ export default async function ServicePage({ params }: Props) {
   };
 
   const related = services.filter((s) => s.id !== service.id).slice(0, 3);
-  const relatedPosts = blogPosts.filter((p) => p.relatedService === service.id).slice(0, 2);
+  const relatedPosts = blogPosts
+    .filter((p) => p.relatedService === service.id || p.alsoRelated?.includes(service.id))
+    .slice(0, 3);
 
   return (
     <>

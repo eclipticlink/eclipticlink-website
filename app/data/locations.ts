@@ -22,11 +22,55 @@ export type Location = {
   industries: string[];
   delivery: string;
   faqs: LocationFaq[];
+  /** Optional in-depth section (e.g. a compliance guide) shown after the regulations */
+  deepDive?: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    items: { title: string; body: string }[];
+    checklistTitle?: string;
+    checklist?: string[];
+  };
 };
 
 export const locations: Location[] = [
   {
     slug: "saudi-arabia",
+    deepDive: {
+      "eyebrow": "NCA ECC guide",
+      "title": "Getting ready for the NCA Essential Cybersecurity Controls",
+      "intro": "The ECC sets the minimum cybersecurity requirements for government organizations and critical national infrastructure in Saudi Arabia, and it reaches their suppliers through contracts. Readiness comes down to four areas.",
+      "items": [
+        {
+          "title": "Cybersecurity governance",
+          "body": "A cybersecurity strategy and policies approved by leadership, a cybersecurity function independent of IT and led by a qualified, full-time Saudi national, plus periodic risk assessments and compliance reviews."
+        },
+        {
+          "title": "Cybersecurity defense",
+          "body": "Asset management, identity and access management, email and network security, data protection and cryptography, backups, vulnerability management, penetration testing, and security event monitoring."
+        },
+        {
+          "title": "Cybersecurity resilience",
+          "body": "Cybersecurity built into business continuity management, so critical services can withstand and recover from incidents."
+        },
+        {
+          "title": "Third-party and cloud security",
+          "body": "Security requirements in supplier and outsourcing contracts, and controls for cloud services, including hosting and storing covered data inside the Kingdom."
+        }
+      ],
+      "checklistTitle": "NCA ECC readiness checklist",
+      "checklist": [
+        "Confirm whether you are in scope directly (government or CNI) or through a client contract",
+        "Download the latest ECC version from NCA and assign an owner to every control",
+        "Establish a cybersecurity function independent of IT with a qualified Saudi head",
+        "Approve a cybersecurity strategy and core policies at leadership level",
+        "Build an asset inventory and run a documented risk assessment",
+        "Run vulnerability management and schedule periodic penetration tests",
+        "Centralize logging and monitor security events",
+        "Review supplier and cloud contracts for ECC requirements and data residency",
+        "Collect evidence for each control ahead of NCA compliance assessments"
+      ]
+    },
     name: "Saudi Arabia",
     short: "Saudi Arabia",
     countryCode: "SA",
@@ -95,6 +139,46 @@ export const locations: Location[] = [
   },
   {
     slug: "uae",
+    deepDive: {
+      "eyebrow": "Dubai compliance guide",
+      "title": "Cybersecurity compliance in Dubai and the UAE",
+      "intro": "Which rules apply depends on where your company is licensed, which sector you operate in, and who your customers are. Here is how the main frameworks fit together.",
+      "items": [
+        {
+          "title": "Mainland UAE: the federal PDPL",
+          "body": "Federal Decree-Law No. 45 of 2021 governs personal data processed by companies outside the financial free zones. It requires appropriate security measures and notifying the UAE Data Office of breaches that put individuals' privacy at risk. Some details depend on implementing regulations, so confirm the current position."
+        },
+        {
+          "title": "DIFC: Data Protection Law No. 5 of 2020",
+          "body": "Companies licensed in the Dubai International Financial Centre follow DIFC's own data protection law, overseen by the Commissioner of Data Protection, including breach notification duties and specific rules for personal data processed by AI and autonomous systems."
+        },
+        {
+          "title": "ADGM: Data Protection Regulations 2021",
+          "body": "Abu Dhabi Global Market's regime is closely modelled on the GDPR, including notifying the regulator of reportable breaches within 72 hours where feasible."
+        },
+        {
+          "title": "Dubai government suppliers: the ISR",
+          "body": "The Dubai Electronic Security Center (DESC) Information Security Regulation applies to Dubai government entities, and its requirements reach suppliers through contracts, tenders, and security questionnaires."
+        },
+        {
+          "title": "Government and critical sectors: UAE IA Standards",
+          "body": "The UAE Information Assurance Standards, originally issued as the NESA standards, set security controls for government entities and critical-sector organizations."
+        },
+        {
+          "title": "Regulated sectors: finance and health",
+          "body": "Financial firms face cyber requirements from the CBUAE, DFSA, or FSRA depending on their licence. Health data has its own rules, including Federal Law No. 2 of 2019 on ICT in health fields and the ADHICS standard in Abu Dhabi."
+        }
+      ],
+      "checklistTitle": "Where to start: a practical checklist",
+      "checklist": [
+        "Confirm your licensing jurisdiction: mainland, DIFC, ADGM, or another free zone",
+        "Map where personal and sensitive data is stored and processed, including cloud regions",
+        "List sector regulators and customer contract requirements, such as the ISR for Dubai government work",
+        "Run a gap assessment, using ISO 27001 as a common baseline across frameworks",
+        "Write an incident response plan that meets each regulator's breach-notification expectations",
+        "Validate controls with a penetration test before audits, tenders, or renewals"
+      ]
+    },
     name: "the United Arab Emirates",
     short: "UAE",
     countryCode: "AE",
