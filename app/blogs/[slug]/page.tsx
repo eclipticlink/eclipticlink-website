@@ -8,7 +8,7 @@ import { Icon } from "../../components/icons";
 import { JsonLd } from "../../components/json-ld";
 import { getAllBlogSlugs, getBlogBySlug, blogPosts } from "../../data/blogs";
 import { BASE_OG, SITE_URL } from "../../lib/config";
-import { breadcrumbJsonLd } from "../../lib/seo";
+import { breadcrumbJsonLd, faqJsonLd } from "../../lib/seo";
 import { getServiceBySlug } from "../../services/data";
 import { BlogContent } from "../blog-content";
 
@@ -98,6 +98,7 @@ export default async function BlogPostPage({ params }: Props) {
             { name: post.title, path: `/blogs/${post.slug}` },
           ]),
           articleJsonLd,
+          ...(post.faqs?.length ? [faqJsonLd(post.faqs)] : []),
         ]}
       />
 
@@ -132,6 +133,30 @@ export default async function BlogPostPage({ params }: Props) {
 
         <div className="section-pad">
           <BlogContent blocks={post.body} />
+
+          {post.faqs?.length ? (
+            <section className="mx-auto mt-14 max-w-3xl" aria-labelledby="article-faq-heading">
+              <h2 id="article-faq-heading" className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+                Frequently asked questions
+              </h2>
+              <div className="mt-6 divide-y divide-line border-y border-line">
+                {post.faqs.map((f, i) => (
+                  <details key={f.q} className="group py-5" open={i === 0}>
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-semibold text-ink [&::-webkit-details-marker]:hidden">
+                      <h3>{f.q}</h3>
+                      <span
+                        className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-line text-accent transition group-open:rotate-45"
+                        aria-hidden="true"
+                      >
+                        +
+                      </span>
+                    </summary>
+                    <p className="mt-3 leading-relaxed text-muted">{f.a}</p>
+                  </details>
+                ))}
+              </div>
+            </section>
+          ) : null}
 
           <div className="mx-auto mt-14 max-w-3xl">
             <ul className="flex flex-wrap gap-2" aria-label="Tags">

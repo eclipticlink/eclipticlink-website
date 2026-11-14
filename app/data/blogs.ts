@@ -20,6 +20,8 @@ export type BlogPost = {
   tags: string[];
   readingTime: number;
   body: BlogBlock[];
+  /** Optional FAQ shown after the article and emitted as FAQPage structured data */
+  faqs?: { q: string; a: string }[];
 };
 
 export const blogPosts: BlogPost[] = [
@@ -183,6 +185,20 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "how-to-secure-ai-agents-with-tool-access",
+    faqs: [
+      {
+        q: "What is excessive agency in AI agents?",
+        a: "Excessive agency is a risk in the OWASP Top 10 for LLM Applications where an agent has more functionality, permissions, or autonomy than its task needs, so a mistake or manipulation can cause real damage.",
+      },
+      {
+        q: "How do you secure an AI agent that can call tools?",
+        a: "Give it the smallest possible toolset, run it with the user's scoped permissions, require human approval for high-impact actions, validate tool arguments in code, sandbox code execution, restrict network egress, set limits, and log every action.",
+      },
+      {
+        q: "What is the lethal trifecta for AI agents?",
+        a: "It describes an agent that combines access to private data, exposure to untrusted content, and the ability to communicate externally. Together these let an attacker who can inject text potentially exfiltrate data, so avoid giving one agent all three.",
+      },
+    ],
     title: "How to Secure AI Agents That Have Tool Access",
     excerpt:
       "An AI agent that can send email, query databases, or call APIs is a new kind of privileged user, one that can be talked into things. Here is how to design agents that stay safe even when the model is fooled.",
@@ -315,6 +331,20 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "prompt-injection-attacks-how-to-secure-llm-applications",
+    faqs: [
+      {
+        q: "What is a prompt injection attack?",
+        a: "Prompt injection is when an attacker crafts text, typed directly or hidden in content the model reads, that overrides an LLM application's instructions. It can make the model leak data, ignore safety rules, or misuse the tools it has access to.",
+      },
+      {
+        q: "What is the difference between direct and indirect prompt injection?",
+        a: "Direct prompt injection is typed straight into the chat by the user. Indirect prompt injection is planted in documents, emails, web pages, or other content the model later reads, so the attacker never has to interact with the application.",
+      },
+      {
+        q: "Can prompt injection be fully prevented?",
+        a: "Not reliably with current models. The practical goal is defense in depth: limit what the model can access and do, enforce permissions in code, validate outputs, require human approval for high-impact actions, and monitor for abuse.",
+      },
+    ],
     title: "Prompt Injection Attacks: How to Secure LLM Applications",
     excerpt:
       "Prompt injection is the top risk in the OWASP Top 10 for LLM Applications. Here is how direct and indirect attacks work, and the layered defenses that actually reduce risk.",
@@ -507,6 +537,25 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "penetration-testing-vs-vulnerability-scanning",
+    updatedAt: "2026-11-14",
+    faqs: [
+      {
+        q: "What is the difference between a vulnerability scan and a penetration test?",
+        a: "A vulnerability scan is an automated check that lists known weaknesses such as missing patches and misconfigurations. A penetration test is performed by security testers who manually exploit and chain weaknesses to prove real-world impact, test business logic, and remove false positives.",
+      },
+      {
+        q: "Is a vulnerability scan enough for compliance?",
+        a: "Usually not on its own. PCI DSS requires both regular vulnerability scans and periodic penetration tests, and SOC 2 and ISO 27001 auditors and enterprise customers commonly expect a recent penetration test as evidence that controls work.",
+      },
+      {
+        q: "How often should we run vulnerability scans and penetration tests?",
+        a: "Run vulnerability scans continuously or at least weekly, and commission a penetration test at least once a year and after significant changes such as a major release, new product, or cloud migration.",
+      },
+      {
+        q: "Can automated tools replace a penetration test?",
+        a: "No. Automated tools are fast and broad, but they cannot reason about business logic, chain low-severity issues into a serious attack, or confirm exploitability the way an experienced tester can. The best programs use both.",
+      },
+    ],
     title: "Penetration Testing vs. Vulnerability Scanning: Which Do You Need?",
     excerpt:
       "They sound similar and are often confused, even in RFPs. Here is the real difference, what each costs you in time and effort, and how to combine them.",
