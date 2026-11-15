@@ -80,7 +80,7 @@ export default function ServicesPage() {
       >
         <div className="flex flex-wrap gap-3">
           <Button href="/contact" size="lg">
-            Get a security assessment
+            Book a free assessment
           </Button>
           <Button href="/services/incident-response" variant="danger" size="lg">
             Under attack?

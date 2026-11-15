@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import Script from "next/script";
+import { WhatsAppButton } from "./components/whatsapp-button";
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";
 import { AmbientMotion } from "./components/ambient-motion";
@@ -202,8 +203,23 @@ export default function RootLayout({
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-293THQJBXQ');
+              (function () {
+                var h = location.hostname;
+                // Only the live site reports; previews and localhost skew the numbers.
+                if (h !== 'eclipticlink.com' && h !== 'www.eclipticlink.com') {
+                  window['ga-disable-G-293THQJBXQ'] = true;
+                }
+                // Team devices: visit any page with ?internal=1 once (?internal=0 to undo).
+                var q = new URLSearchParams(location.search).get('internal');
+                try {
+                  if (q === '1') localStorage.setItem('el_internal', '1');
+                  if (q === '0') localStorage.removeItem('el_internal');
+                } catch (e) {}
+                var internal = false;
+                try { internal = localStorage.getItem('el_internal') === '1'; } catch (e) {}
+                gtag('js', new Date());
+                gtag('config', 'G-293THQJBXQ', internal ? { traffic_type: 'internal' } : {});
+              })();
             `,
           }}
         />
@@ -226,6 +242,7 @@ export default function RootLayout({
         <AmbientMotion />
         <AnalyticsEvents />
         <HubSpotChatRefresh />
+        <WhatsAppButton />
         <Header />
         <main id="main">{children}</main>
         <Footer />

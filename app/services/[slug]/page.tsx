@@ -115,7 +115,7 @@ export default async function ServicePage({ params }: Props) {
           ) : (
             <>
               <Button href="/contact" size="lg">
-                Talk to a security expert
+                Book a free assessment
                 <Icon name="arrow" className="h-4 w-4" />
               </Button>
               <Button href="/services" variant="secondary" size="lg">

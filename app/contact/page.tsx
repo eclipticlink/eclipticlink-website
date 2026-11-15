@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Icon } from "../components/icons";
 import { JsonLd } from "../components/json-ld";
 import { PageHero } from "../components/page-hero";
-import { BASE_OG, CONTACT_EMAIL, CONTACT_US_MAILTO, SITE_URL } from "../lib/config";
+import { BASE_OG, COMPANY_PHONE_DISPLAY, COMPANY_WHATSAPP_URL, CONTACT_EMAIL, CONTACT_US_MAILTO, SITE_URL } from "../lib/config";
 import { breadcrumbJsonLd } from "../lib/seo";
 import Link from "next/link";
 import { locations } from "../data/locations";
@@ -34,8 +34,8 @@ export default function ContactPage() {
       <JsonLd data={[breadcrumbJsonLd(SITE_URL, [{ name: "Contact", path: "/contact" }]), contactPageJsonLd]} />
       <PageHero
         eyebrow="Contact"
-        title="Talk to a security expert"
-        description="Whether you need a penetration test, SOC 2 readiness, an AI security review, or ongoing monitoring, start here. We'll respond within one business day."
+        title="Book a free security assessment"
+        description="A free 30-minute call with a security specialist. Penetration testing, SOC 2 or regional compliance, AI security, or ongoing monitoring: start here. We'll respond within one business day."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
       />
 
@@ -71,7 +71,16 @@ export default function ContactPage() {
               </div>
               <div className="border-t border-line pt-6">
                 <dt className="font-mono text-xs uppercase tracking-[0.14em] text-subtle">Talk to us</dt>
-                <dd className="mt-2">
+                <dd className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+                  <a
+                    href={COMPANY_WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-location="contact-sidebar"
+                    className="text-lg text-ink underline underline-offset-4 hover:text-accent"
+                  >
+                    WhatsApp {COMPANY_PHONE_DISPLAY}
+                  </a>
                   <a href={CONTACT_US_MAILTO} className="text-lg text-ink underline underline-offset-4 hover:text-accent">
                     Email us
                   </a>

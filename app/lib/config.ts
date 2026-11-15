@@ -23,8 +23,8 @@ export const BASE_OG = {
 /* EclipticLink is operated by TOPDEVELOPER INC. */
 export const COMPANY_LEGAL_NAME = "TOPDEVELOPER INC.";
 export const COMPANY_ADDRESS = "44240 Fremont Blvd, Fremont, CA, 94538";
-export const COMPANY_PHONE_DISPLAY = "+1 (650) 308-4707";
-export const COMPANY_WHATSAPP_URL = "https://wa.me/16503084707";
+export const COMPANY_PHONE_DISPLAY = "+92 333 5934448";
+export const COMPANY_WHATSAPP_URL = "https://wa.me/923335934448";
 export const LEGAL_LINKS = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },

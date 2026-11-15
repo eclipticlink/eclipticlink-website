@@ -179,7 +179,7 @@ export function Header() {
             Under attack?
           </Link>
           <Button href="/contact" variant="primary">
-            Get an assessment
+            Free assessment
           </Button>
         </div>
 
@@ -229,7 +229,7 @@ export function Header() {
         </ul>
         <div className="mt-8 grid gap-3">
           <Button href="/contact" variant="primary" size="lg">
-            Get an assessment
+            Free assessment
           </Button>
           <Button href="/services/incident-response" variant="danger" size="lg">
             Under attack? Get help now

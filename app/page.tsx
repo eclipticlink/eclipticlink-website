@@ -154,7 +154,7 @@ export default function Home() {
             </p>
             <div className="animate-fade-up-3 mt-8 flex flex-wrap gap-3">
               <Button href="/contact" size="lg" className="group">
-                Get a security assessment
+                Book a free assessment
                 <Icon
                   name="arrow"
                   className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"

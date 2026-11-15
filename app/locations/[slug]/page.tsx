@@ -88,7 +88,7 @@ export default async function LocationPage({ params }: Props) {
       >
         <div className="flex flex-wrap gap-3">
           <Button href="/contact" size="lg">
-            Get a security assessment
+            Book a free assessment
             <Icon name="arrow" className="h-4 w-4" />
           </Button>
           <Button href="/services/incident-response" variant="danger" size="lg">

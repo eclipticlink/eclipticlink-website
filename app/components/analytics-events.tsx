@@ -16,6 +16,8 @@ export function AnalyticsEvents() {
 
       if (href.startsWith("tel:")) trackEvent("phone_click", { link_text, location });
       else if (href.startsWith("mailto:")) trackEvent("email_click", { link_text, location });
+      else if (href.includes("wa.me/"))
+        trackEvent("whatsapp_click", { link_text, location: a.dataset.location ?? location });
       else if (href === "/contact" || href.startsWith("/contact?")) trackEvent("cta_click", { link_text, location });
       else if (href === "/services/incident-response" && /attack|help now/i.test(link_text))
         trackEvent("under_attack_click", { link_text, location });

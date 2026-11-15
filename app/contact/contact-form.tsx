@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { trackEvent } from "@/app/lib/analytics";
-import { CONTACT_US_MAILTO } from "@/app/lib/config";
+import { COMPANY_WHATSAPP_URL, CONTACT_US_MAILTO } from "@/app/lib/config";
 import { sendContactEmail } from "@/app/lib/emailjs";
 import { services } from "@/app/services/data";
 
@@ -11,8 +11,6 @@ const URGENCY = [
   { value: "soon", label: "Need help this month" },
   { value: "incident", label: "Active incident" },
 ] as const;
-
-const SIZES = ["1–50", "51–200", "201–1,000", "1,000+"] as const;
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -39,8 +37,6 @@ export function ContactForm() {
 
     const message = [
       `Company: ${get("company") || "-"}`,
-      `Role: ${get("role") || "-"}`,
-      `Company size: ${get("size") || "-"}`,
       `Urgency: ${urgencyLabel}`,
       `Services of interest: ${interestLabels || "-"}`,
       "",
@@ -55,7 +51,6 @@ export function ContactForm() {
         form: "contact",
         urgency,
         services: interests.join(",") || "none",
-        company_size: get("size") || "unknown",
       });
       form.reset();
       setInterests([]);
@@ -102,9 +97,23 @@ export function ContactForm() {
 
   return (
     <div className="card p-6 sm:p-8">
-      <h2 className="text-2xl font-semibold text-ink">Request a security assessment</h2>
+      <h2 className="text-2xl font-semibold text-ink">Book your free 30-minute assessment</h2>
       <p className="mt-1 text-sm text-muted">
-        Tell us a little about your environment. All information is treated as confidential.
+        Takes under a minute. A security specialist replies within one business day. All information is
+        treated as confidential.
+      </p>
+      <p className="mt-3 text-sm text-muted">
+        Prefer chat?{" "}
+        <a
+          href={COMPANY_WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-location="contact-form"
+          className="font-semibold text-accent underline-offset-4 hover:underline"
+        >
+          Message us on WhatsApp
+        </a>
+        .
       </p>
 
       {urgency === "incident" ? (
@@ -113,6 +122,10 @@ export function ContactForm() {
           <p className="mt-1 text-muted">
             <a href={CONTACT_US_MAILTO} className="font-semibold text-ink underline underline-offset-2">
               Email us
+            </a>{" "}
+            or{" "}
+            <a href={COMPANY_WHATSAPP_URL} target="_blank" rel="noopener noreferrer" data-location="incident-alert" className="font-semibold text-ink underline underline-offset-2">
+              WhatsApp us
             </a>{" "}
             now. Isolate affected systems from the network, but don&apos;t power them off.
           </p>
@@ -140,26 +153,6 @@ export function ContactForm() {
             </label>
             <input id="c-company" name="company" autoComplete="organization" className="field" disabled={disabled} placeholder="Company name" />
           </div>
-          <div>
-            <label htmlFor="c-role" className="text-sm font-medium text-ink">
-              Your role
-            </label>
-            <input id="c-role" name="role" autoComplete="organization-title" className="field" disabled={disabled} placeholder="CTO, IT manager, founder…" />
-          </div>
-        </div>
-
-        <div>
-          <label htmlFor="c-size" className="text-sm font-medium text-ink">
-            Company size
-          </label>
-          <select id="c-size" name="size" className="field" disabled={disabled} defaultValue="">
-            <option value="">Select employees</option>
-            {SIZES.map((s) => (
-              <option key={s} value={s}>
-                {s} employees
-              </option>
-            ))}
-          </select>
         </div>
 
         <fieldset>
@@ -215,13 +208,12 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="c-details" className="text-sm font-medium text-ink">
-            What&apos;s going on? <span className="text-threat" aria-hidden="true">*</span>
+            What&apos;s going on? <span className="font-normal text-subtle">(optional)</span>
           </label>
           <textarea
             id="c-details"
             name="details"
-            required
-            rows={4}
+            rows={3}
             className="field min-h-28 resize-y"
             disabled={disabled}
             placeholder="e.g. Customer asked for a SOC 2 report, we're launching an AI assistant, we need a pentest before a funding round…"
@@ -240,7 +232,7 @@ export function ContactForm() {
           disabled={disabled}
           className="inline-flex h-12 w-full items-center justify-center btn-neon rounded-lg px-6 font-semibold text-white transition-[background-color,box-shadow] disabled:opacity-70 sm:w-auto"
         >
-          {disabled ? "Sending…" : "Request assessment"}
+          {disabled ? "Sending…" : "Book free assessment"}
         </button>
       </form>
     </div>
