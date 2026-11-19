@@ -186,9 +186,9 @@ export const locations: Location[] = [
     name: "the United Arab Emirates",
     short: "UAE",
     countryCode: "AE",
-    seoTitle: "Cybersecurity Company in the UAE & Dubai",
+    seoTitle: "Cybersecurity & Compliance Services in Dubai, UAE",
     metaDescription:
-      "AI-powered cybersecurity in the UAE: PDPL and Dubai ISR compliance, penetration testing, managed SOC, and AI security for Dubai and Abu Dhabi.",
+      "Cybersecurity compliance and data protection services in Dubai and the UAE: UAE PDPL, Dubai ISR, penetration testing, managed SOC and AI security.",
     h1: "Cybersecurity services in the UAE",
     intro:
       "The UAE is one of the world's most connected economies, and one of the most targeted. EclipticLink helps companies across Dubai, Abu Dhabi, and the free zones meet UAE data-protection and security standards, and defend against fast-moving threats with AI-assisted detection.",

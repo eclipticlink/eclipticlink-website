@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArticleCta } from "../../components/article-cta";
 import { BlogCover } from "../../components/blog-cover";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "../../components/breadcrumbs";
@@ -84,6 +85,16 @@ export default async function BlogPostPage({ params }: Props) {
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
   };
 
+  const h2s = post.body.flatMap((b, i) => (b.type === "h2" && i > 0 ? [i] : []));
+  const split = h2s.length
+    ? h2s.reduce((best, i) => (Math.abs(i - post.body.length / 2) < Math.abs(best - post.body.length / 2) ? i : best))
+    : post.body.length;
+
+  const updated =
+    post.updatedAt && post.updatedAt !== post.publishedAt
+      ? new Date(post.updatedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" })
+      : null;
+
   const date = new Date(post.publishedAt).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -122,6 +133,14 @@ export default async function BlogPostPage({ params }: Props) {
               <span>EclipticLink Security Team</span>
               <span aria-hidden="true">·</span>
               <time dateTime={post.publishedAt}>{date}</time>
+              {updated ? (
+                <>
+                  <span aria-hidden="true">·</span>
+                  <span>
+                    Updated <time dateTime={post.updatedAt}>{updated}</time>
+                  </span>
+                </>
+              ) : null}
               <span aria-hidden="true">·</span>
               <span>{post.readingTime} min read</span>
             </p>
@@ -134,7 +153,9 @@ export default async function BlogPostPage({ params }: Props) {
         </header>
 
         <div className="section-pad">
-          <BlogContent blocks={post.body} />
+          <BlogContent blocks={post.body.slice(0, split)} />
+          <ArticleCta serviceId={service?.id} serviceTitle={service?.title} from={`blog-${post.slug}`} />
+          {split < post.body.length ? <BlogContent blocks={post.body.slice(split)} /> : null}
 
           {post.faqs?.length ? (
             <section className="mx-auto mt-14 max-w-3xl" aria-labelledby="article-faq-heading">
@@ -225,7 +246,9 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </section>
 
-      <CtaBand />
+      <CtaBand
+        href={`/contact?${new URLSearchParams({ ...(service ? { service: service.id } : {}), from: `blog-${post.slug}-footer` }).toString()}`}
+      />
     </>
   );
 }

@@ -125,11 +125,11 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "mcp-security-risks",
-    title: "MCP Security Risks: What to Check Before You Connect",
+    title: "MCP Security Risks: MCP Server Risks and a Security Checklist",
     excerpt:
       "The Model Context Protocol makes it easy to give AI assistants new tools. It also makes it easy to give an attacker a path into your data. Here are the risks, and a checklist to use before you connect.",
     metaDescription:
-      "Model Context Protocol (MCP) security risks explained: tool poisoning, rug pulls, prompt injection, token theft, and a checklist to vet MCP servers safely.",
+      "MCP security risks explained: MCP server risks such as tool poisoning, rug pulls, prompt injection and token theft, plus a checklist to vet MCP servers.",
     publishedAt: "2026-11-09",
     category: "AI Security",
     relatedService: "ai-security",
@@ -550,12 +550,13 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "ai-powered-mdr-what-it-is-and-how-it-works",
-    title: "AI-Powered MDR: What It Is and How It Actually Works",
+    title: "AI-Powered MDR and AI SOC: What It Is and How It Works",
     excerpt:
       "Every security vendor now says “AI.” Here is what AI genuinely improves in managed detection and response, where humans are still essential, and what to ask a provider.",
     metaDescription:
-      "What AI-powered MDR really means, how AI triage reduces alert fatigue, where human analysts still matter, and how to evaluate MDR providers.",
+      "What AI-powered MDR and an AI SOC really mean, how AI triage cuts alert fatigue, where human analysts still matter, and how to choose an MDR provider.",
     publishedAt: "2026-10-14",
+    updatedAt: "2026-11-19",
     category: "Detection & Response",
     relatedService: "managed-detection-response",
     tags: ["MDR", "managed detection and response", "AI threat detection", "SOC", "alert fatigue", "XDR"],
@@ -615,6 +616,15 @@ export const blogPosts: BlogPost[] = [
           ["MDR", "A service: people and processes that operate these tools for you."],
         ],
       },
+      { type: "h2", text: "What is an AI SOC, and how does it relate to MDR?" },
+      {
+        type: "p",
+        text: "A security operations center (SOC) is the team and process that monitors alerts, investigates them and responds. An <strong>AI SOC</strong> uses machine learning and language models inside that workflow: to enrich and group alerts, map them to MITRE ATT&amp;CK, draft the investigation summary and suggest next steps, so analysts spend their time on decisions rather than data gathering.",
+      },
+      {
+        type: "p",
+        text: "AI-powered MDR is the outsourced version: the provider runs an AI-assisted SOC for you, around the clock, using your existing tools. The question to ask is not whether a provider uses AI, but where a person signs off. Fully autonomous “agentic” response can be useful for well-understood, low-risk actions, such as blocking a known-malicious file. Anything that affects users, production systems or customers should still be approved by an analyst.",
+      },
       { type: "h2", text: "Questions to ask an MDR provider" },
       {
         type: "ol",
@@ -636,62 +646,75 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "penetration-testing-vs-vulnerability-scanning",
     alsoRelated: ["vulnerability-management"],
-    updatedAt: "2026-11-14",
+    updatedAt: "2026-11-19",
     faqs: [
       {
         q: "What is the difference between a vulnerability scan and a penetration test?",
-        a: "A vulnerability scan is an automated check that lists known weaknesses such as missing patches and misconfigurations. A penetration test is performed by security testers who manually exploit and chain weaknesses to prove real-world impact, test business logic, and remove false positives.",
+        a: "A vulnerability scan is an automated check that lists known weaknesses such as missing patches and misconfigurations. A penetration test is performed by security testers who manually exploit and chain weaknesses to prove what an attacker could actually achieve. A scan tells you what might be wrong; a pentest proves what is exploitable and how much damage it could do.",
+      },
+      {
+        q: "Do I need both a vulnerability scan and a penetration test?",
+        a: "Most organizations do. Scans give continuous, broad coverage between tests and catch new issues quickly. Penetration tests prove real-world impact, find logic flaws scanners miss, and are what PCI DSS, enterprise customers and many auditors ask for. Scanning without testing leaves you blind to chained and business-logic attacks; testing without scanning leaves gaps for most of the year.",
+      },
+      {
+        q: "What is the difference between a vulnerability assessment and a penetration test?",
+        a: "A vulnerability assessment identifies, validates and prioritizes weaknesses, usually starting from scan results and adding human review to remove false positives. A penetration test goes further: testers actively exploit the weaknesses and chain them to show the real path an attacker could take and the data or systems they could reach.",
+      },
+      {
+        q: "What is the difference between vulnerability management and penetration testing?",
+        a: "Vulnerability management is an ongoing program: continuous scanning, asset inventory, risk-based prioritization, patching, and tracking until each issue is fixed. Penetration testing is a time-boxed engagement that proves exploitability at a point in time. Pentest findings should feed the vulnerability management program so the same class of issue is caught automatically next time.",
       },
       {
         q: "Is a vulnerability scan enough for compliance?",
-        a: "Usually not on its own. PCI DSS requires both regular vulnerability scans and periodic penetration tests, and SOC 2 and ISO 27001 auditors and enterprise customers commonly expect a recent penetration test as evidence that controls work.",
+        a: "Usually not on its own. PCI DSS requires both regular vulnerability scans and periodic penetration tests, and SOC 2 and ISO 27001 auditors and enterprise customers commonly expect a recent penetration test report in addition to evidence of scanning.",
       },
       {
         q: "How often should we run vulnerability scans and penetration tests?",
         a: "Run vulnerability scans continuously or at least weekly, and commission a penetration test at least once a year and after significant changes such as a major release, new product, or cloud migration.",
       },
       {
+        q: "How long does a penetration test take?",
+        a: "It depends on scope. A focused web application or API test commonly takes one to two weeks of testing, while a larger engagement covering several applications, internal networks and cloud environments takes longer. Scoping, reporting and a retest after fixes add time on either side.",
+      },
+      {
         q: "Can automated tools replace a penetration test?",
-        a: "No. Automated tools are fast and broad, but they cannot reason about business logic, chain low-severity issues into a serious attack, or confirm exploitability the way an experienced tester can. The best programs use both.",
+        a: "No. Automated tools are fast and broad, but they cannot reason about business logic, chain low-severity issues into a serious attack, or confirm exploitability the way an experienced tester can. The best programs use AI and automation to speed up testing and human testers to judge what matters.",
       },
     ],
-    title: "Penetration Testing vs. Vulnerability Scanning: Which Do You Need?",
+    title: "Penetration Testing vs Vulnerability Scanning: Key Differences",
     excerpt:
-      "They sound similar and are often confused, even in RFPs. Here is the real difference, what each costs you in time and effort, and how to combine them.",
+      "They sound similar and are often confused, even in RFPs. Here is the real difference, how vulnerability assessments and vulnerability management fit in, and whether you need both.",
     metaDescription:
-      "Penetration testing vs. vulnerability scanning explained: how they differ, when you need each, compliance requirements, and how to combine them effectively.",
+      "Vulnerability scan vs penetration test: what each finds, effort, compliance (PCI DSS, SOC 2, ISO 27001), and whether you need both. Comparison table inside.",
     publishedAt: "2026-09-30",
     category: "Offensive Security",
     relatedService: "penetration-testing",
-    tags: ["penetration testing", "vulnerability scanning", "pentest", "vulnerability management", "PCI DSS", "SOC 2"],
-    readingTime: 6,
+    tags: [
+      "penetration testing",
+      "vulnerability scanning",
+      "vulnerability assessment",
+      "vulnerability management",
+      "pentest",
+      "PCI DSS",
+      "SOC 2",
+    ],
+    readingTime: 9,
     body: [
       {
         type: "p",
-        text: "A vulnerability scan and a penetration test both look for security weaknesses, but they answer different questions. A scan asks <em>what known issues might exist?</em> A penetration test asks <em>what could an attacker actually do?</em>",
+        text: "A vulnerability scan and a penetration test both look for security weaknesses, but they answer different questions. A scan asks <em>what known issues might exist?</em> A penetration test asks <em>what could an attacker actually do with them?</em> Mixing them up leads to the wrong purchase: teams buy a scan when a customer asked for a pentest, or pay for a pentest when what they needed was continuous scanning.",
       },
-      { type: "h2", text: "Vulnerability scanning" },
       {
         type: "p",
-        text: "Scanning is automated. Tools probe systems for missing patches, outdated software, weak configurations, and known vulnerabilities (CVEs). Scans are fast, repeatable, and should run continuously.",
+        text: "This guide explains the difference in plain terms, how vulnerability assessments and vulnerability management fit in, what compliance frameworks expect, and how to decide what you need right now.",
       },
+      { type: "h2", text: "The short answer" },
       {
         type: "ul",
         items: [
-          "<strong>Strengths:</strong> broad coverage, frequent, relatively low cost.",
-          "<strong>Limitations:</strong> false positives, no business-logic testing, and no proof of real-world impact.",
-        ],
-      },
-      { type: "h2", text: "Penetration testing" },
-      {
-        type: "p",
-        text: "A penetration test is performed by skilled security testers who think like attackers. They use scanners as a starting point, then manually exploit weaknesses, chain low-severity issues into high-impact attacks, and test logic that no tool understands, such as whether one customer can see another customer's invoices by changing an ID.",
-      },
-      {
-        type: "ul",
-        items: [
-          "<strong>Strengths:</strong> proves impact, finds logic flaws and chained attacks, removes false positives.",
-          "<strong>Limitations:</strong> point-in-time, more effort, scoped to specific targets.",
+          "<strong>Vulnerability scanning</strong> is automated, broad and frequent. It finds known weaknesses across many systems and should run continuously.",
+          "<strong>Penetration testing</strong> is manual, deep and periodic. Testers exploit and chain weaknesses to prove real impact, including logic flaws no scanner can see.",
+          "<strong>Most organizations need both</strong>: scanning for coverage every week, a penetration test at least once a year and after major changes.",
         ],
       },
       {
@@ -699,30 +722,139 @@ export const blogPosts: BlogPost[] = [
         headers: ["", "Vulnerability scan", "Penetration test"],
         rows: [
           ["Performed by", "Automated tools", "Security testers, assisted by tools"],
-          ["Frequency", "Continuous / weekly", "Annually and after major changes"],
-          ["Finds logic flaws", "Rarely", "Yes"],
-          ["Proves exploitability", "No", "Yes"],
-          ["Output", "List of potential issues", "Validated findings with attack narrative"],
+          ["Question it answers", "What known issues might exist?", "What can an attacker actually do?"],
+          ["Depth", "Broad and shallow", "Narrow and deep"],
+          ["Frequency", "Continuous or weekly", "Annually and after major changes"],
+          ["Finds business-logic flaws", "Rarely", "Yes"],
+          ["Chains issues into an attack", "No", "Yes"],
+          ["Proves exploitability", "No", "Yes, with proof-of-concept steps"],
+          ["False positives", "Common", "Removed during testing"],
+          ["Effort and cost", "Low per run", "Higher, scoped per engagement"],
+          ["Output", "List of potential issues with severity scores", "Validated findings, attack narrative and fix guidance"],
+        ],
+      },
+      { type: "h2", text: "What is vulnerability scanning?" },
+      {
+        type: "p",
+        text: "Vulnerability scanning is automated. A scanner probes your systems and compares what it finds against databases of known vulnerabilities (CVEs), missing patches, outdated software and weak configurations. Scans are fast, repeatable and cheap to run, which is exactly why they should run all the time.",
+      },
+      { type: "h3", text: "Common types of vulnerability scans" },
+      {
+        type: "ul",
+        items: [
+          "<strong>External scans</strong> look at your internet-facing systems the way an outside attacker would.",
+          "<strong>Internal scans</strong> run inside your network to find weaknesses an attacker could use after getting a foothold.",
+          "<strong>Authenticated scans</strong> log in to systems and see far more than unauthenticated scans, such as missing patches and local misconfigurations.",
+          "<strong>Web application and API scans</strong> look for common issues such as injection and missing security headers.",
+          "<strong>Cloud configuration scans</strong> check AWS, Azure and GCP settings, such as public storage and over-permissive identity policies.",
+        ],
+      },
+      {
+        type: "ul",
+        items: [
+          "<strong>Strengths:</strong> broad coverage, frequent, relatively low cost, good for catching new issues quickly.",
+          "<strong>Limitations:</strong> false positives, no business-logic testing, no chaining of issues, and no proof of real-world impact.",
+        ],
+      },
+      { type: "h2", text: "What is penetration testing?" },
+      {
+        type: "p",
+        text: "A penetration test is performed by skilled security testers who think like attackers. They use scanners as a starting point, then manually exploit weaknesses, chain low-severity issues into high-impact attacks, and test business logic that no automated tool understands.",
+      },
+      {
+        type: "p",
+        text: "Here is a typical example. A scanner reports nothing serious on an invoicing API. A tester notices that changing the invoice number in a request returns another customer's invoice. That is an insecure direct object reference (IDOR): a critical data exposure that looks like a perfectly valid request to a scanner.",
+      },
+      { type: "h3", text: "Common types of penetration tests" },
+      {
+        type: "ul",
+        items: [
+          "<strong>Web application testing:</strong> authentication, session handling, access control and business logic.",
+          "<strong>API testing:</strong> broken object-level authorization, excessive data exposure and rate limiting.",
+          "<strong>External and internal network testing:</strong> what an attacker can reach from the internet, and how far they can move once inside.",
+          "<strong>Cloud penetration testing:</strong> identity, storage and network paths in AWS, Azure and GCP.",
+          "<strong>Social engineering and red teaming:</strong> phishing and multi-step attack simulations against people and processes.",
+          "<strong>AI and LLM application testing:</strong> prompt injection, data leakage and excessive agent permissions.",
+        ],
+      },
+      {
+        type: "ul",
+        items: [
+          "<strong>Strengths:</strong> proves impact, finds logic flaws and chained attacks, removes false positives, and gives developers reproducible steps.",
+          "<strong>Limitations:</strong> point-in-time, more effort, and scoped to specific targets.",
+        ],
+      },
+      { type: "h2", text: "Vulnerability assessment vs penetration testing" },
+      {
+        type: "p",
+        text: "A <strong>vulnerability assessment</strong> sits between the two. It usually starts from scan results, then adds human review to remove false positives, confirm which findings are real, and rank them by risk to your business. It tells you which weaknesses exist and which to fix first, but it stops short of exploiting them.",
+      },
+      {
+        type: "p",
+        text: "A penetration test goes further. Testers exploit the weaknesses and chain them together to show the actual path an attacker could take and what they could reach: customer data, admin access, or production systems. If you need to know <em>whether</em> something is exploitable and <em>how bad</em> it would be, you need a pentest.",
+      },
+      { type: "h2", text: "Vulnerability management vs penetration testing" },
+      {
+        type: "p",
+        text: "<strong>Vulnerability management</strong> is not a single test but an ongoing program: an up-to-date asset inventory, continuous scanning, risk-based prioritization, remediation tracked to an owner and a deadline, and reporting on whether exposure is going down.",
+      },
+      {
+        type: "p",
+        text: "Penetration testing is a time-boxed engagement that proves exploitability at a point in time. The two work best together: the pentest finds the issues scanners miss, and those findings feed back into the vulnerability management program so the same class of issue is caught automatically next time.",
+      },
+      { type: "h2", text: "Do you need both?" },
+      {
+        type: "p",
+        text: "For most organizations, yes. Scanning without testing leaves you blind to chained and business-logic attacks. Testing without scanning leaves you exposed for the eleven months between tests, while new code, new cloud resources and new vulnerabilities appear every week.",
+      },
+      {
+        type: "table",
+        headers: ["Your situation", "What you need"],
+        rows: [
+          ["A customer or auditor asked for a pentest report", "Penetration test (scoped to the product they buy)"],
+          ["Preparing for SOC 2 or ISO 27001", "Continuous scanning plus an annual penetration test"],
+          ["Taking card payments (PCI DSS)", "Quarterly scans and an annual penetration test, both required"],
+          ["Launching a new product, API or AI feature", "Penetration test before launch"],
+          ["You do not know what is exposed to the internet", "External scanning and attack surface monitoring first"],
+          ["Lots of findings, no idea what to fix first", "Vulnerability assessment and risk-based prioritization"],
+          ["After a major release or cloud migration", "Targeted penetration test of what changed"],
         ],
       },
       { type: "h2", text: "What compliance frameworks expect" },
       {
-        type: "p",
-        text: "PCI DSS explicitly requires both regular vulnerability scans and periodic penetration testing. SOC 2 and ISO 27001 do not prescribe a pentest by name, but auditors and enterprise customers routinely expect one as evidence that controls work. Always confirm specifics with your auditor.",
+        type: "ul",
+        items: [
+          "<strong>PCI DSS v4.0</strong> requires both: internal and external vulnerability scans at least every three months (external scans by an Approved Scanning Vendor), and penetration testing at least every twelve months and after significant changes.",
+          "<strong>SOC 2</strong> does not name a penetration test, but auditors look for vulnerability management and testing evidence, and enterprise customers routinely ask for a recent pentest report.",
+          "<strong>ISO 27001</strong> requires technical vulnerabilities to be managed, and organizations commonly use scanning and penetration testing as evidence.",
+          "<strong>Regional frameworks</strong> such as Saudi Arabia's NCA ECC and the UAE Information Assurance Standards include vulnerability management and testing requirements for organizations in scope.",
+        ],
       },
       { type: "h2", text: "How to combine them" },
       {
         type: "ol",
         items: [
-          "Run continuous vulnerability scanning and fix issues by risk, not just CVSS score.",
+          "Know what you have: keep an inventory of internet-facing assets, cloud accounts and applications.",
+          "Run continuous vulnerability scanning and fix issues by real risk, not just CVSS score.",
           "Commission a penetration test at least annually and after significant changes such as a new product, major release, or cloud migration.",
-          "Feed pentest findings back into your scanning and detection so the same class of issue is caught automatically next time.",
-          "Retest after remediation to prove fixes work.",
+          "Feed pentest findings back into scanning, detection and secure coding so the same class of issue is caught automatically next time.",
+          "Retest after remediation to prove fixes work, and keep the report as evidence for customers and auditors.",
+        ],
+      },
+      { type: "h2", text: "How to choose a penetration testing provider" },
+      {
+        type: "ul",
+        items: [
+          "Ask for a sample report. Findings should include proof-of-concept steps and fix guidance your developers can act on.",
+          "Check that testing is manual and goes beyond a rebranded scan.",
+          "Agree a clear scope and rules of engagement in writing before any testing starts.",
+          "Make sure a retest of fixes is included, along with an attestation letter you can share with customers.",
+          "Ask how they test APIs, cloud environments and AI features if you have them.",
         ],
       },
       {
         type: "p",
-        text: "See EclipticLink's <a href=\"/services/penetration-testing\">penetration testing</a> and <a href=\"/services/vulnerability-management\">vulnerability management</a> services.",
+        text: "See EclipticLink's <a href=\"/services/penetration-testing\">penetration testing</a> and <a href=\"/services/vulnerability-management\">vulnerability management</a> services, or <a href=\"/contact?service=penetration-testing&amp;from=pentest-vs-scanning\">book a free 30-minute assessment</a> to work out which you need.",
       },
     ],
   },
@@ -817,11 +949,11 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "common-cloud-security-misconfigurations",
-    title: "8 Cloud Security Misconfigurations Attackers Look for First",
+    title: "Cloud Security Misconfigurations: 8 Examples and Fixes",
     excerpt:
       "Most cloud breaches are not sophisticated zero-days. They are simple misconfigurations. Here are the ones attackers check first in AWS, Azure, and GCP, and how to fix them.",
     metaDescription:
-      "The most common cloud misconfigurations in AWS, Azure, and GCP, from public storage and over-privileged IAM to leaked keys, and how to fix them.",
+      "8 cloud security misconfigurations attackers check first in AWS, Azure and GCP, from public storage and over-privileged IAM to leaked keys, with fixes.",
     publishedAt: "2026-09-02",
     category: "Cloud Security",
     relatedService: "cloud-security",

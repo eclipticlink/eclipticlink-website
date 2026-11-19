@@ -108,13 +108,13 @@ export default async function ServicePage({ params }: Props) {
               <Button href={CONTACT_US_MAILTO} variant="danger" size="lg">
                 Email us now
               </Button>
-              <Button href="/contact" variant="secondary" size="lg">
+              <Button href={`/contact?service=${service.id}&from=service-${service.id}`} variant="secondary" size="lg">
                 Set up an IR retainer
               </Button>
             </>
           ) : (
             <>
-              <Button href="/contact" size="lg">
+              <Button href={`/contact?service=${service.id}&from=service-${service.id}`} size="lg">
                 Book a free assessment
                 <Icon name="arrow" className="h-4 w-4" />
               </Button>
@@ -243,6 +243,7 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       <CtaBand
+        href={`/contact?service=${service.id}&from=service-${service.id}-footer`}
         title={isIR ? "Prepare before the next incident" : `Ready to talk about ${service.title}?`}
         body="Tell us about your environment and concerns. A security specialist will come back within one business day with a practical next step."
       />

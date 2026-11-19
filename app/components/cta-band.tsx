@@ -40,9 +40,12 @@ function Radar() {
 }
 
 export function CtaBand({
+  href = "/contact",
   title = "Find out where you're exposed before an attacker does",
   body = "Start with a free 30-minute assessment call with a security specialist. We'll review your setup, flag your highest-risk gaps, and outline a prioritized plan, whether or not you work with us afterwards.",
 }: {
+  /** Contact link, e.g. /contact?service=…&from=… so the form is pre-filled */
+  href?: string;
   title?: string;
   body?: string;
 }) {
@@ -59,7 +62,7 @@ export function CtaBand({
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted">{body}</p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
-          <Button href="/contact" size="lg">
+          <Button href={href} size="lg">
             Book a free assessment
             <Icon name="arrow" className="h-4 w-4" />
           </Button>

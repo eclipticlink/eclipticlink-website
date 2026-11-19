@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { trackEvent } from "@/app/lib/analytics";
 import { COMPANY_WHATSAPP_URL, CONTACT_US_MAILTO } from "@/app/lib/config";
 import { sendContactEmail } from "@/app/lib/emailjs";
@@ -14,11 +14,28 @@ const URGENCY = [
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const [interests, setInterests] = useState<string[]>([]);
   const [urgency, setUrgency] = useState<string>("");
 
+  /*
+   * Links from articles and service pages carry ?service=<id>&from=<page>.
+   * The linked service starts pre-selected, and the source page is sent with
+   * the lead (email and GA4 event) so you can see which page converted.
+   */
+  const search = useSyncExternalStore(
+    () => () => {},
+    () => window.location.search,
+    () => ""
+  );
+  const query = new URLSearchParams(search);
+  const linked = query.get("service");
+  const linkedService = linked && services.some((s) => s.id === linked) ? linked : null;
+  const source = (query.get("from") ?? "").slice(0, 120);
+
+  const [picked, setPicked] = useState<string[] | null>(null);
+  const interests = picked ?? (linkedService ? [linkedService] : []);
+
   function toggle(id: string) {
-    setInterests((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
+    setPicked(interests.includes(id) ? interests.filter((x) => x !== id) : [...interests, id]);
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -39,6 +56,7 @@ export function ContactForm() {
       `Company: ${get("company") || "-"}`,
       `Urgency: ${urgencyLabel}`,
       `Services of interest: ${interestLabels || "-"}`,
+      `Came from: ${source || "direct"}`,
       "",
       "What they need:",
       get("details") || "-",
@@ -51,9 +69,10 @@ export function ContactForm() {
         form: "contact",
         urgency,
         services: interests.join(",") || "none",
+        source: source || "direct",
       });
       form.reset();
-      setInterests([]);
+      setPicked([]);
       setUrgency("");
     } catch {
       setStatus("error");

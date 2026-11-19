@@ -87,7 +87,7 @@ export default async function LocationPage({ params }: Props) {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Locations", href: "/locations" }, { label: loc.short }]}
       >
         <div className="flex flex-wrap gap-3">
-          <Button href="/contact" size="lg">
+          <Button href={`/contact?from=location-${loc.slug}`} size="lg">
             Book a free assessment
             <Icon name="arrow" className="h-4 w-4" />
           </Button>
@@ -306,6 +306,7 @@ export default async function LocationPage({ params }: Props) {
       </section>
 
       <CtaBand
+        href={`/contact?from=location-${loc.slug}-footer`}
         title={`Talk to a security expert about ${loc.short}`}
         body="Tell us about your environment and the requirements you face. We'll come back within one business day with a practical, prioritized next step."
       />
