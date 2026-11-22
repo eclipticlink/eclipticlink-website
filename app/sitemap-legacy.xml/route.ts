@@ -33,10 +33,22 @@ const LEGACY_URLS = [
   "https://eclipticlink.com/blogs/n8n-make-zapier-which-automation-tool",
   "https://eclipticlink.com/blogs/hubspot-zoho-crm-automation-for-sales-pipelines",
   "https://eclipticlink.com/blogs/react-native-vs-flutter-2026",
+  "https://eclipticlink.com/hire/role/infrastructure-engineer",
+  "https://eclipticlink.com/hire/role/reactjs-developer",
+  "https://eclipticlink.com/hire/role/deep-learning-engineer",
+  "https://www.eclipticlink.com/hire/role/mlops",
+  "https://www.eclipticlink.com/hire/role/python-developer",
+  "https://www.eclipticlink.com/hire/role/cloud-devops-engineer",
+  "https://eclipticlink.com/blogs/how-we-build-software-ddd-tdd-trunk-based-railway",
+  "https://eclipticlink.com/blogs/custom-ai-chatbot-vs-off-the-shelf",
+  "https://eclipticlink.com/blogs/ai-document-processing-automation",
+  "https://www.eclipticlink.com/blogs/ai-document-processing-automation",
+  "https://www.eclipticlink.com/blogs/ai-automation-use-cases-that-deliver-roi",
+  "https://www.eclipticlink.com/blogs/fundamentals-of-software-application-design",
 ];
 
 export function GET() {
-  const lastmod = "2026-11-14";
+  const lastmod = "2026-11-22";
   const body =
     '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +

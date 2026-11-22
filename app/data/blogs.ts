@@ -109,7 +109,7 @@ export const blogPosts: BlogPost[] = [
       {"type": "h3", "text": "Governance"},
       {"type": "ul", "items": ["Cybersecurity strategy approved by leadership and aligned with business goals", "A dedicated cybersecurity function independent of IT, with cybersecurity positions filled by qualified, full-time Saudi professionals", "Cybersecurity policies and procedures approved, published, and reviewed periodically", "Documented cybersecurity risk assessment and treatment plan", "Cybersecurity requirements built into projects and change management", "Security awareness and training program for all staff"]},
       {"type": "h3", "text": "Defense"},
-      {"type": "ul", "items": ["Complete, maintained inventory of information and technology assets", "Identity and access management with MFA for remote and privileged access", "Hardened systems, network segmentation, and email protection", "Data classification, protection, and approved cryptography", "Tested backups for critical systems", "Vulnerability management with defined remediation timelines", "Periodic penetration testing of external and critical systems", "Centralized security event logging and monitoring", "Documented incident response process and reporting to NCA where required"]},
+      {"type": "ul", "items": ["Complete, maintained inventory of information and technology assets", "Identity and access management with MFA for remote and privileged access", "Hardened systems, network segmentation, and email protection", "Data classification, protection, and approved cryptography", "Tested backups for critical systems", "Vulnerability management with defined remediation timelines", "Periodic <a href=\"/blogs/penetration-testing-vs-vulnerability-scanning\">penetration testing</a> of external and critical systems", "Centralized security event logging and monitoring", "Documented incident response process and reporting to NCA where required"]},
       {"type": "h3", "text": "Resilience"},
       {"type": "ul", "items": ["Cybersecurity requirements included in business continuity and disaster recovery plans", "Continuity plans tested and updated after exercises"]},
       {"type": "h3", "text": "Third parties and cloud"},
@@ -645,7 +645,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "penetration-testing-vs-vulnerability-scanning",
-    alsoRelated: ["vulnerability-management"],
+    alsoRelated: ["vulnerability-management", "compliance-grc", "application-security"],
     updatedAt: "2026-11-19",
     faqs: [
       {
@@ -920,7 +920,7 @@ export const blogPosts: BlogPost[] = [
           "Vulnerability scanning and a patching SLA",
           "Change management: code review and approval before production",
           "Backups tested by restoring them",
-          "Annual penetration test",
+          "<a href=\"/blogs/penetration-testing-vs-vulnerability-scanning\">Annual penetration test</a>, not just a vulnerability scan",
         ],
       },
       { type: "h3", text: "People" },
@@ -1011,7 +1011,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "EclipticLink's <a href=\"/services/cloud-security\">cloud security</a> assessments cover AWS, Azure, GCP, and Kubernetes, with fixes delivered as infrastructure-as-code.",
+        text: "EclipticLink's <a href=\"/services/cloud-security\">cloud security</a> assessments cover AWS, Azure, GCP, and Kubernetes, with fixes delivered as infrastructure-as-code. Not sure whether you need a scan or a full test? See <a href=\"/blogs/penetration-testing-vs-vulnerability-scanning\">penetration testing vs vulnerability scanning</a>.",
       },
     ],
   },
