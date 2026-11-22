@@ -123,7 +123,7 @@ export const services: Service[] = [
   {
     id: "penetration-testing",
     title: "Penetration Testing",
-    seoTitle: "Penetration Testing Services | Web, API, Cloud",
+    seoTitle: "Penetration Testing Services: Web, API",
     h1: "Penetration testing that finds what scanners miss",
     icon: "target",
     summary:

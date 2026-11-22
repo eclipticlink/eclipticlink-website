@@ -26,11 +26,14 @@ export type BlogPost = {
   body: BlogBlock[];
   /** Optional FAQ shown after the article and emitted as FAQPage structured data */
   faqs?: { q: string; a: string }[];
+  /** Primary sources shown after the article and emitted as schema.org citations */
+  sources?: { title: string; url: string }[];
 };
 
 export const blogPosts: BlogPost[] = [
   {
     slug: "dubai-uae-cybersecurity-compliance-guide",
+    sources: [{"title": "UAE Government: Data protection laws", "url": "https://u.ae/en/about-the-uae/digital-uae/data/data-protection-laws"}, {"title": "ADGM Office of Data Protection", "url": "https://www.adgm.com/operating-in-adgm/office-of-data-protection"}],
     title: "Dubai Cybersecurity Compliance: ISR, PDPL, DIFC & ADGM",
     excerpt: "Mainland, DIFC, ADGM, government supplier, or regulated sector? The cybersecurity and data protection rules you follow in the UAE depend on all of these. Here is how they fit together, and where to start.",
     metaDescription: "A practical guide to cybersecurity compliance in Dubai and the UAE: federal PDPL, DIFC and ADGM data protection, Dubai ISR, UAE IA Standards and sector rules.",
@@ -125,7 +128,10 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "mcp-security-risks",
-    title: "MCP Security Risks: MCP Server Risks and a Security Checklist",
+    updatedAt: "2026-11-22",
+    faqs: [{"q": "What is the Model Context Protocol (MCP)?", "a": "MCP is an open protocol that lets AI assistants connect to external tools and data sources through MCP servers. It standardizes the connection, so a model can read files, query systems or take actions without a custom integration for each tool."}, {"q": "Are MCP servers safe to use?", "a": "They can be, but only with controls around them. An MCP server runs with whatever access you give it, so a malicious or compromised server, or a prompt injection that reaches it, can misuse that access. Vet the source, pin versions, grant least privilege, and require human approval for sensitive actions."}, {"q": "What is tool poisoning in MCP?", "a": "Tool poisoning is when a tool's description or metadata contains hidden instructions that the model reads and follows. Because models treat tool descriptions as trusted context, a poisoned tool can steer the assistant into leaking data or calling other tools."}, {"q": "How do I secure an MCP integration?", "a": "Inventory every server, install only from sources you trust, pin and review versions, scope credentials per tool, isolate servers from sensitive networks, log every tool call, and require confirmation before actions that change or send data."}],
+    sources: [{"title": "Model Context Protocol: Security Best Practices", "url": "https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices"}, {"title": "OWASP Top 10 for LLM Applications", "url": "https://genai.owasp.org/llm-top-10/"}, {"title": "MITRE ATLAS", "url": "https://atlas.mitre.org/"}],
+    title: "MCP Security Risks: Server Risks and a Checklist",
     excerpt:
       "The Model Context Protocol makes it easy to give AI assistants new tools. It also makes it easy to give an attacker a path into your data. Here are the risks, and a checklist to use before you connect.",
     metaDescription:
@@ -283,6 +289,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "how-to-secure-ai-agents-with-tool-access",
+    sources: [{"title": "OWASP Top 10 for LLM Applications", "url": "https://genai.owasp.org/llm-top-10/"}, {"title": "MITRE ATLAS", "url": "https://atlas.mitre.org/"}, {"title": "NIST AI Risk Management Framework", "url": "https://www.nist.gov/itl/ai-risk-management-framework"}],
     faqs: [
       {
         q: "What is excessive agency in AI agents?",
@@ -429,6 +436,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "prompt-injection-attacks-how-to-secure-llm-applications",
+    sources: [{"title": "OWASP Top 10 for LLM Applications", "url": "https://genai.owasp.org/llm-top-10/"}, {"title": "MITRE ATLAS", "url": "https://atlas.mitre.org/"}, {"title": "NIST AI Risk Management Framework", "url": "https://www.nist.gov/itl/ai-risk-management-framework"}],
     faqs: [
       {
         q: "What is a prompt injection attack?",
@@ -550,13 +558,15 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "ai-powered-mdr-what-it-is-and-how-it-works",
+    faqs: [{"q": "What is AI-powered MDR?", "a": "AI-powered managed detection and response is a managed security service that uses AI to triage, correlate and enrich alerts, while human analysts validate threats and direct the response. AI handles volume and speed; people remain accountable for decisions."}, {"q": "What is the difference between MDR and EDR?", "a": "EDR is a tool that detects and records activity on endpoints. MDR is a service: a team monitors tools such as EDR around the clock, investigates alerts and helps you respond. Many MDR services use EDR as a core data source."}, {"q": "Can an AI SOC replace human analysts?", "a": "Not safely. AI is strong at repetitive triage and summarizing evidence, but it can be wrong or manipulated. High-impact decisions such as isolating production systems or declaring an incident should stay with experienced analysts."}, {"q": "Does a small company need MDR?", "a": "If you cannot monitor and respond to alerts at all hours with your own staff, MDR is often more practical than building an in-house SOC. It is most useful once you hold sensitive customer data or have customers asking about your security monitoring."}],
+    sources: [{"title": "MITRE ATT&CK", "url": "https://attack.mitre.org/"}, {"title": "NIST Cybersecurity Framework", "url": "https://www.nist.gov/cyberframework"}, {"title": "NIST SP 800-61 Rev. 3: Incident Response Recommendations", "url": "https://csrc.nist.gov/pubs/sp/800/61/r3/final"}],
     title: "AI-Powered MDR and AI SOC: What It Is and How It Works",
     excerpt:
       "Every security vendor now says “AI.” Here is what AI genuinely improves in managed detection and response, where humans are still essential, and what to ask a provider.",
     metaDescription:
       "What AI-powered MDR and an AI SOC really mean, how AI triage cuts alert fatigue, where human analysts still matter, and how to choose an MDR provider.",
     publishedAt: "2026-10-14",
-    updatedAt: "2026-11-19",
+    updatedAt: "2026-11-22",
     category: "Detection & Response",
     relatedService: "managed-detection-response",
     tags: ["MDR", "managed detection and response", "AI threat detection", "SOC", "alert fatigue", "XDR"],
@@ -645,6 +655,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "penetration-testing-vs-vulnerability-scanning",
+    sources: [{"title": "NIST SP 800-115: Technical Guide to Information Security Testing and Assessment", "url": "https://csrc.nist.gov/pubs/sp/800/115/final"}, {"title": "NIST SP 800-40 Rev. 4: Enterprise Patch Management Planning", "url": "https://csrc.nist.gov/pubs/sp/800/40/r4/final"}, {"title": "OWASP Web Security Testing Guide", "url": "https://owasp.org/www-project-web-security-testing-guide/"}, {"title": "OWASP API Security Top 10 (2023)", "url": "https://owasp.org/API-Security/editions/2023/en/0x11-t10/"}, {"title": "PCI Security Standards Council: PCI DSS document library", "url": "https://www.pcisecuritystandards.org/document_library/"}],
     alsoRelated: ["vulnerability-management", "compliance-grc", "application-security"],
     updatedAt: "2026-11-19",
     faqs: [
@@ -681,7 +692,7 @@ export const blogPosts: BlogPost[] = [
         a: "No. Automated tools are fast and broad, but they cannot reason about business logic, chain low-severity issues into a serious attack, or confirm exploitability the way an experienced tester can. The best programs use AI and automation to speed up testing and human testers to judge what matters.",
       },
     ],
-    title: "Penetration Testing vs Vulnerability Scanning: Key Differences",
+    title: "Penetration Testing vs Vulnerability Scanning",
     excerpt:
       "They sound similar and are often confused, even in RFPs. Here is the real difference, how vulnerability assessments and vulnerability management fit in, and whether you need both.",
     metaDescription:
@@ -860,6 +871,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "soc-2-compliance-checklist-for-startups",
+    updatedAt: "2026-11-22",
+    faqs: [{"q": "What is the difference between SOC 2 Type I and Type II?", "a": "A Type I report assesses whether controls are suitably designed at a specific point in time. A Type II report also tests whether they operated effectively over a period, commonly three to twelve months. Enterprise buyers usually prefer Type II."}, {"q": "Is SOC 2 legally required?", "a": "No. SOC 2 is a voluntary attestation, but customers, particularly enterprise buyers, often require it in contracts or security reviews before they will sign."}, {"q": "Who can issue a SOC 2 report?", "a": "Only an independent CPA firm can perform the examination and issue a SOC 2 report. Consultants and compliance platforms can prepare you, but they cannot issue the report themselves."}, {"q": "Which Trust Services Criteria are required?", "a": "Security, also called the Common Criteria, is required in every SOC 2 report. Availability, Processing Integrity, Confidentiality and Privacy are optional and should be included based on what you promise customers."}, {"q": "Does SOC 2 require a penetration test?", "a": "The criteria do not explicitly mandate one, but auditors look for evidence of security testing and many enterprise customers ask for a recent penetration test report."}],
+    sources: [{"title": "AICPA: 2017 Trust Services Criteria (revised points of focus, 2022)", "url": "https://www.aicpa-cima.com/resources/download/2017-trust-services-criteria-with-revised-points-of-focus-2022"}, {"title": "NIST Cybersecurity Framework", "url": "https://www.nist.gov/cyberframework"}],
     title: "SOC 2 Compliance Checklist for Startups and SaaS Companies",
     excerpt:
       "Enterprise customers keep asking for your SOC 2 report. Here is a practical, plain-English checklist to get from zero to audit-ready without derailing your roadmap.",
@@ -949,6 +963,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "common-cloud-security-misconfigurations",
+    updatedAt: "2026-11-22",
+    faqs: [{"q": "What is a cloud security misconfiguration?", "a": "A cloud misconfiguration is a setting that leaves cloud resources more exposed than intended, such as a public storage bucket, an over-privileged role, disabled logging, or a management port open to the internet."}, {"q": "Who is responsible for cloud misconfigurations?", "a": "Under the shared responsibility model, the provider secures the underlying cloud and the customer secures how services are configured, including identities, data access and network rules. Most misconfigurations fall on the customer's side."}, {"q": "How do you find cloud misconfigurations?", "a": "Use cloud security posture management tools or native services to check accounts continuously against benchmarks such as the CIS Benchmarks, and scan infrastructure-as-code before deployment so issues are caught early."}, {"q": "How do you prevent cloud misconfigurations?", "a": "Define infrastructure as code, enforce guardrails with organization-level policies, apply least privilege, require MFA, keep logging on centrally, and review changes before they reach production."}],
+    sources: [{"title": "NSA and CISA: Top Ten Cybersecurity Misconfigurations (AA23-278A)", "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-278a"}, {"title": "CIS Benchmarks", "url": "https://www.cisecurity.org/cis-benchmarks"}, {"title": "AWS Well-Architected Framework: Security Pillar", "url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html"}],
     title: "Cloud Security Misconfigurations: 8 Examples and Fixes",
     excerpt:
       "Most cloud breaches are not sophisticated zero-days. They are simple misconfigurations. Here are the ones attackers check first in AWS, Azure, and GCP, and how to fix them.",
@@ -1017,7 +1034,10 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "incident-response-plan-first-24-hours",
-    title: "Incident Response: What to Do in the First 24 Hours of a Breach",
+    updatedAt: "2026-11-22",
+    faqs: [{"q": "What should you do first after a data breach?", "a": "Confirm the incident, start a timestamped log, bring in your incident lead, and contain affected systems. Isolate them from the network rather than powering them off, because shutting down can destroy evidence held in memory."}, {"q": "Should you turn off a hacked computer?", "a": "Usually no. Disconnect it from the network instead. Powering it off can erase volatile evidence that investigators need to understand how the attacker got in and what they accessed."}, {"q": "How quickly do you have to report a data breach?", "a": "It depends on the law and sector. Under the GDPR, controllers generally must notify the supervisory authority within 72 hours of becoming aware of a reportable breach. Other rules set different deadlines, so involve legal counsel early."}, {"q": "Should you pay a ransomware demand?", "a": "CISA and the FBI advise against paying. Payment does not guarantee recovery and can fund further attacks. Involve counsel, law enforcement and your insurer before making any decision."}],
+    sources: [{"title": "NIST SP 800-61 Rev. 3: Incident Response Recommendations", "url": "https://csrc.nist.gov/pubs/sp/800/61/r3/final"}, {"title": "CISA #StopRansomware Guide", "url": "https://www.cisa.gov/stopransomware/ransomware-guide"}],
+    title: "Incident Response: First 24 Hours of a Breach",
     excerpt:
       "The first hours after discovering a breach shape everything that follows. A clear, practical sequence for containing the damage without destroying the evidence you'll need.",
     metaDescription:

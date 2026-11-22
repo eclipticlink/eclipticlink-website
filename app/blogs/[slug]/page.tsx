@@ -61,7 +61,16 @@ export default async function BlogPostPage({ params }: Props) {
   const url = `${SITE_URL}/blogs/${post.slug}`;
   const service = post.relatedService ? getServiceBySlug(post.relatedService) : undefined;
   const region = post.relatedLocation ? getLocationBySlug(post.relatedLocation) : undefined;
-  const more = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
+  const relatedScore = (p: (typeof blogPosts)[number]) =>
+    (p.relatedService === post.relatedService ? 4 : 0) +
+    (p.category === post.category ? 2 : 0) +
+    p.tags.filter((t) => post.tags.includes(t)).length;
+  const more = blogPosts
+    .filter((p) => p.slug !== post.slug)
+    .map((p, i) => ({ p, i, score: relatedScore(p) }))
+    .sort((a, b) => b.score - a.score || a.i - b.i)
+    .slice(0, 3)
+    .map(({ p }) => p);
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -83,6 +92,9 @@ export default async function BlogPostPage({ params }: Props) {
     keywords: post.tags.join(", "),
     articleSection: post.category,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    ...(post.sources?.length
+      ? { citation: post.sources.map((c) => ({ "@type": "CreativeWork", name: c.title, url: c.url })) }
+      : {}),
   };
 
   const h2s = post.body.flatMap((b, i) => (b.type === "h2" && i > 0 ? [i] : []));
@@ -178,6 +190,23 @@ export default async function BlogPostPage({ params }: Props) {
                   </details>
                 ))}
               </div>
+            </section>
+          ) : null}
+
+          {post.sources?.length ? (
+            <section className="mx-auto mt-14 max-w-3xl" aria-labelledby="article-sources-heading">
+              <h2 id="article-sources-heading" className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+                Sources and further reading
+              </h2>
+              <ul className="mt-5 space-y-2.5" role="list">
+                {post.sources.map((c) => (
+                  <li key={c.url} className="leading-7 text-muted">
+                    <a href={c.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-accent">
+                      {c.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </section>
           ) : null}
 

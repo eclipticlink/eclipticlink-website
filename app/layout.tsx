@@ -9,7 +9,7 @@ import { AnalyticsEvents } from "./components/analytics-events";
 import { DeferredHubSpot } from "./components/deferred-hubspot";
 import { HubSpotChatRefresh } from "./components/hubspot-chat-refresh";
 import { JsonLd } from "./components/json-ld";
-import { CONTACT_EMAIL, SITE_URL } from "./lib/config";
+import { COMPANY_LEGAL_NAME, COMPANY_PHONE_DISPLAY, CONTACT_EMAIL, SITE_URL } from "./lib/config";
 import { DEFAULT_KEYWORDS } from "./lib/seo";
 import { services } from "./services/data";
 import "./globals.css";
@@ -107,6 +107,16 @@ const organizationJsonLd = {
   "@id": `${SITE_URL}/#organization`,
   name: "EclipticLink",
   alternateName: ["Eclipticlink", "Ecliptic Link"],
+  legalName: COMPANY_LEGAL_NAME,
+  foundingDate: "2024",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "44240 Fremont Blvd",
+    addressLocality: "Fremont",
+    addressRegion: "CA",
+    postalCode: "94538",
+    addressCountry: "US",
+  },
   url: SITE_URL,
   logo: `${SITE_URL}/ecliptic-link-logo.png`,
   image: `${SITE_URL}/og-image.png`,
@@ -161,6 +171,7 @@ const organizationJsonLd = {
       "@type": "ContactPoint",
       contactType: "sales",
       email: CONTACT_EMAIL,
+      telephone: COMPANY_PHONE_DISPLAY.replace(/\s/g, ""),
       availableLanguage: ["English"],
       areaServed: ["US", "GB", "PK", "SA", "AE"],
     },

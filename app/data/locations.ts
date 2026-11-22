@@ -186,7 +186,7 @@ export const locations: Location[] = [
     name: "the United Arab Emirates",
     short: "UAE",
     countryCode: "AE",
-    seoTitle: "Cybersecurity & Compliance Services in Dubai, UAE",
+    seoTitle: "Cybersecurity & Compliance in Dubai, UAE",
     metaDescription:
       "Cybersecurity compliance and data protection services in Dubai and the UAE: UAE PDPL, Dubai ISR, penetration testing, managed SOC and AI security.",
     h1: "Cybersecurity services in the UAE",
