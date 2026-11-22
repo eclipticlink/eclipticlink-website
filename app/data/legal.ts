@@ -7,7 +7,7 @@ import { COMPANY_ADDRESS, COMPANY_LEGAL_NAME, CONTACT_US_EMAIL } from "../lib/co
  * before relying on it, and update LEGAL_UPDATED with every change.
  */
 
-export const LEGAL_UPDATED = "November 9, 2026";
+export const LEGAL_UPDATED = "November 22, 2026";
 
 const MAIL = `<a href="mailto:${CONTACT_US_EMAIL}">${CONTACT_US_EMAIL}</a>`;
 const OPERATOR = `EclipticLink is operated by ${COMPANY_LEGAL_NAME} (“EclipticLink”, “we”, “us”), ${COMPANY_ADDRESS}, United States.`;
@@ -31,7 +31,7 @@ export const privacySections: LegalSection[] = [
           ["Contact and assessment requests", "Name, work email, company, role, the service you are interested in, how urgent it is, and anything you write in the message."],
           ["Chat conversations", "Messages and contact details you share in the website chat, which is provided by HubSpot."],
           ["Email and calls", "The content of correspondence with us and the details you include."],
-          ["Usage and device data", "IP address, approximate location derived from it, browser and device type, pages viewed, referring site and interaction events, collected through cookies and similar technologies (Google Analytics, HubSpot) and through our hosting and security provider (Cloudflare)."],
+          ["Usage and device data", "IP address, approximate location derived from it, browser and device type, pages viewed, referring site and interaction events, collected through cookies and similar technologies (Google Analytics, HubSpot) and through our hosting provider (Vercel)."],
           ["Client engagement data", "Information we need to deliver a service, such as security telemetry, system details and contact lists for escalation, handled under the client’s agreement (see section 7)."],
         ],
       },
@@ -84,7 +84,7 @@ export const privacySections: LegalSection[] = [
       "<strong>We do not sell personal information.</strong> We share it only with:",
       {
         list: [
-          "<strong>Service providers</strong> that process it on our behalf under contract: Cloudflare (hosting, content delivery and security), Google (analytics), HubSpot (CRM and chat) and EmailJS (contact form delivery), plus our email and productivity providers.",
+          "<strong>Service providers</strong> that process it on our behalf under contract: Vercel (hosting and content delivery), Cloudflare (domain name services), Google (analytics), HubSpot (CRM and chat) and EmailJS (contact form delivery), plus our email and productivity providers.",
           "<strong>Professional advisers</strong> such as lawyers, auditors and insurers, under confidentiality.",
           "<strong>Authorities</strong> where we are legally required to, or to protect the rights, safety and security of our clients, our staff or others.",
           "<strong>A successor</strong> in a merger, acquisition or sale of assets, subject to this policy.",
