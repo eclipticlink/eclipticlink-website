@@ -31,7 +31,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Environment variables (production)
 
-Contact and hire forms use [EmailJS](https://www.emailjs.com/). Build-time vars are in **`.env.production`** (committed) so every deploy—including Wrangler—has them without re‑entering in the Cloudflare dashboard. Next.js loads `.env.production` automatically when running `next build`.
+Contact and hire forms use [EmailJS](https://www.emailjs.com/). Build-time vars are in **`.env.production`** (committed) so every deploy has them without re-entering them in the Vercel dashboard. Next.js loads `.env.production` automatically when running `next build`.
 
 If you deploy via the dashboard instead, you can still set the same `NEXT_PUBLIC_*` vars in **Settings → Environment variables** there.
 
@@ -45,13 +45,9 @@ The site loads the HubSpot tracking script and AI chatbot. Optional: set `NEXT_P
 
 **Chat not showing?** In HubSpot: (1) **Service → Chatflows** — turn the chatflow **ON** and **Publish**. (2) **Target** tab — ensure your site’s domain is included (e.g. `eclipticlink.com`); if you only target the production domain, the widget will not appear on `localhost`. (3) Try an **incognito** window and disable **ad/pop-up blockers**. (4) For live chat (not bot), check **Inbox → Chat channel → Availability** so the launcher isn’t hidden outside hours.
 
-## Troubleshooting: site stuck or 503 on navigation
+## Troubleshooting
 
-**Root cause (fixed):** The app uses `@opennextjs/cloudflare` for deployment. Previously, `next dev` always ran with `initOpenNextCloudflareForDev()`, which patches the dev server to use the Cloudflare Workers runtime. That layer could return **503** on RSC (React Server Components) requests after some time or on certain routes, making the app appear stuck.
-
-**Fix:** In `next.config.ts`, the OpenNext dev init runs **only when `USE_OPENNEXT_DEV=true`**. For normal local development, run `npm run dev` without that env var. You get the standard Next.js dev server and no 503s from the OpenNext layer. Production is unchanged (`opennextjs-cloudflare build` / deploy). If you need Cloudflare context (e.g. `getCloudflareContext`) during dev, set `USE_OPENNEXT_DEV=true` before `next dev`.
-
-- **Recovery if it happens again:** Click the **logo** (EclipticLink) or **Home** in the mobile menu (full page load), or refresh the page.
+- **If navigation ever hangs:** Click the **logo** (EclipticLink) or **Home** in the mobile menu (full page load), or refresh the page.
 - **Console warnings you can ignore:** `[locatorjs]` / `hook.bundle.js` (browser extension); `[quick-fetch]...` (HubSpot).
 
 ## Deploy on Vercel
