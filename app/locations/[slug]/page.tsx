@@ -10,6 +10,7 @@ import { SectionHeading } from "../../components/section-heading";
 import { Button } from "../../components/ui/button";
 import { blogPosts } from "../../data/blogs";
 import { getLocationBySlug, locations } from "../../data/locations";
+import { regionPages } from "../../data/region-pages";
 import { BASE_OG, SITE_URL } from "../../lib/config";
 import { breadcrumbJsonLd, faqJsonLd } from "../../lib/seo";
 import { getServiceBySlug } from "../../services/data";
@@ -45,6 +46,7 @@ export default async function LocationPage({ params }: Props) {
   const url = `${SITE_URL}/locations/${loc.slug}`;
   const others = locations.filter((l) => l.slug !== loc.slug);
   const guides = blogPosts.filter((b) => b.relatedLocation === loc.slug);
+  const specialist = regionPages.filter((p) => p.region === loc.slug);
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -228,6 +230,19 @@ export default async function LocationPage({ params }: Props) {
               );
             })}
           </ul>
+          {specialist.length ? (
+            <ul className="mt-5 grid gap-5 md:grid-cols-2" role="list">
+              {specialist.map((p) => (
+                <li key={p.slug}>
+                  <Link href={`/locations/${p.region}/${p.slug}`} className="card card-hover group flex h-full flex-col p-6">
+                    <span className="font-mono text-xs uppercase tracking-wider text-accent">{loc.short} guide</span>
+                    <span className="mt-2 block text-lg font-semibold text-ink group-hover:text-accent">{p.h1}</span>
+                    <span className="mt-1 block text-sm leading-relaxed text-muted">{p.metaDescription}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : null}
           <div className="mt-6">
             <Link href="/services" className="link-arrow">
               See all cybersecurity services

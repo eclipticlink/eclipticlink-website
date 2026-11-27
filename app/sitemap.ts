@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "./data/blogs";
 import { locations } from "./data/locations";
+import { regionPages } from "./data/region-pages";
 import { SITE_URL } from "./lib/config";
 import { services } from "./services/data";
 
@@ -33,6 +34,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
+  const regionServicePages: MetadataRoute.Sitemap = regionPages.map((p) => ({
+    url: `${SITE_URL}/locations/${p.region}/${p.slug}`,
+    lastModified: p.updatedAt,
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+  }));
+
   const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${SITE_URL}/blogs/${post.slug}`,
     lastModified: post.updatedAt ?? post.publishedAt,
@@ -40,5 +48,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...servicePages, ...locationPages, ...blogPages];
+  return [...staticPages, ...servicePages, ...locationPages, ...regionServicePages, ...blogPages];
 }

@@ -529,6 +529,8 @@ export const services: Service[] = [
       "digital forensics",
       "DFIR services",
       "incident response retainer",
+      "digital forensics retainer",
+      "ransomware forensics",
       "business email compromise investigation",
       "breach response",
       "tabletop exercise",
@@ -581,6 +583,14 @@ export const services: Service[] = [
       {
         q: "We think we are under attack right now. What should we do?",
         a: "Call us immediately. Don't power off affected machines, because memory evidence is lost. Disconnect them from the network instead, and avoid alerting the attacker through compromised email accounts.",
+      },
+      {
+        q: "What is a digital forensics and incident response (DFIR) retainer?",
+        a: "A DFIR retainer is an agreement made before anything goes wrong: pre-negotiated terms and priority response, so when an incident happens you call and we start straight away instead of negotiating a contract mid-crisis. Unused retainer hours can go toward readiness work such as an incident response plan or a tabletop exercise.",
+      },
+      {
+        q: "Can you help with a ransomware attack?",
+        a: "Yes. We contain the attack, preserve forensic evidence, investigate how the attackers got in and what they accessed, support recovery from clean backups, and prepare documentation for insurers and regulators. Contact us immediately, and disconnect affected machines from the network rather than powering them off.",
       },
       {
         q: "Do we need cyber insurance approval before engaging?",
