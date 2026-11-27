@@ -957,7 +957,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "EclipticLink's <a href=\"/services/compliance-grc\">compliance and GRC team</a> runs gap assessments, implements missing controls, and automates evidence so your audit is predictable.",
+        text: "EclipticLink's <a href=\"/services/compliance-grc\">compliance and GRC team</a> runs gap assessments, implements missing controls, and automates evidence so your audit is predictable. See how our <a href=\"/locations/united-states/soc-2-readiness-for-startups\">SOC 2 readiness service for startups</a> works.",
       },
     ],
   },
