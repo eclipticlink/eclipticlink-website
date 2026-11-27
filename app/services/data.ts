@@ -42,7 +42,7 @@ export const services: Service[] = [
   {
     id: "managed-detection-response",
     title: "AI-Powered MDR & SOC",
-    seoTitle: "AI-Powered MDR & Managed SOC Services",
+    seoTitle: "Agentic, AI-Powered MDR & Managed SOC",
     h1: "AI-powered managed detection and response",
     icon: "radar",
     summary:
@@ -50,10 +50,12 @@ export const services: Service[] = [
     details:
       "We connect to the telemetry you already have (endpoint, identity, cloud, email, and network logs) and run it through AI-assisted correlation and triage. Low-value alerts are suppressed with an audit trail, real threats are enriched with context, and a security analyst validates every escalation before anyone is paged.",
     metaDescription:
-      "AI-powered MDR and managed SOC: continuous monitoring, AI-assisted alert triage, threat hunting, and analyst-validated response across endpoint and cloud.",
+      "AI-powered, agentic MDR and managed SOC: continuous monitoring, AI-assisted triage, threat hunting and analyst-approved response across endpoint and cloud.",
     keywords: [
       "managed detection and response",
       "AI-powered MDR",
+      "agentic MDR",
+      "AI SOC",
       "managed SOC services",
       "SOC as a service",
       "AI threat detection",
@@ -113,6 +115,10 @@ export const services: Service[] = [
       {
         q: "Does AI make the final call on incidents?",
         a: "No. AI handles correlation, enrichment, summarization, and prioritization. A security analyst validates every escalation and any response action that has not been pre-approved.",
+      },
+      {
+        q: "What is agentic MDR, and is your MDR agentic?",
+        a: "Agentic MDR uses AI agents that investigate alerts and take actions, not just summarize them. Ours is agentic where that is safe: AI agents gather evidence, correlate and enrich alerts, and run the containment steps you pre-approve in a playbook, such as isolating a compromised laptop. Actions that affect users, production systems or customers wait for an analyst, and every action is logged.",
       },
       {
         q: "What does onboarding look like?",
