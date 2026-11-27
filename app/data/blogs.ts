@@ -1102,6 +1102,925 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "third-party-risk-management-guide",
+    title: "Third-Party Risk Management: A Practical Guide",
+    excerpt: "Vendors can see your data, reach your systems and ship code you run. Here is how to build a third-party risk program that finds the risky ones without burying procurement in questionnaires.",
+    metaDescription: "A practical guide to third-party risk management (TPRM): building a vendor inventory, tiering suppliers, assessing security, contract clauses and ongoing monitoring.",
+    publishedAt: "2026-11-27",
+    category: "Compliance",
+    relatedService: "compliance-grc",
+    relatedLocation: "uae",
+    tags: [
+      "third-party risk management",
+      "TPRM",
+      "vendor risk management",
+      "vendor security assessment",
+      "supply chain security",
+      "SOC 2 vendor management",
+    ],
+    readingTime: 8,
+    faqs: [
+      {
+        q: "What is third-party risk management?",
+        a: "Third-party risk management (TPRM) is the process of identifying, assessing and controlling the risks that vendors, suppliers and partners bring to your organization, especially security, privacy and resilience risks. It covers the whole relationship, from selection and contracting to monitoring and offboarding.",
+      },
+      {
+        q: "What are the main steps in a TPRM program?",
+        a: "Build an inventory of third parties, tier them by data access and business impact, assess them in proportion to their tier, put security and data-protection terms in contracts, monitor them on a schedule, and remove their access cleanly when the relationship ends.",
+      },
+      {
+        q: "How often should vendors be reassessed?",
+        a: "Critical vendors usually once a year, and again after a significant change such as a breach, an acquisition or a new service. Lower tiers can be reviewed every two or three years, or only at renewal.",
+      },
+      {
+        q: "Is a SOC 2 report enough to approve a vendor?",
+        a: "It is strong evidence, but read it properly: check the period covered, the scope, any exceptions, carved-out subservice organizations and the user controls you are expected to run. A report that doesn't cover the service you are buying proves little.",
+      },
+      {
+        q: "Who should own third-party risk?",
+        a: "Usually security or risk owns the process, procurement owns the trigger, and each business owner is accountable for their vendors. What matters most is that no new vendor can be onboarded without passing through the process.",
+      },
+    ],
+    sources: [
+      {
+        title: "NIST Cybersecurity Framework 2.0",
+        url: "https://www.nist.gov/cyberframework",
+      },
+      {
+        title: "NIST SP 800-161 Rev. 1: Cybersecurity Supply Chain Risk Management Practices",
+        url: "https://csrc.nist.gov/pubs/sp/800/161/r1/final",
+      },
+      {
+        title: "NCSC: Supply chain security guidance",
+        url: "https://www.ncsc.gov.uk/collection/supply-chain-security",
+      },
+    ],
+    body: [
+      {
+        type: "p",
+        text: "Every company now runs on other companies. Cloud hosting, payroll, CRM, customer support, payments, analytics and IT support are almost always bought rather than built, and each of those vendors holds some of your data or some access to your systems. When one of them is breached, it is often your customers who are affected and your name in the headlines.",
+      },
+      {
+        type: "p",
+        text: "Third-party risk management (TPRM) is how you keep that risk under control. Done badly, it becomes a pile of unread spreadsheets that slows down every purchase. Done well, it focuses on the few vendors that could really hurt you and leaves everyone else alone. This guide covers how to build the second kind.",
+      },
+      {
+        type: "blockquote",
+        text: "The goal of TPRM is not to assess every vendor. It is to know which vendors matter, and to be confident about those.",
+      },
+      {
+        type: "h2",
+        text: "Step 1: Build a vendor inventory you can trust",
+      },
+      {
+        type: "p",
+        text: "You cannot manage vendors you don't know about. Most companies' first inventory is surprisingly incomplete, because teams sign up for tools on a credit card, developers connect services through API keys, and marketing adds plugins to the website.",
+      },
+      {
+        type: "p",
+        text: "Build the list from several sources rather than one:",
+      },
+      {
+        type: "ul",
+        items: [
+          "<strong>Finance and accounts payable:</strong> every supplier you pay, including small recurring card charges.",
+          "<strong>Single sign-on and identity logs:</strong> every app your staff log into with company accounts.",
+          "<strong>Cloud and code:</strong> third-party integrations, API keys and software dependencies.",
+          "<strong>Contracts and procurement:</strong> anything with a signed agreement or data processing addendum.",
+          "<strong>Business owners:</strong> a short survey asking each team which outside services they rely on.",
+        ],
+      },
+      {
+        type: "p",
+        text: "For each vendor, record what it does, who owns the relationship, what data it handles, what access it has and how critical it is to operations. That record is the foundation for everything else.",
+      },
+      {
+        type: "h2",
+        text: "Step 2: Tier vendors by risk",
+      },
+      {
+        type: "p",
+        text: "Tiering decides how much effort each vendor deserves. Three questions do most of the work: what data can they see, what systems can they reach, and what happens to the business if they disappear tomorrow?",
+      },
+      {
+        type: "table",
+        headers: [
+          "Tier",
+          "What puts a vendor here",
+          "Assessment",
+        ],
+        rows: [
+          [
+            "Critical",
+            "Sensitive data at scale, admin or network access, or core to operations",
+            "Deep review with independent evidence, contract security terms, annual reassessment",
+          ],
+          [
+            "High",
+            "Personal or confidential data, but limited access to systems",
+            "Focused questionnaire and evidence review",
+          ],
+          [
+            "Medium",
+            "Internal data of limited sensitivity",
+            "Short questionnaire or review of the vendor's trust page",
+          ],
+          [
+            "Low",
+            "No data and no access",
+            "Inventory entry only",
+          ],
+        ],
+      },
+      {
+        type: "p",
+        text: "Most companies find only a handful of critical vendors. Concentrating on them is what makes the program sustainable.",
+      },
+      {
+        type: "h2",
+        text: "Step 3: Assess in proportion",
+      },
+      {
+        type: "p",
+        text: "For critical and high-tier vendors, evidence beats self-description. Ask for independent assurance first, and use questionnaires to fill gaps rather than as the main source.",
+      },
+      {
+        type: "h3",
+        text: "Evidence worth asking for",
+      },
+      {
+        type: "ul",
+        items: [
+          "A current SOC 2 Type II report or ISO/IEC 27001 certificate covering the service you are buying.",
+          "A recent penetration test summary and how findings were fixed.",
+          "Their incident response and breach notification process.",
+          "Where your data is stored and processed, and the list of subprocessors.",
+          "Business continuity arrangements and recovery times for the service.",
+        ],
+      },
+      {
+        type: "h3",
+        text: "Reading the evidence properly",
+      },
+      {
+        type: "p",
+        text: "A certificate or report is only useful if it covers what you are buying. Check the scope statement, the dates, any exceptions the auditor found and any parts of the service run by another company and excluded from the report. SOC 2 reports also list complementary user entity controls: things the vendor expects you to do, such as reviewing who has access. If you don't do them, the assurance doesn't fully apply.",
+      },
+      {
+        type: "h2",
+        text: "Step 4: Put security into the contract",
+      },
+      {
+        type: "p",
+        text: "Assessment tells you the risk today; the contract is what protects you later. For critical and high-tier vendors, make sure the agreement covers:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Specific security requirements or a commitment to maintain an agreed certification.",
+          "Breach notification within a defined time, with the information you will need.",
+          "Approval or notice before new subprocessors are added.",
+          "Data location, especially where regulators or customers require it.",
+          "Your right to assess, audit or receive updated reports.",
+          "Return and secure deletion of data when the contract ends.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Data protection laws such as GDPR, the UAE PDPL and the DIFC and ADGM regimes also expect written terms with processors that handle personal data, so these clauses do double duty.",
+      },
+      {
+        type: "h2",
+        text: "Step 5: Monitor, don't just onboard",
+      },
+      {
+        type: "p",
+        text: "Vendors change. They get acquired, move data, add subprocessors and occasionally get breached. A program that only assesses at onboarding is out of date within a year.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Reassess critical vendors annually and high-tier vendors every one to two years.",
+          "Watch for vendor breach announcements and have a playbook for responding to one.",
+          "Review vendor access to your systems at least quarterly.",
+          "Re-tier vendors when their scope changes, for example when a tool starts holding customer data.",
+          "At offboarding, revoke access, rotate shared credentials and confirm data deletion.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "How TPRM maps to common frameworks",
+      },
+      {
+        type: "table",
+        headers: [
+          "Framework",
+          "Where vendor risk appears",
+        ],
+        rows: [
+          [
+            "SOC 2",
+            "CC9.2 covers assessing and managing risk from vendors and business partners",
+          ],
+          [
+            "ISO/IEC 27001:2022",
+            "Annex A controls 5.19 to 5.23 cover supplier relationships, agreements, the ICT supply chain, monitoring and cloud services",
+          ],
+          [
+            "NIST CSF 2.0",
+            "The GV.SC category covers cybersecurity supply chain risk management",
+          ],
+          [
+            "UAE IA Regulation",
+            "A dedicated third-party security control family",
+          ],
+        ],
+      },
+      {
+        type: "p",
+        text: "Because the frameworks overlap so much, one well-run program can produce evidence for all of them.",
+      },
+      {
+        type: "h2",
+        text: "Common mistakes",
+      },
+      {
+        type: "ul",
+        items: [
+          "Sending the same long questionnaire to every vendor, so nobody reads the answers.",
+          "Accepting a SOC 2 report without reading the scope and exceptions.",
+          "Assessing vendors once and never again.",
+          "Forgetting fourth parties: the subprocessors your vendors rely on.",
+          "Leaving vendor accounts active long after the contract ends.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Where to start this month",
+      },
+      {
+        type: "ol",
+        items: [
+          "Pull your vendor list from finance and single sign-on.",
+          "Identify your top ten vendors by data and access.",
+          "Collect current security evidence from each.",
+          "Check their contracts for breach notification and data deletion terms.",
+          "Set a reassessment date for each one.",
+        ],
+      },
+      {
+        type: "p",
+        text: "That small start covers most of your real exposure, and it gives you something concrete to show auditors and customers while the wider program takes shape.",
+      },
+    ],
+  },
+  {
+    slug: "phishing-simulation-that-changes-behaviour",
+    title: "Phishing Simulations That Actually Change Behaviour",
+    excerpt: "Click rates are easy to measure and easy to game. Here is how to run phishing simulations that build a reporting habit, earn staff trust and give leadership numbers that mean something.",
+    metaDescription: "How to run phishing simulations and security awareness training that change behaviour: realistic scenarios, just-in-time training, report-rate metrics and staff trust.",
+    publishedAt: "2026-11-27",
+    category: "Security Awareness",
+    relatedService: "penetration-testing",
+    relatedLocation: "united-kingdom",
+    tags: [
+      "phishing simulation",
+      "phishing training",
+      "security awareness training",
+      "anti-phishing",
+      "social engineering",
+      "phishing test",
+    ],
+    readingTime: 7,
+    faqs: [
+      {
+        q: "What is a phishing simulation?",
+        a: "A phishing simulation is a safe, realistic phishing message sent to staff by their own organization to measure how they respond and to teach them to spot and report real attacks. Nobody's account or data is put at risk.",
+      },
+      {
+        q: "What is a good phishing click rate?",
+        a: "There is no universal target, because click rates depend heavily on how hard the scenario is. A rising report rate and a falling time-to-first-report are better signs of progress than any single click rate.",
+      },
+      {
+        q: "Should people who click be disciplined?",
+        a: "Generally no. Punishment discourages reporting, including reporting your own mistakes, which is exactly what you need during a real attack. Short, private coaching works better.",
+      },
+      {
+        q: "How long should security awareness training be?",
+        a: "Short and frequent beats long and annual. A few minutes of relevant training at the moment someone is caught out is more memorable than an hour-long course once a year.",
+      },
+      {
+        q: "Is phishing training enough on its own?",
+        a: "No. Training works alongside email filtering, MFA, limited admin rights and fast incident response. The aim is that one person's click doesn't become a breach.",
+      },
+    ],
+    sources: [
+      {
+        title: "NCSC: Phishing attacks, defending your organisation",
+        url: "https://www.ncsc.gov.uk/guidance/phishing",
+      },
+      {
+        title: "UK Government: Cyber Security Breaches Survey",
+        url: "https://www.gov.uk/government/collections/cyber-security-breaches-survey",
+      },
+      {
+        title: "CISA: Recognize and report phishing",
+        url: "https://www.cisa.gov/secure-our-world/recognize-and-report-phishing",
+      },
+    ],
+    body: [
+      {
+        type: "p",
+        text: "Phishing remains one of the most common ways attacks begin. The UK government's Cyber Security Breaches Survey has found it to be the most common type of attack businesses identify year after year, and AI has made convincing, well-written lures cheap to produce in any language.",
+      },
+      {
+        type: "p",
+        text: "Most organizations respond with phishing simulations. Many of those programs measure the wrong thing, annoy staff and stall after a few months. This article covers what separates the programs that change behaviour from the ones that only produce a click-rate chart.",
+      },
+      {
+        type: "blockquote",
+        text: "The most valuable person in a phishing attack is not the one who didn't click. It is the one who reported it first.",
+      },
+      {
+        type: "h2",
+        text: "Measure reporting, not just clicking",
+      },
+      {
+        type: "p",
+        text: "Click rate is the default metric because it is easy to count. But it mostly measures how hard the scenario was: send an obvious lure and the rate falls; send a targeted one and it rises. A program can look like it's improving simply by getting easier.",
+      },
+      {
+        type: "p",
+        text: "Reporting tells you something more useful. Every report is a person actively defending the organization, and during a real campaign the first report is what lets your security team pull the message from every other inbox.",
+      },
+      {
+        type: "table",
+        headers: [
+          "Metric",
+          "Why it matters",
+          "Watch out for",
+        ],
+        rows: [
+          [
+            "Report rate",
+            "Shows an active security culture",
+            "Make reporting one click, or the rate will stay low",
+          ],
+          [
+            "Time to first report",
+            "How quickly you could respond to a real attack",
+            "Needs a reporting tool that timestamps reports",
+          ],
+          [
+            "Credential submissions",
+            "How many people would have given away access",
+            "More meaningful than clicks alone",
+          ],
+          [
+            "Click rate",
+            "How convincing a scenario was",
+            "Varies with difficulty, so compare like with like",
+          ],
+          [
+            "Repeat clickers",
+            "Who needs more support",
+            "Handle privately and supportively",
+          ],
+        ],
+      },
+      {
+        type: "h2",
+        text: "Make scenarios realistic",
+      },
+      {
+        type: "p",
+        text: "Simulations work best when they look like what your people really receive. Generic \"you've won a prize\" emails teach very little. Base scenarios on your own environment instead:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Shared-document and voicemail notifications that lead to a fake login page.",
+          "Invoice and payment-change requests aimed at finance.",
+          "Delivery notifications and tax or government themes relevant to your country.",
+          "Messages that appear to come from a known supplier or a senior leader.",
+          "Unexpected MFA prompts and requests to read out a code.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Increase difficulty gradually. Start with lures that have clear warning signs, then move to more targeted ones as reporting improves.",
+      },
+      {
+        type: "h2",
+        text: "Train at the moment it matters",
+      },
+      {
+        type: "p",
+        text: "When someone clicks a simulated phish, they are paying attention in a way they never are during an annual course. Use that moment. A short page explaining the warning signs they missed, specific to the message they just clicked, is far more memorable than generic training.",
+      },
+      {
+        type: "p",
+        text: "Keep the longer sessions for the roles attackers target most, such as finance, HR, executive assistants and IT help desks, and make them practical: real examples, call-back rules for payment changes and what to do when something feels wrong.",
+      },
+      {
+        type: "h2",
+        text: "Protect trust",
+      },
+      {
+        type: "p",
+        text: "A phishing program depends on goodwill. If staff feel tricked or humiliated, they stop reporting, and they may even hide real mistakes. A few rules keep trust intact:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Explain the program openly before it starts, including why it exists.",
+          "Avoid themes that cause real distress, such as fake bonuses, pay cuts, redundancies or health scares.",
+          "Keep individual results private, and never name people publicly.",
+          "Thank people who report, including when they report a simulation.",
+          "Make it safe to admit a real click quickly; speed matters more than blame.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Go beyond email",
+      },
+      {
+        type: "p",
+        text: "Attackers don't limit themselves to email, so training shouldn't either. Include text messages, voice calls aimed at the help desk, QR codes on printed material and MFA fatigue attacks, where an attacker sends push prompts until someone approves one. The core lesson is the same in every channel: pause, verify through a channel you trust and report.",
+      },
+      {
+        type: "h2",
+        text: "Back it up with technical controls",
+      },
+      {
+        type: "p",
+        text: "The NCSC's phishing guidance recommends layered defences and warns against relying on users alone. Training works best alongside:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Email filtering and domain authentication (SPF, DKIM and DMARC).",
+          "Phishing-resistant MFA for email, remote access and admin accounts.",
+          "Limited admin rights, so one compromised account can't reach everything.",
+          "A fast way to remove a reported phish from every mailbox.",
+          "Monitoring that spots unusual sign-ins after a successful phish.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "A simple 90-day plan",
+      },
+      {
+        type: "ol",
+        items: [
+          "<strong>Weeks 1 to 2:</strong> announce the program, set up one-click reporting and run a baseline simulation.",
+          "<strong>Weeks 3 to 6:</strong> deliver short training to people who clicked and a briefing for finance and leadership.",
+          "<strong>Weeks 7 to 10:</strong> run a second, slightly harder campaign tailored to real lures.",
+          "<strong>Weeks 11 to 13:</strong> report trends in reporting, time-to-report and credential submissions, and plan the next quarter.",
+        ],
+      },
+      {
+        type: "p",
+        text: "After a few cycles, the goal is a workforce that treats reporting as normal and fast, which is the habit that matters most when the real thing arrives.",
+      },
+    ],
+  },
+  {
+    slug: "agentic-mdr-ai-agents-in-the-soc",
+    title: "Agentic MDR: What AI Agents Should Do in a SOC",
+    excerpt: "Agentic MDR promises AI agents that investigate and respond on their own. Here is what that means in practice, where autonomy is safe, where a person must decide, and what to ask a provider.",
+    metaDescription: "What is agentic MDR? How AI agents investigate and respond in a SOC, which actions are safe to automate, where humans must decide, and questions to ask a provider.",
+    publishedAt: "2026-11-27",
+    category: "Detection & Response",
+    relatedService: "managed-detection-response",
+    tags: [
+      "agentic MDR",
+      "AI SOC",
+      "agentic SOC",
+      "AI-powered MDR",
+      "autonomous SOC",
+      "managed detection and response",
+    ],
+    readingTime: 8,
+    faqs: [
+      {
+        q: "What is agentic MDR?",
+        a: "Agentic MDR is managed detection and response in which AI agents carry out investigation and response steps themselves: gathering evidence, querying logs, correlating events and, within agreed limits, taking containment actions, with the provider's analysts accountable for the outcome.",
+      },
+      {
+        q: "How is agentic MDR different from AI-powered MDR?",
+        a: "AI-powered MDR often means AI that assists analysts, for example by summarizing alerts. Agentic MDR goes further: the AI completes steps on its own. Because the labels are used loosely, ask providers exactly which steps their AI completes without a person.",
+      },
+      {
+        q: "Is it safe to let AI contain threats automatically?",
+        a: "For a limited set of well-understood, reversible actions, such as isolating a single laptop with clear ransomware behaviour, yes. Actions that could disrupt the business or affect customers should still need human approval.",
+      },
+      {
+        q: "Can attackers manipulate AI agents in a SOC?",
+        a: "They can try. AI agents read attacker-controlled content such as emails, file names and command lines, which makes prompt injection a real risk. Good designs treat that content as untrusted, limit agent permissions and require approval for high-impact actions.",
+      },
+      {
+        q: "Will agentic MDR replace security analysts?",
+        a: "It changes their work rather than removing it. Agents take on repetitive investigation, and analysts focus on judgement, threat hunting, tuning detections and communicating with the business.",
+      },
+    ],
+    sources: [
+      {
+        title: "OWASP Top 10 for LLM Applications",
+        url: "https://genai.owasp.org/llm-top-10/",
+      },
+      {
+        title: "NIST AI Risk Management Framework",
+        url: "https://www.nist.gov/itl/ai-risk-management-framework",
+      },
+      {
+        title: "MITRE ATT&CK",
+        url: "https://attack.mitre.org/",
+      },
+    ],
+    body: [
+      {
+        type: "p",
+        text: "Security operations centres have always had more alerts than people. For years the answer was more automation in the form of fixed playbooks: if this alert fires, run these steps. Agentic MDR is the next step. Instead of following a fixed script, AI agents decide which questions to ask, gather the evidence, reach a conclusion and, within limits, act on it.",
+      },
+      {
+        type: "p",
+        text: "That is a real change, and it can cut the time from alert to containment from hours to minutes. It also raises a fair question for any buyer: what exactly is the AI allowed to do on its own?",
+      },
+      {
+        type: "blockquote",
+        text: "The useful question is not whether a provider uses AI agents. It is which actions those agents can take without a person, and who is accountable when they get it wrong.",
+      },
+      {
+        type: "h2",
+        text: "What \"agentic\" actually means",
+      },
+      {
+        type: "p",
+        text: "The term is used loosely, so it helps to separate three levels:",
+      },
+      {
+        type: "table",
+        headers: [
+          "Level",
+          "What the AI does",
+          "Who decides",
+        ],
+        rows: [
+          [
+            "AI-assisted",
+            "Summarizes alerts, suggests next steps, drafts reports",
+            "An analyst at every step",
+          ],
+          [
+            "Agentic investigation",
+            "Runs the investigation itself: queries logs, pulls context, builds a timeline, reaches a verdict",
+            "An analyst reviews verdicts and approves responses",
+          ],
+          [
+            "Agentic response",
+            "Also takes containment actions within pre-approved limits",
+            "People set the limits and review actions afterwards",
+          ],
+        ],
+      },
+      {
+        type: "p",
+        text: "Many services marketed as agentic MDR sit somewhere between the second and third levels. None of them is automatically better; what matters is that the level is clear and appropriate for each type of action.",
+      },
+      {
+        type: "h2",
+        text: "What agents do well",
+      },
+      {
+        type: "p",
+        text: "Most of an analyst's time on an alert goes into gathering context: who is this user, what else happened on this device, has this file been seen before, what did the account do next. That work is repetitive, follows a recognizable pattern and benefits from speed, which makes it a strong fit for agents.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Enriching every alert with identity, device, asset and threat-intelligence context.",
+          "Grouping related alerts into one incident instead of fifty tickets.",
+          "Querying endpoint, identity, email and cloud logs to build a timeline.",
+          "Mapping activity to MITRE ATT&CK techniques to show where an attacker is in the attack chain.",
+          "Closing clear false positives with the evidence attached, so a person can check the reasoning.",
+          "Drafting incident summaries for both technical teams and leadership.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Where autonomy is safe",
+      },
+      {
+        type: "p",
+        text: "Some response actions are low-risk, well-understood and easy to reverse. For these, waiting for a person mostly gives an attacker more time:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Isolating a single workstation that shows clear ransomware behaviour.",
+          "Revoking sessions and forcing a password reset after a confirmed account takeover.",
+          "Blocking a known-malicious hash, domain or IP address.",
+          "Removing a confirmed phishing email from every mailbox that received it.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Even here, every action should be logged, explained and reversible, and the list of automatic actions should be agreed with the customer in advance.",
+      },
+      {
+        type: "h2",
+        text: "Where a person must decide",
+      },
+      {
+        type: "p",
+        text: "Other actions carry business consequences that an AI can't fully weigh. These should wait for an analyst, and often for the customer as well:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Disabling executive, service or break-glass accounts.",
+          "Isolating production servers or anything customer-facing.",
+          "Actions with legal, regulatory or contractual consequences, such as decisions about breach notification.",
+          "Anything in an environment or situation the agents haven't seen before.",
+          "Any case where the agent's confidence is low or the evidence conflicts.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "The new risk: attacking the AI itself",
+      },
+      {
+        type: "p",
+        text: "A SOC agent reads attacker-controlled content all day: email bodies, file names, command lines, web pages. That makes it a target for prompt injection, where text is crafted to change the AI's behaviour, for example an email that tells the agent the message is safe and should be closed. The OWASP Top 10 for LLM applications lists prompt injection as the leading risk for exactly this reason.",
+      },
+      {
+        type: "p",
+        text: "Sensible designs assume some injection attempts will succeed and limit the damage:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Treat all content from alerts and evidence as data, never as instructions.",
+          "Give agents the narrowest permissions they need, with no direct access to high-impact actions.",
+          "Require human approval for anything outside the pre-approved list.",
+          "Log every agent decision with its evidence, so reviewers can spot manipulation.",
+          "Test the agents against injection attempts as part of normal quality checks.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Questions to ask an agentic MDR provider",
+      },
+      {
+        type: "ol",
+        items: [
+          "Which investigation and response steps does your AI complete without a person?",
+          "Can we see and change the list of automatic actions?",
+          "How is each agent decision logged, explained and reversed?",
+          "How do you defend the agents against prompt injection and manipulation?",
+          "What happens when the AI is unsure or the evidence conflicts?",
+          "Which of our own detections and data sources will the agents use?",
+          "What measured results can you share, such as time to respond and false-positive rates?",
+          "Who is accountable when an automated action causes disruption?",
+        ],
+      },
+      {
+        type: "p",
+        text: "Clear, specific answers are a good sign. Vague references to \"autonomous AI\" without detail on limits and oversight are not.",
+      },
+      {
+        type: "h2",
+        text: "The bottom line",
+      },
+      {
+        type: "p",
+        text: "Agentic MDR is most valuable when it is fast where speed is safe and careful where judgement matters. AI agents do the evidence-gathering at machine speed, pre-approved containment happens in seconds, and people stay accountable for decisions that affect the business. That balance, rather than the amount of AI, is what to look for.",
+      },
+    ],
+  },
+  {
+    slug: "how-to-choose-a-penetration-testing-company-uae",
+    title: "How to Choose a Penetration Testing Company in the UAE",
+    excerpt: "Searching for a penetration testing company in Dubai or the UAE turns up dozens of names and many self-published top-ten lists. Here are the questions that separate a real test from a rebadged scan.",
+    metaDescription: "How to choose a penetration testing company in Dubai and the UAE: accreditations, DESC requirements, scoping, methodology, report quality, retesting and red flags.",
+    publishedAt: "2026-11-27",
+    category: "Penetration Testing",
+    relatedService: "penetration-testing",
+    relatedLocation: "uae",
+    tags: [
+      "penetration testing companies UAE",
+      "penetration testing Dubai",
+      "pentest company Dubai",
+      "VAPT UAE",
+      "choose a pentest provider",
+      "DESC Cyber Force",
+    ],
+    readingTime: 7,
+    faqs: [
+      {
+        q: "What certifications should a penetration testing company in the UAE have?",
+        a: "Look for organizational accreditations such as CREST, individual tester certifications such as OSCP, OSWE or CREST registered tester, and, if you are a Dubai government entity or critical entity, DESC Cyber Force certification. Ask for proof rather than relying on logos.",
+      },
+      {
+        q: "What is the difference between VAPT and a penetration test?",
+        a: "VAPT combines a vulnerability assessment, which is largely automated scanning, with penetration testing, which is manual exploitation by a tester. Some VAPT offers are mostly scanning, so ask how much of the time is manual testing.",
+      },
+      {
+        q: "How long does a penetration test take?",
+        a: "It depends on scope. A single web application often takes one to two weeks of testing, while a larger engagement across applications, APIs, cloud and internal networks can take several weeks. Reporting and retesting add time after that.",
+      },
+      {
+        q: "Should we always use the same penetration testing company?",
+        a: "Not necessarily. Using the same provider builds context, while rotating providers every few years brings fresh eyes. Many companies keep one main provider and occasionally bring in another for a second opinion.",
+      },
+      {
+        q: "Do Dubai government suppliers need a particular pentest provider?",
+        a: "Requirements depend on the entity and the contract. Dubai government and critical entities are covered by DESC rules, and cybersecurity providers working for them need DESC Cyber Force certification. Suppliers should check the requirements in their own contracts.",
+      },
+    ],
+    sources: [
+      {
+        title: "CREST: Accredited companies and testers",
+        url: "https://www.crest-approved.org/",
+      },
+      {
+        title: "Dubai Electronic Security Center (DESC)",
+        url: "https://www.desc.gov.ae/",
+      },
+      {
+        title: "OWASP Web Security Testing Guide",
+        url: "https://owasp.org/www-project-web-security-testing-guide/",
+      },
+    ],
+    body: [
+      {
+        type: "p",
+        text: "Search for a penetration testing company in Dubai or the UAE and you will find dozens of providers, plus a long list of \"top 10\" and \"top 30\" articles, many of them published by one of the companies on the list. That makes it hard to compare providers fairly.",
+      },
+      {
+        type: "p",
+        text: "This guide sets out the questions that matter, so you can judge any provider, including us, on the things that affect the quality of the test you receive.",
+      },
+      {
+        type: "blockquote",
+        text: "A good penetration test tells you how an attacker would really get in and what to fix first. A poor one is a scanner report with a new cover page.",
+      },
+      {
+        type: "h2",
+        text: "1. Check accreditations properly",
+      },
+      {
+        type: "p",
+        text: "Accreditations don't guarantee a good test, but they show a provider has passed independent checks on its methods and people.",
+      },
+      {
+        type: "table",
+        headers: [
+          "Type",
+          "Examples",
+          "How to check",
+        ],
+        rows: [
+          [
+            "Company accreditation",
+            "CREST",
+            "Look the company up on the accrediting body's own directory",
+          ],
+          [
+            "Tester certifications",
+            "OSCP, OSWE, CREST registered or certified tester",
+            "Ask which testers will work on your engagement, and for their certifications",
+          ],
+          [
+            "UAE government requirements",
+            "DESC Cyber Force certification for providers working with Dubai government and critical entities",
+            "Check your contract and the provider's current certification",
+          ],
+          [
+            "Management systems",
+            "ISO/IEC 27001 for the provider's own security",
+            "Ask for the certificate and its scope",
+          ],
+        ],
+      },
+      {
+        type: "p",
+        text: "Logos on a website are easy to add. Verify anything that matters to your decision.",
+      },
+      {
+        type: "h2",
+        text: "2. Ask how much of the test is manual",
+      },
+      {
+        type: "p",
+        text: "Automated scanners find known weaknesses quickly, and every good test uses them. What separates a penetration test from a scan is a skilled tester chaining issues together, testing business logic and proving real impact. Ask:",
+      },
+      {
+        type: "ul",
+        items: [
+          "How many tester-days are included, and how many of those are manual testing?",
+          "Will you test business logic, such as one customer accessing another customer's data?",
+          "Do you test authenticated as well as unauthenticated access?",
+          "Which methodology do you follow, such as the OWASP testing guides for web applications and APIs?",
+        ],
+      },
+      {
+        type: "p",
+        text: "If a quote is very cheap and very fast for a complex application, it is probably mostly scanning.",
+      },
+      {
+        type: "h2",
+        text: "3. Get the scope right",
+      },
+      {
+        type: "p",
+        text: "A well-scoped test focuses on what an attacker would actually target. A good provider will ask about your applications, APIs, cloud accounts, internal networks and recent changes before quoting, rather than sending a fixed price for an undefined test.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Which internet-facing systems hold the most sensitive data?",
+          "What changed recently, such as a new release, a cloud migration or an acquisition?",
+          "Which compliance requirements drive the test, such as ISO 27001, PCI DSS, SOC 2 or a client contract?",
+          "Are there AI features, LLM integrations or MCP servers that need specialist testing?",
+        ],
+      },
+      {
+        type: "h2",
+        text: "4. Ask to see a sample report",
+      },
+      {
+        type: "p",
+        text: "The report is what you are really paying for. Ask for a redacted sample and check that it includes:",
+      },
+      {
+        type: "ul",
+        items: [
+          "An executive summary that leadership can understand without technical knowledge.",
+          "Findings ranked by real risk to your business, not only by a generic score.",
+          "Clear steps to reproduce each finding, with evidence.",
+          "Specific remediation advice developers can act on.",
+          "Attack chains showing how smaller issues combine into serious ones.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "5. Confirm retesting and support",
+      },
+      {
+        type: "p",
+        text: "Finding problems is only half the job. Ask whether a retest of fixed findings is included, how long you have to use it and whether testers are available to answer developers' questions while they fix issues. An updated report showing closed findings is often what auditors and enterprise customers want to see.",
+      },
+      {
+        type: "h2",
+        text: "6. Check practical fit for the UAE",
+      },
+      {
+        type: "ul",
+        items: [
+          "Can the provider work within UAE working hours and test windows that suit your operations?",
+          "How will they handle your data during the test, and where will reports and evidence be stored?",
+          "Do they understand the frameworks you answer to, such as the UAE IA Regulation, Dubai ISR, PDPL, DIFC or ADGM rules?",
+          "Can they test in Arabic-language interfaces if your applications have them?",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Red flags",
+      },
+      {
+        type: "ul",
+        items: [
+          "A fixed price before anyone has asked about your systems.",
+          "No named testers or no evidence of their certifications.",
+          "Reports that are mostly scanner output with little explanation.",
+          "No retesting, or retesting charged as a full new test.",
+          "Pressure to sign a long-term contract before a first engagement.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Questions to send every shortlisted provider",
+      },
+      {
+        type: "ol",
+        items: [
+          "Which accreditations does your company hold, and which certifications do the assigned testers hold?",
+          "How many tester-days does this quote include, and how much is manual?",
+          "Which methodology will you follow for our applications and APIs?",
+          "Can we see a redacted sample report?",
+          "Is a retest included, and within what period?",
+          "How do you handle and store our data and findings?",
+        ],
+      },
+      {
+        type: "p",
+        text: "Comparing two or three providers on the same questions will tell you far more than any ranking article, and it ensures the test you buy is the one your business actually needs.",
+      },
+    ],
+  },
 ];
 
 export function getBlogBySlug(slug: string): BlogPost | undefined {

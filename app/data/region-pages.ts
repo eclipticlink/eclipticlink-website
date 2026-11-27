@@ -863,7 +863,7 @@ export const regionPages: RegionPage[] = [
         a: "Usually not. Scans list known issues; a penetration test proves what an attacker could actually do and finds logic flaws scanners miss. Auditors and many UAE clients ask for a penetration test report, not a scan.",
       },
     ],
-    guides: ["penetration-testing-vs-vulnerability-scanning", "dubai-uae-cybersecurity-compliance-guide"],
+    guides: ["how-to-choose-a-penetration-testing-company-uae", "penetration-testing-vs-vulnerability-scanning", "dubai-uae-cybersecurity-compliance-guide"],
     keywords: [
       "penetration testing Dubai",
       "penetration testing UAE",
@@ -1350,6 +1350,470 @@ export const regionPages: RegionPage[] = [
       "Cyber Essentials UK",
       "Cyber Essentials help",
       "Cyber Essentials requirements",
+    ],
+    updatedAt: "2026-11-27",
+  },
+  {
+    region: "uae",
+    slug: "third-party-risk-management",
+    serviceId: "compliance-grc",
+    seoTitle: "TPRM Services in Dubai & the UAE",
+    metaDescription: "Third-party risk management in Dubai and the UAE: vendor reviews and contract terms that support PDPL, DIFC, ADGM and regulator outsourcing expectations.",
+    h1: "Third-party risk management (TPRM) in the UAE",
+    eyebrow: "TPRM · UAE",
+    intro: "UAE companies rely on regional and international vendors for cloud, payments, IT support and software. We help you prove those suppliers are safe to trust, in the way UAE regulators and your own clients expect.",
+    answer: "Third-party risk management (TPRM) in the UAE means knowing which vendors handle your data or reach your systems, checking they are secure, and putting the right terms in their contracts. It matters here because several UAE rules expect it in practice: data-protection laws on processors and transfers, financial regulators' outsourcing expectations, and security requirements that government clients pass down to suppliers.",
+    sections: [
+      {
+        title: "Where UAE rules touch vendor risk",
+        items: [
+          "<strong>UAE PDPL:</strong> personal data handled by processors on your behalf still needs appropriate security, and transfers abroad need safeguards.",
+          "<strong>DIFC and ADGM:</strong> both data-protection laws expect written contracts and adequate safeguards when processors handle personal data.",
+          "<strong>Financial services:</strong> banks and finance companies face outsourcing and third-party expectations from the CBUAE, DFSA or FSRA, depending on their licence.",
+        "<strong>UAE IA Regulation:</strong> the federal information assurance standard, formerly known as NESA, includes a dedicated third-party security control family.",
+        "<strong>Government supply chains:</strong> Dubai government clients pass ISR-aligned requirements to suppliers through contracts, and you may need to pass them on to your own subcontractors.",
+          "<strong>Healthcare:</strong> providers handling health data need vendors that meet sector rules, such as ADHICS in Abu Dhabi.",
+        ],
+      },
+      {
+        title: "Vendors UAE companies most often underestimate",
+        items: [
+          "Managed IT and support providers with remote admin access.",
+          "Overseas SaaS tools that quietly store customer data outside the UAE.",
+          "Marketing and CRM platforms holding large contact lists.",
+          "Payment, logistics and booking partners connected by API.",
+          "Freelancers and small agencies given shared accounts.",
+        ],
+      },
+      {
+        title: "Questions to ask every vendor about your data",
+        items: [
+          "Where is our data stored and processed, including backups?",
+          "Which subprocessors can access it, and where are they based?",
+          "Can you keep our data in a UAE region if we need you to?",
+          "How and how quickly will you tell us about a breach?",
+          "How is our data returned or deleted when the contract ends?",
+        ],
+        after: [
+          "Clear written answers to these five questions resolve most cross-border and breach-notification concerns before they become audit findings.",
+        ],
+      },
+      {
+        title: "What we deliver",
+        items: [
+          "A vendor register, tiered by data, access and business impact.",
+          "In-depth assessments of your critical vendors.",
+          "A clause set for security, data protection, breach notification and data location.",
+          "An evidence pack for regulators, auditors and client questionnaires.",
+          "A reassessment calendar, so the program keeps running.",
+        ],
+      },
+    ],
+    steps: [
+      {
+        title: "Map",
+        body: "Your vendors and where your data flows.",
+      },
+      {
+        title: "Tier",
+        body: "Rank vendors by data, access and impact.",
+      },
+      {
+        title: "Assess and contract",
+        body: "Review critical vendors and fix contract gaps.",
+      },
+      {
+        title: "Monitor",
+        body: "Reassess on schedule and track vendor incidents.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is TPRM required by law in the UAE?",
+        a: "There is no single TPRM law, but several rules expect it in practice: data-protection laws on processors and transfers, financial regulators' outsourcing expectations, and contract requirements from government and enterprise clients. A documented program is the simplest way to show you meet them.",
+      },
+      {
+        q: "Do our vendors need to store data in the UAE?",
+        a: "Not always. It depends on your sector, the data involved and your contracts. Some regulated sectors and government clients require local storage; others allow transfers with safeguards. We help you work out which applies to each vendor.",
+      },
+      {
+        q: "Can you assess vendors based outside the UAE?",
+        a: "Yes. Most critical vendors are international SaaS and cloud providers. We review their security reports, contracts and data-location commitments wherever they are based.",
+      },
+      {
+        q: "We are a supplier ourselves. Can you help with client vendor questionnaires?",
+        a: "Yes. We help you answer accurately and build the evidence behind your answers, which often shortens procurement.",
+      },
+      {
+        q: "Which UAE companies need TPRM most?",
+        a: "Banks, insurers and other regulated financial firms, healthcare providers, suppliers to government and critical entities, and any company that shares large amounts of customer data with SaaS or outsourcing partners. These face the most direct regulatory and contractual expectations.",
+      },
+      {
+        q: "How do we get started?",
+        a: "Book a free 30-minute assessment. We'll look at where you stand and outline a practical plan, whether or not you work with us afterwards.",
+      },
+    ],
+    guides: [
+      "third-party-risk-management-guide",
+      "dubai-uae-cybersecurity-compliance-guide",
+    ],
+    keywords: [
+      "TPRM services UAE",
+      "third-party risk management Dubai",
+      "vendor risk management UAE",
+      "supplier security assessment Dubai",
+      "outsourcing risk UAE",
+    ],
+    updatedAt: "2026-11-27",
+  },
+  {
+    region: "united-kingdom",
+    slug: "phishing-simulation-training",
+    serviceId: "penetration-testing",
+    seoTitle: "Phishing Training for UK Businesses",
+    metaDescription: "Anti-phishing training and phishing simulation for UK businesses in London and nationwide: realistic campaigns, quick training and evidence for insurers.",
+    h1: "Anti-phishing training and phishing simulation for UK businesses",
+    eyebrow: "Phishing training · UK",
+    intro: "UK businesses see phishing more than any other attack. We help teams in London and across the UK recognize it, report it fast and stop it turning into a breach.",
+    answer: "Anti-phishing training for UK businesses combines realistic phishing simulations with short, practical training, so staff learn to spot suspicious emails, texts and calls and report them quickly. The UK government's Cyber Security Breaches Survey has consistently found phishing to be the most common type of attack businesses identify, which is why insurers and enterprise customers increasingly ask what you do about it.",
+    sections: [
+      {
+        title: "The phishing UK businesses actually see",
+        items: [
+          "Fake invoices and payment-change requests aimed at finance teams.",
+          "Shared-document and voicemail lures that lead to fake Microsoft 365 login pages.",
+          "Parcel-delivery and HMRC-themed text messages.",
+          "Impersonation of senior leaders asking for something urgent.",
+          "Genuine supplier mailboxes, compromised and used to send convincing follow-ups.",
+        ],
+      },
+      {
+        title: "How it fits with Cyber Essentials and UK GDPR",
+        paragraphs: [
+          "Cyber Essentials covers five technical controls but not staff awareness, so phishing training fills a gap the scheme leaves open.",
+          "Under UK GDPR, a phishing-led breach of personal data may need to be reported to the ICO without undue delay and, where feasible, within 72 hours. Teaching staff to report suspicious messages straight away matters for compliance as well as security.",
+        ],
+      },
+      {
+        title: "An approach aligned with NCSC guidance",
+        paragraphs: [
+          "The NCSC's phishing guidance recommends layered defences: make it harder for attackers to reach your users, help users spot and report phishing, limit the damage when a phish gets through, and respond quickly. It also warns against relying on training alone or blaming staff. Our programs follow the same thinking, with simulations and training alongside email security, MFA and fast incident response.",
+        ],
+      },
+      {
+        title: "What UK teams get",
+        items: [
+          "A baseline simulation, so you know where you start.",
+          "Monthly or quarterly campaigns themed on real UK lures.",
+          "Short training for people who click, and briefings for finance and leadership.",
+          "A simple way for staff to report suspicious messages.",
+          "Quarterly reports for leadership, insurers and auditors.",
+        ],
+      },
+      {
+        title: "Rules every UK finance team should follow",
+        items: [
+          "Confirm any change of bank details by calling the supplier on a number you already hold, never one in the email.",
+          "Require a second person to approve payments above an agreed amount.",
+          "Treat urgent payment requests from senior leaders by email, text or WhatsApp as suspicious until verified.",
+          "If a payment may have gone to a fraudster, call your bank straight away; acting quickly gives the best chance of recovering funds.",
+        ],
+      },
+      {
+        title: "Reporting phishing in the UK",
+        paragraphs: [
+          "Alongside your own internal reporting button, staff can forward suspicious emails to the NCSC's Suspicious Email Reporting Service at report@phishing.gov.uk, and suspicious text messages to 7726, the free reporting number used by UK mobile networks. Reports help take down malicious sites and warn others.",
+        ],
+      },
+    ],
+    steps: [
+      {
+        title: "Baseline",
+        body: "Measure clicks and reports in a first campaign.",
+      },
+      {
+        title: "Train",
+        body: "Quick, relevant training and team briefings.",
+      },
+      {
+        title: "Campaign",
+        body: "Regular simulations based on current UK lures.",
+      },
+      {
+        title: "Report",
+        body: "Trends for leadership, insurers and auditors.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Do you work with businesses in London?",
+        a: "Yes. We work with businesses in London and across the UK, delivering simulations and training remotely in UK working hours, with live online sessions for teams that want them.",
+      },
+      {
+        q: "Does Cyber Essentials require phishing training?",
+        a: "No. Cyber Essentials covers five technical controls. Phishing training is a separate measure, but many UK customers and insurers expect both.",
+      },
+      {
+        q: "Can you include text and phone phishing?",
+        a: "Yes. Alongside email we can include text-message and phone scenarios aimed at the teams most likely to be targeted, such as finance and the help desk.",
+      },
+      {
+        q: "What do insurers ask about phishing?",
+        a: "Many cyber insurance applications ask whether you run security awareness training and phishing simulations, and whether MFA is enforced. A documented program with results makes those answers easy.",
+      },
+      {
+        q: "How soon will we see results?",
+        a: "Most organizations see reporting rise within the first two or three campaigns, once staff know how to report and that they will be thanked for it. Lasting change in click rates on harder scenarios usually takes several months of regular practice.",
+      },
+      {
+        q: "How do we get started?",
+        a: "Book a free 30-minute assessment. We'll look at where you stand and outline a practical plan, whether or not you work with us afterwards.",
+      },
+    ],
+    guides: [
+      "phishing-simulation-that-changes-behaviour",
+    ],
+    keywords: [
+      "anti-phishing training UK",
+      "phishing training London",
+      "phishing simulation UK",
+      "security awareness training UK",
+      "anti phishing services London",
+    ],
+    updatedAt: "2026-11-27",
+  },
+  {
+    region: "united-kingdom",
+    slug: "managed-soc-mdr",
+    serviceId: "managed-detection-response",
+    seoTitle: "Managed SOC & MDR Services in the UK",
+    metaDescription: "Managed SOC and MDR for UK businesses: AI-assisted 24/7 monitoring and analyst-approved response, with incident records that support ICO reporting and insurers.",
+    h1: "Managed SOC and MDR services in the UK",
+    eyebrow: "Managed SOC · UK",
+    intro: "24/7 detection and response for UK SMEs and scale-ups, without hiring a round-the-clock security team.",
+    answer: "A managed SOC, often delivered as MDR (managed detection and response), gives UK businesses round-the-clock monitoring, investigation and response from an outside team, using the security tools they already have. It catches ransomware and account takeover early, and it keeps the incident records you need if a breach has to be reported to the ICO.",
+    sections: [
+      {
+        title: "What UK businesses most need watching",
+        items: [
+          "<strong>Ransomware</strong> that enters through remote access, VPNs and unpatched internet-facing systems.",
+          "<strong>Microsoft 365 account takeover,</strong> often the first step in invoice and payment fraud.",
+          "<strong>Supplier compromise,</strong> where a trusted partner's account is used against you.",
+          "<strong>Cloud changes</strong> such as storage made public or new admin accounts created at odd hours.",
+          "<strong>Unusual data access</strong> by staff accounts, a common precursor to data theft.",
+        ],
+      },
+      {
+        title: "Breach reporting in the UK",
+        paragraphs: [
+          "Under UK GDPR, a reportable personal data breach must be notified to the ICO without undue delay and, where feasible, within 72 hours of becoming aware of it. That clock is hard to meet without fast detection and good records. Our analysts timestamp every investigation step, so you know what happened and when, and can decide quickly whether to report.",
+          "Operators of essential services and certain digital service providers under the NIS Regulations, and financial firms under FCA operational resilience rules, have further expectations for incident handling.",
+        ],
+      },
+      {
+        title: "Which model suits a UK SME?",
+        items: [
+          "<strong>No security staff:</strong> MDR gives you a full detection and response team from day one.",
+          "<strong>One or two security people:</strong> MDR covers nights, weekends and alert volume, so they can focus on projects.",
+          "<strong>An existing SOC:</strong> we can cover out-of-hours, overflow or specific environments such as cloud.",
+        ],
+      },
+      {
+        title: "MDR and cyber insurance",
+        paragraphs: [
+          "Many UK cyber insurers ask whether you have endpoint detection and round-the-clock monitoring in place, and some expect it for higher levels of cover. A managed SOC gives you a clear answer, with monthly reports to back it up.",
+        ],
+      },
+      {
+        title: "What happens when we detect an incident",
+        items: [
+          "An analyst confirms the activity is real and works out its scope.",
+          "Pre-approved containment runs straight away, such as isolating a laptop or revoking a session.",
+          "Your named contact gets a call or alert with a plain-English summary and the decisions we need from you.",
+          "We keep a timestamped record of every step, ready for insurers, the ICO or your legal advisers.",
+          "Afterwards, a short review covers the root cause and what to change so it doesn't happen again.",
+        ],
+      },
+    ],
+    steps: [
+      {
+        title: "Scope",
+        body: "Your users, devices, Microsoft 365 or Google Workspace, and cloud.",
+      },
+      {
+        title: "Connect",
+        body: "Integrate your existing EDR and log sources.",
+      },
+      {
+        title: "Agree",
+        body: "Escalation contacts and which actions we take automatically.",
+      },
+      {
+        title: "Watch",
+        body: "24/7 detection and response, with monthly reporting.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Do you monitor outside UK working hours?",
+        a: "Yes. Monitoring runs around the clock, including weekends and bank holidays. Escalation calls, reviews and reporting happen during UK working hours.",
+      },
+      {
+        q: "Can you help us report a breach to the ICO?",
+        a: "We provide the investigation timeline and evidence and support your decision. Whether and how to report is for you and your legal advisers to decide; the ICO expects reportable breaches without undue delay and, where feasible, within 72 hours.",
+      },
+      {
+        q: "We use Microsoft 365. Do we need extra tools?",
+        a: "Often not. If you already have Microsoft Defender or another EDR, we integrate with it and your Microsoft 365 logs, and only recommend additions where there's a real gap.",
+      },
+      {
+        q: "Is a managed SOC suitable for small businesses?",
+        a: "Yes. We work with SMEs and scale-ups and scope pricing to the size of your environment, so you get 24/7 coverage without the cost of a full in-house team.",
+      },
+      {
+        q: "Does a managed SOC help with ISO 27001 or Cyber Essentials?",
+        a: "For ISO 27001, monitoring logs and incident records are useful evidence for the logging, monitoring and incident management controls. Cyber Essentials doesn't require monitoring, but a managed SOC covers the threats its five controls can't stop on their own.",
+      },
+      {
+        q: "How do we get started?",
+        a: "Book a free 30-minute assessment. We'll look at where you stand and outline a practical plan, whether or not you work with us afterwards.",
+      },
+    ],
+    guides: [
+      "agentic-mdr-ai-agents-in-the-soc",
+      "ai-powered-mdr-what-it-is-and-how-it-works",
+    ],
+    keywords: [
+      "managed SOC UK",
+      "MDR UK",
+      "SOC as a service UK",
+      "managed detection and response UK",
+      "24/7 security monitoring UK",
+      "managed SOC London",
+    ],
+    updatedAt: "2026-11-27",
+  },
+  {
+    region: "united-states",
+    slug: "managed-soc-mdr",
+    serviceId: "managed-detection-response",
+    seoTitle: "Managed SOC & MDR Services in the US",
+    metaDescription: "Managed SOC and MDR for US companies: 24/7 AI-assisted monitoring and analyst-approved response, supporting SEC, NYDFS, HIPAA and cyber insurance requirements.",
+    h1: "Managed SOC and MDR services in the US",
+    eyebrow: "Managed SOC · US",
+    intro: "Round-the-clock detection and response for US companies that need enterprise-grade monitoring without building a 24/7 SOC.",
+    answer: "A managed SOC, or MDR service, gives US companies a team that monitors their systems around the clock, investigates alerts and contains threats, using the tools they already own. It also produces the evidence that SOC 2 auditors, regulators such as the SEC and NYDFS, HIPAA programs and cyber insurers increasingly expect.",
+    sections: [
+      {
+        title: "Requirements that make monitoring urgent",
+        items: [
+          "<strong>SEC:</strong> public companies must disclose material cybersecurity incidents on Form 8-K within four business days of determining they are material.",
+          "<strong>NYDFS Part 500:</strong> covered financial entities must notify the regulator within 72 hours of certain cybersecurity events.",
+          "<strong>HIPAA:</strong> the Security Rule requires audit controls and procedures to identify and respond to security incidents involving electronic protected health information.",
+          "<strong>State breach laws:</strong> every state has its own breach-notification law, with different triggers and deadlines.",
+          "<strong>SOC 2:</strong> auditors look for monitoring of system components and evidence that anomalies are investigated.",
+        ],
+      },
+      {
+        title: "Cyber insurance underwriting questions",
+        items: [
+          "Do you have endpoint detection and response on every endpoint?",
+          "Is there 24/7 monitoring and response?",
+          "Is MFA enforced for email and remote access?",
+          "Do you have an incident response plan and tested backups?",
+        ],
+        after: [
+          "A managed SOC answers the first two directly and helps you evidence the rest, which can make renewals smoother.",
+        ],
+      },
+      {
+        title: "Built around your stack",
+        paragraphs: [
+          "We integrate with common EDR, SIEM, identity and cloud platforms, such as Microsoft Defender and Sentinel, CrowdStrike, Okta and Entra ID, and AWS, Azure and GCP, and only recommend new tooling where there's a measurable gap. That keeps onboarding to weeks rather than months.",
+        ],
+      },
+      {
+        title: "Coverage across US time zones",
+        paragraphs: [
+          "Monitoring runs around the clock, so time zones don't affect detection. Escalation calls and reviews are scheduled in your working hours, and your named contacts decide in advance which actions we take automatically outside them.",
+        ],
+      },
+      {
+        title: "What we watch in a typical US environment",
+        items: [
+          "<strong>Endpoints:</strong> laptops and servers through your EDR, for ransomware, credential theft and unusual tools.",
+          "<strong>Identity:</strong> Okta or Entra ID sign-ins, MFA resets and new admin roles.",
+          "<strong>Email and collaboration:</strong> Microsoft 365 or Google Workspace mailbox rules, risky OAuth app grants and mass file sharing.",
+          "<strong>Cloud:</strong> AWS CloudTrail, Azure activity and GCP audit logs for new keys, public storage and disabled logging.",
+          "<strong>Key SaaS:</strong> admin activity in platforms such as GitHub and Salesforce, where a single account can expose a lot of data.",
+        ],
+      },
+      {
+        title: "What your monthly report covers",
+        items: [
+          "Every incident, how it was detected and how it was handled.",
+          "Every automated action we took, and why.",
+          "Detection tuning and new detections added for your environment.",
+          "Coverage gaps, such as devices without EDR or log sources that stopped sending.",
+          "Prioritized recommendations, in plain language, for leadership and auditors.",
+        ],
+      },
+    ],
+    steps: [
+      {
+        title: "Scope",
+        body: "Users, endpoints, cloud accounts and regulatory obligations.",
+      },
+      {
+        title: "Connect",
+        body: "Integrate your EDR, identity provider and cloud logs.",
+      },
+      {
+        title: "Tune",
+        body: "Learn normal activity and agree response playbooks.",
+      },
+      {
+        title: "Monitor",
+        body: "24/7 detection, threat hunting and monthly reporting.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Can MDR help with SEC cybersecurity disclosure?",
+        a: "It helps with the facts. Fast detection and a clear investigation timeline give your legal and leadership team what they need to assess materiality quickly. The disclosure decision itself stays with them.",
+      },
+      {
+        q: "Do you support healthcare organizations?",
+        a: "Yes. We monitor systems that handle electronic protected health information and keep records that support your HIPAA security program.",
+      },
+      {
+        q: "When is MDR worth it?",
+        a: "Usually once you hold sensitive data, sell to enterprises or carry cyber insurance. Building 24/7 coverage in-house means several analysts plus tools; MDR gives you that coverage for a monthly fee scoped to your environment.",
+      },
+      {
+        q: "Which tools do you work with?",
+        a: "Common EDR, SIEM, identity and cloud platforms. We use what you already own and only recommend new tooling where there's a measurable gap.",
+      },
+      {
+        q: "What is the difference between MDR and an MSSP?",
+        a: "A traditional MSSP mostly manages security devices and forwards alerts for you to investigate. MDR investigates the alerts itself and responds, for example by isolating a device or revoking a session, so your team receives an answer rather than a ticket.",
+      },
+      {
+        q: "How do we get started?",
+        a: "Book a free 30-minute assessment. We'll look at where you stand and outline a practical plan, whether or not you work with us afterwards.",
+      },
+    ],
+    guides: [
+      "agentic-mdr-ai-agents-in-the-soc",
+      "ai-powered-mdr-what-it-is-and-how-it-works",
+    ],
+    keywords: [
+      "managed SOC US",
+      "MDR services US",
+      "managed detection and response USA",
+      "SOC as a service",
+      "24/7 security monitoring US",
+      "is MDR worth it",
     ],
     updatedAt: "2026-11-27",
   },

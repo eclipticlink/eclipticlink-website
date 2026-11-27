@@ -896,6 +896,448 @@ export const serviceTopics: ServiceTopic[] = [
     ],
     updatedAt: "2026-11-27",
   },
+  {
+    serviceId: "compliance-grc",
+    slug: "third-party-risk-management",
+    seoTitle: "Third-Party Risk Management (TPRM) Services",
+    metaDescription: "Third-party risk management services: vendor inventory, risk tiering, security reviews, contract clauses and ongoing monitoring, without slowing procurement.",
+    h1: "Third-party risk management (TPRM) services",
+    eyebrow: "TPRM · Compliance & GRC",
+    intro: "Your suppliers can see your data, connect to your systems and ship code you run. We build a vendor risk program that finds the risky ones, without turning procurement into a months-long questionnaire exercise.",
+    answer: "Third-party risk management (TPRM) is how a company finds, assesses and controls the security risk that comes from its vendors, suppliers and partners. A practical program keeps an inventory of third parties, ranks them by how much access and data they have, reviews the critical ones in depth, puts security terms in contracts, and keeps watching them after onboarding.",
+    sections: [
+      {
+        title: "Why third parties are a security problem",
+        paragraphs: [
+          "Many serious breaches start outside the victim's own network: a compromised software update, a managed service provider with remote access, or a SaaS vendor that leaks customer data. Auditors and customers know this, which is why SOC 2, ISO 27001 and most regulators now expect evidence that you manage vendor risk, not just a signed contract.",
+        ],
+      },
+      {
+        title: "Tier vendors before you assess them",
+        table: {
+          headers: [
+            "Tier",
+            "Typical vendors",
+            "Review depth",
+          ],
+          rows: [
+            [
+              "Critical",
+              "Cloud hosting, payment processors, managed IT providers with admin access",
+              "Full security review, independent evidence such as SOC 2 or ISO 27001, contract security terms, annual reassessment",
+            ],
+            [
+              "High",
+              "SaaS tools holding customer or employee personal data",
+              "Targeted questionnaire, report review, data-protection terms",
+            ],
+            [
+              "Medium",
+              "Tools with limited internal data",
+              "Short questionnaire or a review of the vendor's public trust page",
+            ],
+            [
+              "Low",
+              "No access to your data or systems",
+              "Record in the register only",
+            ],
+          ],
+        },
+        after: [
+          "Tiering puts review effort where the risk is, instead of sending the same 300-question spreadsheet to every supplier.",
+        ],
+      },
+      {
+        title: "What our TPRM service includes",
+        items: [
+          "<strong>Vendor inventory</strong> built from finance, single sign-on and procurement records, so shadow suppliers are found too.",
+          "<strong>Tiering criteria</strong> based on data, access and business impact.",
+          "<strong>Questionnaires</strong> sized to each tier and based on recognized frameworks.",
+          "<strong>Evidence review</strong> of SOC 2 reports, ISO 27001 certificates and penetration test summaries.",
+          "<strong>Contract clauses</strong> covering security requirements, breach notification, subprocessors, audit rights and data return or deletion.",
+          "<strong>Ongoing monitoring:</strong> a reassessment calendar, alerts when a vendor reports a breach, and access removal at offboarding.",
+          "<strong>Reporting</strong> for leadership and auditors.",
+        ],
+      },
+      {
+        title: "Reading a vendor's SOC 2 report properly",
+        items: [
+          "Check the period it covers, and ask for a bridge letter for the gap since it ended.",
+          "Read the exceptions section, not just the auditor's opinion.",
+          "Note carved-out subservice organizations, such as the vendor's own cloud provider.",
+          "Implement the complementary user entity controls the report expects you to run, such as reviewing who has access.",
+        ],
+      },
+      {
+        title: "How TPRM maps to SOC 2, ISO 27001 and NIST",
+        table: {
+          headers: [
+            "Framework",
+            "Where vendor risk appears",
+          ],
+          rows: [
+            [
+              "SOC 2",
+              "CC9.2: assessing and managing risks from vendors and business partners",
+            ],
+            [
+              "ISO/IEC 27001:2022",
+              "Annex A 5.19 to 5.23: supplier relationships, supplier agreements, ICT supply chain, monitoring suppliers, and cloud services",
+            ],
+            [
+              "NIST CSF 2.0",
+              "GV.SC: cybersecurity supply chain risk management",
+            ],
+          ],
+        },
+      },
+    ],
+    steps: [
+      {
+        title: "Inventory",
+        body: "Find every vendor, including the ones bought on a credit card.",
+      },
+      {
+        title: "Tier",
+        body: "Rank them by data, access and business impact.",
+      },
+      {
+        title: "Assess",
+        body: "Review critical vendors in depth and the rest proportionately.",
+      },
+      {
+        title: "Monitor",
+        body: "Reassess on schedule, watch for vendor breaches, and offboard cleanly.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the difference between TPRM and vendor management?",
+        a: "Vendor management covers the whole commercial relationship: pricing, performance and renewals. TPRM focuses on the risks a vendor brings, such as security, privacy and resilience, and the controls that reduce them. They work best when procurement and security share one process.",
+      },
+      {
+        q: "How many vendors need a full security review?",
+        a: "Usually only a small share. Most companies have a handful of critical vendors that deserve a deep review, a larger group that needs a short questionnaire, and many that only need recording.",
+      },
+      {
+        q: "Can you run vendor assessments for us?",
+        a: "Yes. We can run them end to end, or set up the process and templates so your team runs them and we review the critical vendors.",
+      },
+      {
+        q: "Do we need special software for TPRM?",
+        a: "Not at the start. A well-structured register and consistent questionnaires go a long way. Dedicated platforms help once you have hundreds of vendors, and we work with whichever you use.",
+      },
+      {
+        q: "How do we get started?",
+        a: "Book a free 30-minute assessment. We'll look at where you stand and outline a practical plan, whether or not you work with us afterwards.",
+      },
+    ],
+    guides: [
+      "third-party-risk-management-guide",
+      "soc-2-compliance-checklist-for-startups",
+    ],
+    keywords: [
+      "third-party risk management",
+      "TPRM services",
+      "vendor risk management",
+      "vendor security assessment",
+      "supplier risk management",
+      "TPRM program",
+    ],
+    updatedAt: "2026-11-27",
+  },
+  {
+    serviceId: "penetration-testing",
+    slug: "phishing-simulation-training",
+    seoTitle: "Phishing Simulation & Awareness Training",
+    metaDescription: "Phishing simulation and security awareness training: realistic campaigns, short training for people who click, and reporting that shows behaviour changing over time.",
+    h1: "Phishing simulation and security awareness training",
+    eyebrow: "Phishing training · Social engineering",
+    intro: "Most attacks still start with a convincing message. We run realistic phishing simulations and short, relevant training so your people spot and report them, and you can show the improvement.",
+    answer: "Phishing simulation sends realistic but safe phishing emails to your staff to measure who clicks, who enters credentials and, most importantly, who reports them. Paired with short training at the moment someone is caught out, it builds the habit of pausing and reporting. Good programs track reporting over time rather than shaming the people who click.",
+    sections: [
+      {
+        title: "Why phishing training still matters",
+        paragraphs: [
+          "Email filters stop a lot, but attackers now use AI to write convincing, well-targeted messages in any language and tone, and to clone login pages in minutes. Some will always get through, which makes your people both the last control and your fastest sensor. One person who reports a phish in the first few minutes can protect everyone else who received it.",
+        ],
+      },
+      {
+        title: "What a good program looks like",
+        items: [
+          "Scenarios that match what your teams actually receive: invoices, shared documents, delivery notices and MFA prompts.",
+          "Difficulty that increases over time, from obvious to targeted.",
+          "Short, immediate training for people who click, instead of an hour-long annual course.",
+          "A one-click way to report suspicious email, with quick feedback.",
+          "Targeted scenarios for high-risk roles such as finance, HR and executives.",
+          "Results measured by reporting, not only by clicks.",
+        ],
+      },
+      {
+        title: "Metrics that matter",
+        table: {
+          headers: [
+            "Metric",
+            "What it tells you",
+          ],
+          rows: [
+            [
+              "Report rate",
+              "How many people actively warn you; the best sign of a healthy security culture",
+            ],
+            [
+              "Time to first report",
+              "How quickly your team could start responding to a real campaign",
+            ],
+            [
+              "Click rate",
+              "How convincing a scenario was; useful, but easy to game",
+            ],
+            [
+              "Credential submissions",
+              "How many people would have handed an attacker access",
+            ],
+            [
+              "Repeat clickers",
+              "Who needs more support, handled privately and kindly",
+            ],
+          ],
+        },
+      },
+      {
+        title: "Beyond email",
+        items: [
+          "<strong>MFA fatigue:</strong> teaching staff to deny unexpected push prompts and report them.",
+          "<strong>Voice and text phishing</strong> aimed at help desks and finance teams.",
+          "<strong>QR-code phishing</strong> on posters, parking signs and documents.",
+          "<strong>Payment-change requests:</strong> a call-back rule for any change of bank details.",
+        ],
+      },
+      {
+        title: "Simulations that build trust",
+        paragraphs: [
+          "Simulations should build confidence, not fear. We agree scenarios with you in advance, avoid themes that would cause real distress such as fake bonuses or redundancies, keep individual results private, and focus coaching on people rather than blame.",
+        ],
+      },
+      {
+        title: "What each campaign report includes",
+        items: [
+          "The scenario used, its difficulty and why it was chosen.",
+          "Report rate, time to first report, clicks and credential submissions.",
+          "Results by department, so leadership sees trends without naming individuals.",
+          "Comparison with earlier campaigns of similar difficulty.",
+          "Recommended next steps, including technical fixes the campaign exposed.",
+        ],
+      },
+      {
+        title: "Working with your existing tools",
+        paragraphs: [
+          "If your Microsoft 365 licence includes Attack Simulation Training, we can run campaigns there, so reporting and training stay inside tools your staff already use. Otherwise we recommend a simulation platform that fits your size and budget.",
+        ],
+      },
+    ],
+    steps: [
+      {
+        title: "Baseline",
+        body: "A first simulation to see where you start.",
+      },
+      {
+        title: "Train",
+        body: "Short, relevant training for those who need it.",
+      },
+      {
+        title: "Repeat",
+        body: "Regular campaigns that get harder as habits improve.",
+      },
+      {
+        title: "Report",
+        body: "Trends in reporting and clicks for leadership and auditors.",
+      },
+    ],
+    faqs: [
+      {
+        q: "How often should we run phishing simulations?",
+        a: "Often enough to keep the habit, without becoming noise. Many organizations run one every month or two, varying the scenario and difficulty each time.",
+      },
+      {
+        q: "Will staff feel tricked?",
+        a: "Not if the program is run well. We explain the purpose up front, keep results private, avoid distressing themes and reward people for reporting, which builds trust rather than resentment.",
+      },
+      {
+        q: "Do you include training content?",
+        a: "Yes. People who are caught out get short, relevant training straight away, and we run brief sessions for high-risk teams such as finance and leadership.",
+      },
+      {
+        q: "Is phishing training required for compliance?",
+        a: "Frameworks such as ISO 27001 and SOC 2 expect security awareness training, and many cyber insurers ask whether you run phishing simulations. A documented program gives you the evidence.",
+      },
+      {
+        q: "Can simulations target specific departments?",
+        a: "Yes. Finance, HR, executive assistants and IT help desks receive different attacks from everyone else, so we tailor scenarios for them, such as invoice fraud for finance or password-reset requests for the help desk.",
+      },
+      {
+        q: "How do we get started?",
+        a: "Book a free 30-minute assessment. We'll look at where you stand and outline a practical plan, whether or not you work with us afterwards.",
+      },
+    ],
+    guides: [
+      "phishing-simulation-that-changes-behaviour",
+    ],
+    keywords: [
+      "phishing simulation",
+      "phishing training",
+      "security awareness training",
+      "anti-phishing training",
+      "phishing test for employees",
+      "social engineering testing",
+    ],
+    updatedAt: "2026-11-27",
+  },
+  {
+    serviceId: "managed-detection-response",
+    slug: "agentic-mdr",
+    seoTitle: "Agentic MDR: AI Agents with Human Oversight",
+    metaDescription: "Agentic MDR from EclipticLink: AI agents investigate alerts and run pre-approved containment, while analysts approve anything that affects users or production.",
+    h1: "Agentic MDR with human oversight",
+    eyebrow: "Agentic MDR · Managed detection and response",
+    intro: "AI agents that do the investigation work, analysts who make the decisions. Agentic MDR that is fast where it is safe, and careful where it matters.",
+    answer: "Agentic MDR is managed detection and response in which AI agents do more than summarize alerts: they gather evidence, query logs, correlate events and can take containment actions. EclipticLink's agents act only within playbooks you pre-approve, such as isolating a compromised laptop, and anything that affects users, production systems or customers waits for an analyst.",
+    sections: [
+      {
+        title: "What the agents do, and what people do",
+        table: {
+          headers: [
+            "Task",
+            "AI agents",
+            "Analysts",
+          ],
+          rows: [
+            [
+              "Triage",
+              "Group, enrich and prioritize every alert",
+              "Review what the agents escalate",
+            ],
+            [
+              "Investigation",
+              "Query logs, pull context and build the timeline",
+              "Judge intent and impact",
+            ],
+            [
+              "Containment",
+              "Run pre-approved steps in seconds",
+              "Approve anything beyond the playbook",
+            ],
+            [
+              "Communication",
+              "Draft the incident summary",
+              "Talk to your team and agree next steps",
+            ],
+            [
+              "Improvement",
+              "Suggest new detections from patterns",
+              "Approve and tune detections",
+            ],
+          ],
+        },
+      },
+      {
+        title: "Where autonomy is safe",
+        items: [
+          "Isolating a single laptop that shows clear ransomware behaviour.",
+          "Revoking sessions and forcing a password reset after impossible-travel sign-ins.",
+          "Blocking a known-malicious file hash or domain.",
+          "Removing a confirmed phishing email from every mailbox that received it.",
+        ],
+      },
+      {
+        title: "Where a person should decide",
+        items: [
+          "Disabling executive or service accounts that keep the business running.",
+          "Taking production servers or customer-facing systems offline.",
+          "Anything with legal, regulatory or customer-communication consequences.",
+          "Actions in environments the agents have not seen before.",
+        ],
+      },
+      {
+        title: "Questions to ask an agentic MDR provider",
+        items: [
+          "Which actions can the AI take without a person, and can we change that list?",
+          "How are agent actions logged, reviewed and reversed?",
+          "How do you stop attackers manipulating the AI, for example with instructions hidden in an email it reads?",
+          "What happens when the AI is unsure?",
+          "Who is accountable when an automated action causes disruption?",
+        ],
+      },
+      {
+        title: "A worked example: a suspicious sign-in",
+        items: [
+          "An alert fires: a user signs in from a new country an hour after signing in from Dubai.",
+          "An agent pulls the user's sign-in history, device, MFA method and recent mailbox changes.",
+          "It finds a new rule forwarding the user's email to an outside address, which confirms account takeover.",
+          "Following the pre-approved playbook, it revokes sessions, forces a password reset and removes the rule within minutes.",
+          "An analyst reviews the evidence, checks what the attacker accessed and contacts your team about next steps.",
+          "The agent drafts the incident summary; the analyst checks and sends it.",
+        ],
+      },
+    ],
+    steps: [
+      {
+        title: "Define",
+        body: "Agree which actions are automatic and which need approval.",
+      },
+      {
+        title: "Connect",
+        body: "Integrate your EDR, identity, email and cloud logs.",
+      },
+      {
+        title: "Supervise",
+        body: "Analysts review agent decisions closely at first, then widen autonomy carefully.",
+      },
+      {
+        title: "Report",
+        body: "Monthly results, including every automated action taken.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is agentic MDR the same as an autonomous SOC?",
+        a: "Not quite. An autonomous SOC usually means removing people from most decisions. Our agentic MDR keeps analysts accountable for anything impactful and uses agents to make them faster.",
+      },
+      {
+        q: "Can attackers trick the AI?",
+        a: "Any AI that reads attacker-controlled content, such as emails or file names, can be targeted with prompt injection. We treat that content as untrusted, limit what agents can do, and require human approval for high-impact actions, so a fooled agent can't cause serious harm.",
+      },
+      {
+        q: "How do we choose which actions are automatic?",
+        a: "We start with a short list of low-risk, high-value actions, such as isolating a single laptop, and review how they perform. You can widen or narrow the list at any time.",
+      },
+      {
+        q: "Does agentic MDR replace our security team?",
+        a: "No. It takes repetitive investigation work off them, so your team and ours spend time on decisions, threat hunting and improvements.",
+      },
+      {
+        q: "Does agentic MDR work with our existing security tools?",
+        a: "Yes. The agents work through your existing EDR, identity provider, email platform and cloud logs, so you don't need to replace tools to benefit. Which actions they can take depends on what those tools allow and what you approve.",
+      },
+      {
+        q: "How do we get started?",
+        a: "Book a free 30-minute assessment. We'll look at where you stand and outline a practical plan, whether or not you work with us afterwards.",
+      },
+    ],
+    guides: [
+      "agentic-mdr-ai-agents-in-the-soc",
+      "ai-powered-mdr-what-it-is-and-how-it-works",
+    ],
+    keywords: [
+      "agentic MDR",
+      "agentic MDR provider",
+      "AI SOC",
+      "AI-powered MDR",
+      "autonomous SOC",
+      "AI agents security operations",
+    ],
+    updatedAt: "2026-11-27",
+  },
 ];
 
 export function getServiceTopic(serviceId: string, slug: string) {
