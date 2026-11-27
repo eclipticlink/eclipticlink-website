@@ -9,6 +9,8 @@ import { Reveal } from "../../components/reveal";
 import { SectionHeading } from "../../components/section-heading";
 import { Button } from "../../components/ui/button";
 import { blogPosts } from "../../data/blogs";
+import { regionPages } from "../../data/region-pages";
+import { serviceTopics } from "../../data/service-topics";
 import { BASE_OG, CONTACT_US_MAILTO, SITE_URL } from "../../lib/config";
 import { breadcrumbJsonLd, faqJsonLd } from "../../lib/seo";
 import { getAllServiceSlugs, getServiceBySlug, services } from "../data";
@@ -75,6 +77,14 @@ export default async function ServicePage({ params }: Props) {
   };
 
   const related = services.filter((s) => s.id !== service.id).slice(0, 3);
+  const deepDives = [
+    ...serviceTopics
+      .filter((t) => t.serviceId === service.id)
+      .map((t) => ({ href: `/services/${t.serviceId}/${t.slug}`, title: t.h1, body: t.metaDescription, tag: "Deep dive" })),
+    ...regionPages
+      .filter((t) => t.serviceId === service.id)
+      .map((t) => ({ href: `/locations/${t.region}/${t.slug}`, title: t.h1, body: t.metaDescription, tag: "By region" })),
+  ];
   const relatedPosts = blogPosts
     .filter((p) => p.relatedService === service.id || p.alsoRelated?.includes(service.id))
     .slice(0, 3);
@@ -149,6 +159,22 @@ export default async function ServicePage({ params }: Props) {
               </li>
             ))}
           </ul>
+          {deepDives.length ? (
+            <div className="mt-12">
+              <h3 className="font-mono text-xs uppercase tracking-[0.14em] text-subtle">Go deeper</h3>
+              <ul className="mt-4 grid gap-4 md:grid-cols-2" role="list">
+                {deepDives.map((d) => (
+                  <li key={d.href}>
+                    <Link href={d.href} className="card card-hover group flex h-full flex-col p-6">
+                      <span className="font-mono text-xs uppercase tracking-wider text-accent">{d.tag}</span>
+                      <span className="mt-2 block text-lg font-semibold text-ink group-hover:text-accent">{d.title}</span>
+                      <span className="mt-1 block text-sm leading-relaxed text-muted">{d.body}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </div>
       </section>
 
